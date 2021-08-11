@@ -13,15 +13,19 @@
         <meta name="image:Sidebar" content=""/>
         <meta name="text:Home Title" content="home"/><meta name="text:Ask Title" content="message"/><meta name="text:Archive Title" content="archive"/>
         
-        <meta name="if:Click for Tags" content="1"/><meta name="if:Infinite Scroll" content="1"/> <meta name="if:Manual Load" content="0"/>
-        
         <meta name="text:Header Link 1" content=""/><meta name="text:Header Link 1 URL" content=""/>
         <meta name="text:Header Link 2" content=""/><meta name="text:Header Link 2 URL" content=""/>
         <meta name="text:Header Link 3" content=""/><meta name="text:Header Link 3 URL" content=""/>
         
+        <meta name="if:Infinite Scroll" content="1"/> <meta name="if:Manual Load" content="0"/>
+        
         <!--================================================================================================ 
              PAGE SCRIPTS 
         =================================================================================================--> 
+        
+        <script>
+            var docelem = document.documentElement;
+        </script>
         
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
@@ -56,27 +60,26 @@
                 --fontstyle: 'Manrope', sans-serif; --boldstyle: 'Rubik', sans-serif; --gerstyle: 'UnifrakturCook', cursive;
                 
                 /*banner settings*/
-                --bannerheight:520px; --bannerwidth:3480px; 
-                --bannerurl: url('https://cdn.discordapp.com/attachments/870119954232516669/871877010706825216/vanhbanner3.2.png');
-                --bannerurlblank: url('https://cdn.discordapp.com/attachments/870119954232516669/871936842331725854/vanhbanner3.b.png');
-                --bannerscoll: url('https://cdn.discordapp.com/attachments/870119954232516669/872006789820989450/scrollbanner.png');
+                --bannerheight:520; --bannerwidth:3480; 
+                --bannerlogo: url('https://cdn.discordapp.com/attachments/870119954232516669/872774193593335849/back30.png');
+                --bannerlogohov: url('https://cdn.discordapp.com/attachments/870119954232516669/872773749454286848/back29.png');
+                --bannerurl: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/vanhbanner3.2.png');
+                --bannerurlblank: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/vanhbanner3.b.png');
+                --bannerscoll: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/scrollbanner.png');
                 
-                /*navbar settings*/
-                --navicon: "https://cdn.discordapp.com/attachments/630047188520665121/871904393988014150/back29.png";
+                /*nvbor settings*/
                 --iconheight: 327px; --iconwidth: 617px;
                 
                 /*sidebar settings*/
                 --sidebarl:250px; --sidebarr:350px; --postwidth:500px; /*default sidebar widths*/
                 
-                /*side bar items*/
-                --wshoph1:250px; --wshoph2:150px; /*workshop items*/
+                --accent1:#7285fe; --accent2: #d058fd; --accent3: #ff9936; --accent4: #ffba00;
+                --links: #ff8ef4; --titles: #7285fe; --text: #787878; --textalt: #505050;
                 
-                --accent1:#7285fe; --accent2: #d058fd; --accent3: #ff8ef4;
-                --background: #f4f4f4; --posts: #ffffff;
-                --borders: #d8d5d5; --scrollbar: #aaaaaa;
-                --links: #ff8ef4; --titles: #7285fe; 
-                --text: #787878; --texthover: #6a6a6a;
-                
+                --background: #f4f4f4; --posts: #ffffff; --borders: #d8d5d5; --scrollbar: #aaaaaa;
+                /*--background: #1d1d1d; --posts: #141414; --borders: #090909*/
+                --opacity: 1; --opacityhover: 0.7;
+                /*--opacity: 0.6; --opacityhover: 1;*/
             }
             
             /* ==================================================================================================== */
@@ -84,10 +87,8 @@
             /* ==================================================================================================== */
             
              /* All this adjusts the default settings of the tumblr image zoom. */
-            .tmblr-lightbox {
-                background:rgba(255,255,255, .60)!important} 
-            .tmblr-lightbox img {
-                opacity:1}
+            .tmblr-lightbox { background:rgba(255,255,255, .60)!important} 
+            .tmblr-lightbox img { opacity:1}
             .lightbox-caption { 
                 color:var(--titles)!important; text-shadow:none!important;
                 font-family:inherit!important; font-size:var(--fontsmall)!important; font-weight:normal!important}
@@ -99,144 +100,117 @@
             .vignette {
                 opacity:0!Important} /*removes the black shit when clicking on tumblr posts*/
         
-            #infscr-loading {
-                display:none!important;}
-            #pagination {
-                text-align:left;
-                display:none}
-            body { 
-                background:var(--background); 
-                font-family: var(--fontstyle); color:var(--text); 
-                word-wrap:break-word; text-align:left; 
-                letter-spacing:.15px; margin:0; 
-                -webkit-font-smoothing:antialiased; font-smoothing:antialiased; 
-                -moz-osx-font-smoothing:grayscale}
-        
-        /* ==================================================================================================== */
-            /* USER INTERFACE */
-        /* ==================================================================================================== */
-        
-            .user { /*user pfps on posts*/
-                display:inline-block; display:block
-                border:0!important; display:block; 
-                font-weight:600; color:var(--text); 
-                line-height:1em; vertical-align:middle; 
-                margin-bottom:10px; margin-right:15px}
-            
-            .cont {
-                width:calc(var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px); 
-                margin:0 auto 0 auto}
+            #infscr-loading {display:none!important}
+            #pagination {text-align:left;display:none}
                 
-            .block { 
-                background:var(--posts); 
-                border-bottom:1px solid var(--borders); 
-                padding:15px 15px; margin-bottom:20px}
+            body { background:var(--background);font-family:var(--fontstyle);color:var(--text); 
+                word-wrap:break-word;text-align:left;letter-spacing:.15px;margin:0}
+
+            a:hover {color:var(--links);border-color:var(--links)}
+            a {color:var(--accent1);text-decoration:none;border-color:var(--accent3);cursor:pointer}
+            a, svg {transition:all .15s linear}
+                
+            p {margin:.75em 0} 
+            p:first-of-type {margin-top:0!important} 
+            p:last-of-type {margin-bottom:0!important}
             
+            li {position:relative; list-style:none} 
+            li:last-of-type {margin: 0px 0px}
+            
+            img { max-width:100%; height:auto; display:block; 
+                opacity:1; border:0; margin:0;}
+
             .divider { /*general divider*/
-                padding-top:10px; margin-bottom:10px; 
+                margin-bottom:15px; 
                 border-top:1px solid var(--borders)} 
-
-        /* ==================================================================================================== */
-            /* LAZY CSS PATCHES */
-        /* ==================================================================================================== */
-        
-            .pad0 {padding:0px} .bor0 {border:0px}
-            .pad10 {padding: 15px 15px 0px 15px}
-            
-            .cap {font-family:var(--boldstyle); font-weight:600}
-            .upp {text-transform:uppercase;}
-            .tspa1 {letter-spacing: 1px}
-
-            .col2 {color: var(--accent2)}
-            .col {color:var(--accent1)}
 
         /* ==================================================================================================== */
             /* postbar FORMATTING */
         /* ==================================================================================================== */
-        
-            .header, .navbanner, nav, bar, .navbar {
+            
+            /*hdr*/
+            .hdr { 
+                height: calc(((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth));
+                background-image:var(--bannerurlblank); z-index:999; transition:opacity .2s ease-in-out!important;
+                position:relative; display:block; margin: 20px auto}
+            
+            /* logo on hdr*/
+            .bnlogo, .logo, .hdr {transition:all .2s ease-in-out; background-size: 100% 100%; z-index:999}
+            
+            .logo {width:100%; height:100%; opacity: 1; background-image: var(--bannerlogo)}
+            .logo:hover {opacity: 0}
+            
+            .bnlogo { 
+                background-image: var(--bannerlogohov); position: absolute;
+                height: calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) + 10px);
+                width:  calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 2 + 10px);
+                margin-top: calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) - 
+                    ((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 2) - 25px)}
+            .bnlogo:hover {
+                height: calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) - 10px);
+                width:  calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 1.9 - 10px);
+                margin-top: calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) - 
+                    ((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 2) - 15px)}
+                
+            bar, .nvbor {
+                background:var(--posts); z-index:997;
+                position:fixed; margin:0 auto}
+                
+            .bnlogo, .nvbor, bar {left:50%; transform:translateX(-50%)}
+            bar, .nvback, .nvbor {overflow:hidden; opacity:0; position:fixed}
+            
+            .hdr, .nvback, bar, .nvbor {
                 width:calc(var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px);
                 background-size:100% auto; background-repeat: no-repeat}
-                
-            nav, bar, .navbar {
-                background:var(--posts); z-index:997; opacity:0;
-                position:fixed; margin:0 auto;
-                left:50%; transform:translateX(-50%); -webkit-transform:translateX(-50%); 
-                -moz-transform:translateX(-50%); -ms-transform:translateX(-50%); -o-transform:translateX(-50%)
-                -webkit-animation-name: fade-in; -webkit-animation-duration: 1.5s}
-            .stick nav, .stick bar, .stick .navbar {opacity:1}
-            
-            /*header*/
-            .header { 
-                height: calc(((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * 520) / 3480);
-                background-image:var(--bannerurl); z-index:999;
-                position:relative; display:block;  margin:-30px auto 0}
-            bar, .navbanner, .navbar { overflow:hidden; opacity:0; position:fixed }
             
             /* nav bar image background */
-            .navbanner { background-image: var(--bannerscoll); height:52px; background-position: top center; margin-top: -10px; z-index: -1}
-            .stick .navbanner { opacity:0.2 }
+            .nvback {
+                background-image: var(--bannerscoll); background-size: cover;
+                background-position: top center; height:100%; z-index: -1}
+            .stick .nvback {opacity:0.2}
             
             /* nav bar border image */
-            .navbar { background-image:var(--bannerurlblank); background-position: bottom center; z-index:998; margin-top:40px; height:3px}
-            .stick .navbar { opacity: 1 }    
+            .nvbor {
+                background-image:var(--bannerurlblank); background-size: cover;
+                background-position: bottom center; z-index:998; top:47px; height:3px}
             
             /* logo on nav bar */
-            .barlogo { 
-                width:calc(var(--iconwidth) / 10); position:absolute;
-                left:calc(-1em - 60px); border:0; padding:0; display:block}
-            .stick .barlogo {
-                left:20px; transition: all .5s ease-in-out; -webkit-transition:all .5s ease-in-out; 
-                -moz-transition:all .5s ease-in-out; -o-transition:all .5s ease-in-out}
+            .nvlogo {
+                width:calc(var(--iconwidth) / 10); position:absolute; 
+                left:calc(-1em - 60px); border:0; padding:0}
+            .stick .nvlogo { 
+                margin-left:76px; padding:7px 30px 7px 13px; transition: all .5s ease-in-out}
                 
-            nav {font-family:var(--boldstyle); font-size:var(--fontsmall); text-transform:uppercase; text-align:center} /*nav bar font format*/
-            
-            bar {font-size: 1.3em; padding:7px 0}  /*nav bar back*/
-            bar a {display:inline-block; padding:10px 30px; border-right:1px solid var(--borders)} /* navbar link settings */
+            bar {height:50px; font-family:var(--boldstyle); font-size:0.8em;
+                opacity:0; text-transform:uppercase; text-align:center; top:0}  /*nav bar back*/
+            .stick bar {opacity: 1}  
+                
+            bar a {display:inline-block; padding:15px 30px; border-right:1px solid var(--borders); background-color:rgba(114, 133, 254, 0.0)} /* nvbor link settings */
             bar a:last-of-type {border:0} 
-            bar a:hover {border-color:var(--borders)!important}
+            bar a:hover {background-color:rgba(114, 133, 254, 0.3)}
             
+            .stick bar, .stick .nvbor {opacity:1}
             .stick bar a {color: var(--accent2)} 
-            .stick bar a:hover {color: var(--links)}
-            
-        /* ==================================================================================================== */
-            /* TEXT FORMATTING */
-        /* ==================================================================================================== */
-            
-            a, svg { transition:all .15s linear -webkit-transition:all .15s linear; -moz-transition:all .15s linear; -o-transition:all .15s linear}
-            
-            /* default tumblr formatting */
-            .title { font-weight:600; font-size:0.9em; text-transform:uppercase; letter-spacing:1.1px; color:var(--titles); color:var(--titles); line-height:1.5em} 
-            .title a { color:var(--accent3) }
-            h1, h2, h3, h4 { font-size:var(--fontsmall); margin:0; padding:15px 0; color:var(--titles); font-weight:600}
-            
-            pre { padding:0; margin:0; background:transparent; line-height:2em!important; 
-            vertical-align:baseline!important; font-family:monospace!Important; font-size:inherit!important; word-wrap:break-word;
-            white-space:pre-wrap; white-space:-moz-pre-wrap; white-space:-pre-wrap; white-space:-o-pre-wrap}
-            
-            a.read_more {text-transform:uppercase; letter-spacing:1.5px; font-weight:600}
-            a { color:var(--text); text-decoration:none; cursor:pointer} 
-            a:hover { color:var(--links); border-color:var(--links)!important}
-            b, strong {color:var(--titles); font-weight:600}
-            
-            p {margin:.75em 0} 
-            p:first-of-type {margin-top:0!important} p:last-of-type {margin-bottom:0!important}
-            
-            blockquote { margin:.5em 0; border-left:1px solid var(--borders); padding:.25em 0 .25em 15px}
-            ol, ul { list-style:none; padding:.25em 0 .25em 15px} hr {border:none; box-shadow:0; margin:1.5em 25%; border-top:1px solid var(--borders)}
-            
-            img { opacity:1; border:0; text-decoration:none; max-width:100%; height:auto; display:block}
+            .stick bar a:hover {color: var(--links); background-color:black;}
             
         /* ==================================================================================================== */
             /* SIDEBAR FORMATTING */
         /* ==================================================================================================== */
         
             /* nav */
-            asidel, asider, article, footer, .header { 
-                -webkit-animation-name: fade-in; -webkit-animation-duration: 1.5s}  /*page fadein on load*/
-            asidel {width:var(--sidebarl); margin:20px 0; position:fixed} 
-            asider {width:var(--sidebarr); margin:20px 0; position:relative} /*side bar margins*/
+            asidel {width:var(--sidebarl); margin:0px -0.25px; position:fixed} 
+            asider {width:var(--sidebarr); margin:0px -0.25px; position:relative} /*side bar margins*/
             asidel, asider, section { display:inline-block; vertical-align:top}
+            
+            .block, .wedge { 
+                background:var(--posts); width:100%;
+                border-bottom:1px solid var(--borders); margin-bottom:20px;}
+            .block {padding:15px 0; width:100%}
+            
+            p {font-size:var(--fontmedium); 
+                margin:10px 0; padding: 0px 15px 11px}
+            p:last-of-type {margin: -5px 0px 15px}
+            h {color:var(--accent3)} .wrsp h:hover {color:var(--titles)}
             
             /*scrollbar*/
             ::-webkit-scrollbar {width:12px;height:12px;background-color:transparent}
@@ -244,43 +218,56 @@
             
             /* LEFT HAND SIDEBAR CONTENT
         /* ===================================== */
-            .sideimg { margin:20px 0px 0px; width:var(--sidebarl)} 
-            
+        
+            /*info box =============== */
             .block .ti{ font-weight:600; font-size:var(--fontmedium); text-transform:uppercase; letter-spacing:1.1px; color:var(--titles)} /*side bar titles*/
-            .dated .con {padding-top:0px} /*containers for sides*/
             
-            .sidesamp {
-                width:calc(var(--sidebarl) / 2 - 1px); height:calc(var(--sidebarl) / 2 - 2px); 
-                margin-left:1px; margin-bottom:-4px; display:inline-block!important; 
-                background-size: cover; background-position: center; }
+            /* pictures container =============== */
+            .sidei1, .sidei2, .sidei3, .sidei4 {
+                width:calc(var(--sidebarl) / 2 - 1.5px); height:calc(var(--sidebarl) / 2 - 1.5px);
+                display:inline-block!important; background-size: cover; background-position: center;
+                margin: 0px 0px -4px 1px}
+            
+            .sidei1 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/imgs/img1.png')}
+            .sidei2 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/imgs/img2.jpg')}
+            .sidei3 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/imgs/img3.jpg')}
+            .sidei4 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/imgs/img4.jpg')}
             
             /* RIGHT HAND SIDEBAR CONTENT
         /* ===================================== */
-            /*workshop content*/
-            .workshop {
-                padding:0; margin-bottom:20px;
-                text-transform:uppercase; color:var(--text)
-                transition:all .15s linear -webkit-transition:all .15s linear; -moz-transition:all .15s linear; -o-transition:all .15s linear}
-            .workshop:hover {
-                transition:all .15s linear -webkit-transition:all .15s linear; -moz-transition:all .15s linear; -o-transition:all .15s linear }
+        
+            /* wrsp Content =============== */
+            .wrsp { padding:0; margin-bottom:20px; text-transform:uppercase}
+            .sbitems { height:100%; width:var(--sidebarr); overflow: hidden}
             
-            .workshop .pcg {
-                width:100%; opacity:1}
-            .workshop:hover .pcg {
-                opacity: 0.7}
+            /* animation */
+            .wrsp:hover, .wrsp, .wrsp:hover .pcg1, .wrsp:hover .pcg2, 
+            .pcg1, .pcg2, .wrsp:hover t, .wrsp wst {transition:opacity .15s linear}
             
-            .workshop .workshopt { 
-                padding: 12px 15px 5px; display:block; 
-                letter-spacing: 1px; font-family:var(--boldstyle); font-weight:600; color: var(--accent2)}
-            .workshop:hover .workshopt {
-                color:var(--accent1)}
+            /* pictures */
+            .pcg1, .pcg2  {width:100%; opacity:var(--opacity)} /* default opacity values of wrsp pictures */
+            .wrsp:hover .pcg1, .wrsp:hover .pcg2 {opacity:var(--opacityhover)} /* on hover */
+            .pcg1, .pcg2 {background-position: center; background-size: cover; height:calc(var(--sidebarr) / 4 + 50px)}
+            .wrsp .pcg1 {height:calc(var(--sidebarr) / 2 + 50px); background-image: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/workshop%20items/Lilith.png')}
+            .wrsp .pcg2 {background-image: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/workshop%20items/Eva1.png')}
             
-            .workshop .workshops { 
-                font-size:var(--fontsmall); padding: 0px 15px 15px }
-            .workshop:hover .workshops {color:var(--texthover)}
+            /* wrsp Text styles =============== */
+            .wrsp p {font-size:var(--fontsmall)!important; color:var(--text)}
+            .wrsp .stats p {
+                background-color: var(--textalt); color: white; 
+                padding: 5px 15px 5px!important; white-space: nowrap; overflow: hidden}
+            .wrsp:hover .stats p {background-color: var(--text)}
             
-            /*search bar*/
-            input[type="search"] {-webkit-appearance:textfield; -moz-box-sizing:content-box; -webkit-box-sizing:content-box; box-sizing:content-box}
+            .sbitems t { 
+                padding: 9px 15px 5px; display:block; letter-spacing:1px;
+                color:var(--accent2); font-family:var(--boldstyle); font-weight:600}
+                
+            .wrsp t {font-size: 1em}
+            .wrsp:hover t {color:var(--accent2)}
+            
+            /* search bar ========================================================================================================= */
+            
+            input[type="search"] {box-sizing:content-box}
             input[type="search"]::-webkit-search-cancel-button, ::-webkit-search-decoration {-webkit-appearance:none}
             input::-webkit-input-placeholder {color:var(--text)} 
             input::-moz-placeholder {color:var(--text)}
@@ -288,171 +275,187 @@
             input:-ms-input-placeholder {color:var(--text)}
             
             /* searchbar grad + mask */
-            .search { 
-                width:calc(var(--sidebarr) - 30px); position:fixed;
-                padding:15px 15px; margin-top:-15px; 
-                background:var(--posts); border-bottom:1px solid var(--borders)}
+            .search {position:fixed; background:var(--posts)}
             .search .searchtop { 
-                height:20px; width:var(--sidebarr); position:absolute;
-                margin-top:-18px; margin-left:-15px;
-                background:var(--background);}
+                height:20px; width:var(--sidebarr);
+                margin-top:-20px; background:var(--background)}
             .search .searchbar { 
-                width:var(--sidebarr); height:3px; position:absolute
-                background-image: var(--bannerurlblank); 
-                margin-left:-15px; margin-top:13px;}
+                width:var(--sidebarr); height:3px; z-index:999!important;
+                background-image: var(--bannerurlblank);}
             
             /* search bar form */
-            .search-form {border:none;display:block;width:200px;margin:0}
-            .search-form input {text-transform:lowercase;font:10px/1.5em lato, sans-serif;letter-spacing:.15px;
+            .search .search-form {
+                width:calc(var(--sidebarr) - 30px); 
+                margin:0; padding:12px 15px;
+                border:none;display:block}
+            .search .search-form input {text-transform:lowercase;font:10px/1.5em lato, sans-serif;letter-spacing:.15px;
                                 width:200px;padding:0;position:relative;background:var(--posts);display:block;outline:none;border:0}
-            .search-form input[type=text] {color:var(--text)} 
+            .search .search-form input[type=text] {color:var(--text)} 
              
         /* ==================================================================================================== */
             /* TUMBLR POST FORMATTING */
         /* ==================================================================================================== */
-  
+            
             /* container for posts */
-            section {margin:20px; width:var(--postwidth); margin-left: calc(var(--sidebarl) + 20px)}
-            article {width:width:var(--postwidth); background:var(--posts); border-bottom:1px solid var(--borders); margin-bottom:20px; position:relative}
-            article li {margin:.25em 0} li {padding-left:15px; position:relative} article img, article li, article blockquote, article img {max-width:100%}
+            section {
+                margin:0px 20px 20px calc(var(--sidebarl) + 20px); width:var(--postwidth)}
+            article {
+                width:var(--postwidth); background:var(--posts); position:relative
+                border-bottom:1px solid var(--borders); margin-bottom:20px}
+                
+            article li {margin:.25em 0} 
+            article img, article li, article blockquote, article img {max-width:100%}
             article li:before { left:-5px; top:.25em; position:absolute; content:'*'; font-size:var(--fontsmall); display:block; color:rgba({RGBcolor:text},.7); vertical-align:middle}
+
+            .cont {width:calc(var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px); margin:0px auto}
             
-            .con {padding:20px; font-size:0.8em} /*post content storage container*/
+            /* post formatting types */
             
-            /*==========================================================================
-            /*top of posts*/
-            .postbar {width:var(--postwidth); background-image: var(--bannerurlblank); height:3px}
-            .no, .time {font-size:0.8em} /*top of the post, notes and time posted.*/
-            .d {display:block!important; margin-top: -4px; /*posted on*/
-                font-weight:600; color:var(--titles); font-size:(--fontmedium);  text-transform:uppercase; letter-spacing:1px}
+            /* Top of posts ========================================================================================================= */
+            
+            .postbar {width:var(--postwidth); background-image: var(--bannerurlblank); height:3px} /*image bar ontop of posts*/
+            
+            .notecounter, .timestamp {
+                font-size:0.8em; color:var(--accent3)} /*top of the post, notes and time posted.*/
+            .dateposted {
+                display:block!important; color:var(--accent1);
+                margin-top: -4px; letter-spacing:1px; width:auto;
+                font-family:var(--boldstyle); font-weight:600; text-transform:uppercase}
+            .dateposted:hover {color:var(--accent2)}
+            
+            .when {padding:20px 20px 16px; line-height:1.2em} /* container that holds .time, and .d */ 
+            .when a {display:inline-block; position:relative} /* these also include the repost tags at the bottom of posts. */
+            
+            .vimage {float:left; display:inline-block}
+            .vimage img { margin:-1px 15px 0 0; vertical-align:middle} 
+            .vimage img, .user img { width:22px; height:22px}
+            
+            /* Bottom of posts ========================================================================================================= */
+            
+            .footer {padding-bottom:19px; font-size:0.6em; margin-top:-3px} /*posted by*/
+            .footer .postedby {display:inline-block; margin-top:1px; font-weight:600} /*container that posted by*/
+            .footer .imcon { margin-top:-1px} /*fixes the text for the posted by area*/
+            .footer, #in { text-transform:uppercase; letter-spacing:1px}
+            
+            .user { /*user pfps on posts*/
+                display:inline-block; display:block
+                border:0!important; display:block; 
+                font-weight:600; color:var(--text); 
+                line-height:1em; vertical-align:middle; 
+                margin-bottom:10px; margin-right:15px}
             
             /*like, reblog, share containers*/
-            .repost {float:right} .repost a:hover svg {fill:var(--links)} 
-            .repost svg { height:2em; vertical-align:middle; fill:#fff; line-height:1.5em; margin-left:10px
-                padding:3px; background:var(--accent1); border-radius:100%; -moz-border-radius:100%; -webkit-border-radius:100%; margin-left:5px}
+            .repost {float:right; margin-top:-1px} 
+            .repost a:hover svg {fill:var(--accent3)} 
+            .repost svg { height:1.85em; vertical-align:middle; fill:#fff;
+                background:var(--accent1); margin-left:11px; padding:3px}
+            .like_button {cursor:pointer} 
+            .like .liked + svg {background:var(--accent3)}
+            .like:hover svg, .repost svg:hover {fill:var(--accent1)} 
+            .like_button iframe {
+                position:absolute; opacity:0.0000001; 
+                top:0; bottom:0; right:0; z-index:4}
             
-            .like:hover svg, .repost svg:hover {fill:var(--linkhover)} .like .liked + svg {fill:#D95E40}
-            .like_button {cursor:pointer} .like_button iframe {position:absolute; opacity:0.0000001; top:0; bottom:0; right:0; z-index:4}
-            
-            /*==========================================================================
-            /* text posts */
-            
-            .comment a, .source a {border-bottom:1px solid var(--links)}
-            .comment > h1:first-child, .comment > h2:first-child, .comment > h3:first-child, .comment > h4:first-child {padding:0 0 15px 0}
-            .comment {margin:0; padding:0 0 15px 0; list-style:none} 
-            article:not(.ccc) .comment:last-of-type {padding-bottom:0}
-            .comment:before, .chat li:before, ol.notes li:before {display:none}
-            .ccc .comment {padding:15px 20px} .ccc .comment:first-of-type {padding-top:20px} .ccc .comment:last-of-type {padding-bottom:20px}
-            .ted:first-of-type {padding-top:20px}
-            
-            .source {margin-top:15px}
-            .chat {margin:0;padding:0;list-style:none;text-align:left}
-            
-            .l {padding:0 0 20px 0} 
-            .l:last-child {padding-bottom:0;border:0}
-            
-            .quote {position:relative; font-size:var(--fontsmall); font-style:italic; margin-left:20px; padding-left:15px; border-left:1px dotted var(--borders); color:var(--titles); line-height:1.5em}
-            .quote:before {position:absolute; left:-20px; top:0; content:'“'; font-size:var(--fontsmall); font-family:sans-serif; color:var(--titles); font-weight:bold; font-style:normal!important;}
-            
-            .answerer {border:0!important; color:var(--text)}
-            .question {padding:20px; background:var(--accent1)} 
-            .as {text-transform:lowercase;font-weight:600;display:block;margin-bottom:5px}
-            
-            /* Video */
-            .ex {margin:0 -20px; padding:20px; background:var(--accent1)} 
-            .ex span { display:block; margin-top:10px} /* Links */
-            
-            .ph {position:relative; overflow:hidden} 
-            .ph img {width:100%; display:block} /* video holder */
-            .video * { display:block; min-width:100%} 
-            
-            .iframe-controls--desktop { z-index:999; top:-13px!important; right:-90px!important; opacity:0; padding-right:75px;
-            /*filters*/ filter:invert(1) contrast(150%); -webkit-filter:invert(1) contrast(150%); -o-filter:invert(1) contrast(150%); -moz-filter:invert(1) contrast(150%); -ms-filter:invert(1) contrast(150%);
-                        transition:all .15s linear -webkit-transition:all .15s linear; -moz-transition:all .15s linear; -o-transition:all .15s linear
-            /*scaling*/ transform:scale(0.6); -webkit-transform:scale(0.6); -o-transform:scale(0.65); -moz-transform:scale(0.65); -ms-transform:scale(0.65)}
-            .iframe-controls--desktop:hover {opacity:.6}
-            
-            /* audio */
-            .player {width:25px; height:24px; position:absolute; left:30px; top:calc(50% - 15px); display:block; overflow:hidden}
-            .hold {position:relative; display:block; min-height:24px; padding:20px 20px; background:var(--accent1)}
-            
-            .audio_info {vertical-align:middle; line-height:12px; margin-left:60px; max-width:calc(100% - 90px)}
-            .audio_info span {white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block}
-            .hold .track {font-weight:600; color:var(--titles)}
-            .spotify_audio_player {height:80px; border-radius:0!important}
-             
-            /* Photoset */
-            .photo-slideshow a {border:0;}
-            .photo-slideshow .processed {visibility:visible;margin:0;display:block;}
-            .photo-slideshow .row {clear:both;width:100%;}
-            .photo-slideshow .row:last-of-type {margin-bottom:0!important;} 
-            .photo-slideshow .pxu-photo {display:block;float:left;margin-bottom:0;width:100%;overflow:hidden;}
-            .photo-slideshow .pxu-photo img {display:block;}
-            .photo-slideshow.processed .pxu-photo img {width:100%!important;height:auto!important;display:block;}
-            .photo-slideshow .pxu-photo:first-child img {margin-left: 0}
-            .photo-slideshow .count-1 {width:100%;}
-            .photo-slideshow .count-2 {width:50%;}
-            .photo-slideshow .count-3 {width:33.23%;}
-            .photo-slideshow .count-4 {width:25%;}
-            .photo-slideshow .count-5 {width:20%;}
-            .photo-slideshow .info {display:none;}
-            
-            /*==========================================================================
-             /*footer of posts*/
-            .ccc .bb, .mhm .bb {padding-top:0; padding-bottom:19px;}
-            .bb {font-size:var(--fontsmall)} /*posted by*/
-            .bb .im { display:block; margin-top:1px; font-weight:600}
-            .bb, #in { text-transform:uppercase; letter-spacing:1px}
-            
-            .rest, .v, .im  {display:inline-block}
-            .rest a:not(.d)::after {content:'•'; margin:0 5px}   
-            
-            .when {padding:20px 20px 16px; line-height:1.1em} /* container that holds .time, and .d */ 
-            .when a {display:inline-block;position:relative} 
-            .when a:last-of-type::after {display:none}
-            
-            .v {float:left}
-            .v img { margin:-1px 15px 0 0; vertical-align:middle} 
-            .v img, .user img { width:22px; height:22px}
-            
-            /*==========================================================================
             /* footer of posts on permalink pages */
+            section .pagenotes .con {padding: 15px 20px} /* adjusts the padding for notes */
             ol.notes { list-style-type:none; padding:0px; font-size:var(--fontmedium)} /*thing that says "notes" at post footer*/
+            ol.notes li:before {display:none}
             ol.notes li.note { display:block; margin:0 0 10px 20px; padding:0; line-height:15px}
+            ol.notes li.note span.action {font-weight: bold}
+            ol.notes li.note blockquote { margin: 0px 0px 0px -18px}
             ol.notes li.note img.avatar { left:-20px; height:15px; width:15px; position:absolute; vertical-align:middle; float:left; display:inline-block}
             .more_notes_link, .notes_loading { display:block; text-align:left; color:var(--titles)!important}
             
-            ol.notes li.note span.action {font-weight: bold}
-            ol.notes li.note blockquote { margin: 0px 0px 0px -18px}
-            
             /* tags on permalink posts */
-            .tags { padding:0 20px 20px 20px; font-weight:600; position:relative; z-index:4; font-size:var(--fontsmall); {block:indexpage}display:none{/block:indexpage}}
+            .tags { padding:0 20px 15px 20px; position:relative; text-transform:uppercase; font-size:0.8em;}
             .tags a { display:inline; color:rgba({RGBcolor:text},.5)} 
-            .tags a:hover {color:var(--accent3)}
+            .tags a:hover {color:var(--accent2)}
             .tags a:after { content:'•'; margin:0 5px} 
             .tags a:last-of-type::after {display:none}
             
+            /* text on posts */
+            .comment {padding: 0 1px}
+            .comment p {padding: 0 19px}
+            .comment a {border-bottom:1px solid var(--links)} 
+            .comment:last-of-type {padding-bottom:0}
+            .comment:before, .chat li:before, ol.notes li:before {display:none}
+            .ted:first-of-type {padding-top:20px}
+            
+            
+            /* Post formatting ========================================================================================================= */
+            
+            /* default tumblr formatting */
+            .title { 
+                font-weight:600; font-size:0.9em; color:var(--titles);
+                text-transform:uppercase; letter-spacing:1.1px; line-height:1.5em} 
+            .title a { color:var(--accent3) }
+            
+            section b, strong {color:var(--titles); font-weight:600}
+            
+            section blockquote {
+                margin:.5em 0; padding:.25em 0 .25em 15px
+                border-left:1px solid var(--borders)}
+            section ol, ul { list-style:none; padding:.25em 0 .25em 15px} 
+            section hr {
+                border:none; border-top:1px solid var(--borders); 
+                margin:1.5em 25%; box-shadow:0;}
+            
+            /*image container*/
+            section .imgcon {position:relative; overflow:hidden; margin: -17px 0 15px} 
+            section .imgcon img {width:100%; display:block}
+            
+            section .npf_row, .npf_row + p {margin: 10px 0!important}
+            section .npf_col:first-child {padding-right: 1px!important} /* this fixes the gap between images to be 1 pixel wide, apposed to 2. */
+            section .npf_col:last-child {padding-left: 0px!important} /* this fixes the gap between images to be 1 pixel wide, apposed to 2. */
+            
+            /* Photoset frames */
+            section .photo-slideshow a {border:0;}
+            section .photo-slideshow .processed {visibility:visible;margin:0;display:block}
+            section .photo-slideshow .processed .pxu-photo img {width:100%!important;height:auto!important;display:block}
+            section .photo-slideshow .row {clear:both;width:100%}
+            section .photo-slideshow .row:last-of-type {margin-bottom:0!important} 
+            section .photo-slideshow .pxu-photo {display:block;float:left;margin-bottom:0;width:100%;overflow:hidden}
+            section .photo-slideshow .pxu-photo img {display:block}
+            section .photo-slideshow .pxu-photo:first-child img {margin-left: 0}
+            section .photo-slideshow .count-1 {width:100%} .photo-slideshow .count-2 {width:50%}
+            section .photo-slideshow .count-3 {width:33.23%} .photo-slideshow .count-4 {width:25%}
+            section .photo-slideshow .count-5 {width:20%} .photo-slideshow .info {display:none}
+            
+            section .source a {border-bottom:1px solid var(--links)}
+            section .source {margin-top:15px}
+            section .chat {margin:0;padding:0;list-style:none;text-align:left}
+            
+            section .quote {position:relative; font-size:var(--fontsmall); font-style:italic; margin-left:20px; padding-left:15px; border-left:1px dotted var(--borders); color:var(--titles); line-height:1.5em}
+            section .quote:before {position:absolute; left:-20px; top:0; content:'“'; font-size:var(--fontsmall); font-family:sans-serif; color:var(--titles); font-weight:bold; font-style:normal!important;}
+            
+            /*questions*/
+            section .answerer {border:0!important; color:var(--text)}
+            section .question {padding:20px; background:var(--accent1)} 
+            section .asker {text-transform:lowercase;font-weight:600;display:block;margin-bottom:5px}
+            
+            /* Video */
+            section .ex {margin:0 -20px; padding:20px; background:var(--accent1)} 
+            section .ex span { display:block; margin-top:10px} /* Links */
+            
+            section .video * { display:block; min-width:100%} 
+            section .tmblr-embed tmblr-full {margin:-20px 0}  /* fixes the iframe from being offpost */
+            section .tmblr-embed tmblr-full, .embed_iframe {width:var(--postwidth)!important; height:calc(var(--postwidth) / 16 * 9)!important}
+            
+            section .iframe-controls--desktop { z-index:999; top:-13px!important; right:-90px!important; opacity:0; padding-right:75px;
+            /*filters*/ filter:invert(1) contrast(150%); -webkit-filter:invert(1) contrast(150%); -o-filter:invert(1) contrast(150%); -moz-filter:invert(1) contrast(150%); -ms-filter:invert(1) contrast(150%);
+                        transition:all .15s linear -webkit-transition:all .15s linear; -moz-transition:all .15s linear; -o-transition:all .15s linear
+            /*scaling*/ transform:scale(0.6); -webkit-transform:scale(0.6); -o-transform:scale(0.65); -moz-transform:scale(0.65); -ms-transform:scale(0.65)}
+            section .iframe-controls--desktop:hover {opacity:.6}
+
         /* ==================================================================================================== */
             /* junk */
         /* ==================================================================================================== */
             
             /* Icons for EXIF Data and Zoom */
             .photo-data {position:relative; float:left}
-            .icons {display:none} 
-            .icons > span, .icons .tumblr-box span {display:none}
-            .zoom {display:none} 
-            .info {display:none}
-             
-            /* EXIF & CAPTION Data Tooltip */
-            .pxu-data {display:none} 
-            .pxu-caption {display:none} 
-            .pxu-data table {display:none}
             .tumblr-box {display:block;position:absolute;top:0;right:0;bottom:0;left:0;z-index:1}
+            .tumblr-full {margin: 0 1px}
             
-            @-webkit-keyframes fade-in {0% {opacity: 0} 50% {opacity: 0} 100% {opacity: 1}}
-            @-webkit-keyframes fade-in {0% {opacity: 0} 50% {opacity: 0} 100% {opacity: 1}}
-            @-moz-keyframes fade-in {0% {opacity: 0} 50% {opacity: 0} 100% {opacity: 1}}
-            @keyframes fade-in {0% {opacity: 0} 50% {opacity: 0} 100% {opacity: 1}}
         </style>
     </head>
      
@@ -462,57 +465,63 @@
         Top navigation
      ================================================================================================ -->
     
-        <nav>
-            <bar>
-                <div class="navbar"></div>
-                <a class="barlogo"><img src="https://cdn.discordapp.com/attachments/630047188520665121/871904393988014150/back29.png"/></a>
-                <div class="navbanner"></div>
-                {block:ifHomeTitle}
-                    <a href="/">{text:home title}</a>
-                {/block:ifHomeTitle}
-                
-                {block:ifAskTitle}
-                    <a href="/ask">{text:ask title}</a>
-                {/block:ifAskTitle}
-                {block:ifHeaderLink1}
-                    <a href="{text:Header Link 1 URL}">{text:Header Link 1}</a>
-                {/block:ifHeaderLink1}
-                {block:ifHeaderLink2}
-                    <a href="{text:Header Link 2 URL}">{text:Header Link 2}</a>
-                {/block:ifHeaderLink2}
-                {block:ifHeaderLink3}
-                    <a href="{text:Header Link 3 URL}">{text:Header Link 3}</a>
-                {/block:ifHeaderLink3}
-                    <a href="/archive">{text:archive title}</a>
-            </bar>
-        </nav>
+        <bar>
+            <div class="nvbor"></div>
+            <a class="nvlogo"><img src="https://cdn.discordapp.com/attachments/630047188520665121/871904393988014150/back29.png"/></a>
+            <div class="nvback"></div>
+            {block:ifHomeTitle}
+                <a href="/">{text:home title}</a>
+            {/block:ifHomeTitle}
+            
+            {block:ifAskTitle}
+                <a href="/ask">{text:ask title}</a>
+            {/block:ifAskTitle}
+            {block:ifhdrLink1}
+                <a href="{text:hdr Link 1 URL}">{text:hdr Link 1}</a>
+            {/block:ifhdrLink1}
+            {block:ifhdrLink2}
+                <a href="{text:hdr Link 2 URL}">{text:hdr Link 2}</a>
+            {/block:ifhdrLink2}
+            {block:ifhdrLink3}
+                <a href="{text:hdr Link 3 URL}">{text:hdr Link 3}</a>
+            {/block:ifhdrLink3}
+            <a href="/archive">{text:archive title}</a>
+        </bar>
         
 <!-- ================================================================================================
         Main Page Data
      ================================================================================================ -->
         
+        <div class="hdr" id="hdr"></div>
+            <a href="/"><div class="bnlogo" id="bnlogo" onmouseover="fadeto()" onmouseout="fadeno()">
+            <div class="logo" id="logo"></div>
+        </div></a>
+            
+        <script>function fadeto() {$('#hdr').css({ opacity: "var(--opacityhover)" })};function fadeno() {$('#hdr').css({ opacity: "var(--opacity)" })};</script>
+        
+        
+        
         <div class="cont">
-            <div class="header"></div>
             
 <!-- ================================================================================================
         Left Sidebar
      ================================================================================================ -->
         
-            <asidel>
-                <div class="block pad0">
-                    <img class="sideimg" src="https://cdn.discordapp.com/attachments/870119954232516669/872009222638956554/tumblr_737363636c6d07975f098558754363b9_0bd1b43e_640.gif"/>
+            <asidel id="asidel">
+                <div class="wedge">
+                    <img src="https://cdn.discordapp.com/attachments/870119954232516669/872009222638956554/tumblr_737363636c6d07975f098558754363b9_0bd1b43e_640.gif"/>
                 </div>
                 <!--theme title and description block-->
                 <div class="block">
-                    <a href="/" class="d cap col upp">[PAGE IS CURRENTLY IN DEVELOPMENT]</a>
+                    <p>[PAGE IS CURRENTLY IN DEVELOPMENT]</p>
                 </div>
                 
                 <!--Image block-->
-                <div class="pad0 block stats">
-                    <div class="sidesamp" style="background-image:url('https://pbs.twimg.com/media/E6WlGEvXoAMpiYU?format=png&name=orig')"></div>
-                    <div class="sidesamp" style="background-image:url('https://scontent.fman2-2.fna.fbcdn.net/v/t1.6435-9/147627746_2902074073414865_2784160801986331178_n.jpg?_nc_cat=110&ccb=1-3&_nc_sid=a4a2d7&_nc_ohc=qo9pHm__MakAX_mdoLO&_nc_ht=scontent.fman2-2.fna&oh=39fae10db68ca50478d9293cdee497a4&oe=612D3FF6')"></div>
-                    <div class="sidesamp" style="background-image:url('https://scontent.fman2-1.fna.fbcdn.net/v/t1.6435-9/148243002_2902074080081531_5113685091447076684_n.jpg?_nc_cat=108&ccb=1-3&_nc_sid=a4a2d7&_nc_ohc=8vLkBwMQl30AX_7sqRl&_nc_ht=scontent.fman2-1.fna&oh=abf8f2f321bf2ea38741b95f83051b86&oe=612AF19A')"></div>
-                    <div class="sidesamp" style="background-image:url('https://pbs.twimg.com/media/Eegxc4VWAAc3mvP?format=jpg&name=orig')"></div>
+                <div class="wedge">
+                    <div class="sidei1"></div>
+                    <div class="sidei2"></div>
+                    <div class="sidei3"></div>
+                    <div class="sidei4"></div>
                 </div>
             </asidel>
             
@@ -520,50 +529,33 @@
         Posts
      ================================================================================================ -->
             
-            <section>
+            <section id="posts">
                 {block:Posts}
-                    <article id="{PostID}" class="
-                        {block:Date}dated{/block:Date} 
-                        {block:caption}ccc{/block:caption} 
-                        {block:Answer}ccc{/block:Answer} 
-                        {block:Quote}mhm{/block:Quote}
-                        {block:Text}mhm{/block:Text}
-                        {block:Link}mhm{/block:Link}
-                        {block:Chat}mhm{/block:Chat}
-                        {block:ifGroupBlog}gg{/block:ifGroupBlog}">
-                        
+                    <article id="{PostID}" class="dated">
                         <div class="postbar"></div>
                         
-                        {block:Date}
-                            <div class="when">
-                                <div class="rest">
-                                    <a href="{Permalink}" target="_blank" class="d cap col">{dayofweek}, {shortmonth} {dayofmonth}{dayofmonthsuffix}</a>
-                                    {block:NoteCount}
-                                        <a href="{permalink}" class="no">{notecountwithlabel}</a>
-                                    {/block:NoteCount}
-                                    <a href="{permalink}" class="time">{timestamp}</a>
-                                </div>
-                            </div>
-                        {/block:Date}
+                        <div class="when">
+                            <a href="{Permalink}" target="_blank" class="dateposted">{dayofweek}, {shortmonth} {dayofmonth}{dayofmonthsuffix}</a>
+                            {block:NoteCount}<a href="{permalink}" class="notecounter">{notecountwithlabel}</a>{/block:NoteCount}
+                            •
+                            <a href="{permalink}" class="timestamp">{timestamp}</a>
+                        </div>
                         
                         <div class="divider"></div>
                         
-                        {block:Quote}
-                            <div class="con">
+                            {block:Quote}
                                 <div class="quote">{Quote}</div>
                                 {block:Source}
                                     <div class="source">{Source}</div>
                                 {/block:Source}
-                            </div>
-                        {/block:Quote}
+                            {/block:Quote}
                      
-                        {block:Text}
-                            <div class="con">
+                            {block:Text}
                                 {block:Title}<div class="title">{Title}</div>{/block:Title}
                                 {block:RebloggedFrom}
                                     {block:Reblogs}
                                         <li class="comment {block:Title}ted{/block:Title}">
-                                            <a {block:haspermalink}href="{permalink}"{/block:haspermalink} class="user" target="_blank">
+                                        <a {block:haspermalink}href="{permalink}"{/block:haspermalink} class="user" target="_blank">
                                                 {block:HasAvatar}
                                                     <img src="{PortraitURL-64}"/>
                                                 {/block:HasAvatar}{username}
@@ -575,11 +567,9 @@
                                 {block:NotReblog}
                                     <li class="comment {block:Title}ted{/block:Title}">{body}</li>
                                 {/block:NotReblog}
-                            </div>
-                        {/block:Text}
+                            {/block:Text}
                      
-                        {block:Link}
-                            <div class="con">
+                            {block:Link}
                                 <div class="ex">
                                     <div class="title">
                                         <a href="{URL}" {Target}>{Name}</a>
@@ -601,29 +591,9 @@
                                         </li>
                                     {/block:Reblogs}
                                 {/block:RebloggedFrom}
-                            </div>
-                        {/block:Link}
+                            {/block:Link}   
                      
-                        {block:Chat}
-                            <div class="con">
-                                {block:Title}
-                                    <div class="title">{Title}</div>
-                                {/block:Title}
-                                <ol class="chat {block:Title}ted{/block:Title}">
-                                    {block:Lines}
-                                        <li class="l {Alt}">
-                                            {block:Label}
-                                                <span>{Label}</span>
-                                            {/block:Label}
-                                            {Line}
-                                        </li>
-                                    {/block:Lines}
-                                </ol>
-                            </div>
-                        {/block:Chat}
-                     
-                        <div class="media">
-                            <div class="ph">
+                            <div class="imgcon">
                                 {block:Photo}
                                     {block:indexpage}
                                         <a href="#" onclick="Tumblr.Lightbox.init([{width:{PhotoWidth-HighRes},height:{PhotoHeight-HighRes},low_res:'{PhotoURL-500}',high_res:'{PhotoURL-HighRes}'}]); 
@@ -654,47 +624,24 @@
                                 {/block:Video}
                             </div>
                          
-                            {block:Audio}
-                                {block:AudioPlayer}
-                                    <div class="hold">
-                                        <div class="player">{AudioPlayerWhite}</div>
-                                        <div class="audio_info">
-                                            {block:TrackName}
-                                                <span class="track">{TrackName}</span>
-                                            {/block:TrackName}
-                                            {block:Artist}
-                                                <span class="artist">{Artist}</span>
-                                            {/block:Artist}
-                                        </div>
-                                    </div>
-                                {/block:AudioPlayer}
-                            {/block:Audio}
-                         
-                            {block:caption}
-                                {block:Reblogs}
-                                    <li class="comment">
-                                        <a {block:haspermalink}href="{permalink}"{/block:haspermalink} class="user" target="_blank">
-                                            {block:HasAvatar}<img src="{PortraitURL-64}"/>{/block:HasAvatar}
-                                            {username}
-                                        </a>
-                                        {body}
-                                    </li>
-                                {/block:Reblogs}
-                                {block:NotReblog}
-                                    <li class="comment">
-                                        <a {block:haspermalink}href="{permalink}"{/block:haspermalink} class="user" target="_blank">
-                                            <img src="{PortraitURL-64}"/>
-                                            {name}
-                                        </a>
-                                        {Caption}
-                                    </li>
-                                {/block:NotReblog}
-                            {/block:caption}
-                         </div>
+                            {block:Reblogs}
+                                <li class="comment">
+                                    <a {block:haspermalink}href="{permalink}"{/block:haspermalink} class="user" target="_blank">
+                                        {block:HasAvatar}<img src="{PortraitURL-64}"/>{/block:HasAvatar}
+                                        {username}
+                                    </a>
+                                    {body}
+                                </li>
+                            {/block:Reblogs}
+                            {block:NotReblog}
+                                <li class="comment">
+                                    {Caption}
+                                </li>
+                            {/block:NotReblog}
                          
                         {block:Answer}
                             <div class="question">
-                                <span class="as">{Asker} sent:</span>{Question}
+                                <span class="asker">{Asker} sent:</span>{Question}
                             </div>
                             {block:Answerer}
                                 <li class="comment">
@@ -723,16 +670,14 @@
                             {/block:rebloggedfrom}
                         {/block:Answer}
                          
-                        <div class="when bb">
+                        <div class="when footer">
                             <span class="repost">
                                 {block:indexpage}
                                     {block:hastags}
-                                        {block:ifClickForTags}
-                                            <a class="taggie" title="tags">
-                                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 216 216" enable-background="new 0 0 216 216" xml:space="preserve"><path d="M154,27H58c-3.3,0-6,2.7-6,6v153.7c0,2.5,1.5,4.7,3.8,5.6c2.3,0.9,4.9,0.3,6.6-1.6l44.8-49.1l42.3,49c1.2,1.3,2.8,2.1,4.5,2.1c0.7,0,1.4-0.1,2.1-0.4c2.3-0.9,3.9-3.1,3.9-5.6V33C160,29.7,157.3,27,154,27z M148,170.6l-36.1-41.9c-1.1-1.3-2.7-2.1-4.5-2.1c-1.7,0-3.4,0.7-4.5,2L64,171.3V39h84V170.6z"/>
-                                                </svg>
-                                            </a>
-                                        {/block:ifClickForTags}
+                                        <a class="taggie" title="tags">
+                                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 216 216" enable-background="new 0 0 216 216" xml:space="preserve"><path d="M154,27H58c-3.3,0-6,2.7-6,6v153.7c0,2.5,1.5,4.7,3.8,5.6c2.3,0.9,4.9,0.3,6.6-1.6l44.8-49.1l42.3,49c1.2,1.3,2.8,2.1,4.5,2.1c0.7,0,1.4-0.1,2.1-0.4c2.3-0.9,3.9-3.1,3.9-5.6V33C160,29.7,157.3,27,154,27z M148,170.6l-36.1-41.9c-1.1-1.3-2.7-2.1-4.5-2.1c-1.7,0-3.4,0.7-4.5,2L64,171.3V39h84V170.6z"/>
+                                            </svg>
+                                        </a>
                                     {/block:hastags}
                                 {/block:indexpage}
                                 <a href="{ReblogURL}" target="_blank" class="r" title="reblog">
@@ -746,18 +691,20 @@
                             </span>
                             
                             {block:RebloggedFrom}
-                                <a class="v" {block:haspermalink}href="{permalink}"{/block:haspermalink}>
+                                <a class="vimage" {block:haspermalink}href="{permalink}"{/block:haspermalink}>
                                     <img src="{ReblogParentPortraitURL-64}"/>
                                 </a>
-                                posted via
-                                <a class="im" {block:haspermalink}href="{permalink}"{/block:haspermalink}>
-                                    {reblogparentname}
-                                </a>
+                                <div class="imcon">
+                                    posted via <br>
+                                    <a class="postedby" {block:haspermalink}href="{permalink}"{/block:haspermalink}>{reblogparentname}</a>
+                                </div>
                             {/block:RebloggedFrom}
                             {block:notreblog}
-                                <a class="v" href="{PostAuthorURL}"><img src="{PostAuthorPortraitURL-64}"/></a>
-                                posted by
-                                <a class="im" href="{PostAuthorURL}">{PostAuthorName}</a>
+                                <a class="vimage" href="{PostAuthorURL}"><img src="{PostAuthorPortraitURL-64}"/></a>
+                                <div class="imcon">
+                                    posted by <br>
+                                    <a class="postedby" href="{PostAuthorURL}">{PostAuthorName}</a>
+                                </div>
                             {/block:notreblog}
                         </div>
                          
@@ -786,7 +733,6 @@
                                     {/block:ContentSource}
                                 {/block:RebloggedFrom}
                                 {PostNotes}
-                            </div>
                         </article>
                     {/block:PostNotes}
                 {/block:Posts}
@@ -797,120 +743,149 @@
         Right Sidebar
      ================================================================================================ -->
         
-            <asider>
-            
-                <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2449497541" target="_blank">
-                    <div class="block workshop">
-                            <div class="pcg" style="height:250px; background-image: url('https://cdn.discordapp.com/attachments/629600253997350912/870756253998129182/unknown.png');"></div>
-                            <div class="workshopt">Moonlord replacement for the Third Impact / Lilith</div>
-                        <div class="workshops">A Rei replacement for the Moonlord, Inspired by the Third Impact from The End Of Neon Genesis Evangelion.</div>
-                    </div>
-                </a>
-                
-                <div class="block pad0" style="height:265px">
+            <asider id="asider">
+                <div class="sbitems" id="wrsp">
+                    
+                    <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2449497541" target="_blank">
+                        <div class="wedge p wrsp"> <!-- page 1 -->
+                            <div class="pcg1"></div>
+                            <div class="stats"><p><h>76,791</h> Unique Visitors • <h>25,012 </h>Concurrent Subscribers</p></div>
+                            
+                            <t>Moonlord replacement for the Third Impact / Lilith</t>
+                            <p>A Rei replacement for the Moonlord, Inspired by the Third Impact from The End Of Neon Genesis Evangelion.</p>
+                        </div>
+                    </a>
+                       
                     <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2440395917" target="_blank">
-                        <div class="pcg" style="height:150px; background-image: url('https://cdn.discordapp.com/attachments/629600253997350912/870748201311961119/unknown.png');"></div></a>
-                        <a class="workshopt">EVA Unit 01 holding the 1941 Tirpitz Battleship</a>
-                    <div class="workshops">A 1:1 scale, 330 block tall recreation of Eva Unit: 01 from Neon Genesis Evangelion, holding a German battleship. Reported on by PC GAMER; 18/1/21.</div>
+                        <div class="wedge p wrsp"> <!-- page 1 -->
+                            <div class="pcg2"></div>
+                            <div class="stats"><p><h>51,544</h> Unique Visitors • <h>9,514 </h>Concurrent subscribers</p></div>
+                            
+                            <t>EVA Unit 01 holding the 1941 Tirpitz Battleship</t>
+                            <p>A 1:1 scale, 330 block tall recreation of Eva Unit: 01 from Neon Genesis Evangelion, holding a German battleship. Reported on by PC GAMER; 18/1/21.</p>
+                        </div>
+                    </a>
                 </div>
-            
+
                 <!--search block-->
                 <div class="search">
                     <div class="searchtop"></div>
-                    <form action="/search" class="search-form" method="get" style="margin-top:20px" autocomplete="off">
+                    <form action="/search" class="search-form" method="get" autocomplete="off">
                         <input id="searchField" name="q" placeholder="Enter keyword..." type="text" value="{SearchQuery}"/>
                     </form>   
                     <div class="searchbar"></div>
                 </div>
 
-                <div class="block" style="margin-top:85px">
+                {block:indexpage}
+                <div class="wedge p" style="margin-top:62px">
                     <a class="twitter-timeline" href="https://twitter.com/TheaVanherst?ref_src=twsrc%5Etfw"><div class="d cap">Tweets by TheaVanherst</div></a> 
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"  loading="eager" data-chrome="noheader nofooter noborders"></script>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"  loading="eager" data-chrome="nohdr nofooter noborders"></script>
                 </div>
-
+                {/block:indexpage}
             </asider>
          
-            {block:Pagination}
-                <footer>
-                    <div id="pagination" class="pag {block:NextPage}riri{/block:NextPage}">
-                        {block:PreviousPage}
-                            <a href="{PreviousPage}" class="fl">prev page</a>
-                        {/block:PreviousPage}
-                        {block:NextPage}
-                            <a href="{NextPage}">next page</a>
-                        {/block:NextPage}
-                    </div>
-                </footer>
-            {/block:pagination}
+<!-- ================================================================================================
+        Page scripts
+     ================================================================================================ -->
+         
+            {block:Pagination} 
+                <div id="pagination" class="pag">
+                    {block:PreviousPage}
+                    <a href="{PreviousPage}">prev page</a>{block:nextpage}/{/block:nextpage}{/block:PreviousPage}
+                    {block:NextPage}
+                    <a href="{NextPage}">next page</a>
+                    {/block:NextPage}
+                </div>
+            {/block:Pagination}
          
         </div>
-        
+
         <script>
-        
-            var sidebarl = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--sidebarl').replace("px", "")),
-                sidebarr = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--sidebarr').replace("px", "")),
-                postwidth = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--postwidth').replace("px", "")),
-                bannerwidth = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--bannerwidth').replace("px", "")),
-                bannerheight  = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--bannerheight').replace("px", ""));
-            
-            var probh = ((sidebarl + sidebarr + postwidth + 40) / bannerwidth) * bannerheight
+            var probh, wrsp, temp, headr;
+            var righb = $("#asider").width(), leftb = $("#asidel").width(), middb = $("#posts").width(),
+                page3 = $('body').width() - ($('body').width() - ($("#asidel").width() + $("#asider").width() + $("#posts").width())), 
+                page2 = $('body').width() - ($('body').width() - ($("#asider").width() + $("#posts").width()));
+                
+            var resize = function() {
+                probh = (($("#asidel").width() + $("#asider").width() + $("#posts").width() + 40) / $("#hdr").width()) * $("#hdr").height();
+                wrsp = $("#wrsp").height(); headr = $("#hdr").height();
+                scroll();
+                
+                $("#bnlogo").css('transition', "opacity .15s"); $("#logo").css('transition', "opacity .15s"); 
+                
+                if ($('body').width() < (page3 + 80)){ 
+                    if ($('body').width() <= (page3 + 80) && $('body').width() > 900){
+                        var pagescl3 = (page3 / ($('body').width() - 80));
+                        $('#asidel').css('opacity', 1); 
+                        docelem.style.setProperty('--sidebarl', (leftb / pagescl3).toFixed(2) + "px")
+                        docelem.style.setProperty('--sidebarr', (righb / pagescl3).toFixed(2) + "px")
+                        docelem.style.setProperty('--postwidth', (middb / pagescl3).toFixed(2) + "px")
+                        $('section').css('margin','0px 20px 20px calc(var(--sidebarl) + 20px)')
+                    } else {
+                        var pagescl2 = (page2 / ($('body').width() - 60))
+                        $('#asidel').css('opacity', 0); 
+                        $('section').css('margin-left','0px')
+                        docelem.style.setProperty('--sidebarl', -20 + "px")
+                        docelem.style.setProperty('--sidebarr', (righb / pagescl2).toFixed(2) + 10 + "px")
+                        docelem.style.setProperty('--postwidth', (middb / pagescl2).toFixed(2) + 10 + "px")}
+                } else if ($('body').width() > 1920){
+                    
+                    var pagescl3 = (page3 / ($('body').width() - 80));
+                        
+                } else { 
+                    var pagescl3 = ((page3 - 80) / ($('body').width()));
+                    $('#asidel').css('opacity', 1); 
+                    docelem.style.setProperty('--sidebarl', leftb + "px")
+                    docelem.style.setProperty('--sidebarr', righb + "px")
+                    docelem.style.setProperty('--postwidth', middb + "px")
+                    $('section').css('margin','0px 20px 20px calc(var(--sidebarl) + 20px)')}
+                
+                $("#bnlogo").css('transition', "all .15s"); $("#logo").css('transition', "all .15s"); 
+            }
+
+            $(document).ready(resize);
+            $(window).on("load resize", resize);
             
             function notes() {
-                $('article').find('.no').each(function(){
+                //updates notes on posts to refer to singular notes as "note"
+                $('article').find('.notecounter').each(function(){
                    var n = $(this).html().split(' ')[0].replace(/,/g, '')
-                   if (n > 999) {n = Math.floor(n / 100) / 10; $(this).text(n + 'k notes')}
-                   else if (n > 1 && n <= 999) {$(this).text(n + ' notes')}
-                   else {$(this).text(n + ' note')}})}
+                   if (n > 1) {$(this).text(n + ' notes')}else{$(this).text(n + ' note')}})}
         
             function scroll(){
                 //banner scroll check
-                if(probh > $(document).scrollTop()){ $('body').removeClass('stick')
-                } else { $('body').addClass('stick')}
-                
-                //sidebarL adjustment check
-                if(probh - 20 > $(document).scrollTop()){ $('asidel').css({position: 'absolute', marginTop: "0px"})
-                } else { $('asidel').css({position: 'fixed', marginTop: 0 - probh + 'px'})}
-                   
+                if(probh - 32 > $(document).scrollTop()){ 
+                    $('body').removeClass('stick')
+                    $('asidel').css({position: 'absolute', top: ""})
+                } else {
+                    $('body').addClass('stick')
+                    $('asidel').css({position: 'fixed', top: "0px"})}
                 //search bar positioning adjustments
-                if(probh + 668 > $(document).scrollTop()){ $('.search').css({position: 'absolute', top: probh + 495 + "px"})
-                } else { $('.search').css({position: 'fixed', top: "65px"})}}
+                if(probh + wrsp - 20 > $(document).scrollTop()){ $('.search').css({position: 'absolute', top: ""})
+                } else { $('.search').css({position: 'fixed', top: "58px"})}}
 
             $(document).ready(function(){
-                scroll(); resizeVideos();
-                
-                $('body').tooltip({track:true})   
-                $('.taggie').each(function() {
-                    $(this).click(function() {
+                scroll(); resizeVideos(); notes();
+                $('.taggie').each(function() {$(this).click(function() {
                         $(this).closest('article').find('.tags').slideToggle(400)})}) 
-                        
-                var barH = $('bar').outerHeight();
-                if ($('nav').height() > barH) { $('.cont').css({marginTop: barH})
-                } else {$('.cont').css({paddingTop: barH})}
-                
-                $('.i').click(function() {$('body, html').animate({scrollTop:0},1000);});   
+                $('.i').click(function() {$('body, html').animate({scrollTop:0},1000)});   
                 
                 $(document).scroll(function(){
                     //banner scroll check
-                    if(probh - 32 > $(document).scrollTop()){ $('body').removeClass('stick')
-                    } else { $('body').addClass('stick')}
-                    
-                    //sidebarL adjustment check
-                    if(probh - 32 > $(document).scrollTop()){ $('asidel').css({position: 'absolute', marginTop: "0px"})
-                    } else { $('asidel').css({position: 'fixed', marginTop: 0 - probh + 30 + 'px'})}
-                       
+                    if(probh - 32 > $(document).scrollTop()){ 
+                        $('body').removeClass('stick')
+                        $('asidel').css({position: 'absolute', top: ""})
+                    } else {
+                        $('body').addClass('stick')
+                        $('asidel').css({position: 'fixed', top: "70px"})}
                     //search bar positioning adjustments
-                    if(probh - 32 + 668 > $(document).scrollTop()){ $('.search').css({position: 'absolute', top: probh + 495 + "px"})
-                    } else { $('.search').css({position: 'fixed', top: "65px"})}})
+                    if(headr + wrsp - 35 > $(document).scrollTop()){ $('.search').css({position: 'absolute', top: ""})
+                    } else { $('.search').css({position: 'fixed', top: "70px"})}})
                 
-                $('.photo-slideshow').pxuPhotoset({
-                    lightbox: true, rounded: false, gutter: '2px',
-                    photoset: '.photo-slideshow', photoWrap: '.photo-data', photo: '.pxu-photo'}) 
-                $('iframe.tumblr_audio_player').load( function() {
-                    $('iframe.tumblr_audio_player').contents().find("head").append($("<style type='text/css'> .audio-player{background:var(--accent1)!important} </style>"))})
-                    
-                notes();
-                
-                $('.time').timeAgo({time: "short", spaces: true, suffix: " ago" });   
+                // Tumblr photosets
+                $('.photo-slideshow').pxuPhotoset({ lightbox: true, rounded: false, gutter: '2px',
+                    photoset: '.photo-slideshow', photoWrap: '.photo-data', photo: '.pxu-photo'})
+                $('.timestamp').timeAgo({time: "short", spaces: true, suffix: " ago" })  
                 
                 var $container = $('section');      
                 {block:indexpage}    
@@ -921,40 +896,31 @@
                         loadingImg: '',
                         loadingText: '<em></em>',
                         errorCallback: function(){ $('.load').text('no more posts').parent('footer').delay(4000).slideUp(400); },    
-                        bufferPx: 3000
-                    },
+                        bufferPx: 3000},
                     function( newElements ) {
                         var $newElems = $( newElements );
-                        var $newID = $newElems.map(function(){return this.id;}).get();
-                        Tumblr.LikeButton.get_status_by_post_ids($newID);
+                        var $newID = $newElems.map(function(){return this.id;}).get()
+                        Tumblr.LikeButton.get_status_by_post_ids($newID)
                         $newElems.find('.photo-slideshow').pxuPhotoset({
-                                lightbox: true,
-                                rounded: false,
-                                gutter: '2px',
-                                photoset: '.photo-slideshow',
-                                photoWrap: '.photo-data',
-                                photo: '.pxu-photo'
-                        });
+                                lightbox: true, rounded: false,
+                                gutter: '2px', photoset: '.photo-slideshow',
+                                photoWrap: '.photo-data', photo: '.pxu-photo'})
                         $newElems.find('iframe.tumblr_audio_player').load( function() {
-                            $('iframe.tumblr_audio_player').contents().find("head").append($("<style type='text/css'> .audio-player{background:var(--accent1) !important} </style>"))});   
+                            $('iframe.tumblr_audio_player').contents().find("head").append(
+                                $("<style type='text/css'> .audio-player{background:var(--accent1) !important} </style>"))})
                             
-                        $newElems.find('.no').each(function(){
-                            var n = $(this).html().split(' ')[0].replace(/,/g, '');
-                            if (n > 999) {
-                                n = Math.floor(n / 100) / 10;
-                                $(this).text(n + 'k notes');
-                            }
-                            else if (n > 1 && n <= 999) {$(this).text(n + ' notes');}
-                            else {$(this).text(n + ' note');}
-                        });  
-                        $newElems.find('.time').timeAgo({
-                            time:"short",
-                            spaces: true,
-                            suffix:" ago"
-                        });         
-                        resizeVideos();
+                        $newElems.find('.notecounter').each(function(){
+                            var n = $(this).html().split(' ')[0].replace(/,/g, '')
+                            if (n > 999) { 
+                                n = Math.floor(n / 100) / 10
+                                $(this).text(n + 'k notes') 
+                            }else if (n > 1 && n <= 999) {$(this).text(n + ' notes')
+                            }else {$(this).text(n + ' note')}});  
+                            
+                        $newElems.find('.timestamp').timeAgo({time:"short",spaces: true,suffix:" ago"})        
+                        resizeVideos()
                         $newElems.find('.taggie').each(function() {
-                            $(this).click(function() {$(this).closest('article').find('.tags').slideToggle(400);}); 
+                            $(this).click(function(){$(this).closest('article').find('.tags').slideToggle(400)}) 
                         });           
                     });
             {/block:indexpage}
@@ -962,28 +928,22 @@
             
             function resizeVideos() {
                $('.video:not(.resized) iframe:not(.tumblr_video_iframe)').each(function(){
-                   var vw = $(this).width();
-                   var vh = $(this).height();
-                   var scale = $(this).parents('.video').width() / vw;
+                   var vw = $(this).width(), vh = $(this).height()
+                   var scale = $(this).parents('.video').width() / vw
                    $(this).attr({
                        width: Math.floor($(this).attr('width') * scale),
-                       height: Math.floor($(this).attr('height') * scale)
-                   });
-                   $(this).parents('.video').addClass('resized');
-               });
+                       height: Math.floor($(this).attr('height') * scale)})
+                   $(this).parents('.video').addClass('resized')})
+                   
                $('.video:not(.resized) .tumblr_video_iframe').each(function(){
-                   var vw = $(this).width();
-                   var vh = $(this).height();
-                   var scale = $(this).parents('.video').width() / vw;
-                   $(this).css({
-                       'transform': 'scale(' + scale + ')',
-                       'margin': vh * (scale - 1) / 2 + 'px ' + vw * (scale - 1) / 2 + 'px'
-                   });
+                   var vw = $(this).width(), vh = $(this).height()
+                   var scale = $(this).parents('.video').width() / vw
+                   $(this).css({'transform': 'scale(' + scale + ')',
+                       'margin': vh * (scale - 1) / 2 + 'px ' + vw * (scale - 1) / 2 + 'px'})
                    $(this).parents('.tumblr_video_container').css({
                        width: Math.floor(vw * ( scale + 1 ) / 2),
-                       height: Math.floor(vh * ( scale + 1 ) / 2)
-                   });
-                   $(this).parents('.video').addClass('resized');
+                       height: Math.floor(vh * ( scale + 1 ) / 2)})
+                   $(this).parents('.video').addClass('resized')
                });
             }
         </script>
