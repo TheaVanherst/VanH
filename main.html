@@ -35,17 +35,14 @@
         <script src="//static.tumblr.com/wgijwsy/u2vm2hxv6/jquery.infinitescroll.min.js"></script>
         {/block:indexpage}
         
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <!-- SLIM FONT -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap" rel="stylesheet"> 
         <!-- BOLD FONT -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@800&display=swap" rel="stylesheet"> 
         <!-- GERMANIC FONT -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet"> 
         
         <!--================================================================================================ 
@@ -76,6 +73,8 @@
                 --accent1:#7285fe; --accent2: #d058fd; --accent3: #ff9936; --accent4: #ffba00;
                 --links: #ff8ef4; --titles: #7285fe; --text: #787878; --textalt: #505050;
                 
+                --darkac1: #787878; --darkac2: #505050; --darkac3: #2b2b2b;
+                
                 --background: #f4f4f4; --posts: #ffffff; --borders: #d8d5d5; --scrollbar: #aaaaaa;
                 /*--background: #1d1d1d; --posts: #141414; --borders: #090909*/
                 --opacity: 1; --opacityhover: 0.7;
@@ -91,7 +90,7 @@
             .tmblr-lightbox img { opacity:1}
             .lightbox-caption { 
                 color:var(--titles)!important; text-shadow:none!important;
-                font-family:inherit!important; font-size:var(--fontsmall)!important; font-weight:normal!important}
+                font-family:inherit!important; font-size:var(--fontsmall)!important}
             .lightbox-image { 
                 border-radius:0px!important; box-shadow:none!important;
                 -moz-box-shadow:none!important; -webkit-box-shadow:none!important; 
@@ -103,21 +102,26 @@
             #infscr-loading {display:none!important}
             #pagination {text-align:left;display:none}
                 
-            body { background:var(--background);font-family:var(--fontstyle);color:var(--text); 
-                word-wrap:break-word;text-align:left;letter-spacing:.15px;margin:0}
+            body { background:var(--background); font-family:var(--fontstyle); color:var(--text); 
+                word-wrap:break-word; overflow-x:hidden; margin:0}
 
-            a:hover {color:var(--links);border-color:var(--links)}
-            a {color:var(--accent1);text-decoration:none;border-color:var(--accent3);cursor:pointer}
+            a:hover {color:var(--links)}
+            a {color:var(--accent1); text-decoration:none; border-color:var(--accent3);}
             a, svg {transition:all .15s linear}
-                
-            p {margin:.75em 0} 
+            t { color:var(--accent2); font-family:var(--boldstyle);
+                text-transform:uppercase; padding:0 15px; font-size:1.1em}
+            p {font-size:var(--fontmedium); padding:0 15px;} 
             p:first-of-type {margin-top:0!important} 
             p:last-of-type {margin-bottom:0!important}
+            p:first-of-type t {font-size: 1.4em; color:var(--accent2); line-height:0em; margin-top:10px;}
+            p:not(:first-child){margin-top:5px!important}
             
-            li {position:relative; list-style:none} 
+            h {color:var(--accent3)}
+            
+            li {list-style:none} 
             li:last-of-type {margin: 0px 0px}
             
-            img { max-width:100%; height:auto; display:block; 
+            img {max-width:100%; height:auto; display:block; 
                 opacity:1; border:0; margin:0;}
 
             .divider { /*general divider*/
@@ -128,20 +132,17 @@
             /* postbar FORMATTING */
         /* ==================================================================================================== */
             
-            /*hdr*/
-            .hdr { 
+            .hdr { /*header image*/
                 height: calc(((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth));
-                background-image:var(--bannerurlblank); z-index:999; transition:opacity .2s ease-in-out!important;
-                position:relative; display:block; margin: 20px auto}
+                width:calc(var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px); background-size:100% auto; position:relative; z-index:997;
+                background-image:var(--bannerurlblank); transition:opacity .2s ease-in-out!important; margin: 20px auto}
             
-            /* logo on hdr*/
-            .bnlogo, .logo, .hdr {transition:all .2s ease-in-out; background-size: 100% 100%; z-index:999}
-            
+            .bnlogo, .logo {transition:all .2s ease-in-out; background-size: auto 100%; background-repeat: no-repeat; z-index:999}
             .logo {width:100%; height:100%; opacity: 1; background-image: var(--bannerlogo)}
             .logo:hover {opacity: 0}
             
-            .bnlogo { 
-                background-image: var(--bannerlogohov); position: absolute;
+            .bnlogo { /*logo ontop*/
+                background-image: var(--bannerlogohov); position: absolute; left:50%; transform:translateX(-50%);
                 height: calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) + 10px);
                 width:  calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 2 + 10px);
                 margin-top: calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) - 
@@ -151,66 +152,60 @@
                 width:  calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 1.9 - 10px);
                 margin-top: calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) - 
                     ((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 2) - 15px)}
-                
-            bar, .nvbor {
-                background:var(--posts); z-index:997;
-                position:fixed; margin:0 auto}
-                
-            .bnlogo, .nvbor, bar {left:50%; transform:translateX(-50%)}
-            bar, .nvback, .nvbor {overflow:hidden; opacity:0; position:fixed}
             
-            .hdr, .nvback, bar, .nvbor {
+            /* Top navbar =============== */
+            bar, .nvback { 
                 width:calc(var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px);
-                background-size:100% auto; background-repeat: no-repeat}
-            
-            /* nav bar image background */
-            .nvback {
-                background-image: var(--bannerscoll); background-size: cover;
-                background-position: top center; height:100%; z-index: -1}
-            .stick .nvback {opacity:0.2}
-            
-            /* nav bar border image */
-            .nvbor {
-                background-image:var(--bannerurlblank); background-size: cover;
-                background-position: bottom center; z-index:998; top:47px; height:3px}
-            
-            /* logo on nav bar */
-            .nvlogo {
+                background-size:100% auto; background-repeat: no-repeat; background-size: cover;
+                overflow:hidden; opacity:0.2; position:fixed}
+            bar .nvback {background-image: var(--bannerscoll); height:100%; z-index: -1} /* nav bar image background */
+            bar { 
+                font-family:var(--boldstyle); font-size:0.8em; text-transform:uppercase; text-align:center;
+                z-index:997; left:50%; transform:translateX(-50%); top:0; background:white; opacity:0}  /*nav bar back*/
+                
+            bar .nvlogo { /* logo on nav bar */
                 width:calc(var(--iconwidth) / 10); position:absolute; 
                 left:calc(-1em - 60px); border:0; padding:0}
-            .stick .nvlogo { 
-                margin-left:76px; padding:7px 30px 7px 13px; transition: all .5s ease-in-out}
-                
-            bar {height:50px; font-family:var(--boldstyle); font-size:0.8em;
-                opacity:0; text-transform:uppercase; text-align:center; top:0}  /*nav bar back*/
-            .stick bar {opacity: 1}  
-                
-            bar a {display:inline-block; padding:15px 30px; border-right:1px solid var(--borders); background-color:rgba(114, 133, 254, 0.0)} /* nvbor link settings */
-            bar a:last-of-type {border:0} 
-            bar a:hover {background-color:rgba(114, 133, 254, 0.3)}
             
-            .stick bar, .stick .nvbor {opacity:1}
-            .stick bar a {color: var(--accent2)} 
-            .stick bar a:hover {color: var(--links); background-color:black;}
+            /* navigation links + container =============== */
+            bar a {color: var(--accent1); background-color:rgba(114, 133, 254, 0.0);
+                display:inline-block; padding:15px 30px; border-right:1px solid var(--borders)} 
+                
+            bar a:last-of-type {border:0}
+            bar a:hover {color: var(--accent2); background-color:rgba(255, 255, 255, 0.6)}
+                
+            /* Scroll down effects =============== */
+            .stick .nvlogo {margin-left:72px; padding:7px 30px 7px 13px; transition: all .5s ease-in-out}
+            .stick bar {opacity:1}
             
         /* ==================================================================================================== */
-            /* SIDEBAR FORMATTING */
+            /* MAIN FORMATTING */
         /* ==================================================================================================== */
         
-            /* nav */
-            asidel {width:var(--sidebarl); margin:0px -0.25px; position:fixed} 
-            asider {width:var(--sidebarr); margin:0px -0.25px; position:relative} /*side bar margins*/
-            asidel, asider, section { display:inline-block; vertical-align:top}
+            .cont {width:calc(var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px); margin:0px auto}
+            .inco {position:absolute; width: 100%} 
             
-            .block, .wedge { 
+            /* Main coloumns data =============== */
+            asidel, asider, section {display:inline-block}
+            asidel, asider {position:absolute} /*side bar margins*/
+            asidel {width:var(--sidebarl); z-index:999} asider {width:var(--sidebarr)}
+            
+            /* alt pages data =============== */
+            sidel, sider {width: calc((var(--sidebarr) + var(--postwidth)) / 2);
+                display:inline-block; vertical-align:top}
+            sidel {margin:0 20px 0 calc(var(--sidebarl) + 20px)}
+            
+            /* section, asider, asidel, asider {transition:all .2s ease-in-out} */
+            
+            /* containers =============== */
+            .cont .block, .wedge { 
                 background:var(--posts); width:100%;
                 border-bottom:1px solid var(--borders); margin-bottom:20px;}
-            .block {padding:15px 0; width:100%}
+            .cont .block {padding:12px 0; width:100%}
             
-            p {font-size:var(--fontmedium); 
-                margin:10px 0; padding: 0px 15px 11px}
-            p:last-of-type {margin: -5px 0px 15px}
-            h {color:var(--accent3)} .wrsp h:hover {color:var(--titles)}
+            .stats p {
+                background-color: var(--darkac2); color: white; letter-spacing:.15px; 
+                padding: 10px 15px 10px!important; margin-top:-10px}
             
             /*scrollbar*/
             ::-webkit-scrollbar {width:12px;height:12px;background-color:transparent}
@@ -218,52 +213,66 @@
             
             /* LEFT HAND SIDEBAR CONTENT
         /* ===================================== */
-        
-            /*info box =============== */
-            .block .ti{ font-weight:600; font-size:var(--fontmedium); text-transform:uppercase; letter-spacing:1.1px; color:var(--titles)} /*side bar titles*/
             
             /* pictures container =============== */
-            .sidei1, .sidei2, .sidei3, .sidei4 {
-                width:calc(var(--sidebarl) / 2 - 1.5px); height:calc(var(--sidebarl) / 2 - 1.5px);
-                display:inline-block!important; background-size: cover; background-position: center;
-                margin: 0px 0px -4px 1px}
+            .lsbut { 
+                width:calc(var(--sidebarl)- 4px); height:45px; margin: 0 0 10px;
+                border-right: 4px solid var(--accent2); background-color: white; cursor:pointer}
+            .lsbut:hover {
+                width:calc(var(--sidebarl) + 56px); 
+                border-right: 4px solid var(--links)}
+            .lsbut t {
+                position: absolute; z-index: 99;
+                font-size:1.4em; padding:10px; color:white}
+            .lsbut:hover t {color: var(--accent2)}
             
+            .lsbut, .lsbut:hover, .lsbut t, .lsbut:hover t { transition:all .2s ease-in-out}
+            
+            .sidei1, .sidei2, .sidei3, .sidei4 {
+                opacity: 1; width: 100%; height:100%; background-size: cover; background-position: center}
+            .lsbut:hover .sidei1, .lsbut:hover .sidei2, .lsbut:hover .sidei3, .lsbut:hover .sidei4 {opacity: 0.3}
             .sidei1 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/imgs/img1.png')}
             .sidei2 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/imgs/img2.jpg')}
             .sidei3 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/imgs/img3.jpg')}
             .sidei4 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/imgs/img4.jpg')}
             
+            .lkcon {width:calc(var(--sidebarl) / 4); display: inline-block; height:calc(var(--sidebarl) / 4); background-color:var(--posts)}
+            .lkcon:hover {background-color:var(--accent2)}
+            .linki1, .linki2, .linki3, .linki4 {filter: invert(.3);}
+            .linki1:hover, .linki2:hover, .linki3:hover, .linki4:hover {filter: invert(0)}
+            .linki1 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/icons/github.png')}
+            .linki2 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/icons/steam.png')}
+            .linki3 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/icons/twitter.png')}
+            .linki4 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/icons/youtube.png')}
+            
             /* RIGHT HAND SIDEBAR CONTENT
         /* ===================================== */
         
             /* wrsp Content =============== */
-            .wrsp { padding:0; margin-bottom:20px; text-transform:uppercase}
-            .sbitems { height:100%; width:var(--sidebarr); overflow: hidden}
+            .wrsp { padding:0 0 10px 0; margin-bottom:20px; text-transform:uppercase}
+            .sbitems {width:var(--sidebarr); overflow: hidden}
             
             /* animation */
             .wrsp:hover, .wrsp, .wrsp:hover .pcg1, .wrsp:hover .pcg2, 
-            .pcg1, .pcg2, .wrsp:hover t, .wrsp wst {transition:opacity .15s linear}
+            .pcg1, .pcg2, .wrsp:hover, .wrsp, .wrsp:hover t, .wrsp t {transition:color .2s ease-in-out, opacity .2s ease-in-out}
             
             /* pictures */
             .pcg1, .pcg2  {width:100%; opacity:var(--opacity)} /* default opacity values of wrsp pictures */
             .wrsp:hover .pcg1, .wrsp:hover .pcg2 {opacity:var(--opacityhover)} /* on hover */
             .pcg1, .pcg2 {background-position: center; background-size: cover; height:calc(var(--sidebarr) / 4 + 50px)}
-            .wrsp .pcg1 {height:calc(var(--sidebarr) / 2 + 50px); background-image: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/workshop%20items/Lilith.png')}
-            .wrsp .pcg2 {background-image: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/workshop%20items/Eva1.png')}
+            .pcg1 {height:calc(var(--sidebarr) / 2 + 50px); background-image: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/workshop%20items/Lilith.png')}
+            .pcg2 {background-image: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/workshop%20items/Eva1.png')}
             
             /* wrsp Text styles =============== */
-            .wrsp p {font-size:var(--fontsmall)!important; color:var(--text)}
-            .wrsp .stats p {
-                background-color: var(--textalt); color: white; 
-                padding: 5px 15px 5px!important; white-space: nowrap; overflow: hidden}
+            .wrsp p {font-size:var(--fontsmall)!important; color: var(--text);}
+            .wrsp .stats p {padding: 5px 15px 5px!important; color: white;}
             .wrsp:hover .stats p {background-color: var(--text)}
+            .wrsp:hover .stats h {color:var(--accent4)}
             
-            .sbitems t { 
-                padding: 9px 15px 5px; display:block; letter-spacing:1px;
-                color:var(--accent2); font-family:var(--boldstyle); font-weight:600}
+            .sbitems t {margin: 10px 0 5px; display:block; letter-spacing:0.5px}
                 
             .wrsp t {font-size: 1em}
-            .wrsp:hover t {color:var(--accent2)}
+            .wrsp:hover t {color:var(--accent3)}
             
             /* search bar ========================================================================================================= */
             
@@ -285,46 +294,29 @@
             
             /* search bar form */
             .search .search-form {
-                width:calc(var(--sidebarr) - 30px); 
-                margin:0; padding:12px 15px;
-                border:none;display:block}
+                width:calc(var(--sidebarr) - 30px); margin:0; 
+                padding:12px 15px; border:none; display:block}
             .search .search-form input {text-transform:lowercase;font:10px/1.5em lato, sans-serif;letter-spacing:.15px;
-                                width:200px;padding:0;position:relative;background:var(--posts);display:block;outline:none;border:0}
+                                width:100%;padding:0;position:relative;background:var(--posts);display:block;outline:none;border:0}
             .search .search-form input[type=text] {color:var(--text)} 
              
         /* ==================================================================================================== */
             /* TUMBLR POST FORMATTING */
         /* ==================================================================================================== */
-            
-            /* container for posts */
-            section {
-                margin:0px 20px 20px calc(var(--sidebarl) + 20px); width:var(--postwidth)}
-            article {
-                width:var(--postwidth); background:var(--posts); position:relative
-                border-bottom:1px solid var(--borders); margin-bottom:20px}
-                
-            article li {margin:.25em 0} 
-            article img, article li, article blockquote, article img {max-width:100%}
-            article li:before { left:-5px; top:.25em; position:absolute; content:'*'; font-size:var(--fontsmall); display:block; color:rgba({RGBcolor:text},.7); vertical-align:middle}
 
-            .cont {width:calc(var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px); margin:0px auto}
-            
-            /* post formatting types */
-            
             /* Top of posts ========================================================================================================= */
             
-            .postbar {width:var(--postwidth); background-image: var(--bannerurlblank); height:3px} /*image bar ontop of posts*/
+            .postbar {background-image: var(--bannerurlblank); height:3px} /*image bar ontop of posts*/
             
             .notecounter, .timestamp {
-                font-size:0.8em; color:var(--accent3)} /*top of the post, notes and time posted.*/
-            .dateposted {
-                display:block!important; color:var(--accent1);
-                margin-top: -4px; letter-spacing:1px; width:auto;
-                font-family:var(--boldstyle); font-weight:600; text-transform:uppercase}
+                color:var(--accent3); font-size:0.8em; display:inline-block !important} /*top of the post, notes and time posted.*/
+            .dateposted {font-family:var(--boldstyle); text-transform:uppercase}
             .dateposted:hover {color:var(--accent2)}
+            .notecounter:after {content:'•'; margin:0 5px} 
             
-            .when {padding:20px 20px 16px; line-height:1.2em} /* container that holds .time, and .d */ 
-            .when a {display:inline-block; position:relative} /* these also include the repost tags at the bottom of posts. */
+            .when {padding:15px; line-height:1em} /* container that holds .time, and .d */ 
+            .when a {display:block} /* these also include the repost tags at the bottom of posts. */
+            
             
             .vimage {float:left; display:inline-block}
             .vimage img { margin:-1px 15px 0 0; vertical-align:middle} 
@@ -332,70 +324,90 @@
             
             /* Bottom of posts ========================================================================================================= */
             
-            .footer {padding-bottom:19px; font-size:0.6em; margin-top:-3px} /*posted by*/
-            .footer .postedby {display:inline-block; margin-top:1px; font-weight:600} /*container that posted by*/
+            .footer {font-size:0.6em; margin-top:-5px; border-top:1px solid var(--borders)} /*posted by*/
+            .footer .postedby {margin-top:4px} /*container that posted by*/
             .footer .imcon { margin-top:-1px} /*fixes the text for the posted by area*/
-            .footer, #in { text-transform:uppercase; letter-spacing:1px}
+            .footer {text-transform:uppercase; letter-spacing:1px}
             
             .user { /*user pfps on posts*/
                 display:inline-block; display:block
-                border:0!important; display:block; 
-                font-weight:600; color:var(--text); 
+                border:0!important; display:block; color:var(--text); 
                 line-height:1em; vertical-align:middle; 
                 margin-bottom:10px; margin-right:15px}
             
             /*like, reblog, share containers*/
             .repost {float:right; margin-top:-1px} 
+            .repost a {display: inline-block!important}
             .repost a:hover svg {fill:var(--accent3)} 
-            .repost svg { height:1.85em; vertical-align:middle; fill:#fff;
-                background:var(--accent1); margin-left:11px; padding:3px}
-            .like_button {cursor:pointer} 
+            
             .like .liked + svg {background:var(--accent3)}
             .like:hover svg, .repost svg:hover {fill:var(--accent1)} 
+            .repost svg { height:1.85em; vertical-align:middle; fill:#fff;
+                background:var(--accent1); margin-left:11px; padding:3px}
+            
+            .like, .taggie {cursor:pointer} 
             .like_button iframe {
                 position:absolute; opacity:0.0000001; 
                 top:0; bottom:0; right:0; z-index:4}
             
-            /* footer of posts on permalink pages */
-            section .pagenotes .con {padding: 15px 20px} /* adjusts the padding for notes */
-            ol.notes { list-style-type:none; padding:0px; font-size:var(--fontmedium)} /*thing that says "notes" at post footer*/
-            ol.notes li:before {display:none}
-            ol.notes li.note { display:block; margin:0 0 10px 20px; padding:0; line-height:15px}
-            ol.notes li.note span.action {font-weight: bold}
-            ol.notes li.note blockquote { margin: 0px 0px 0px -18px}
-            ol.notes li.note img.avatar { left:-20px; height:15px; width:15px; position:absolute; vertical-align:middle; float:left; display:inline-block}
-            .more_notes_link, .notes_loading { display:block; text-align:left; color:var(--titles)!important}
+            /* post notes ========================================================================================================= */
             
             /* tags on permalink posts */
-            .tags { padding:0 20px 15px 20px; position:relative; text-transform:uppercase; font-size:0.8em;}
-            .tags a { display:inline; color:rgba({RGBcolor:text},.5)} 
+            .tags { padding:0 15px 15px; text-transform:uppercase; font-size:0.6em}
             .tags a:hover {color:var(--accent2)}
-            .tags a:after { content:'•'; margin:0 5px} 
+            .tags a:after {content:'•'; margin:0 5px} 
             .tags a:last-of-type::after {display:none}
             
-            /* text on posts */
-            .comment {padding: 0 1px}
-            .comment p {padding: 0 19px}
-            .comment a {border-bottom:1px solid var(--links)} 
-            .comment:last-of-type {padding-bottom:0}
-            .comment:before, .chat li:before, ol.notes li:before {display:none}
-            .ted:first-of-type {padding-top:20px}
+            /* footer of posts on permalink pages */
+            .pagenotes .con {padding: 10px 0; text-transform:uppercase} /* adjusts the padding for notes */
+            .pagenotes .con .divider {margin: 8px 0 10px!important}
             
+            ol.notes {list-style-type:none; padding:0px; margin:13px 0 0} /*thing that says "notes" at post footer*/
+            ol.notes li:before {display:none}
+            ol.notes li.note blockquote {
+                margin: 6px 15px 6px 15px; padding: 5px 10px; 
+                border-left: 1px solid var(--accent3); background:rgba(0,0,0,0.05)}
+            ol.notes li.note blockquote a {color:var(--text) !important}
+            ol.notes li.note img.avatar {
+                height:15px; width:15px; display:inline-block; 
+                padding: 0 15px; margin: 2px -7px -3px 0}
+                
+            .more_notes_link, .notes_loading { 
+                display:block; text-align:left; color:var(--titles)!important}
             
             /* Post formatting ========================================================================================================= */
             
-            /* default tumblr formatting */
-            .title { 
-                font-weight:600; font-size:0.9em; color:var(--titles);
-                text-transform:uppercase; letter-spacing:1.1px; line-height:1.5em} 
-            .title a { color:var(--accent3) }
+            /* specifically post body formatting */
+            article {margin-bottom: 20px; background:var(--posts)}
+            article .title { font-size:0.9em; color:var(--titles); font-family:var(--boldstyle);
+                margin: -5px 15px 5px; text-transform:uppercase; letter-spacing:1.1px; line-height:1.5em} 
+            article .title a {color:var(--accent3)}
             
-            section b, strong {color:var(--titles); font-weight:600}
+            /* text on posts */
+            article .comment {padding: 0 1px}
+            article .comment p {padding: 0 16px; margin:10px 0}
+            article .comment p:first-of-type b {
+                font-size: 1.4em; color:var(--accent2); line-height:0em; margin-top:10px;}
+            article .comment a {border-bottom:1px solid var(--links)} 
+            article .comment:last-of-type {padding-bottom:0}
+            article .comment:before, .chat li:before, ol.notes li:before {display:none}
+            
+            article li {margin:.35em 0} 
+            article li::before {top: 0; content:"-";  left: -10px}
+            
+            /* container for posts */
+            section {
+                width:var(--postwidth); position:relative; border-bottom:1px solid var(--borders);
+                margin:0 20px 20px calc(var(--sidebarl) + 20px)}
+            section p:last-of-type {margin: -5px 0px 15px; padding-bottom: 15px!important}
+            section b, strong {color:var(--titles); font-family:var(--boldstyle)}
             
             section blockquote {
                 margin:.5em 0; padding:.25em 0 .25em 15px
                 border-left:1px solid var(--borders)}
-            section ol, ul { list-style:none; padding:.25em 0 .25em 15px} 
+            section ul { list-style:none; padding:.25em 0 .25em 15px} 
+            section ol { padding: 0 25px; font-size:var(--fontmedium)}}
+            
             section hr {
                 border:none; border-top:1px solid var(--borders); 
                 margin:1.5em 25%; box-shadow:0;}
@@ -426,19 +438,20 @@
             section .chat {margin:0;padding:0;list-style:none;text-align:left}
             
             section .quote {position:relative; font-size:var(--fontsmall); font-style:italic; margin-left:20px; padding-left:15px; border-left:1px dotted var(--borders); color:var(--titles); line-height:1.5em}
-            section .quote:before {position:absolute; left:-20px; top:0; content:'“'; font-size:var(--fontsmall); font-family:sans-serif; color:var(--titles); font-weight:bold; font-style:normal!important;}
+            section .quote:before {position:absolute; left:-20px; top:0; content:'“'; font-size:var(--fontsmall); font-family:sans-serif; color:var(--titles); font-style:normal!important;}
             
             /*questions*/
             section .answerer {border:0!important; color:var(--text)}
             section .question {padding:20px; background:var(--accent1)} 
-            section .asker {text-transform:lowercase;font-weight:600;display:block;margin-bottom:5px}
+            section .asker {text-transform:lowercase;font-weight:800;display:block;margin-bottom:5px}
             
             /* Video */
-            section .ex {margin:0 -20px; padding:20px; background:var(--accent1)} 
+            section .ex {margin:-20px 0 -10px; padding:20px; background:var(--accent1)} 
             section .ex span { display:block; margin-top:10px} /* Links */
             
             section .video * { display:block; min-width:100%} 
-            section .tmblr-embed tmblr-full {margin:-20px 0}  /* fixes the iframe from being offpost */
+            section .tmblr-embed tmblr-full {margin:12px 0}  /* fixes the iframe from being offpost */
+            section figure {margin:12px 0}
             section .tmblr-embed tmblr-full, .embed_iframe {width:var(--postwidth)!important; height:calc(var(--postwidth) / 16 * 9)!important}
             
             section .iframe-controls--desktop { z-index:999; top:-13px!important; right:-90px!important; opacity:0; padding-right:75px;
@@ -447,10 +460,6 @@
             /*scaling*/ transform:scale(0.6); -webkit-transform:scale(0.6); -o-transform:scale(0.65); -moz-transform:scale(0.65); -ms-transform:scale(0.65)}
             section .iframe-controls--desktop:hover {opacity:.6}
 
-        /* ==================================================================================================== */
-            /* junk */
-        /* ==================================================================================================== */
-            
             /* Icons for EXIF Data and Zoom */
             .photo-data {position:relative; float:left}
             .tumblr-box {display:block;position:absolute;top:0;right:0;bottom:0;left:0;z-index:1}
@@ -460,388 +469,349 @@
     </head>
      
     <body>
-    
-<!-- ================================================================================================
-        Top navigation
-     ================================================================================================ -->
-    
+
         <bar>
-            <div class="nvbor"></div>
             <a class="nvlogo"><img src="https://cdn.discordapp.com/attachments/630047188520665121/871904393988014150/back29.png"/></a>
             <div class="nvback"></div>
-            {block:ifHomeTitle}
-                <a href="/">{text:home title}</a>
-            {/block:ifHomeTitle}
             
-            {block:ifAskTitle}
-                <a href="/ask">{text:ask title}</a>
-            {/block:ifAskTitle}
-            {block:ifhdrLink1}
-                <a href="{text:hdr Link 1 URL}">{text:hdr Link 1}</a>
-            {/block:ifhdrLink1}
-            {block:ifhdrLink2}
-                <a href="{text:hdr Link 2 URL}">{text:hdr Link 2}</a>
-            {/block:ifhdrLink2}
-            {block:ifhdrLink3}
-                <a href="{text:hdr Link 3 URL}">{text:hdr Link 3}</a>
-            {/block:ifhdrLink3}
-            <a href="/archive">{text:archive title}</a>
+            <a href="/ask">{text:ask title}</a>
+            <a onclick="scrollToTop()">To the Top</a>
+            <a href="https://vher98.tumblr.com/">Vher98</a>
         </bar>
         
-<!-- ================================================================================================
-        Main Page Data
-     ================================================================================================ -->
+        <script>function scrollToTop() {window.scrollTo({top: 0, behavior: 'smooth'});}</script>
         
         <div class="hdr" id="hdr"></div>
-            <a href="/"><div class="bnlogo" id="bnlogo" onmouseover="fadeto()" onmouseout="fadeno()">
-            <div class="logo" id="logo"></div>
-        </div></a>
+        <a href="/"><div class="bnlogo" id="bnlogo" onmouseover="fadeto()" onmouseout="fadeno()">
+        <div class="logo" id="logo"></div></div></a>
             
-        <script>function fadeto() {$('#hdr').css({ opacity: "var(--opacityhover)" })};function fadeno() {$('#hdr').css({ opacity: "var(--opacity)" })};</script>
-        
-        
-        
-        <div class="cont">
-            
-<!-- ================================================================================================
-        Left Sidebar
-     ================================================================================================ -->
-        
+        <script>function fadeto(){$('#hdr').css({opacity:"var(--opacityhover)"})}
+                function fadeno(){$('#hdr').css({opacity:"var(--opacity)"})}</script>
+                
+        <div class="cont"> <!-- container for page data -->
+
             <asidel id="asidel">
+                
                 <div class="wedge">
-                    <img src="https://cdn.discordapp.com/attachments/870119954232516669/872009222638956554/tumblr_737363636c6d07975f098558754363b9_0bd1b43e_640.gif"/>
-                </div>
-                <!--theme title and description block-->
-                <div class="block">
-                    <p>[PAGE IS CURRENTLY IN DEVELOPMENT]</p>
+                    <img src="https://cdn.discordapp.com/attachments/870119954232516669/872009222638956554/tumblr_737363636c6d07975f098558754363b9_0bd1b43e_640.gif"/></div>
+
+                <div class="block"> <!--theme title and description block-->
+                    <t>Thea Vanherst</t>
+                    <p>A 23 year old designer and programmer with a passion for designing, creating and manipulating ideas.</p>
+                    <p>All of my designs and creations are open source, feel free to use them as you wish.</p>
                 </div>
                 
-                <!--Image block-->
-                <div class="wedge">
-                    <div class="sidei1"></div>
-                    <div class="sidei2"></div>
-                    <div class="sidei3"></div>
-                    <div class="sidei4"></div>
-                </div>
+                <div class="lsbut"><t>Main Page</t><div class="sidei1"></div></div>
+                <div class="lsbut"><t>Drawing</t><div class="sidei2"></div></div>
+                <div class="lsbut"><t>Workshop</t><div class="sidei3"></div></div>
+                <div class="lsbut"><t>Branding</t><div class="sidei4"></div></div>
+                
+                <div class="block"><p>Vanh.art, established on Aug 1st, 2021</p></div>
+                <div class="stats" style="bottom: 20px; position:relative"><p>The site is currently in development. Last updated 21:42, Aug 14th 2021</p></div>
+                
             </asidel>
-            
-<!-- ================================================================================================
-        Posts
-     ================================================================================================ -->
-            
-            <section id="posts">
-                {block:Posts}
-                    <article id="{PostID}" class="dated">
-                        <div class="postbar"></div>
-                        
-                        <div class="when">
-                            <a href="{Permalink}" target="_blank" class="dateposted">{dayofweek}, {shortmonth} {dayofmonth}{dayofmonthsuffix}</a>
-                            {block:NoteCount}<a href="{permalink}" class="notecounter">{notecountwithlabel}</a>{/block:NoteCount}
-                            •
-                            <a href="{permalink}" class="timestamp">{timestamp}</a>
-                        </div>
-                        
-                        <div class="divider"></div>
-                        
-                            {block:Quote}
-                                <div class="quote">{Quote}</div>
-                                {block:Source}
-                                    <div class="source">{Source}</div>
-                                {/block:Source}
-                            {/block:Quote}
-                     
-                            {block:Text}
-                                {block:Title}<div class="title">{Title}</div>{/block:Title}
-                                {block:RebloggedFrom}
-                                    {block:Reblogs}
-                                        <li class="comment {block:Title}ted{/block:Title}">
-                                        <a {block:haspermalink}href="{permalink}"{/block:haspermalink} class="user" target="_blank">
-                                                {block:HasAvatar}
-                                                    <img src="{PortraitURL-64}"/>
-                                                {/block:HasAvatar}{username}
-                                            </a>
-                                            {body}
-                                        </li>
-                                    {/block:Reblogs}
-                                {/block:RebloggedFrom}
-                                {block:NotReblog}
-                                    <li class="comment {block:Title}ted{/block:Title}">{body}</li>
-                                {/block:NotReblog}
-                            {/block:Text}
-                     
-                            {block:Link}
-                                <div class="ex">
-                                    <div class="title">
-                                        <a href="{URL}" {Target}>{Name}</a>
-                                    </div>
-                                {block:Excerpt}<span>{Excerpt}</span>{/block:Excerpt}
-                                </div>
-                                {block:Description}
-                                    {block:NotReblog}
-                                        <li class="comment ted">{description}</li>
-                                    {/block:NotReblog}
-                                {/block:Description}
-                                {block:RebloggedFrom}
-                                    {block:Reblogs}
-                                        <li class="comment ted">
+    
+            <div class="inco" id="page1">
+                <section id="posts">
+                    {block:Posts}
+                        <article id="{PostID}">
+                            <div class="postbar"></div>
+                            
+                            <div class="when">
+                                <a href="{Permalink}" target="_blank" class="dateposted">{dayofweek}, {shortmonth} {dayofmonth}{dayofmonthsuffix}</a>
+                                {block:NoteCount}<a href="{permalink}" class="notecounter">{notecountwithlabel}</a>{/block:NoteCount}
+                                <a href="{permalink}" class="timestamp">{timestamp}</a>
+                            </div>
+                            
+                            <div class="divider"></div>
+                            
+                                {block:Quote}
+                                    <div class="quote">{Quote}</div>
+                                    {block:Source}
+                                        <div class="source">{Source}</div>
+                                    {/block:Source}
+                                {/block:Quote}
+                         
+                                {block:Text}
+                                    {block:Title}<div class="title">{Title}</div>{/block:Title}
+                                    {block:RebloggedFrom}
+                                        {block:Reblogs}
+                                            <li class="comment {block:Title}ted{/block:Title}">
                                             <a {block:haspermalink}href="{permalink}"{/block:haspermalink} class="user" target="_blank">
-                                                {block:HasAvatar}<img src="{PortraitURL-64}"/>{/block:HasAvatar}{username}
-                                            </a>
-                                            {body} 
-                                        </li>
-                                    {/block:Reblogs}
-                                {/block:RebloggedFrom}
-                            {/block:Link}   
-                     
-                            <div class="imgcon">
-                                {block:Photo}
-                                    {block:indexpage}
-                                        <a href="#" onclick="Tumblr.Lightbox.init([{width:{PhotoWidth-HighRes},height:{PhotoHeight-HighRes},low_res:'{PhotoURL-500}',high_res:'{PhotoURL-HighRes}'}]); 
-                                                             $('body').toggleClass('tumblr_lightbox_active'); return false"> <img src="{PhotoURL-HighRes}"> </a>
-                                    {/block:indexpage}
-                                    {block:permalinkpage}
-                                        {LinkOpenTag}
-                                            <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
-                                        {LinkCloseTag}
-                                    {/block:permalinkpage}
-                                {/block:Photo}
+                                                    {block:HasAvatar}
+                                                        <img src="{PortraitURL-64}"/>
+                                                    {/block:HasAvatar}{username}
+                                                </a>
+                                                {body}
+                                            </li>
+                                        {/block:Reblogs}
+                                    {/block:RebloggedFrom}
+                                    {block:NotReblog}
+                                        <li class="comment {block:Title}ted{/block:Title}">{body}</li>
+                                    {/block:NotReblog}
+                                {/block:Text}
                          
-                                {block:Photoset}
-                                    <div class="photo-slideshow" id="photoset_{PostID}" data-layout="{PhotosetLayout}">
-                                        {block:Photos}
-                                        <div class="photo-data">
-                                            <div class="pxu-photo">
-                                                <img src="{PhotoURL-500}" width="{PhotoWidth-500}" height="{PhotoHeight-500}" data-highres="{PhotoURL-HighRes}" data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}">
-                                            </div>
-                                            <a class="tumblr-box" rel="post-{PostID}" href="{PhotoURL-HighRes}"></a>
+                                {block:Link}
+                                    <div class="ex">
+                                        <div class="title">
+                                            <a href="{URL}" {Target}>{Name}</a>
                                         </div>
-                                        {/block:Photos}
+                                    {block:Excerpt}<span>{Excerpt}</span>{/block:Excerpt}
                                     </div>
-                                {/block:Photoset}
+                                    {block:Description}
+                                        {block:NotReblog}
+                                            <li class="comment ted">{description}</li>
+                                        {/block:NotReblog}
+                                    {/block:Description}
+                                    {block:RebloggedFrom}
+                                        {block:Reblogs}
+                                            <li class="comment ted">
+                                                <a {block:haspermalink}href="{permalink}"{/block:haspermalink} class="user" target="_blank">
+                                                    {block:HasAvatar}<img src="{PortraitURL-64}"/>{/block:HasAvatar}{username}
+                                                </a>
+                                                {body} 
+                                            </li>
+                                        {/block:Reblogs}
+                                    {/block:RebloggedFrom}
+                                {/block:Link}   
                          
-                                {block:Video}
-                                    <div class="video">{Video-500}</div>
-                                {/block:Video}
-                            </div>
-                         
-                            {block:Reblogs}
-                                <li class="comment">
-                                    <a {block:haspermalink}href="{permalink}"{/block:haspermalink} class="user" target="_blank">
-                                        {block:HasAvatar}<img src="{PortraitURL-64}"/>{/block:HasAvatar}
-                                        {username}
-                                    </a>
-                                    {body}
-                                </li>
-                            {/block:Reblogs}
-                            {block:NotReblog}
-                                <li class="comment">
-                                    {Caption}
-                                </li>
-                            {/block:NotReblog}
-                         
-                        {block:Answer}
-                            <div class="question">
-                                <span class="asker">{Asker} sent:</span>{Question}
-                            </div>
-                            {block:Answerer}
-                                <li class="comment">
-                                    <span class="user">
-                                        <img src="{AnswererPortraitURL-64}"/>
-                                        {answerer} replied:
-                                    </span>
-                                    {answer}
-                                </li>
-                            {/block:Answerer}
-                            {block:NotReblog}
-                                <li class="comment reply">{replies}</li>
-                            {/block:NotReblog}
-                            {block:rebloggedfrom}
-                                {block:reblogs}
+                                <div class="imgcon">
+                                    {block:Photo}
+                                        {block:indexpage}
+                                            <a href="#" onclick="Tumblr.Lightbox.init([{width:{PhotoWidth-HighRes},height:{PhotoHeight-HighRes},low_res:'{PhotoURL-500}',high_res:'{PhotoURL-HighRes}'}]); 
+                                                                 $('body').toggleClass('tumblr_lightbox_active'); return false"> <img src="{PhotoURL-HighRes}"> </a>
+                                        {/block:indexpage}
+                                        {block:permalinkpage}
+                                            {LinkOpenTag}
+                                                <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+                                            {LinkCloseTag}
+                                        {/block:permalinkpage}
+                                    {/block:Photo}
+                             
+                                    {block:Photoset}
+                                        <div class="photo-slideshow" id="photoset_{PostID}" data-layout="{PhotosetLayout}">
+                                            {block:Photos}
+                                            <div class="photo-data">
+                                                <div class="pxu-photo">
+                                                    <img src="{PhotoURL-500}" width="{PhotoWidth-500}" height="{PhotoHeight-500}" data-highres="{PhotoURL-HighRes}" data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}">
+                                                </div>
+                                                <a class="tumblr-box" rel="post-{PostID}" href="{PhotoURL-HighRes}"></a>
+                                            </div>
+                                            {/block:Photos}
+                                        </div>
+                                    {/block:Photoset}
+                             
+                                    {block:Video}
+                                        <div class="video">{Video-500}</div>
+                                    {/block:Video}
+                                </div>
+                             
+                                {block:Reblogs}
                                     <li class="comment">
                                         <a {block:haspermalink}href="{permalink}"{/block:haspermalink} class="user" target="_blank">
-                                            {block:HasAvatar}
-                                                <img src="{PortraitURL-64}"/>
-                                            {/block:HasAvatar}
+                                            {block:HasAvatar}<img src="{PortraitURL-64}"/>{/block:HasAvatar}
                                             {username}
                                         </a>
                                         {body}
                                     </li>
                                 {/block:Reblogs}
-                            {/block:rebloggedfrom}
-                        {/block:Answer}
-                         
-                        <div class="when footer">
-                            <span class="repost">
-                                {block:indexpage}
-                                    {block:hastags}
-                                        <a class="taggie" title="tags">
-                                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 216 216" enable-background="new 0 0 216 216" xml:space="preserve"><path d="M154,27H58c-3.3,0-6,2.7-6,6v153.7c0,2.5,1.5,4.7,3.8,5.6c2.3,0.9,4.9,0.3,6.6-1.6l44.8-49.1l42.3,49c1.2,1.3,2.8,2.1,4.5,2.1c0.7,0,1.4-0.1,2.1-0.4c2.3-0.9,3.9-3.1,3.9-5.6V33C160,29.7,157.3,27,154,27z M148,170.6l-36.1-41.9c-1.1-1.3-2.7-2.1-4.5-2.1c-1.7,0-3.4,0.7-4.5,2L64,171.3V39h84V170.6z"/>
-                                            </svg>
-                                        </a>
-                                    {/block:hastags}
-                                {/block:indexpage}
-                                <a href="{ReblogURL}" target="_blank" class="r" title="reblog">
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 216 216" enable-background="new 0 0 216 216" xml:space="preserve"><path d="M108.7,159.2c-22.3,0-42.4-14.9-48.8-36.2c-1-3.2-4.3-5-7.5-4c-3.2,1-5,4.3-4,7.5c8.1,26.8,32.3,44.7,60.3,44.7c34.7,0,63-28.3,63-63c0-34.7-28.3-63-63-63c-19.7,0-38.2,9.4-50,24.6l-2.5-19.8c-0.4-3.3-3.4-5.6-6.7-5.2c-3.3,0.4-5.6,3.4-5.2,6.7L49,88.1c0.4,3,3,5.2,5.9,5.2c0.2,0,0.5,0,0.7,0l36.2-4.1c3.3-0.4,5.7-3.3,5.3-6.6s-3.3-5.7-6.6-5.3L66.2,80c9.4-14.1,25.3-22.8,42.5-22.8c28.1,0,51,22.9,51,51S136.8,159.2,108.7,159.2z"/>
-                                    </svg>
-                                </a>
-                                <a class="like" title="like">{LikeButton}
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 216 216" enable-background="new 0 0 216 216" xml:space="preserve"><path d="M148,37.8c-3.9,0-7.5,0.6-10.8,1.9c-15.1,5.7-24.6,17.8-29.8,26.7c-6-8.6-16.1-20.5-27.6-24.4c-3.8-1.3-8.1-2-12.3-2c-10.7,0-20.3,4.1-27,11.5c-5.7,6.2-12,18-10,38.8c4.1,42.6,71.5,87.1,74.3,88.9c1,0.7,2.1,1,3.3,1c1.1,0,2.3-0.3,3.3-1c2.7-1.8,66.5-43.6,73.7-86.1c3.7-21.8-2.7-34.9-8.8-42.1C169.2,42.7,158.6,37.8,148,37.8z M173.1,91c-2.6,15.2-15.1,33.4-36.1,52.7c-11.9,10.9-23.5,19.4-29,23.2c-5.7-4-17.9-12.9-30.3-24.3C56,122.5,43.8,104,42.3,89c-1.3-13,1.1-23.2,6.9-29.6c6-6.6,13.9-7.6,18.1-7.6c3,0,5.9,0.5,8.5,1.3c11.4,3.9,23.3,21.7,26.9,28.3c1.1,2.1,3.4,3.3,5.7,3.1c2.4-0.2,4.4-1.7,5.2-4c0.1-0.2,8.2-22.4,27.7-29.7c1.9-0.7,4.2-1.1,6.6-1.1c7.2,0,14.3,3.3,19,9C173.3,66.2,175.5,77.4,173.1,91z"/>
-                                    </svg>
-                                </a>
-                            </span>
-                            
-                            {block:RebloggedFrom}
-                                <a class="vimage" {block:haspermalink}href="{permalink}"{/block:haspermalink}>
-                                    <img src="{ReblogParentPortraitURL-64}"/>
-                                </a>
-                                <div class="imcon">
-                                    posted via <br>
-                                    <a class="postedby" {block:haspermalink}href="{permalink}"{/block:haspermalink}>{reblogparentname}</a>
+                                {block:NotReblog}
+                                    <li class="comment">
+                                        {Caption}
+                                    </li>
+                                {/block:NotReblog}
+                             
+                            {block:Answer}
+                                <div class="question">
+                                    <span class="asker">{Asker} sent:</span>{Question}
                                 </div>
-                            {/block:RebloggedFrom}
-                            {block:notreblog}
-                                <a class="vimage" href="{PostAuthorURL}"><img src="{PostAuthorPortraitURL-64}"/></a>
-                                <div class="imcon">
-                                    posted by <br>
-                                    <a class="postedby" href="{PostAuthorURL}">{PostAuthorName}</a>
-                                </div>
-                            {/block:notreblog}
-                        </div>
-                         
-                        {block:HasTags}
-                            {block:PermalinkPage} 
-                                <div class="divider"></div>
-                                <div class="tags">
-                                    {block:Tags}
-                                        <a href="{TagUrl}">{Tag}</a>
-                                    {/block:Tags}
-                                </div>
-                            {/block:PermalinkPage} 
-                        {/block:HasTags}
-                    </article>
-             
-                    {block:PostNotes} 
-                        <article class="pagenotes">
-                            <div class="con" id="in">
-                                {block:NoteCount}
-                                    <div class="title" style="margin-bottom:5px">{notecountwithlabel}</div>
-                                {/block:NoteCount}
+                                {block:Answerer}
+                                    <li class="comment">
+                                        <span class="user">
+                                            <img src="{AnswererPortraitURL-64}"/>
+                                            {answerer} replied:
+                                        </span>
+                                        {answer}
+                                    </li>
+                                {/block:Answerer}
+                                {block:NotReblog}
+                                    <li class="comment reply">{replies}</li>
+                                {/block:NotReblog}
+                                {block:rebloggedfrom}
+                                    {block:reblogs}
+                                        <li class="comment">
+                                            <a {block:haspermalink}href="{permalink}"{/block:haspermalink} class="user" target="_blank">
+                                                {block:HasAvatar}
+                                                    <img src="{PortraitURL-64}"/>
+                                                {/block:HasAvatar}
+                                                {username}
+                                            </a>
+                                            {body}
+                                        </li>
+                                    {/block:Reblogs}
+                                {/block:rebloggedfrom}
+                            {/block:Answer}
+                             
+                            <div class="when footer">
+                                <span class="repost">
+                                    {block:indexpage}
+                                        {block:hastags}
+                                            <a class="taggie" title="tags">
+                                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 216 216" enable-background="new 0 0 216 216" xml:space="preserve"><path d="M154,27H58c-3.3,0-6,2.7-6,6v153.7c0,2.5,1.5,4.7,3.8,5.6c2.3,0.9,4.9,0.3,6.6-1.6l44.8-49.1l42.3,49c1.2,1.3,2.8,2.1,4.5,2.1c0.7,0,1.4-0.1,2.1-0.4c2.3-0.9,3.9-3.1,3.9-5.6V33C160,29.7,157.3,27,154,27z M148,170.6l-36.1-41.9c-1.1-1.3-2.7-2.1-4.5-2.1c-1.7,0-3.4,0.7-4.5,2L64,171.3V39h84V170.6z"/>
+                                                </svg>
+                                            </a>
+                                        {/block:hastags}
+                                    {/block:indexpage}
+                                    <a href="{ReblogURL}" target="_blank" class="r" title="reblog">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 216 216" enable-background="new 0 0 216 216" xml:space="preserve"><path d="M108.7,159.2c-22.3,0-42.4-14.9-48.8-36.2c-1-3.2-4.3-5-7.5-4c-3.2,1-5,4.3-4,7.5c8.1,26.8,32.3,44.7,60.3,44.7c34.7,0,63-28.3,63-63c0-34.7-28.3-63-63-63c-19.7,0-38.2,9.4-50,24.6l-2.5-19.8c-0.4-3.3-3.4-5.6-6.7-5.2c-3.3,0.4-5.6,3.4-5.2,6.7L49,88.1c0.4,3,3,5.2,5.9,5.2c0.2,0,0.5,0,0.7,0l36.2-4.1c3.3-0.4,5.7-3.3,5.3-6.6s-3.3-5.7-6.6-5.3L66.2,80c9.4-14.1,25.3-22.8,42.5-22.8c28.1,0,51,22.9,51,51S136.8,159.2,108.7,159.2z"/>
+                                        </svg>
+                                    </a>
+                                    <a class="like" title="like">{LikeButton}
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 216 216" enable-background="new 0 0 216 216" xml:space="preserve"><path d="M148,37.8c-3.9,0-7.5,0.6-10.8,1.9c-15.1,5.7-24.6,17.8-29.8,26.7c-6-8.6-16.1-20.5-27.6-24.4c-3.8-1.3-8.1-2-12.3-2c-10.7,0-20.3,4.1-27,11.5c-5.7,6.2-12,18-10,38.8c4.1,42.6,71.5,87.1,74.3,88.9c1,0.7,2.1,1,3.3,1c1.1,0,2.3-0.3,3.3-1c2.7-1.8,66.5-43.6,73.7-86.1c3.7-21.8-2.7-34.9-8.8-42.1C169.2,42.7,158.6,37.8,148,37.8z M173.1,91c-2.6,15.2-15.1,33.4-36.1,52.7c-11.9,10.9-23.5,19.4-29,23.2c-5.7-4-17.9-12.9-30.3-24.3C56,122.5,43.8,104,42.3,89c-1.3-13,1.1-23.2,6.9-29.6c6-6.6,13.9-7.6,18.1-7.6c3,0,5.9,0.5,8.5,1.3c11.4,3.9,23.3,21.7,26.9,28.3c1.1,2.1,3.4,3.3,5.7,3.1c2.4-0.2,4.4-1.7,5.2-4c0.1-0.2,8.2-22.4,27.7-29.7c1.9-0.7,4.2-1.1,6.6-1.1c7.2,0,14.3,3.3,19,9C173.3,66.2,175.5,77.4,173.1,91z"/>
+                                        </svg>
+                                    </a>
+                                </span>
+                                
                                 {block:RebloggedFrom}
-                                    via: <a href="{ReblogParentURL}">{ReblogParentName}</a>
-                                    {block:ContentSource}
-                                        <br>source: <a href="{ReblogRootURL}">{ReblogRootName}</a>
-                                    {/block:ContentSource}
+                                    <a class="vimage" {block:haspermalink}href="{permalink}"{/block:haspermalink}>
+                                        <img src="{ReblogParentPortraitURL-64}"/>
+                                    </a>
+                                    <div class="imcon">
+                                        posted via <br>
+                                        <a class="postedby" {block:haspermalink}href="{permalink}"{/block:haspermalink}>{reblogparentname}</a>
+                                    </div>
                                 {/block:RebloggedFrom}
-                                {PostNotes}
+                                {block:notreblog}
+                                    <a class="vimage" href="{PostAuthorURL}"><img src="{PostAuthorPortraitURL-64}"/></a>
+                                    <div class="imcon">
+                                        posted by <br>
+                                        <a class="postedby" href="{PostAuthorURL}">{PostAuthorName}</a>
+                                    </div>
+                                {/block:notreblog}
+                            </div>
+                             
+                            {block:HasTags}
+                                {block:PermalinkPage} 
+                                    <div class="divider"></div>
+                                    <div class="tags">
+                                        {block:Tags}
+                                            <a href="{TagUrl}">{Tag}</a>
+                                        {/block:Tags}
+                                    </div>
+                                {/block:PermalinkPage} 
+                            {/block:HasTags}
                         </article>
-                    {/block:PostNotes}
-                {/block:Posts}
-             
-            </section>
-        
-<!-- ================================================================================================
-        Right Sidebar
-     ================================================================================================ -->
-        
-            <asider id="asider">
-                <div class="sbitems" id="wrsp">
+                 
+                        {block:PostNotes} 
+                            <article class="pagenotes">
+                                <div class="con" id="in">
+                                    {block:NoteCount}<t>{notecountwithlabel}</t>
+                                    <div class="divider"></div> {/block:NoteCount}
+                                    
+                                    {block:RebloggedFrom}
+                                        via: <a href="{ReblogParentURL}">{ReblogParentName}</a>
+                                        {block:ContentSource}
+                                            <br>source: <a href="{ReblogRootURL}">{ReblogRootName}</a>
+                                        {/block:ContentSource}
+                                    {/block:RebloggedFrom}
+                                    {PostNotes}
+                                </div>
+                            </article>
+                        {/block:PostNotes}
+                    {/block:Posts}
+                 
+                </section>
+ 
+                <asider id="asider">
+                    <div class="sbitems" id="wrsp">
+                        <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2449497541" target="_blank">
+                            <div class="wedge wrsp"> <!-- page 1 -->
+                                <div class="pcg1"></div>
+                                <div class="stats"><p><h>76,791</h> Unique Visitors • <h>25,012 </h>Concurrent Subscribers</p></div>
+                                <t>Moonlord replacement for the Third Impact / Lilith</t>
+                                <p>A Rei replacement for the Moonlord, Inspired by the Third Impact from The End Of Neon Genesis Evangelion.</p></div></a>
+                           
+                        <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2440395917" target="_blank">
+                            <div class="wedge wrsp"> <!-- page 1 -->
+                                <div class="pcg2"></div>
+                                <div class="stats"><p><h>51,544</h> Unique Visitors • <h>9,514 </h>Concurrent subscribers</p></div>
+                                <t>EVA Unit 01 holding the 1941 Tirpitz Battleship</t>
+                                <p>A 1:1 scale, 330 block tall recreation of Eva Unit: 01 from Neon Genesis Evangelion, holding a German battleship. Reported on by PC GAMER; 18/1/21.</p></div></a>
+                    </div>
+    
+                    <!--search block-->
+                    <div class="search">
+                        <div class="searchtop"></div>
+                        <form action="/search" class="search-form" method="get" autocomplete="off">
+                            <input id="searchField" name="q" placeholder="Enter keyword..." type="text" value="{SearchQuery}"/></form>   
+                        <div class="searchbar"></div></div>
+    
+                    {block:indexpage}
+                        <div class="wedge p" style="margin-top:62px">
+                            <a class="twitter-timeline" href="https://twitter.com/TheaVanherst?ref_src=twsrc%5Etfw"><div class="d cap">Tweets by TheaVanherst</div></a> 
+                            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"  loading="eager" data-chrome="nohdr nofooter noborders"></script></div>
+                    {/block:indexpage}
                     
-                    <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2449497541" target="_blank">
-                        <div class="wedge p wrsp"> <!-- page 1 -->
-                            <div class="pcg1"></div>
-                            <div class="stats"><p><h>76,791</h> Unique Visitors • <h>25,012 </h>Concurrent Subscribers</p></div>
-                            
-                            <t>Moonlord replacement for the Third Impact / Lilith</t>
-                            <p>A Rei replacement for the Moonlord, Inspired by the Third Impact from The End Of Neon Genesis Evangelion.</p>
-                        </div>
-                    </a>
-                       
-                    <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2440395917" target="_blank">
-                        <div class="wedge p wrsp"> <!-- page 1 -->
-                            <div class="pcg2"></div>
-                            <div class="stats"><p><h>51,544</h> Unique Visitors • <h>9,514 </h>Concurrent subscribers</p></div>
-                            
-                            <t>EVA Unit 01 holding the 1941 Tirpitz Battleship</t>
-                            <p>A 1:1 scale, 330 block tall recreation of Eva Unit: 01 from Neon Genesis Evangelion, holding a German battleship. Reported on by PC GAMER; 18/1/21.</p>
-                        </div>
-                    </a>
-                </div>
+                </asider>
+            </div>
 
-                <!--search block-->
-                <div class="search">
-                    <div class="searchtop"></div>
-                    <form action="/search" class="search-form" method="get" autocomplete="off">
-                        <input id="searchField" name="q" placeholder="Enter keyword..." type="text" value="{SearchQuery}"/>
-                    </form>   
-                    <div class="searchbar"></div>
-                </div>
+            <div class="inco" id="page2" style="margin-left: calc((var(--sidebarr) + var(--postwidth)) + 40px)">
+                <sidel>
+                    <div class="block">
+                        <p>[PAGE 2a]</p>
+                    </div>
+                </sidel>
+                
+                <sider>
+                    <div class="block">
+                        <p>[PAGE 2b]</p>
+                    </div>
+                </sider>
+            </div>
 
-                {block:indexpage}
-                <div class="wedge p" style="margin-top:62px">
-                    <a class="twitter-timeline" href="https://twitter.com/TheaVanherst?ref_src=twsrc%5Etfw"><div class="d cap">Tweets by TheaVanherst</div></a> 
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"  loading="eager" data-chrome="nohdr nofooter noborders"></script>
-                </div>
-                {/block:indexpage}
-            </asider>
-         
-<!-- ================================================================================================
-        Page scripts
-     ================================================================================================ -->
-         
             {block:Pagination} 
                 <div id="pagination" class="pag">
-                    {block:PreviousPage}
-                    <a href="{PreviousPage}">prev page</a>{block:nextpage}/{/block:nextpage}{/block:PreviousPage}
-                    {block:NextPage}
-                    <a href="{NextPage}">next page</a>
-                    {/block:NextPage}
-                </div>
+                    {block:PreviousPage}<a href="{PreviousPage}">prev page</a>{/block:PreviousPage}
+                    {block:NextPage}<a href="{NextPage}">next page</a>{/block:NextPage}</div>
             {/block:Pagination}
-         
         </div>
 
         <script>
-            var probh, wrsp, temp, headr;
+            var wrsp, temp, headr;
             var righb = $("#asider").width(), leftb = $("#asidel").width(), middb = $("#posts").width(),
                 page3 = $('body').width() - ($('body').width() - ($("#asidel").width() + $("#asider").width() + $("#posts").width())), 
-                page2 = $('body').width() - ($('body').width() - ($("#asider").width() + $("#posts").width()));
+                page2 = $('body').width() - ($('body').width() - ($("#asider").width() + $("#posts").width())),
+                probh = (($("#asidel").width() + $("#asider").width() + $("#posts").width() + 40) / $("#hdr").width()) * $("#hdr").height();
                 
             var resize = function() {
-                probh = (($("#asidel").width() + $("#asider").width() + $("#posts").width() + 40) / $("#hdr").width()) * $("#hdr").height();
                 wrsp = $("#wrsp").height(); headr = $("#hdr").height();
-                scroll();
+                $("#bnlogo").css('transition', "opacity .2s"); $("#logo").css('transition', "opacity .2s"); 
                 
-                $("#bnlogo").css('transition', "opacity .15s"); $("#logo").css('transition', "opacity .15s"); 
-                
-                if ($('body').width() < (page3 + 80)){ 
-                    if ($('body').width() <= (page3 + 80) && $('body').width() > 900){
-                        var pagescl3 = (page3 / ($('body').width() - 80));
+                if ($('body').width() < (page3 + 80)){ //200 / 80
+                    if ($('body').width() <= (page3 + 80) && $('body').width() > 900){ //200 / 80
+                        var pagescl3 = (page3 / ($('body').width() - 80)); //200 / 80
                         $('#asidel').css('opacity', 1); 
                         docelem.style.setProperty('--sidebarl', (leftb / pagescl3).toFixed(2) + "px")
                         docelem.style.setProperty('--sidebarr', (righb / pagescl3).toFixed(2) + "px")
                         docelem.style.setProperty('--postwidth', (middb / pagescl3).toFixed(2) + "px")
-                        $('section').css('margin','0px 20px 20px calc(var(--sidebarl) + 20px)')
+                        $('section').css('margin','0 20px 0 calc(var(--sidebarl) + 20px)')
                     } else {
-                        var pagescl2 = (page2 / ($('body').width() - 60))
-                        $('#asidel').css('opacity', 0); 
-                        $('section').css('margin-left','0px')
-                        docelem.style.setProperty('--sidebarl', -20 + "px")
-                        docelem.style.setProperty('--sidebarr', (righb / pagescl2).toFixed(2) + 10 + "px")
-                        docelem.style.setProperty('--postwidth', (middb / pagescl2).toFixed(2) + 10 + "px")}
-                } else if ($('body').width() > 1920){
-                    
-                    var pagescl3 = (page3 / ($('body').width() - 80));
-                        
-                } else { 
-                    var pagescl3 = ((page3 - 80) / ($('body').width()));
+                        if ($('body').width() > 540 + 80){ //200 / 80
+                            var pagescl2 = (page2 / ($('body').width() - 60)) //180 / 60
+                            $('#asidel').css('opacity', 0); 
+                            $('section').css('margin-left','0px')
+                            docelem.style.setProperty('--sidebarl', -20 + "px")
+                            docelem.style.setProperty('--sidebarr', (righb / pagescl2).toFixed(2) + 10 + "px")
+                            docelem.style.setProperty('--postwidth', (middb / pagescl2).toFixed(2) + 10 + "px")}}}
+                
+                if ($('body').width() > (page3 + 80)) { //200 / 80
                     $('#asidel').css('opacity', 1); 
                     docelem.style.setProperty('--sidebarl', leftb + "px")
                     docelem.style.setProperty('--sidebarr', righb + "px")
                     docelem.style.setProperty('--postwidth', middb + "px")
-                    $('section').css('margin','0px 20px 20px calc(var(--sidebarl) + 20px)')}
+                    $('section').css('margin','0 20px 0 calc(var(--sidebarl) + 20px)')}
                 
-                $("#bnlogo").css('transition', "all .15s"); $("#logo").css('transition', "all .15s"); 
-            }
+                $("#bnlogo").css('transition', "all .15s"); $("#logo").css('transition', "all .15s")}
 
             $(document).ready(resize);
             $(window).on("load resize", resize);
@@ -854,15 +824,32 @@
         
             function scroll(){
                 //banner scroll check
-                if(probh - 32 > $(document).scrollTop()){ 
+                if(probh - 20 > $(document).scrollTop()){ 
                     $('body').removeClass('stick')
-                    $('asidel').css({position: 'absolute', top: ""})
+                    $('#asidel').css({position: 'absolute', top: ""})
+                    $('#page2').css({position: 'absolute', top: ""})
                 } else {
                     $('body').addClass('stick')
-                    $('asidel').css({position: 'fixed', top: "0px"})}
+                    $('#asidel').css({position: 'fixed', top: "65px"})
+                    $('#page2').css({position: 'fixed', top: "65px"})}
+                    
                 //search bar positioning adjustments
-                if(probh + wrsp - 20 > $(document).scrollTop()){ $('.search').css({position: 'absolute', top: ""})
-                } else { $('.search').css({position: 'fixed', top: "58px"})}}
+                if(probh + wrsp - 40 > $(document).scrollTop()){ $('.search').css({position: 'absolute', top: ""})
+                } else { $('.search').css({position: 'fixed', top: "65px"})}}
+
+            $(document).scroll(function(){
+                    //banner scroll check
+                    if(probh - 20 > $(document).scrollTop()){ 
+                        $('body').removeClass('stick')
+                        $('asidel').css({position: 'absolute', top: ""})
+                        $('#page2').css({position: 'absolute', top: ""})
+                    } else {
+                        $('body').addClass('stick')
+                        $('asidel').css({position: 'fixed', top: "65px"})
+                        $('#page2').css({position: 'fixed', top: "65px"})}
+                    //search bar positioning adjustments
+                    if(headr + wrsp - 35 > $(document).scrollTop()){ $('.search').css({position: 'absolute', top: ""})
+                    } else { $('.search').css({position: 'fixed', top: "65px"})}})
 
             $(document).ready(function(){
                 scroll(); resizeVideos(); notes();
@@ -870,25 +857,13 @@
                         $(this).closest('article').find('.tags').slideToggle(400)})}) 
                 $('.i').click(function() {$('body, html').animate({scrollTop:0},1000)});   
                 
-                $(document).scroll(function(){
-                    //banner scroll check
-                    if(probh - 32 > $(document).scrollTop()){ 
-                        $('body').removeClass('stick')
-                        $('asidel').css({position: 'absolute', top: ""})
-                    } else {
-                        $('body').addClass('stick')
-                        $('asidel').css({position: 'fixed', top: "70px"})}
-                    //search bar positioning adjustments
-                    if(headr + wrsp - 35 > $(document).scrollTop()){ $('.search').css({position: 'absolute', top: ""})
-                    } else { $('.search').css({position: 'fixed', top: "70px"})}})
-                
                 // Tumblr photosets
                 $('.photo-slideshow').pxuPhotoset({ lightbox: true, rounded: false, gutter: '2px',
                     photoset: '.photo-slideshow', photoWrap: '.photo-data', photo: '.pxu-photo'})
                 $('.timestamp').timeAgo({time: "short", spaces: true, suffix: " ago" })  
                 
-                var $container = $('section');      
-                {block:indexpage}    
+                {block:indexpage}   
+                    var $container = $('section'); 
                     $container.infinitescroll({
                         itemSelector: 'article',
                         navSelector: '#pagination',
@@ -897,10 +872,12 @@
                         loadingText: '<em></em>',
                         errorCallback: function(){ $('.load').text('no more posts').parent('footer').delay(4000).slideUp(400); },    
                         bufferPx: 3000},
+                        
                     function( newElements ) {
                         var $newElems = $( newElements );
                         var $newID = $newElems.map(function(){return this.id;}).get()
                         Tumblr.LikeButton.get_status_by_post_ids($newID)
+                        
                         $newElems.find('.photo-slideshow').pxuPhotoset({
                                 lightbox: true, rounded: false,
                                 gutter: '2px', photoset: '.photo-slideshow',
@@ -908,23 +885,19 @@
                         $newElems.find('iframe.tumblr_audio_player').load( function() {
                             $('iframe.tumblr_audio_player').contents().find("head").append(
                                 $("<style type='text/css'> .audio-player{background:var(--accent1) !important} </style>"))})
-                            
                         $newElems.find('.notecounter').each(function(){
                             var n = $(this).html().split(' ')[0].replace(/,/g, '')
-                            if (n > 999) { 
-                                n = Math.floor(n / 100) / 10
-                                $(this).text(n + 'k notes') 
+                            if (n > 999) { n = Math.floor(n / 100) / 10; $(this).text(n + 'k notes') 
                             }else if (n > 1 && n <= 999) {$(this).text(n + ' notes')
-                            }else {$(this).text(n + ' note')}});  
-                            
-                        $newElems.find('.timestamp').timeAgo({time:"short",spaces: true,suffix:" ago"})        
-                        resizeVideos()
+                            }else {$(this).text(n + ' note')}});
+                        $newElems.find('.timestamp').timeAgo({time:"short",spaces: true,suffix:" ago"})
                         $newElems.find('.taggie').each(function() {
-                            $(this).click(function(){$(this).closest('article').find('.tags').slideToggle(400)}) 
-                        });           
-                    });
-            {/block:indexpage}
-            });
+                            $(this).click(function(){$(this).closest('article').find('.tags').slideToggle(400)})
+                            
+                        resizeVideos()
+                    })})
+                {/block:indexpage}
+            })
             
             function resizeVideos() {
                $('.video:not(.resized) iframe:not(.tumblr_video_iframe)').each(function(){
@@ -943,9 +916,7 @@
                    $(this).parents('.tumblr_video_container').css({
                        width: Math.floor(vw * ( scale + 1 ) / 2),
                        height: Math.floor(vh * ( scale + 1 ) / 2)})
-                   $(this).parents('.video').addClass('resized')
-               });
-            }
+                   $(this).parents('.video').addClass('resized')})}
         </script>
      
     </body>
