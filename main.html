@@ -1,10 +1,8 @@
 <!DOCTYPE html>
     <head>
-        <title>{Title}</title>
+        <title>VanH</title>
          
         <link rel="shortcut icon" href="{favicon}">
-         
-        <link rel="alternate" type="application/rss+xml" href="{RSS}">
         
         <!--================================================================================================ 
              TUMBLR VAR STORAGE 
@@ -13,19 +11,13 @@
         <meta name="image:Sidebar" content=""/>
         <meta name="text:Home Title" content="home"/><meta name="text:Ask Title" content="message"/><meta name="text:Archive Title" content="archive"/>
         
-        <meta name="text:Header Link 1" content=""/><meta name="text:Header Link 1 URL" content=""/>
-        <meta name="text:Header Link 2" content=""/><meta name="text:Header Link 2 URL" content=""/>
-        <meta name="text:Header Link 3" content=""/><meta name="text:Header Link 3 URL" content=""/>
-        
         <meta name="if:Infinite Scroll" content="1"/> <meta name="if:Manual Load" content="0"/>
         
         <!--================================================================================================ 
              PAGE SCRIPTS 
         =================================================================================================--> 
         
-        <script>
-            var docelem = document.documentElement;
-        </script>
+        <script>var docelem = document.documentElement</script> <!-- this saves time later -->
         
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
@@ -79,6 +71,8 @@
                 /*--background: #1d1d1d; --posts: #141414; --borders: #090909*/
                 --opacity: 1; --opacityhover: 0.7;
                 /*--opacity: 0.6; --opacityhover: 1;*/
+                
+                --page1: 0; --page2: 1; --page3: 2; --page4: 3; --page5: 4;
             }
             
             /* ==================================================================================================== */
@@ -195,7 +189,10 @@
                 display:inline-block; vertical-align:top}
             sidel {margin:0 20px 0 calc(var(--sidebarl) + 20px)}
             
-            /* section, asider, asidel, asider {transition:all .2s ease-in-out} */
+            /*section, asider, asidel, asider, sidel, sider, header {transition:width .1s ease-out}*/
+            
+            #page1,#page2,#page3,#page4,#page5{transition:all .35s cubic-bezier(.04,.01,0,.99)}
+            #page2,#page3,#page4,#page5{opacity:0.5}
             
             /* containers =============== */
             .cont .block, .wedge { 
@@ -215,26 +212,28 @@
         /* ===================================== */
             
             /* pictures container =============== */
-            .lsbut { 
-                width:calc(var(--sidebarl)- 4px); height:45px; margin: 0 0 10px;
+            .lsbut {
+                width:calc(var(--sidebarl) - 4px); height:45px; margin: 0 0 10px; 
                 border-right: 4px solid var(--accent2); background-color: white; cursor:pointer}
+            .lsbut:last-of-type {margin: 0 0 20px}
             .lsbut:hover {
-                width:calc(var(--sidebarl) + 56px); 
-                border-right: 4px solid var(--links)}
-            .lsbut t {
-                position: absolute; z-index: 99;
+                width:calc(var(--sidebarl) + 40px);
+                border-right: 4px solid var(--accent3)}
+            .lsbut t { 
+                position: absolute; z-index: 99; 
                 font-size:1.4em; padding:10px; color:white}
             .lsbut:hover t {color: var(--accent2)}
             
-            .lsbut, .lsbut:hover, .lsbut t, .lsbut:hover t { transition:all .2s ease-in-out}
-            
-            .sidei1, .sidei2, .sidei3, .sidei4 {
-                opacity: 1; width: 100%; height:100%; background-size: cover; background-position: center}
-            .lsbut:hover .sidei1, .lsbut:hover .sidei2, .lsbut:hover .sidei3, .lsbut:hover .sidei4 {opacity: 0.3}
-            .sidei1 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/imgs/img1.png')}
-            .sidei2 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/imgs/img2.jpg')}
-            .sidei3 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/imgs/img3.jpg')}
-            .sidei4 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/imgs/img4.jpg')}
+            .lsbut, .lsbut:hover, .lsbut t, .lsbut:hover t {transition:all .2s ease-out}
+        
+            .sidei1, .sidei2, .sidei3, .sidei4, .sidei5 {
+                opacity: 1; width: 100%; height:100%; background-size: 120% auto; background-position: left}
+            .lsbut:hover .sidei1, .lsbut:hover .sidei2, .lsbut:hover .sidei3, .lsbut:hover .sidei4, .lsbut:hover .sidei5 {opacity: 0.3}
+            .sidei1 {background-image:url('https://pbs.twimg.com/media/E0N8biVWYAceEyL?format=png&name=orig')}
+            .sidei2 {background-image:url('https://pbs.twimg.com/media/E6WlGEvXoAMpiYU?format=png&name=orig')}
+            .sidei3 {background-image:url('https://pbs.twimg.com/media/EyFMW4pXAAIqzTX?format=jpg&name=orig')}
+            .sidei4 {background-image:url('https://pbs.twimg.com/media/E7wA2NtXEAk-Ny2?format=jpg&name=orig')}
+            .sidei5 {background-image:url('https://pbs.twimg.com/media/E6WlFoKWYAAATK0?format=jpg&name=orig')}
             
             .lkcon {width:calc(var(--sidebarl) / 4); display: inline-block; height:calc(var(--sidebarl) / 4); background-color:var(--posts)}
             .lkcon:hover {background-color:var(--accent2)}
@@ -493,7 +492,7 @@
             <asidel id="asidel">
                 
                 <div class="wedge">
-                    <img src="https://cdn.discordapp.com/attachments/870119954232516669/872009222638956554/tumblr_737363636c6d07975f098558754363b9_0bd1b43e_640.gif"/></div>
+                    <img src="https://cdn.discordapp.com/attachments/629600253997350912/876469248342515743/ezgif-5-1eec46494d34.gif"/></div>
 
                 <div class="block"> <!--theme title and description block-->
                     <t>Thea Vanherst</t>
@@ -501,13 +500,14 @@
                     <p>All of my designs and creations are open source, feel free to use them as you wish.</p>
                 </div>
                 
-                <div class="lsbut"><t>Main Page</t><div class="sidei1"></div></div>
-                <div class="lsbut"><t>Drawing</t><div class="sidei2"></div></div>
-                <div class="lsbut"><t>Workshop</t><div class="sidei3"></div></div>
-                <div class="lsbut"><t>Branding</t><div class="sidei4"></div></div>
+                <div class="lsbut" onmousedown="pgscrdata(); fpg = 0; pageturn()"><t>Feed</t><div class="sidei1"></div></div>
+                <div class="lsbut" onmousedown="pgscrdata(); fpg = 1; pageturn()"><t>Artworks</t><div class="sidei2"></div></div>
+                <div class="lsbut" onmousedown="pgscrdata(); fpg = 2; pageturn()"><t>Workshop</t><div class="sidei3"></div></div>
+                <div class="lsbut" onmousedown="pgscrdata(); fpg = 3; pageturn()"><t>Branding</t><div class="sidei4"></div></div>
+                <div class="lsbut" onmousedown="pgscrdata(); fpg = 4; pageturn()"><t>Programming</t><div class="sidei5"></div></div>
                 
-                <div class="block"><p>Vanh.art, established on Aug 1st, 2021</p></div>
-                <div class="stats" style="bottom: 20px; position:relative"><p>The site is currently in development. Last updated 21:42, Aug 14th 2021</p></div>
+                <div class="block"><p>Vanh.art, established on Aug 1st, 2021</p></div> <!-- Last updated 21:42, Aug 14th 2021 --> <!-- I'm currently editing the page, so please stay tuned! -->
+                <div class="stats" style="bottom: 20px; position:relative"><p>The site is currently in development. Last updated 23:02, Aug 15th 2021</p></div>
                 
             </asidel>
     
@@ -727,14 +727,14 @@
                         <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2449497541" target="_blank">
                             <div class="wedge wrsp"> <!-- page 1 -->
                                 <div class="pcg1"></div>
-                                <div class="stats"><p><h>76,791</h> Unique Visitors • <h>25,012 </h>Concurrent Subscribers</p></div>
+                                <div class="stats"><p><h>78,705</h> Unique Visitors • <h>25,671 </h>Concurrent Subscribers</p></div>
                                 <t>Moonlord replacement for the Third Impact / Lilith</t>
                                 <p>A Rei replacement for the Moonlord, Inspired by the Third Impact from The End Of Neon Genesis Evangelion.</p></div></a>
                            
                         <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2440395917" target="_blank">
                             <div class="wedge wrsp"> <!-- page 1 -->
                                 <div class="pcg2"></div>
-                                <div class="stats"><p><h>51,544</h> Unique Visitors • <h>9,514 </h>Concurrent subscribers</p></div>
+                                <div class="stats"><p><h>52,342</h> Unique Visitors • <h>9,666 </h>Concurrent subscribers</p></div>
                                 <t>EVA Unit 01 holding the 1941 Tirpitz Battleship</t>
                                 <p>A 1:1 scale, 330 block tall recreation of Eva Unit: 01 from Neon Genesis Evangelion, holding a German battleship. Reported on by PC GAMER; 18/1/21.</p></div></a>
                     </div>
@@ -755,7 +755,7 @@
                 </asider>
             </div>
 
-            <div class="inco" id="page2" style="margin-left: calc((var(--sidebarr) + var(--postwidth)) + 40px)">
+            <div class="inco" id="page2" style="margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page2))">
                 <sidel>
                     <div class="block">
                         <p>[PAGE 2a]</p>
@@ -768,6 +768,48 @@
                     </div>
                 </sider>
             </div>
+            
+            <div class="inco" id="page3" style="margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page3))">
+                <sidel>
+                    <div class="block">
+                        <p>[PAGE 3a]</p>
+                    </div>
+                </sidel>
+                
+                <sider>
+                    <div class="block">
+                        <p>[PAGE 3b]</p>
+                    </div>
+                </sider>
+            </div>
+            
+            <div class="inco" id="page4" style="margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page4))">
+                <sidel>
+                    <div class="block">
+                        <p>[PAGE 4a]</p>
+                    </div>
+                </sidel>
+                
+                <sider>
+                    <div class="block">
+                        <p>[PAGE 4b]</p>
+                    </div>
+                </sider>
+            </div>
+            
+            <div class="inco" id="page5" style="margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page5))">
+                <sidel>
+                    <div class="block">
+                        <p>[PAGE 5a]</p>
+                    </div>
+                </sidel>
+                
+                <sider>
+                    <div class="block">
+                        <p>[PAGE 5b]</p>
+                    </div>
+                </sider>
+            </div>
 
             {block:Pagination} 
                 <div id="pagination" class="pag">
@@ -777,13 +819,28 @@
         </div>
 
         <script>
-            var wrsp, temp, headr;
+            var fpg = 0, pgsd = [0,0,0,0,0] //default page number
+            function pgscrdata() {console.log(fpg)
+                pgsd[fpg] = $(document).scrollTop()}
+            
+            function pageturn() {
+                $('html, body').animate({scrollTop: pgsd[fpg]}, 500)
+                
+                for(var curpg = 1; curpg < 5 + 1; curpg++){
+                    var page = "#page" + curpg; //stores '#page' as a var to loop
+                    docelem.style.setProperty('--page' + curpg, curpg - 1 - fpg); //sets the 
+                    $(page).css('margin-left','calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page' + curpg + '))')
+                    var temp = getComputedStyle(document.documentElement).getPropertyValue('--page' + curpg);
+                    if(temp != 0){$(page).css('opacity','0.5')
+                    } else {$(page).css('opacity','1')}}}
+
+            var wrsp, headr;
             var righb = $("#asider").width(), leftb = $("#asidel").width(), middb = $("#posts").width(),
                 page3 = $('body').width() - ($('body').width() - ($("#asidel").width() + $("#asider").width() + $("#posts").width())), 
                 page2 = $('body').width() - ($('body').width() - ($("#asider").width() + $("#posts").width())),
                 probh = (($("#asidel").width() + $("#asider").width() + $("#posts").width() + 40) / $("#hdr").width()) * $("#hdr").height();
                 
-            var resize = function() {
+            var resize = function() { // Page rescaling
                 wrsp = $("#wrsp").height(); headr = $("#hdr").height();
                 $("#bnlogo").css('transition', "opacity .2s"); $("#logo").css('transition', "opacity .2s"); 
                 
@@ -796,7 +853,7 @@
                         docelem.style.setProperty('--postwidth', (middb / pagescl3).toFixed(2) + "px")
                         $('section').css('margin','0 20px 0 calc(var(--sidebarl) + 20px)')
                     } else {
-                        if ($('body').width() > 540 + 80){ //200 / 80
+                        if ($('body').width() > 550 + 80){ //200 / 80
                             var pagescl2 = (page2 / ($('body').width() - 60)) //180 / 60
                             $('#asidel').css('opacity', 0); 
                             $('section').css('margin-left','0px')
@@ -827,11 +884,9 @@
                 if(probh - 20 > $(document).scrollTop()){ 
                     $('body').removeClass('stick')
                     $('#asidel').css({position: 'absolute', top: ""})
-                    $('#page2').css({position: 'absolute', top: ""})
                 } else {
                     $('body').addClass('stick')
-                    $('#asidel').css({position: 'fixed', top: "65px"})
-                    $('#page2').css({position: 'fixed', top: "65px"})}
+                    $('#asidel').css({position: 'fixed', top: "65px"})}
                     
                 //search bar positioning adjustments
                 if(probh + wrsp - 40 > $(document).scrollTop()){ $('.search').css({position: 'absolute', top: ""})
@@ -842,11 +897,9 @@
                     if(probh - 20 > $(document).scrollTop()){ 
                         $('body').removeClass('stick')
                         $('asidel').css({position: 'absolute', top: ""})
-                        $('#page2').css({position: 'absolute', top: ""})
                     } else {
                         $('body').addClass('stick')
-                        $('asidel').css({position: 'fixed', top: "65px"})
-                        $('#page2').css({position: 'fixed', top: "65px"})}
+                        $('asidel').css({position: 'fixed', top: "65px"})}
                     //search bar positioning adjustments
                     if(headr + wrsp - 35 > $(document).scrollTop()){ $('.search').css({position: 'absolute', top: ""})
                     } else { $('.search').css({position: 'fixed', top: "65px"})}})
