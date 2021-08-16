@@ -45,7 +45,6 @@
             
             :root { 
                 /*font settings*/
-                --fontsmall:0.6em; --fontmedium:0.7em; 
                 --fontstyle: 'Manrope', sans-serif; --boldstyle: 'Rubik', sans-serif; --gerstyle: 'UnifrakturCook', cursive;
                 
                 /*banner settings*/
@@ -64,14 +63,11 @@
                 
                 --accent1:#7285fe; --accent2: #d058fd; --accent3: #ff9936; --accent4: #ffba00;
                 --links: #ff8ef4; --titles: #7285fe; --text: #787878; --textalt: #505050;
-                
                 --darkac1: #787878; --darkac2: #505050; --darkac3: #2b2b2b;
+                --background: #f4f4f4; --posts: #ffffff; --borders: #d8d5d5; /*--background: #1d1d1d; --posts: #141414; --borders: #090909*/
+                --scrollbar: #aaaaaa; 
                 
-                --background: #f4f4f4; --posts: #ffffff; --borders: #d8d5d5; --scrollbar: #aaaaaa;
-                /*--background: #1d1d1d; --posts: #141414; --borders: #090909*/
-                --opacity: 1; --opacityhover: 0.7;
-                /*--opacity: 0.6; --opacityhover: 1;*/
-                
+                /* page margin multiplier settings */
                 --page1: 0; --page2: 1; --page3: 2; --page4: 3; --page5: 4;
             }
             
@@ -84,7 +80,7 @@
             .tmblr-lightbox img { opacity:1}
             .lightbox-caption { 
                 color:var(--titles)!important; text-shadow:none!important;
-                font-family:inherit!important; font-size:var(--fontsmall)!important}
+                font-family:inherit!important; font-size:0.6em!important}
             .lightbox-image { 
                 border-radius:0px!important; box-shadow:none!important;
                 -moz-box-shadow:none!important; -webkit-box-shadow:none!important; 
@@ -104,7 +100,7 @@
             a, svg {transition:all .15s linear}
             t { color:var(--accent2); font-family:var(--boldstyle);
                 text-transform:uppercase; padding:0 15px; font-size:1.1em}
-            p {font-size:var(--fontmedium); padding:0 15px;} 
+            p {font-size:0.7em; padding:0 15px;} 
             p:first-of-type {margin-top:0!important} 
             p:last-of-type {margin-bottom:0!important}
             p:first-of-type t {font-size: 1.4em; color:var(--accent2); line-height:0em; margin-top:10px;}
@@ -192,7 +188,7 @@
             /*section, asider, asidel, asider, sidel, sider, header {transition:width .1s ease-out}*/
             
             #page1,#page2,#page3,#page4,#page5{transition:all .35s cubic-bezier(.04,.01,0,.99)}
-            #page2,#page3,#page4,#page5{opacity:0.5}
+            #page2,#page3,#page4,#page5{opacity:0.6}
             
             /* containers =============== */
             .cont .block, .wedge { 
@@ -206,7 +202,8 @@
             
             /*scrollbar*/
             ::-webkit-scrollbar {width:12px;height:12px;background-color:transparent}
-            ::-webkit-scrollbar-thumb{background-clip:padding-box; border-radius:6px; background-color:var(--scrollbar); border:4px solid transparent}
+            ::-webkit-scrollbar-thumb{background-clip:padding-box; border-radius:6px; 
+                background-color:var(--scrollbar); border:4px solid transparent}
             
             /* LEFT HAND SIDEBAR CONTENT
         /* ===================================== */
@@ -224,18 +221,21 @@
                 font-size:1.4em; padding:10px; color:white}
             .lsbut:hover t {color: var(--accent2)}
             
-            .lsbut, .lsbut:hover, .lsbut t, .lsbut:hover t {transition:all .2s ease-out}
+            .lsbut, .lsbut:hover, .lsbut t, .lsbut:hover t {transition:all .2s cubic-bezier(0,0,0,1)}
         
             .sidei1, .sidei2, .sidei3, .sidei4, .sidei5 {
-                opacity: 1; width: 100%; height:100%; background-size: 120% auto; background-position: left}
-            .lsbut:hover .sidei1, .lsbut:hover .sidei2, .lsbut:hover .sidei3, .lsbut:hover .sidei4, .lsbut:hover .sidei5 {opacity: 0.3}
+                opacity: 1; width: 100%; height:100%; 
+                background-size: 120% auto; background-position: left}
+            .lsbut:hover .sidei1, .lsbut:hover .sidei2, .lsbut:hover .sidei3, 
+            .lsbut:hover .sidei4, .lsbut:hover .sidei5 {opacity: 0.3}
             .sidei1 {background-image:url('https://pbs.twimg.com/media/E0N8biVWYAceEyL?format=png&name=orig')}
             .sidei2 {background-image:url('https://pbs.twimg.com/media/E6WlGEvXoAMpiYU?format=png&name=orig')}
             .sidei3 {background-image:url('https://pbs.twimg.com/media/EyFMW4pXAAIqzTX?format=jpg&name=orig')}
             .sidei4 {background-image:url('https://pbs.twimg.com/media/E7wA2NtXEAk-Ny2?format=jpg&name=orig')}
             .sidei5 {background-image:url('https://pbs.twimg.com/media/E6WlFoKWYAAATK0?format=jpg&name=orig')}
             
-            .lkcon {width:calc(var(--sidebarl) / 4); display: inline-block; height:calc(var(--sidebarl) / 4); background-color:var(--posts)}
+            .lkcon {width:calc(var(--sidebarl) / 4); display: inline-block; 
+                height:calc(var(--sidebarl) / 4); background-color:var(--posts)}
             .lkcon:hover {background-color:var(--accent2)}
             .linki1, .linki2, .linki3, .linki4 {filter: invert(.3);}
             .linki1:hover, .linki2:hover, .linki3:hover, .linki4:hover {filter: invert(0)}
@@ -253,17 +253,18 @@
             
             /* animation */
             .wrsp:hover, .wrsp, .wrsp:hover .pcg1, .wrsp:hover .pcg2, 
-            .pcg1, .pcg2, .wrsp:hover, .wrsp, .wrsp:hover t, .wrsp t {transition:color .2s ease-in-out, opacity .2s ease-in-out}
+            .pcg1, .pcg2, .wrsp:hover, .wrsp, .wrsp:hover t, .wrsp t {transition:all .2s cubic-bezier(0,0,0,1)}
             
             /* pictures */
-            .pcg1, .pcg2  {width:100%; opacity:var(--opacity)} /* default opacity values of wrsp pictures */
-            .wrsp:hover .pcg1, .wrsp:hover .pcg2 {opacity:var(--opacityhover)} /* on hover */
-            .pcg1, .pcg2 {background-position: center; background-size: cover; height:calc(var(--sidebarr) / 4 + 50px)}
-            .pcg1 {height:calc(var(--sidebarr) / 2 + 50px); background-image: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/workshop%20items/Lilith.png')}
-            .pcg2 {background-image: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/workshop%20items/Eva1.png')}
+            .pcg1, .pcg2  {width:100%; opacity:1} /* default opacity values of wrsp pictures */
+            .wrsp:hover .pcg1 {opacity:0.6; height:var(--sidebarr)}
+            .wrsp:hover .pcg2 {opacity:0.6; height:calc(var(--sidebarr) / 1.75)}
+            .pcg1, .pcg2 {background-position: center; background-size: cover}
+            .pcg1 {height:calc(var(--sidebarr) / 2 + 50px); background-image: url('https://steamuserimages-a.akamaihd.net/ugc/1796351090791801798/11D0145B4DC15D59D1DC66536E9A5F933D1B6284/')}
+            .pcg2 {height:calc(var(--sidebarr) / 4 + 50px); background-image: url('https://steamuserimages-a.akamaihd.net/ugc/1716408815746329822/65B972580FAD7AA49319CC24481809D766597924/')}
             
             /* wrsp Text styles =============== */
-            .wrsp p {font-size:var(--fontsmall)!important; color: var(--text);}
+            .wrsp p {font-size:0.6em!important; color: var(--text);}
             .wrsp .stats p {padding: 5px 15px 5px!important; color: white;}
             .wrsp:hover .stats p {background-color: var(--text)}
             .wrsp:hover .stats h {color:var(--accent4)}
@@ -405,7 +406,7 @@
                 margin:.5em 0; padding:.25em 0 .25em 15px
                 border-left:1px solid var(--borders)}
             section ul { list-style:none; padding:.25em 0 .25em 15px} 
-            section ol { padding: 0 25px; font-size:var(--fontmedium)}}
+            section ol { padding: 0 25px; font-size:0.7em}}
             
             section hr {
                 border:none; border-top:1px solid var(--borders); 
@@ -436,8 +437,8 @@
             section .source {margin-top:15px}
             section .chat {margin:0;padding:0;list-style:none;text-align:left}
             
-            section .quote {position:relative; font-size:var(--fontsmall); font-style:italic; margin-left:20px; padding-left:15px; border-left:1px dotted var(--borders); color:var(--titles); line-height:1.5em}
-            section .quote:before {position:absolute; left:-20px; top:0; content:'“'; font-size:var(--fontsmall); font-family:sans-serif; color:var(--titles); font-style:normal!important;}
+            section .quote {position:relative; font-size:0.6em; font-style:italic; margin-left:20px; padding-left:15px; border-left:1px dotted var(--borders); color:var(--titles); line-height:1.5em}
+            section .quote:before {position:absolute; left:-20px; top:0; content:'“'; font-size:0.6em; font-family:sans-serif; color:var(--titles); font-style:normal!important;}
             
             /*questions*/
             section .answerer {border:0!important; color:var(--text)}
@@ -481,11 +482,11 @@
         <script>function scrollToTop() {window.scrollTo({top: 0, behavior: 'smooth'});}</script>
         
         <div class="hdr" id="hdr"></div>
-        <a href="/"><div class="bnlogo" id="bnlogo" onmouseover="fadeto()" onmouseout="fadeno()">
-        <div class="logo" id="logo"></div></div></a>
+        <div class="bnlogo" id="bnlogo" onmousedown="fpg = 0; pageturn()" onmouseover="fadeto()" onmouseout="fadeno()">
+        <div class="logo" id="logo"></div></div>
             
-        <script>function fadeto(){$('#hdr').css({opacity:"var(--opacityhover)"})}
-                function fadeno(){$('#hdr').css({opacity:"var(--opacity)"})}</script>
+        <script>function fadeto(){$('#hdr').css({opacity:0.6})}
+                function fadeno(){$('#hdr').css({opacity:1})}</script>
                 
         <div class="cont"> <!-- container for page data -->
 
@@ -507,7 +508,7 @@
                 <div class="lsbut" onmousedown="fpg = 4; pageturn()"><t>Programming</t><div class="sidei5"></div></div>
                 
                 <div class="block"><p>Vanh.art, established on Aug 1st, 2021</p></div> <!-- Last updated 21:42, Aug 14th 2021 --> <!-- I'm currently editing the page, so please stay tuned! -->
-                <div class="stats" style="bottom: 20px; position:relative"><p>The site is currently in development. Last updated 23:02, Aug 15th 2021</p></div>
+                <div class="stats" style="bottom: 20px; position:relative"><p>The site is currently in development. Updated Aug 16th 2021, 03:31 GMT</p></div>
                 
             </asidel>
     
@@ -825,12 +826,12 @@
             function pageturn() {
                 //$('html, body').animate({scrollTop: pgsd[fpg]}, 500)
                 for(var curpg = 1; curpg < 5 + 1; curpg++){
+                    docelem.style.setProperty('--page' + curpg, curpg - 1 - fpg) //sets the
                     var page = "#page" + curpg; //stores '#page' as a var to loop
-                    docelem.style.setProperty('--page' + curpg, curpg - 1 - fpg); //sets the 
-                    $(page).css('margin-left','calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page' + curpg + '))')
-                    var temp = getComputedStyle(document.documentElement).getPropertyValue('--page' + curpg);
-                    if(temp != 0){$(page).css('opacity','0.5')
-                    } else {$(page).css('opacity','1')}}}
+                    var temp = getComputedStyle(document.documentElement).getPropertyValue('--page' + curpg)
+                    if(temp < 0){ $(page).css('margin-left','calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page' + curpg + ') - (var(--sidebarl) + 20px))')
+                    } else { $(page).css('margin-left','calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page' + curpg + '))')}
+                    if(temp != 0){$(page).css('opacity','0.5')} else {$(page).css('opacity','1')}}}
 
             var wrsp, headr;
             var righb = $("#asider").width(), leftb = $("#asidel").width(), middb = $("#posts").width(),
@@ -851,21 +852,21 @@
                         docelem.style.setProperty('--postwidth', (middb / pagescl3).toFixed(2) + "px")
                         $('section').css('margin','0 20px 0 calc(var(--sidebarl) + 20px)')
                     } else {
-                        if ($('body').width() > 550 + 80){ //200 / 80
+                        if ($('body').width() > 560 + 80){ //200 / 80
                             var pagescl2 = (page2 / ($('body').width() - 60)) //180 / 60
                             $('#asidel').css('opacity', 0); 
                             $('section').css('margin-left','0px')
                             docelem.style.setProperty('--sidebarl', -20 + "px")
                             docelem.style.setProperty('--sidebarr', (righb / pagescl2).toFixed(2) + 10 + "px")
                             docelem.style.setProperty('--postwidth', (middb / pagescl2).toFixed(2) + 10 + "px")}}}
-                
+                            
                 if ($('body').width() > (page3 + 80)) { //200 / 80
                     $('#asidel').css('opacity', 1); 
                     docelem.style.setProperty('--sidebarl', leftb + "px")
                     docelem.style.setProperty('--sidebarr', righb + "px")
                     docelem.style.setProperty('--postwidth', middb + "px")
                     $('section').css('margin','0 20px 0 calc(var(--sidebarl) + 20px)')}
-                
+                    
                 $("#bnlogo").css('transition', "all .15s"); $("#logo").css('transition', "all .15s")}
 
             $(document).ready(resize);
