@@ -500,11 +500,11 @@
                     <p>All of my designs and creations are open source, feel free to use them as you wish.</p>
                 </div>
                 
-                <div class="lsbut" onmousedown="pgscrdata(); fpg = 0; pageturn()"><t>Feed</t><div class="sidei1"></div></div>
-                <div class="lsbut" onmousedown="pgscrdata(); fpg = 1; pageturn()"><t>Artworks</t><div class="sidei2"></div></div>
-                <div class="lsbut" onmousedown="pgscrdata(); fpg = 2; pageturn()"><t>Workshop</t><div class="sidei3"></div></div>
-                <div class="lsbut" onmousedown="pgscrdata(); fpg = 3; pageturn()"><t>Branding</t><div class="sidei4"></div></div>
-                <div class="lsbut" onmousedown="pgscrdata(); fpg = 4; pageturn()"><t>Programming</t><div class="sidei5"></div></div>
+                <div class="lsbut" onmousedown="fpg = 0; pageturn()"><t>Feed</t><div class="sidei1"></div></div>
+                <div class="lsbut" onmousedown="fpg = 1; pageturn()"><t>Artworks</t><div class="sidei2"></div></div>
+                <div class="lsbut" onmousedown="fpg = 2; pageturn()"><t>Workshop</t><div class="sidei3"></div></div>
+                <div class="lsbut" onmousedown="fpg = 3; pageturn()"><t>Branding</t><div class="sidei4"></div></div>
+                <div class="lsbut" onmousedown="fpg = 4; pageturn()"><t>Programming</t><div class="sidei5"></div></div>
                 
                 <div class="block"><p>Vanh.art, established on Aug 1st, 2021</p></div> <!-- Last updated 21:42, Aug 14th 2021 --> <!-- I'm currently editing the page, so please stay tuned! -->
                 <div class="stats" style="bottom: 20px; position:relative"><p>The site is currently in development. Last updated 23:02, Aug 15th 2021</p></div>
@@ -820,12 +820,10 @@
 
         <script>
             var fpg = 0, pgsd = [0,0,0,0,0] //default page number
-            function pgscrdata() {console.log(fpg)
-                pgsd[fpg] = $(document).scrollTop()}
+            //function pgscrdata() {pgsd[fpg] = $(document).scrollTop()}
             
             function pageturn() {
-                $('html, body').animate({scrollTop: pgsd[fpg]}, 500)
-                
+                //$('html, body').animate({scrollTop: pgsd[fpg]}, 500)
                 for(var curpg = 1; curpg < 5 + 1; curpg++){
                     var page = "#page" + curpg; //stores '#page' as a var to loop
                     docelem.style.setProperty('--page' + curpg, curpg - 1 - fpg); //sets the 
