@@ -3,14 +3,6 @@
         <title>VanH</title>
          
         <link rel="shortcut icon" href="{favicon}">
-        
-        <!--================================================================================================ 
-             TUMBLR VAR STORAGE 
-        =================================================================================================--> 
-        
-        <meta name="image:Sidebar" content=""/>
-        <meta name="text:Home Title" content="home"/><meta name="text:Ask Title" content="message"/><meta name="text:Archive Title" content="archive"/>
-        
         <meta name="if:Infinite Scroll" content="1"/> <meta name="if:Manual Load" content="0"/>
         
         <!--================================================================================================ 
@@ -23,30 +15,24 @@
         <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script type="text/javascript" src="//static.tumblr.com/i5s2zks/9Acok8oo2/bct-timeago.min.js"></script>
         <script src="//static.tumblr.com/qudkd6d/Az6nkemqr/pxuphotoset.min.js"></script>
-        {block:indexpage}
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
         <script src="//static.tumblr.com/wgijwsy/u2vm2hxv6/jquery.infinitescroll.min.js"></script>
-        {/block:indexpage}
         
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <!-- SLIM FONT -->
-        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600&display=swap" rel="stylesheet"> 
-        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap" rel="stylesheet"> 
-        <!-- BOLD FONT -->
-        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@800&display=swap" rel="stylesheet"> 
-        <!-- GERMANIC FONT -->
-        <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600&display=swap" rel="stylesheet"> <!-- SLIM FONT -->
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap" rel="stylesheet"> <!-- SLIM FONT -->
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@800&display=swap" rel="stylesheet"> <!-- BOLD FONT -->
+        <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet"> <!-- GERMANIC FONT -->
         
         <!--================================================================================================ 
              PAGE FORMATTING 
         =================================================================================================--> 
 
         <style type="text/css">
-            
             :root { 
                 /*font settings*/
                 --fontstyle: 'Manrope', sans-serif; --boldstyle: 'Rubik', sans-serif; --gerstyle: 'UnifrakturCook', cursive;
-                
                 /*banner settings*/
                 --bannerheight:520; --bannerwidth:3480; 
                 --bannerlogo: url('https://cdn.discordapp.com/attachments/870119954232516669/872774193593335849/back30.png');
@@ -54,53 +40,29 @@
                 --bannerurl: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/vanhbanner3.2.png');
                 --bannerurlblank: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/vanhbanner3.b.png');
                 --bannerscoll: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/scrollbanner.png');
-                
                 /*nvbor settings*/
                 --iconheight: 327px; --iconwidth: 617px;
-                
                 /*sidebar settings*/
                 --sidebarl:250px; --sidebarr:350px; --postwidth:500px; /*default sidebar widths*/
-                
+                /*colours*/
                 --accent1:#7285fe; --accent2: #d058fd; --accent3: #ff9936; --accent4: #ffba00;
                 --links: #ff8ef4; --titles: #7285fe; --text: #787878; --textalt: #505050;
                 --darkac1: #787878; --darkac2: #505050; --darkac3: #2b2b2b;
                 --background: #f4f4f4; --posts: #ffffff; --borders: #d8d5d5; /*--background: #1d1d1d; --posts: #141414; --borders: #090909*/
                 --scrollbar: #aaaaaa; 
-                
                 /* page margin multiplier settings */
-                --page1: 0; --page2: 1; --page3: 2; --page4: 3; --page5: 4;
+                --page0: -1; --page1: 0; --page2: 1; --page3: 2; --page4: 3; --page5: 4; --page6: 5;
             }
-            
-            /* ==================================================================================================== */
-                /* GENERAL PAGE FORMATTING */
-            /* ==================================================================================================== */
-            
-             /* All this adjusts the default settings of the tumblr image zoom. */
-            .tmblr-lightbox { background:rgba(255,255,255, .60)!important} 
-            .tmblr-lightbox img { opacity:1}
-            .lightbox-caption { 
-                color:var(--titles)!important; text-shadow:none!important;
-                font-family:inherit!important; font-size:0.6em!important}
-            .lightbox-image { 
-                border-radius:0px!important; box-shadow:none!important;
-                -moz-box-shadow:none!important; -webkit-box-shadow:none!important; 
-                -moz-border-radius:0px!important; -webkit-border-radius:0px!important
-                background:var(--posts)!important; opacity:1!important}
-            .vignette {
-                opacity:0!Important} /*removes the black shit when clicking on tumblr posts*/
-        
-            #infscr-loading {display:none!important}
-            #pagination {text-align:left;display:none}
                 
             body { background:var(--background); font-family:var(--fontstyle); color:var(--text); 
-                word-wrap:break-word; overflow-x:hidden; margin:0}
+                word-wrap:break-word; margin:0; overflow-x: hidden;}
 
             a:hover {color:var(--links)}
             a {color:var(--accent1); text-decoration:none; border-color:var(--accent3);}
             a, svg {transition:all .15s linear}
             t { color:var(--accent2); font-family:var(--boldstyle);
                 text-transform:uppercase; padding:0 15px; font-size:1.1em}
-            p {font-size:0.7em; padding:0 15px;} 
+            p {font-size:0.7em; padding:0 15px}
             p:first-of-type {margin-top:0!important} 
             p:last-of-type {margin-bottom:0!important}
             p:first-of-type t {font-size: 1.4em; color:var(--accent2); line-height:0em; margin-top:10px;}
@@ -111,13 +73,9 @@
             li {list-style:none} 
             li:last-of-type {margin: 0px 0px}
             
-            img {max-width:100%; height:auto; display:block; 
-                opacity:1; border:0; margin:0;}
-
-            .divider { /*general divider*/
-                margin-bottom:15px; 
-                border-top:1px solid var(--borders)} 
-
+            img {width:100%; height:auto; display:block; 
+                opacity:1; border:0; margin:0 0 1px}
+                
         /* ==================================================================================================== */
             /* postbar FORMATTING */
         /* ==================================================================================================== */
@@ -142,130 +100,141 @@
                 width:  calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 1.9 - 10px);
                 margin-top: calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) - 
                     ((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 2) - 15px)}
-            
-            /* Top navbar =============== */
-            bar, .nvback { 
-                width:calc(var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px);
-                background-size:100% auto; background-repeat: no-repeat; background-size: cover;
-                overflow:hidden; opacity:0.2; position:fixed}
-            bar .nvback {background-image: var(--bannerscoll); height:100%; z-index: -1} /* nav bar image background */
-            bar { 
-                font-family:var(--boldstyle); font-size:0.8em; text-transform:uppercase; text-align:center;
-                z-index:997; left:50%; transform:translateX(-50%); top:0; background:white; opacity:0}  /*nav bar back*/
-                
-            bar .nvlogo { /* logo on nav bar */
-                width:calc(var(--iconwidth) / 10); position:absolute; 
-                left:calc(-1em - 60px); border:0; padding:0}
-            
-            /* navigation links + container =============== */
-            bar a {color: var(--accent1); background-color:rgba(114, 133, 254, 0.0);
-                display:inline-block; padding:15px 30px; border-right:1px solid var(--borders)} 
-                
-            bar a:last-of-type {border:0}
-            bar a:hover {color: var(--accent2); background-color:rgba(255, 255, 255, 0.6)}
-                
-            /* Scroll down effects =============== */
-            .stick .nvlogo {margin-left:72px; padding:7px 30px 7px 13px; transition: all .5s ease-in-out}
-            .stick bar {opacity:1}
-            
+
         /* ==================================================================================================== */
             /* MAIN FORMATTING */
         /* ==================================================================================================== */
         
             .cont {width:calc(var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px); margin:0px auto}
-            .inco {position:absolute; width: 100%} 
-            
-            /* Main coloumns data =============== */
-            asidel, asider, section {display:inline-block}
-            asidel, asider {position:absolute} /*side bar margins*/
-            asidel {width:var(--sidebarl); z-index:999} asider {width:var(--sidebarr)}
+            .inco {position:absolute; width: calc(var(--sidebarr) + var(--postwidth) + var(--sidebarl) + 41px); transition:margin-left .35s cubic-bezier(.04,.01,0,.99)} 
             
             /* alt pages data =============== */
-            sidel, sider {width: calc((var(--sidebarr) + var(--postwidth)) / 2);
-                display:inline-block; vertical-align:top}
-            sidel {margin:0 20px 0 calc(var(--sidebarl) + 20px)}
+            asidel, sidels, siders, sidelm, siderm, sidell, siderl, fullwc {display:inline-block; vertical-align: top}
+            fullwc, sidels, sidelm, sidell {margin:0 20px 0 calc(var(--sidebarl) + 20px)}
+            
+            asidel {width:var(--sidebarl); z-index:9999} 
+            fullwc {width: calc((var(--sidebarr) + var(--postwidth)) + 20px)}
+            sidell, siderl {width: var(--postwidth)}
+            sidelm, siderm {width: calc((var(--sidebarr) + var(--postwidth)) / 2)}
+            sidels, siders {width: var(--sidebarr)}
             
             /*section, asider, asidel, asider, sidel, sider, header {transition:width .1s ease-out}*/
+            #page0,#page1,#page2,#page3,#page4,#page5{width: calc((var(--sidebarl) + var(--postwidth) + var(--sidebarr)) + 41px); overflow-x: hidden}
+            #page0,#page2,#page3,#page4,#page5,#page6{opacity:0.25}
+            #page0 {margin-left: calc((((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page0)) - (var(--sidebarl) + 20px))}
+            #page1 {margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page1))}
+            #page2 {margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page2))}
+            #page3 {margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page3))}
+            #page4 {margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page4))}
+            #page5 {margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page5))}
+            #page6 {margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page6))}
             
-            #page1,#page2,#page3,#page4,#page5{transition:all .35s cubic-bezier(.04,.01,0,.99)}
-            #page2,#page3,#page4,#page5{opacity:0.6}
+            #infscr-loading {display:none!important}
+            #pagination {text-align:left;display:none}
             
-            /* containers =============== */
-            .cont .block, .wedge { 
-                background:var(--posts); width:100%;
-                border-bottom:1px solid var(--borders); margin-bottom:20px;}
-            .cont .block {padding:12px 0; width:100%}
-            
-            .stats p {
-                background-color: var(--darkac2); color: white; letter-spacing:.15px; 
-                padding: 10px 15px 10px!important; margin-top:-10px}
-            
+            .tmblr-iframe--gdpr-banner {display:none !important}
             /*scrollbar*/
             ::-webkit-scrollbar {width:12px;height:12px;background-color:transparent}
             ::-webkit-scrollbar-thumb{background-clip:padding-box; border-radius:6px; 
                 background-color:var(--scrollbar); border:4px solid transparent}
             
+            /* containers =============== */
+            .block, .wedge { 
+                background:var(--posts); width:100%;
+                border-bottom:1px solid var(--borders); margin-bottom:20px;}
+            .block {padding:12px 0; width:100%}
+            
+            .divider {margin-bottom:15px; border-top:1px solid var(--borders)}
+            .divd {margin:15px 0}
+            
+            .img {width:100%; height:100%;
+                background-position: center; background-size: cover}
+                
             /* LEFT HAND SIDEBAR CONTENT
         /* ===================================== */
             
-            /* pictures container =============== */
-            .lsbut {
-                width:calc(var(--sidebarl) - 4px); height:45px; margin: 0 0 10px; 
-                border-right: 4px solid var(--accent2); background-color: white; cursor:pointer}
-            .lsbut:last-of-type {margin: 0 0 20px}
-            .lsbut:hover {
-                width:calc(var(--sidebarl) + 40px);
-                border-right: 4px solid var(--accent3)}
-            .lsbut t { 
-                position: absolute; z-index: 99; 
-                font-size:1.4em; padding:10px; color:white}
-            .lsbut:hover t {color: var(--accent2)}
+            .lsbut, .titlb, .titleh { 
+                background-color: white; border-right: 4px solid var(--accent2); width:calc(100% - 4px)!important}
+            .lsbut:hover, .titlb:hover, .titleh:hover { border-right: 4px solid var(--accent3)}
+            .titlb, .titleh, .lsbut:last-of-type {margin: 0 0 20px!important}
             
-            .lsbut, .lsbut:hover, .lsbut t, .lsbut:hover t {transition:all .2s cubic-bezier(0,0,0,1)}
-        
-            .sidei1, .sidei2, .sidei3, .sidei4, .sidei5 {
-                opacity: 1; width: 100%; height:100%; 
-                background-size: 120% auto; background-position: left}
-            .lsbut:hover .sidei1, .lsbut:hover .sidei2, .lsbut:hover .sidei3, 
-            .lsbut:hover .sidei4, .lsbut:hover .sidei5 {opacity: 0.3}
-            .sidei1 {background-image:url('https://pbs.twimg.com/media/E0N8biVWYAceEyL?format=png&name=orig')}
-            .sidei2 {background-image:url('https://pbs.twimg.com/media/E6WlGEvXoAMpiYU?format=png&name=orig')}
-            .sidei3 {background-image:url('https://pbs.twimg.com/media/EyFMW4pXAAIqzTX?format=jpg&name=orig')}
-            .sidei4 {background-image:url('https://pbs.twimg.com/media/E7wA2NtXEAk-Ny2?format=jpg&name=orig')}
-            .sidei5 {background-image:url('https://pbs.twimg.com/media/E6WlFoKWYAAATK0?format=jpg&name=orig')}
+            .titlb t, .lsbut t, .titleh t { 
+                z-index: 99; position:absolute; padding:8px 15px; 
+                color:white!important; font-size:1.4em!important}
+            .titlb:hover t, .lsbut:hover t, .titleh:hover t {color: var(--accent2)!important}
             
-            .lkcon {width:calc(var(--sidebarl) / 4); display: inline-block; 
-                height:calc(var(--sidebarl) / 4); background-color:var(--posts)}
-            .lkcon:hover {background-color:var(--accent2)}
-            .linki1, .linki2, .linki3, .linki4 {filter: invert(.3);}
-            .linki1:hover, .linki2:hover, .linki3:hover, .linki4:hover {filter: invert(0)}
-            .linki1 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/icons/github.png')}
-            .linki2 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/icons/steam.png')}
-            .linki3 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/icons/twitter.png')}
-            .linki4 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/icons/youtube.png')}
+            .titlb, .lsbut, .titlb .i, .titleh, .titlb t, .lsbut t, .titleh t {transition:all .2s cubic-bezier(0,0,0,1)}
+            .lkcon {transition:background .2s cubic-bezier(0,0,0,1), opacity .2s cubic-bezier(0,0,0,1)}
             
-            /* RIGHT HAND SIDEBAR CONTENT
+            .titlb {z-index:999; position:relative}
+            .titleh {overflow: hidden; position:relative; white-space: nowrap; z-index:9}
+            .lsbut {margin: 10px 0 0; cursor:pointer}
+            .lsbut:hover { width:calc(var(--sidebarl) + 40px)!important}
+            .titleh:hover { width:calc(var(--sidebarl) + 100px)!important; z-index:999}
+            
+            .tb1, .tb2, .tb3 {
+                opacity: 1; width: 100%; height:42px; background-size: 120% auto; background-position: left}
+            .tb1 {background-image:url('https://pbs.twimg.com/media/EYsu1-sXsAAxOk3?format=jpg&name=small')} 
+            .tb2 {background-image:url('https://pbs.twimg.com/media/EYsu1XRXsAIDnMk?format=jpg&name=small')} 
+            .tb3 {background-image:url('https://pbs.twimg.com/media/Eh_kKz7XkAUH_1K?format=png&name=small')} 
+            
+            .bt0,.bt1,.bt2,.bt3,.bt4,.bt5,.bt6 {
+                opacity: 1; width: 100%; height:42px; background-size: 120% auto; background-position: left}
+            .bt0 {background-image:url('https://pbs.twimg.com/media/Eegxc4VWAAc3mvP?format=jpg&name=small')} 
+            .bt1 {background-image:url('https://cdn.discordapp.com/attachments/630047188520665121/877666278452633630/unknown.png')} 
+            .bt2 {background-image:url('https://pbs.twimg.com/media/E6WlGEvXoAMpiYU?format=png&name=small')}
+            .bt3 {background-image:url('https://pbs.twimg.com/media/E7RorOrXMAIbKPk?format=jpg&name=small')} 
+            .bt4 {background-image:url('https://cdn.discordapp.com/attachments/630047188520665121/877668602025766962/HURT2.png')} 
+            .bt5 {background-image:url('https://pbs.twimg.com/media/Er-lFbRXMAAoXNI?format=jpg&name=small')} 
+            .bt6 {background-image:url('https://pbs.twimg.com/media/Dud5G72W0AADvuR?format=jpg&name=small')}
+            .titlb:hover .i, .lsbut:hover .i, .titleh:hover .i{opacity: 0.3}
+            
+            .lkblk {height:calc((var(--sidebarl) - (10.2px * 5)) / 6); pointer-events:none; padding: 20px 0}
+            .lkblk > * {pointer-events:auto}
+            .lkblk:hover > * {opacity:0.5; background: var(--accent1)} 
+            .lkblk:hover > *:hover {opacity:1}
+            .lkblk:hover > .c1:hover { background: #7dbbe6}
+            .lkblk:hover > .c2:hover { background: #171a21}
+            .lkblk:hover > .c3:hover { background: #1da1f2}
+            .lkblk:hover > .c4:hover { background: #ff0000}
+            .lkblk:hover > .c5:hover { background: #738adb}
+            .lkblk:hover > .c6:hover { background: #e1306c}
+            .lkblk:hover > .c7:hover { background: #ff5e5b}
+            
+            .lkcon { width:calc((var(--sidebarl) - (10px * 5) - 1px) / 6); height:calc((var(--sidebarl) - (10px * 5) - 1px) / 6);
+                background: var(--accent1); display:inline-block; margin: 0 10px 0 0}
+            .lkcon:last-of-type{margin: 0!important}
+            
+            .lkcon .i1 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/icons/github.png')} /* github */
+            .lkcon .i2 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/icons/steam.png')} /* steam */
+            .lkcon .i3 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/icons/twitter.png')} /* twitter */
+            .lkcon .i4 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/icons/youtube.png')} /* youtube */
+            .lkcon .i5 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/icons/discord.png')} /* discord */
+            .lkcon .i6 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/icons/insta.png')} /* instagram */
+            .lkcon .i7 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/icons/kofi.png')} /* kofi */
+            
+            /* Page 2
         /* ===================================== */
-        
+            
+            incont, inconte {display:inline-block; vertical-align: top}
+            incont, inconte {width: calc((var(--sidebarr) + var(--postwidth) - 21px) / 3)}
+            incont {margin: 0px 20px 0 0}
+            
+            .twitter-tweet-rendered {margin-top: 0px!important; margin-bottom: 20px!important}
+            
+            /* Page 4
+        /* ===================================== */
+            
             /* wrsp Content =============== */
             .wrsp { padding:0 0 10px 0; margin-bottom:20px; text-transform:uppercase}
             .sbitems {width:var(--sidebarr); overflow: hidden}
             
-            /* animation */
-            .wrsp:hover, .wrsp, .wrsp:hover .pcg1, .wrsp:hover .pcg2, 
-            .pcg1, .pcg2, .wrsp:hover, .wrsp, .wrsp:hover t, .wrsp t {transition:all .2s cubic-bezier(0,0,0,1)}
+            .wst, .wrsp t {transition:all .2s cubic-bezier(0,0,0,1)}
+            .stats p { background-color: var(--darkac2); color: white; letter-spacing:.15px; 
+                padding: 10px 15px 10px!important; margin-top:-10px}
             
-            /* pictures */
-            .pcg1, .pcg2  {width:100%; opacity:1} /* default opacity values of wrsp pictures */
-            .wrsp:hover .pcg1 {opacity:0.6; height:var(--sidebarr)}
-            .wrsp:hover .pcg2 {opacity:0.6; height:calc(var(--sidebarr) / 1.75)}
-            .pcg1, .pcg2 {background-position: center; background-size: cover}
-            .pcg1 {height:calc(var(--sidebarr) / 2 + 50px); background-image: url('https://steamuserimages-a.akamaihd.net/ugc/1796351090791801798/11D0145B4DC15D59D1DC66536E9A5F933D1B6284/')}
-            .pcg2 {height:calc(var(--sidebarr) / 4 + 50px); background-image: url('https://steamuserimages-a.akamaihd.net/ugc/1716408815746329822/65B972580FAD7AA49319CC24481809D766597924/')}
-            
-            /* wrsp Text styles =============== */
-            .wrsp p {font-size:0.6em!important; color: var(--text);}
-            .wrsp .stats p {padding: 5px 15px 5px!important; color: white;}
+            .wrsp p {font-size:0.6em!important; color: var(--text)}
+            .wrsp .stats p {padding: 5px 15px 5px!important; color: white}
             .wrsp:hover .stats p {background-color: var(--text)}
             .wrsp:hover .stats h {color:var(--accent4)}
             
@@ -274,7 +243,19 @@
             .wrsp t {font-size: 1em}
             .wrsp:hover t {color:var(--accent3)}
             
-            /* search bar ========================================================================================================= */
+            /* Thumbnail image containers */
+            .wrsp .img  {
+                width:100%; height:calc(var(--sidebarr) / 3 + 50px);
+                opacity:1; background-position: center; background-size: cover} 
+            .wrsp:hover .wso{opacity:0.6; height:var(--sidebarr)}
+            
+            .wrsp .pcg1 {background-image: url('https://steamuserimages-a.akamaihd.net/ugc/1796351090791801798/11D0145B4DC15D59D1DC66536E9A5F933D1B6284/')}
+            .wrsp .pcg2 {background-image: url('https://steamuserimages-a.akamaihd.net/ugc/1716408815746329822/65B972580FAD7AA49319CC24481809D766597924/')}
+            .wrsp .pcg3 {background-image: url('https://steamuserimages-a.akamaihd.net/ugc/1770454897219071500/669300B3BFC269C61BDB037A9EA5542ED14789FF/')}
+            .wrsp .pcg4 {background-image: url('https://steamuserimages-a.akamaihd.net/ugc/1770454897219114051/3B87FC9808B4099074A7FBF80C1835489D21AD83/')}
+            
+            /* RIGHT HAND SIDEBAR CONTENT
+        /* ===================================== */
             
             input[type="search"] {box-sizing:content-box}
             input[type="search"]::-webkit-search-cancel-button, ::-webkit-search-decoration {-webkit-appearance:none}
@@ -284,20 +265,21 @@
             input:-ms-input-placeholder {color:var(--text)}
             
             /* searchbar grad + mask */
-            .search {position:fixed; background:var(--posts)}
+            .search {background:var(--posts)}
             .search .searchtop { 
                 height:20px; width:var(--sidebarr);
                 margin-top:-20px; background:var(--background)}
             .search .searchbar { 
-                width:var(--sidebarr); height:3px; z-index:999!important;
+                width:var(--sidebarr); height:2px; z-index:999!important;
                 background-image: var(--bannerurlblank);}
             
             /* search bar form */
             .search .search-form {
-                width:calc(var(--sidebarr) - 30px); margin:0; 
-                padding:12px 15px; border:none; display:block}
-            .search .search-form input {text-transform:lowercase;font:10px/1.5em lato, sans-serif;letter-spacing:.15px;
-                                width:100%;padding:0;position:relative;background:var(--posts);display:block;outline:none;border:0}
+                width:calc(var(--sidebarr) - 30px); padding:12.5px 15px;
+                margin:0; outline:none; border:none; display:block}
+            .search .search-form input {
+                text-transform:lowercase; font-size:11px; letter-spacing:.15px;
+                width:100%; background:var(--posts); display:block; border:0}
             .search .search-form input[type=text] {color:var(--text)} 
              
         /* ==================================================================================================== */
@@ -412,10 +394,16 @@
                 border:none; border-top:1px solid var(--borders); 
                 margin:1.5em 25%; box-shadow:0;}
             
+            /*questions*/
+            section .answerer {border:0!important; color:var(--text)}
+            section .question {padding:20px; background:var(--accent1)} 
+            section .asker {text-transform:lowercase;font-weight:800;display:block;margin-bottom:5px}
+            
             /*image container*/
             section .imgcon {position:relative; overflow:hidden; margin: -17px 0 15px} 
             section .imgcon img {width:100%; display:block}
             
+            body div.npf_row {margin:0px!important}
             section .npf_row, .npf_row + p {margin: 10px 0!important}
             section .npf_col:first-child {padding-right: 1px!important} /* this fixes the gap between images to be 1 pixel wide, apposed to 2. */
             section .npf_col:last-child {padding-left: 0px!important} /* this fixes the gap between images to be 1 pixel wide, apposed to 2. */
@@ -424,11 +412,14 @@
             section .photo-slideshow a {border:0;}
             section .photo-slideshow .processed {visibility:visible;margin:0;display:block}
             section .photo-slideshow .processed .pxu-photo img {width:100%!important;height:auto!important;display:block}
+            
             section .photo-slideshow .row {clear:both;width:100%}
             section .photo-slideshow .row:last-of-type {margin-bottom:0!important} 
+            
             section .photo-slideshow .pxu-photo {display:block;float:left;margin-bottom:0;width:100%;overflow:hidden}
             section .photo-slideshow .pxu-photo img {display:block}
             section .photo-slideshow .pxu-photo:first-child img {margin-left: 0}
+            
             section .photo-slideshow .count-1 {width:100%} .photo-slideshow .count-2 {width:50%}
             section .photo-slideshow .count-3 {width:33.23%} .photo-slideshow .count-4 {width:25%}
             section .photo-slideshow .count-5 {width:20%} .photo-slideshow .info {display:none}
@@ -437,14 +428,6 @@
             section .source {margin-top:15px}
             section .chat {margin:0;padding:0;list-style:none;text-align:left}
             
-            section .quote {position:relative; font-size:0.6em; font-style:italic; margin-left:20px; padding-left:15px; border-left:1px dotted var(--borders); color:var(--titles); line-height:1.5em}
-            section .quote:before {position:absolute; left:-20px; top:0; content:'“'; font-size:0.6em; font-family:sans-serif; color:var(--titles); font-style:normal!important;}
-            
-            /*questions*/
-            section .answerer {border:0!important; color:var(--text)}
-            section .question {padding:20px; background:var(--accent1)} 
-            section .asker {text-transform:lowercase;font-weight:800;display:block;margin-bottom:5px}
-            
             /* Video */
             section .ex {margin:-20px 0 -10px; padding:20px; background:var(--accent1)} 
             section .ex span { display:block; margin-top:10px} /* Links */
@@ -452,68 +435,75 @@
             section .video * { display:block; min-width:100%} 
             section .tmblr-embed tmblr-full {margin:12px 0}  /* fixes the iframe from being offpost */
             section figure {margin:12px 0}
-            section .tmblr-embed tmblr-full, .embed_iframe {width:var(--postwidth)!important; height:calc(var(--postwidth) / 16 * 9)!important}
             
-            section .iframe-controls--desktop { z-index:999; top:-13px!important; right:-90px!important; opacity:0; padding-right:75px;
-            /*filters*/ filter:invert(1) contrast(150%); -webkit-filter:invert(1) contrast(150%); -o-filter:invert(1) contrast(150%); -moz-filter:invert(1) contrast(150%); -ms-filter:invert(1) contrast(150%);
-                        transition:all .15s linear -webkit-transition:all .15s linear; -moz-transition:all .15s linear; -o-transition:all .15s linear
-            /*scaling*/ transform:scale(0.6); -webkit-transform:scale(0.6); -o-transform:scale(0.65); -moz-transform:scale(0.65); -ms-transform:scale(0.65)}
-            section .iframe-controls--desktop:hover {opacity:.6}
-
-            /* Icons for EXIF Data and Zoom */
-            .photo-data {position:relative; float:left}
-            .tumblr-box {display:block;position:absolute;top:0;right:0;bottom:0;left:0;z-index:1}
-            .tumblr-full {margin: 0 1px}
+            /* This stuff is important but i want it out the way ========================================================================================================= */
+            
+            .tmblr-embed tmblr-full, .embed_iframe {width:var(--postwidth)!important; height:calc(var(--postwidth) / 16 * 9)!important}
+            .iframe-controls--desktop {z-index:999; top:-13px!important; right:-90px!important; opacity:0; padding-right:75px; filter:invert(1) contrast(150%); transition:all .15s linear; transform:scale(0.6)}
+            .iframe-controls--desktop:hover {opacity:.6}
+            /* All this adjusts the default settings of the tumblr image zoom. */
+            .tmblr-lightbox { background:rgba(255,255,255, .60)!important} 
+            .tmblr-lightbox img { opacity:1}
+            .lightbox-caption {color:var(--titles)!important; text-shadow:none!important;font-family:inherit!important; font-size:0.6em!important}
+            .lightbox-image {border-radius:0px!important; box-shadow:none!important;background:var(--posts)!important; opacity:1!important}
+            .vignette {opacity:0!Important} /*removes the black shit when clicking on tumblr posts*/
             
         </style>
     </head>
      
-    <body>
-
-        <bar>
-            <a class="nvlogo"><img src="https://cdn.discordapp.com/attachments/630047188520665121/871904393988014150/back29.png"/></a>
-            <div class="nvback"></div>
-            
-            <a href="/ask">{text:ask title}</a>
-            <a onclick="scrollToTop()">To the Top</a>
-            <a href="https://vher98.tumblr.com/">Vher98</a>
-        </bar>
-        
-        <script>function scrollToTop() {window.scrollTo({top: 0, behavior: 'smooth'});}</script>
+    <body id="body">
+        <div class="cont"> <!-- container for page data -->
         
         <div class="hdr" id="hdr"></div>
-        <div class="bnlogo" id="bnlogo" onmousedown="fpg = 0; pageturn()" onmouseover="fadeto()" onmouseout="fadeno()">
-        <div class="logo" id="logo"></div></div>
-            
-        <script>function fadeto(){$('#hdr').css({opacity:0.6})}
-                function fadeno(){$('#hdr').css({opacity:1})}</script>
-                
-        <div class="cont"> <!-- container for page data -->
+        <div class="bnlogo" id="bnlogo" onmousedown="goingto = 1; pageturn()" onmouseover="fadeto()" onmouseout="fadeno()">
+            <div class="logo" id="logo"></div></div>
 
-            <asidel id="asidel">
-                
-                <div class="wedge">
-                    <img src="https://cdn.discordapp.com/attachments/629600253997350912/876469248342515743/ezgif-5-1eec46494d34.gif"/></div>
-
-                <div class="block"> <!--theme title and description block-->
-                    <t>Thea Vanherst</t>
-                    <p>A 23 year old designer and programmer with a passion for designing, creating and manipulating ideas.</p>
-                    <p>All of my designs and creations are open source, feel free to use them as you wish.</p>
-                </div>
-                
-                <div class="lsbut" onmousedown="fpg = 0; pageturn()"><t>Feed</t><div class="sidei1"></div></div>
-                <div class="lsbut" onmousedown="fpg = 1; pageturn()"><t>Artworks</t><div class="sidei2"></div></div>
-                <div class="lsbut" onmousedown="fpg = 2; pageturn()"><t>Workshop</t><div class="sidei3"></div></div>
-                <div class="lsbut" onmousedown="fpg = 3; pageturn()"><t>Branding</t><div class="sidei4"></div></div>
-                <div class="lsbut" onmousedown="fpg = 4; pageturn()"><t>Programming</t><div class="sidei5"></div></div>
-                
-                <div class="block"><p>Vanh.art, established on Aug 1st, 2021</p></div> <!-- Last updated 21:42, Aug 14th 2021 --> <!-- I'm currently editing the page, so please stay tuned! -->
-                <div class="stats" style="bottom: 20px; position:relative"><p>The site is currently in development. Updated Aug 16th 2021, 03:31 GMT</p></div>
-                
+            <asidel id="asidel"> <!-- sidebar navigation -->
+                <div class="wedge"><img src="https://cdn.discordapp.com/attachments/629600253997350912/876469248342515743/ezgif-5-1eec46494d34.gif"/></div>
+                <div class="lsbut" onmousedown="goingto = 0; pageturn()"><t>About</t><div class="i bt0"></div></div>
+                <div class="lsbut" onmousedown="goingto = 1; pageturn()"><t>Feed</t><div class="i bt1"></div></div>
+                <div class="lsbut" onmousedown="goingto = 2; pageturn()"><t>Artwork</t><div class="i bt2"></div></div>
+                <div class="lsbut" onmousedown="goingto = 3; pageturn()"><t>Design</t><div class="i bt3"></div></div>
+                <div class="lsbut" onmousedown="goingto = 4; pageturn()"><t>Animation</t><div class="i bt4"></div></div>
+                <div class="lsbut" onmousedown="goingto = 5; pageturn()"><t>Workshop</t><div class="i bt5"></div></div>
+                <div class="lsbut" onmousedown="goingto = 6; pageturn()"><t>Javascript</t><div class="i bt6"></div></div>
+                <div class="lkblk">
+                    <a class="lkcon c3" target="_blank" href="twitter.com/TheaVanherst"><div class="img i3"></div></a>
+                    <a class="lkcon c5" target="_blank" href="discord.com/invite/zDJRaZvGmS"><div class="img i5"></div></a>
+                    <a class="lkcon c2" target="_blank" href="steamcommunity.com/id/TheaVanherst"><div class="img i2"></div></a>
+                    <a class="lkcon c4" target="_blank" href="youtube.com/channel/UCqbZe2XMkd98nXu_dUlObKA"><div class="img i4"></div></a>
+                    <a class="lkcon c7" target="_blank" href="ko-fi.com/theavanherst"><div class="img i7"></div></a>
+                    <a class="lkcon c1" target="_blank" href="github.com/TheaVanherst"><div class="img i1"></div></a></div>
+                <div class="block"><p>Vanh.art, established on Aug 1st, 2021</p></div> 
+                <!-- Updated Aug 16th 2021, 03:31 GMT --> <!-- I'm currently editing the page, so please stay tuned! -->
+                <div class="stats" style="margin-top: -20px"><p>The site is currently in development. Updated Aug 17th 2021, 22:06 GMT</p></div>
             </asidel>
-    
+            
+            <div class="inco" id="page0">
+                <sidelm>
+                    <div class="titlb"><t>About</t><div class="i bt0"></div></div>
+                    
+                    <div class="block">
+                        <p>[pg0 side l medium]</p>
+                    </div>
+                </sidelm>
+                
+                <siderm>
+                    <div class="block">
+                        <p>[pg0 side r medium]</p>
+                    </div>
+                    
+                    <div class="block"><p>All of my designs and creations are open source, feel free to use them as you wish.</p></div>
+                    
+                </siderm>
+            </div>
+            
             <div class="inco" id="page1">
-                <section id="posts">
+            
+                <sidell id="posts">
+                
+                    <div class="titlb"><t>Feed</t><div class="i bt1"></div></div>
+                
                     {block:Posts}
                         <article id="{PostID}">
                             <div class="postbar"></div>
@@ -721,30 +711,15 @@
                         {/block:PostNotes}
                     {/block:Posts}
                  
-                </section>
+                </sidell>
  
-                <asider id="asider">
-                    <div class="sbitems" id="wrsp">
-                        <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2449497541" target="_blank">
-                            <div class="wedge wrsp"> <!-- page 1 -->
-                                <div class="pcg1"></div>
-                                <div class="stats"><p><h>78,705</h> Unique Visitors • <h>25,671 </h>Concurrent Subscribers</p></div>
-                                <t>Moonlord replacement for the Third Impact / Lilith</t>
-                                <p>A Rei replacement for the Moonlord, Inspired by the Third Impact from The End Of Neon Genesis Evangelion.</p></div></a>
-                           
-                        <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2440395917" target="_blank">
-                            <div class="wedge wrsp"> <!-- page 1 -->
-                                <div class="pcg2"></div>
-                                <div class="stats"><p><h>52,342</h> Unique Visitors • <h>9,666 </h>Concurrent subscribers</p></div>
-                                <t>EVA Unit 01 holding the 1941 Tirpitz Battleship</t>
-                                <p>A 1:1 scale, 330 block tall recreation of Eva Unit: 01 from Neon Genesis Evangelion, holding a German battleship. Reported on by PC GAMER; 18/1/21.</p></div></a>
-                    </div>
-    
+                <siders id="asider">
+
                     <!--search block-->
                     <div class="search">
                         <div class="searchtop"></div>
                         <form action="/search" class="search-form" method="get" autocomplete="off">
-                            <input id="searchField" name="q" placeholder="Enter keyword..." type="text" value="{SearchQuery}"/></form>   
+                            <input id="searchField" name="q" placeholder="Search by tags" type="text" value="{SearchQuery}"/></form>   
                         <div class="searchbar"></div></div>
     
                     {block:indexpage}
@@ -753,63 +728,148 @@
                             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"  loading="eager" data-chrome="nohdr nofooter noborders"></script></div>
                     {/block:indexpage}
                     
-                </asider>
+                </siders>
+            </div>
+            
+            <div class="inco" id="page2">
+                <fullwc>
+                    <incont>
+                        <div class="titleh"><t>landsknecht Marie</t><div class="i tb1"></div></div>
+                        <div class="wedge">
+                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/844557087530680330/unknown.png"/>
+                            <div class="divd">
+                                <p><h>19/05/2021</h> - Added colour with experimental shading on Marie's lower body and lower torso.</p></div></div>
+                        <div class="wedge">
+                            <img src="https://pbs.twimg.com/media/E1f8HA5XsAE_YV5?format=png&name=orig"/>
+                            <div class="divd">
+                                <p><h>15/05/2021</h> - Finalised lines</p></div></div>   
+                        <div class="wedge">
+                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/842644374792831016/unknown.png"/>
+                            <div class="divd">
+                                <p><h>14/05/2021</h></p></div></div>
+                    </incont>
+                    <incont>
+                        <div class="titleh"><t>Rei / Lilith As Moonlord</t><div class="i tb2"></div></div>
+                        <div class="wedge">
+                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/841079662897659945/unknown.png"/>
+                            <div class="divd">
+                                <p><h>09/05/2021</h> - A newly designed chestpiece for the Moonlord, replacing the Moonlord's heart with a crystal. Held in place with tenticals, inspired by the original moonlord sprite.</p></div></div>
+                        <div class="wedge">
+                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/840834763501207592/unknown.png"/>
+                            <div class="divd">
+                                <p><h>09/05/2021</h> - A completely redrawn sprite update for the moonlord</p></div></div>   
+                        <div class="wedge">
+                            <img src="https://media.discordapp.net/attachments/630047188520665121/840018664182644767/unknown.png"/>
+                            <img src="https://cdn.discordapp.com/attachments/825849257390374923/840056723900727316/unknown.png"/>
+                            <div class="divd">
+                                <p><h>07/05/2021</h> - [After / Before]<br>Updated sprites containing the new rendition of the Mass Produced Evas, and current.</p></div></div>    
+                    </incont>
+                    <inconte>
+                        <div class="titleh tr" style="float: right"><t>Arms Dealer Coffee</t><div class="i tb3"></div></div>
+                        <div class="wedge" style="margin-top: 62px">
+                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/838771577868517436/download18.gif"/>
+                            <div class="divd">
+                                <p><h>03/05/2021</h> - Coffee's walk animation cycle</p>
+                                <p>"I'm not entirely happy with this due to being so far from the original terraria template, but with some practice I'll revisit this at a later date."</p></div></div>
+                        <div class="wedge">
+                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/837239604066254888/unknown.png"/>
+                            <div class="divd">
+                                <p><h>29/04/2021</h></p></div></div> 
+                    </incont>
+                </fullwc>
             </div>
 
-            <div class="inco" id="page2" style="margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page2))">
-                <sidel>
-                    <div class="block">
-                        <p>[PAGE 2a]</p>
-                    </div>
-                </sidel>
+            <div class="inco" id="page3">
+                <sidelm>
+                    <div class="titlb"><t>Media & Design</t><div class="i bt3"></div></div>
                 
-                <sider>
                     <div class="block">
-                        <p>[PAGE 2b]</p>
+                        <p>[pg3 side l medium]</p>
                     </div>
-                </sider>
+                </sidelm>
+                
+                <siderm>
+                    <div class="block">
+                        <p>[pg3 side r medium]</p>
+                    </div>
+                </siderm>
             </div>
             
-            <div class="inco" id="page3" style="margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page3))">
-                <sidel>
-                    <div class="block">
-                        <p>[PAGE 3a]</p>
-                    </div>
-                </sidel>
+            <div class="inco" id="page4">
                 
-                <sider>
+                <sidelm>
+                    <div class="titlb"><t>Animation & Content</t><div class="i bt4"></div></div>
+                
                     <div class="block">
-                        <p>[PAGE 3b]</p>
+                        <p>[pg4 side l medium]</p>
                     </div>
-                </sider>
+                </sidelm>
+                
+                <siderm>
+                    <div class="block">
+                        <p>[pg4 side r medium]</p>
+                    </div>
+                </siderm>
             </div>
             
-            <div class="inco" id="page4" style="margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page4))">
-                <sidel>
+            <div class="inco" id="page5">
+                <sidell>
+                    <div class="titlb"><t>Workshop</t><div class="i bt5"></div></div>
+                    
                     <div class="block">
-                        <p>[PAGE 4a]</p>
+                        <p>[pg5 side r large]</p>
                     </div>
-                </sidel>
+                </sidell>
                 
-                <sider>
-                    <div class="block">
-                        <p>[PAGE 4b]</p>
+                <siders>
+                    <div class="sbitems" id="wrsp">
+                    
+                        <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2449497541" target="_blank">
+                            <div class="wedge wrsp wst"> <!-- page 1 -->
+                                <div class="wso wst img pcg1"></div>
+                                <div class="stats"><p><h>78,705</h> Unique Visitors • <h>25,671 </h>Concurrent Subscribers</p></div>
+                                <t>Moonlord replacement for the Third Impact / Lilith</t>
+                                <p>A Rei replacement for the Moonlord, Inspired by the Third Impact from The End Of Neon Genesis Evangelion.</p></div></a>
+                                
+                        <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2440395917" target="_blank">
+                            <div class="wedge wrsp wst"> <!-- page 1 -->
+                                <div class="wso wst img pcg2"></div>
+                                <div class="stats"><p><h>52,342</h> Unique Visitors • <h>9,666 </h>Concurrent subscribers</p></div>
+                                <t>EVA Unit 01 holding the 1941 Tirpitz Battleship</t>
+                                <p>A 1:1 scale, 330 block tall recreation of Eva Unit: 01 from Neon Genesis Evangelion, holding a German battleship. Reported on by PC GAMER; 18/1/21.</p></div></a>
+                                
+                        <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2472031797" target="_blank">
+                            <div class="wedge wrsp wst"> <!-- page 1 -->
+                                <div class="wso wst img pcg3"></div>
+                                <div class="stats"><p><h>24,242</h> Unique Visitors • <h>24,322 </h>Concurrent subscribers</p></div>
+                                <t>Coffee the Arms Dealer</t>
+                                <p>A 1:1 scale, 330 block tall recreation of Eva Unit: 01 from Neon Genesis Evangelion, holding a German battleship. Reported on by PC GAMER; 18/1/21.</p></div></a>
+                                
+                        <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2466090329" target="_blank">
+                            <div class="wedge wrsp wst"> <!-- page 1 -->
+                                <div class="wso wst img pcg4"></div>
+                                <div class="stats"><p><h>17,593</h> Unique Visitors • <h>17,387 </h>Concurrent subscribers</p></div>
+                                <t>Petra the Guide Imp++</t>
+                                <p>A 1:1 scale, 330 block tall recreation of Eva Unit: 01 from Neon Genesis Evangelion, holding a German battleship. Reported on by PC GAMER; 18/1/21.</p></div></a>
+                         
                     </div>
-                </sider>
+                </siders>
             </div>
             
-            <div class="inco" id="page5" style="margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page5))">
-                <sidel>
-                    <div class="block">
-                        <p>[PAGE 5a]</p>
-                    </div>
-                </sidel>
+            <div class="inco" id="page6">
+                <sidelm>
+                    <div class="titlb"><t>Javascript</t><div class="i bt6"></div></div>
                 
-                <sider>
                     <div class="block">
-                        <p>[PAGE 5b]</p>
+                        <p>[pg6 side l medium]</p>
                     </div>
-                </sider>
+                </sidelm>
+                
+                <siderm>
+                    <div class="block">
+                        <p>[pg6 side r medium]</p>
+                    </div>
+                </siderm>
             </div>
 
             {block:Pagination} 
@@ -818,26 +878,42 @@
                     {block:NextPage}<a href="{NextPage}">next page</a>{/block:NextPage}</div>
             {/block:Pagination}
         </div>
+    </body>
 
         <script>
-            var fpg = 0, pgsd = [0,0,0,0,0] //default page number
-            //function pgscrdata() {pgsd[fpg] = $(document).scrollTop()}
+            function fadeto(){$('#hdr').css({opacity:0.6})} 
+            function fadeno(){$('#hdr').css({opacity:1})}
+        
+            var concurrent = 1, goingto = 1, pgsd = [0,0,0,0,0,0,0]; //default page number
             
             function pageturn() {
-                //$('html, body').animate({scrollTop: pgsd[fpg]}, 500)
-                for(var curpg = 1; curpg < 5 + 1; curpg++){
-                    docelem.style.setProperty('--page' + curpg, curpg - 1 - fpg) //sets the
-                    var page = "#page" + curpg; //stores '#page' as a var to loop
-                    var temp = getComputedStyle(document.documentElement).getPropertyValue('--page' + curpg)
-                    if(temp < 0){ $(page).css('margin-left','calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page' + curpg + ') - (var(--sidebarl) + 20px))')
-                    } else { $(page).css('margin-left','calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page' + curpg + '))')}
-                    if(temp != 0){$(page).css('opacity','0.5')} else {$(page).css('opacity','1')}}}
-
+                if(concurrent != goingto){
+                    
+                    //$('#body').css({height: ($('#page' + goingto).height() + $("#hdr").height()) + 40 + "px"});
+   
+                    pgsd[concurrent] = $(document).scrollTop()
+                    concurrent = goingto;
+                    $('html, body').animate({scrollTop: pgsd[concurrent]}, 0)
+                    
+                    for(var curpg = 0; curpg < 6 + 1; curpg++){
+                        docelem.style.setProperty('--page' + curpg, curpg - concurrent)
+                        var processedpg = getComputedStyle(document.documentElement).getPropertyValue('--page' + curpg)
+                        
+                        var page = "#page" + curpg;
+                        if(processedpg < 0){$(page).css('margin-left','calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page' + curpg + ') - (var(--sidebarl) + 20px))')
+                        } else {$(page).css('margin-left','calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page' + curpg + '))')}
+                        
+                        if(processedpg != 0){ $(page).css('opacity','0.25'); $(page).css('overflow-y','hidden')
+                        } else { $(page).css('opacity','1'); $(page).css('overflow-y','visible') }
+                    }
+                } else {$('html, body').animate({scrollTop: pgsd[concurrent]}, 300)}
+            }
+            
             var wrsp, headr;
             var righb = $("#asider").width(), leftb = $("#asidel").width(), middb = $("#posts").width(),
                 page3 = $('body').width() - ($('body').width() - ($("#asidel").width() + $("#asider").width() + $("#posts").width())), 
                 page2 = $('body').width() - ($('body').width() - ($("#asider").width() + $("#posts").width())),
-                probh = (($("#asidel").width() + $("#asider").width() + $("#posts").width() + 40) / $("#hdr").width()) * $("#hdr").height();
+                probh = (($("#asidel").width() + $("#asider").width() + $("#posts").width() + 50) / $("#hdr").width()) * $("#hdr").height();
                 
             var resize = function() { // Page rescaling
                 wrsp = $("#wrsp").height(); headr = $("#hdr").height();
@@ -880,28 +956,21 @@
         
             function scroll(){
                 //banner scroll check
-                if(probh - 20 > $(document).scrollTop()){ 
-                    $('body').removeClass('stick')
+                if(probh > $(document).scrollTop()){ 
                     $('#asidel').css({position: 'absolute', top: ""})
+                    $('.search').css({position: 'absolute', top: ""})
                 } else {
-                    $('body').addClass('stick')
-                    $('#asidel').css({position: 'fixed', top: "65px"})}
-                    
-                //search bar positioning adjustments
-                if(probh + wrsp - 40 > $(document).scrollTop()){ $('.search').css({position: 'absolute', top: ""})
-                } else { $('.search').css({position: 'fixed', top: "65px"})}}
+                    $('#asidel').css({position: 'fixed', top: "20px"})
+                    $('.search').css({position: 'fixed', top: "20px"})}}
 
             $(document).scroll(function(){
                     //banner scroll check
-                    if(probh - 20 > $(document).scrollTop()){ 
-                        $('body').removeClass('stick')
-                        $('asidel').css({position: 'absolute', top: ""})
-                    } else {
-                        $('body').addClass('stick')
-                        $('asidel').css({position: 'fixed', top: "65px"})}
-                    //search bar positioning adjustments
-                    if(headr + wrsp - 35 > $(document).scrollTop()){ $('.search').css({position: 'absolute', top: ""})
-                    } else { $('.search').css({position: 'fixed', top: "65px"})}})
+                    if(probh > $(document).scrollTop()){ 
+                    $('#asidel').css({position: 'absolute', top: ""})
+                    $('.search').css({position: 'absolute', top: ""})
+                } else {
+                    $('#asidel').css({position: 'fixed', top: "20px"})
+                    $('.search').css({position: 'fixed', top: "20px"})}})
 
             $(document).ready(function(){
                 scroll(); resizeVideos(); notes();
