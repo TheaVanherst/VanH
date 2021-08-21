@@ -3,8 +3,6 @@
         <title>VanH</title>
          
         <link rel="shortcut icon" href="{favicon}">
-        <meta name="if:Infinite Scroll" content="1"/> <meta name="if:Manual Load" content="0"/>
-        
         <!--================================================================================================ 
              PAGE SCRIPTS 
         =================================================================================================--> 
@@ -15,7 +13,6 @@
         <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script type="text/javascript" src="//static.tumblr.com/i5s2zks/9Acok8oo2/bct-timeago.min.js"></script>
         <script src="//static.tumblr.com/qudkd6d/Az6nkemqr/pxuphotoset.min.js"></script>
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
         <script src="//static.tumblr.com/wgijwsy/u2vm2hxv6/jquery.infinitescroll.min.js"></script>
         
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,10 +42,10 @@
                 /*sidebar settings*/
                 --sidebarl:250px; --sidebarr:350px; --postwidth:500px; /*default sidebar widths*/
                 /*colours*/
-                --accent1:#7285fe; --accent2: #d058fd; --accent3: #ff9936; --accent4: #ffba00;
+                --accent1:#6857ff; --accent2: #d058fd; --accent3: #ff9936; --accent4: #ff9bda;
                 --links: #ff8ef4; --titles: #7285fe; --text: #787878; --textalt: #505050;
                 --darkac1: #787878; --darkac2: #505050; --darkac3: #2b2b2b;
-                --background: #f4f4f4; --posts: #ffffff; --borders: #d8d5d5; /*--background: #1d1d1d; --posts: #141414; --borders: #090909*/
+                --background: #f4f4f4; --posts: #ffffff; --borders: #d8d5d5; --artposts: #8781bd; /*--background: #1d1d1d; --posts: #141414; --borders: #090909*/
                 --scrollbar: #aaaaaa; 
                 /* page margin multiplier settings */
                 --page0: -1; --page1: 0; --page2: 1; --page3: 2; --page4: 3; --page5: 4; --page6: 5;
@@ -58,11 +55,11 @@
                 word-wrap:break-word; margin:0; overflow-x: hidden;}
 
             a:hover {color:var(--links)}
-            a {color:var(--accent1); text-decoration:none; border-color:var(--accent3);}
+            a {color:var(--accent1); text-decoration:none; border-color:var(--accent3)}
             a, svg {transition:all .15s linear}
             t { color:var(--accent2); font-family:var(--boldstyle);
                 text-transform:uppercase; padding:0 15px; font-size:1.1em}
-            p {font-size:0.7em; padding:0 15px}
+            p {font-size:0.72em; padding:0 15px}
             p:first-of-type {margin-top:0!important} 
             p:last-of-type {margin-bottom:0!important}
             p:first-of-type t {font-size: 1.4em; color:var(--accent2); line-height:0em; margin-top:10px;}
@@ -73,8 +70,8 @@
             li {list-style:none} 
             li:last-of-type {margin: 0px 0px}
             
-            img {width:100%; height:auto; display:block; 
-                opacity:1; border:0; margin:0 0 1px}
+            img {width:100%; display:block; 
+                opacity:1; border:0; background-position: center}
                 
         /* ==================================================================================================== */
             /* postbar FORMATTING */
@@ -107,14 +104,17 @@
         
             .cont {width:calc(var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px); margin:0px auto}
             .inco {position:absolute; width: calc(var(--sidebarr) + var(--postwidth) + var(--sidebarl) + 41px); transition:margin-left .35s cubic-bezier(.04,.01,0,.99)} 
+            .block, .wedge {background:var(--posts);margin-bottom:20px}
+            .block {padding:12px 0;width:100%}
             
             /* alt pages data =============== */
-            asidel, sidels, siders, sidelm, siderm, sidell, siderl, fullwc {display:inline-block; vertical-align: top}
-            fullwc, sidels, sidelm, sidell {margin:0 20px 0 calc(var(--sidebarl) + 20px)}
+            asidel, sidels, siders, sidelm, siderm, sidell, siderl, fullwc, section {display:inline-block; vertical-align: top}
+            fullwc, sidels, sidelm, sidell, section {margin:0 20px 0 calc(var(--sidebarl) + 20px)}
             
-            asidel {width:var(--sidebarl); z-index:9999} 
+            asidel {z-index:9999}
+            asidel, section {width:var(--sidebarl)} 
             fullwc {width: calc((var(--sidebarr) + var(--postwidth)) + 20px)}
-            sidell, siderl {width: var(--postwidth)}
+            sidell, siderl, section {width: var(--postwidth)}
             sidelm, siderm {width: calc((var(--sidebarr) + var(--postwidth)) / 2)}
             sidels, siders {width: var(--sidebarr)}
             
@@ -129,57 +129,44 @@
             #page5 {margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page5))}
             #page6 {margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page6))}
             
-            #infscr-loading {display:none!important}
-            #pagination {text-align:left;display:none}
-            
             .tmblr-iframe--gdpr-banner {display:none !important}
             /*scrollbar*/
             ::-webkit-scrollbar {width:12px;height:12px;background-color:transparent}
             ::-webkit-scrollbar-thumb{background-clip:padding-box; border-radius:6px; 
                 background-color:var(--scrollbar); border:4px solid transparent}
-            
-            /* containers =============== */
-            .block, .wedge { 
-                background:var(--posts); width:100%;
-                border-bottom:1px solid var(--borders); margin-bottom:20px;}
-            .block {padding:12px 0; width:100%}
-            
-            .divider {margin-bottom:15px; border-top:1px solid var(--borders)}
+
+            .divider {margin-bottom:15px;border-top:1px solid var(--borders)}
             .divd {margin:15px 0}
+            .img {width:100%;height:100%;background-position: center;background-size: cover}
             
-            .img {width:100%; height:100%;
-                background-position: center; background-size: cover}
-                
+            /* BORDER ROUNDING CORNERS
+        /* ===================================== */
+            
+            .rc,.tc{border-top-right-radius:7px}    .lc,.tc{border-top-left-radius:7px}
+            .rc,.bc{border-bottom-right-radius:7px} .lc,.bc{border-bottom-left-radius:7px}
+            .divd p, .lsbut:last-of-type, .lsbut:last-of-type i{border-bottom-left-radius:7px;border-bottom-right-radius:7px}
+            .tc, .whb, .search, .lsbut:first-of-type, .lsbut:first-of-type i{border-top-left-radius:7px;border-top-right-radius:7px;border-bottom-left-radius:0px!important;border-bottom-right-radius:0px!important}
+            .lsbut:hover .i, .lsbut:hover{border-bottom-right-radius:0!important;border-top-right-radius:0!important}
+            .block, .titlb .i, .titlb, .vimage, .lkcon, .hdr, article, incont .imco, asidel .wedge, asidel .wedge img, .vimage img, .repost svg{border-radius:7px}
+            
             /* LEFT HAND SIDEBAR CONTENT
         /* ===================================== */
             
-            .lsbut, .titlb, .titleh { 
-                background-color: white; border-right: 4px solid var(--accent2); width:calc(100% - 4px)!important}
-            .lsbut:hover, .titlb:hover, .titleh:hover { border-right: 4px solid var(--accent3)}
-            .titlb, .titleh, .lsbut:last-of-type {margin: 0 0 20px!important}
+            .lsbut, .titlb {background-color:white}
+            .titlb, .lsbut:last-of-type {margin: 0 0 20px!important}
             
-            .titlb t, .lsbut t, .titleh t { 
-                z-index: 99; position:absolute; padding:8px 15px; 
-                color:white!important; font-size:1.4em!important}
-            .titlb:hover t, .lsbut:hover t, .titleh:hover t {color: var(--accent2)!important}
+            .titlb t, .lsbut t, .titler t { 
+                z-index: 99;position:absolute;padding:8px 15px; 
+                color:white!important;font-size:1.4em!important}
+            .titlb:hover t, .lsbut:hover t, .titler:hover t {color: var(--accent2)!important}
             
-            .titlb, .lsbut, .titlb .i, .titleh, .titlb t, .lsbut t, .titleh t {transition:all .2s cubic-bezier(0,0,0,1)}
-            .lkcon {transition:background .2s cubic-bezier(0,0,0,1), opacity .2s cubic-bezier(0,0,0,1)}
+            .titlb, .lsbut, .titlb .i, .titler, .titlb t, .lsbut t{transition:all .2s cubic-bezier(0,0,0,1)}
+            .lkcon {transition:background .2s cubic-bezier(0,0,0,1),opacity .2s cubic-bezier(0,0,0,1)}
             
-            .titlb {z-index:999; position:relative}
-            .titleh {overflow: hidden; position:relative; white-space: nowrap; z-index:9}
-            .lsbut {margin: 10px 0 0; cursor:pointer}
-            .lsbut:hover { width:calc(var(--sidebarl) + 40px)!important}
-            .titleh:hover { width:calc(var(--sidebarl) + 100px)!important; z-index:999}
+            .titlb, .titleh:hover {z-index:999} .titlb, .lsbut {cursor:pointer}
+            .lsbut:hover{width:calc(var(--sidebarl) + 40px)!important; margin:10px 0 10px 10px}
             
-            .tb1, .tb2, .tb3 {
-                opacity: 1; width: 100%; height:42px; background-size: 120% auto; background-position: left}
-            .tb1 {background-image:url('https://pbs.twimg.com/media/EYsu1-sXsAAxOk3?format=jpg&name=small')} 
-            .tb2 {background-image:url('https://pbs.twimg.com/media/EYsu1XRXsAIDnMk?format=jpg&name=small')} 
-            .tb3 {background-image:url('https://pbs.twimg.com/media/Eh_kKz7XkAUH_1K?format=png&name=small')} 
-            
-            .bt0,.bt1,.bt2,.bt3,.bt4,.bt5,.bt6 {
-                opacity: 1; width: 100%; height:42px; background-size: 120% auto; background-position: left}
+            .bt0,.bt1,.bt2,.bt3,.bt4,.bt5,.bt6 {height:42px;background-size:120% auto;background-position:left}
             .bt0 {background-image:url('https://pbs.twimg.com/media/Eegxc4VWAAc3mvP?format=jpg&name=small')} 
             .bt1 {background-image:url('https://cdn.discordapp.com/attachments/630047188520665121/877666278452633630/unknown.png')} 
             .bt2 {background-image:url('https://pbs.twimg.com/media/E6WlGEvXoAMpiYU?format=png&name=small')}
@@ -189,17 +176,17 @@
             .bt6 {background-image:url('https://pbs.twimg.com/media/Dud5G72W0AADvuR?format=jpg&name=small')}
             .titlb:hover .i, .lsbut:hover .i, .titleh:hover .i{opacity: 0.3}
             
-            .lkblk {height:calc((var(--sidebarl) - (10.2px * 5)) / 6); pointer-events:none; padding: 20px 0}
+            .lkblk {height:calc((var(--sidebarl) - (10.2px * 5)) / 6); pointer-events:none; padding: 10px 0}
             .lkblk > * {pointer-events:auto}
             .lkblk:hover > * {opacity:0.5; background: var(--accent1)} 
             .lkblk:hover > *:hover {opacity:1}
-            .lkblk:hover > .c1:hover { background: #7dbbe6}
-            .lkblk:hover > .c2:hover { background: #171a21}
-            .lkblk:hover > .c3:hover { background: #1da1f2}
-            .lkblk:hover > .c4:hover { background: #ff0000}
-            .lkblk:hover > .c5:hover { background: #738adb}
-            .lkblk:hover > .c6:hover { background: #e1306c}
-            .lkblk:hover > .c7:hover { background: #ff5e5b}
+            .lkblk:hover > .c1:hover {background: #7dbbe6}
+            .lkblk:hover > .c2:hover {background: #171a21}
+            .lkblk:hover > .c3:hover {background: #1da1f2}
+            .lkblk:hover > .c4:hover {background: #ff0000}
+            .lkblk:hover > .c5:hover {background: #738adb}
+            .lkblk:hover > .c6:hover {background: #e1306c}
+            .lkblk:hover > .c7:hover {background: #ff5e5b}
             
             .lkcon { width:calc((var(--sidebarl) - (10px * 5) - 1px) / 6); height:calc((var(--sidebarl) - (10px * 5) - 1px) / 6);
                 background: var(--accent1); display:inline-block; margin: 0 10px 0 0}
@@ -216,13 +203,25 @@
             /* Page 2
         /* ===================================== */
             
-            incont, inconte {display:inline-block; vertical-align: top}
-            incont, inconte {width: calc((var(--sidebarr) + var(--postwidth) - 21px) / 3)}
-            incont {margin: 0px 20px 0 0}
+            /* image containers and formatting =============== */
+            incont {display:inline-block; vertical-align: top; margin: 0px 20px 0 0;
+                width: calc((var(--sidebarr) + var(--postwidth) - 21px) / 3)}
+             
+            .sth {margin-top: 20px!important}
+            .sth:first-of-type {margin-top:-10px!important}
             
-            .twitter-tweet-rendered {margin-top: 0px!important; margin-bottom: 20px!important}
+            .imco {overflow: hidden; margin-bottom: 10px}
+            .imco p {margin-top:12px!important}
+            .imco img {background-color:var(--artposts)}
+            .imco:first-of-type p {margin-top: 0px!important}
+            .imco .stats p {background-color: var(--darkac2)}
+            .imco:hover .stats p {background-color: var(--darkac1)}
+            .imco:hover img {opacity: 0.5}
             
-            /* Page 4
+            .zoom {left: -50%; position: relative; width: auto}
+            .zoom:hover { background-size:110%}
+            
+            /* Page 5
         /* ===================================== */
             
             /* wrsp Content =============== */
@@ -232,6 +231,7 @@
             .wst, .wrsp t {transition:all .2s cubic-bezier(0,0,0,1)}
             .stats p { background-color: var(--darkac2); color: white; letter-spacing:.15px; 
                 padding: 10px 15px 10px!important; margin-top:-10px}
+            .stats t {padding: 0!important; color:var(--posts)!important; line-height:0.9em!important;}
             
             .wrsp p {font-size:0.6em!important; color: var(--text)}
             .wrsp .stats p {padding: 5px 15px 5px!important; color: white}
@@ -265,40 +265,37 @@
             input:-ms-input-placeholder {color:var(--text)}
             
             /* searchbar grad + mask */
-            .search {background:var(--posts)}
+            .search {background:var(--accent1)}
             .search .searchtop { 
                 height:20px; width:var(--sidebarr);
                 margin-top:-20px; background:var(--background)}
-            .search .searchbar { 
-                width:var(--sidebarr); height:2px; z-index:999!important;
-                background-image: var(--bannerurlblank);}
             
             /* search bar form */
             .search .search-form {
-                width:calc(var(--sidebarr) - 30px); padding:12.5px 15px;
+                width:calc(var(--sidebarr) - 30px); padding:12px 15px;
                 margin:0; outline:none; border:none; display:block}
             .search .search-form input {
                 text-transform:lowercase; font-size:11px; letter-spacing:.15px;
-                width:100%; background:var(--posts); display:block; border:0}
-            .search .search-form input[type=text] {color:var(--text)} 
+                width:100%; background:var(--accent1); display:block; 
+                border:transparent; border:0}
+            .search .search-form input[type=text], input::placeholder {
+                color: var(--posts);font-family: var(--fontstyle)}
              
         /* ==================================================================================================== */
             /* TUMBLR POST FORMATTING */
         /* ==================================================================================================== */
 
             /* Top of posts ========================================================================================================= */
-            
-            .postbar {background-image: var(--bannerurlblank); height:3px} /*image bar ontop of posts*/
-            
             .notecounter, .timestamp {
-                color:var(--accent3); font-size:0.8em; display:inline-block !important} /*top of the post, notes and time posted.*/
-            .dateposted {font-family:var(--boldstyle); text-transform:uppercase}
-            .dateposted:hover {color:var(--accent2)}
+                color:var(--posts); font-size:0.8em; display:inline-block !important} /*top of the post, notes and time posted.*/
+            .notecounter:hover, .timestamp:hover {color:var(--accent3)}
+            .dateposted {color:var(--posts); font-family:var(--boldstyle); text-transform:uppercase}
+            .dateposted:hover a{color:var(--accent3)}
             .notecounter:after {content:'•'; margin:0 5px} 
             
-            .when {padding:15px; line-height:1em} /* container that holds .time, and .d */ 
+            .when {padding:15px; line-height:1em; background-color:var(--accent1);
+                border-bottom-left-radius:7px;border-bottom-right-radius:7px} /* container that holds .time, and .d */ 
             .when a {display:block} /* these also include the repost tags at the bottom of posts. */
-            
             
             .vimage {float:left; display:inline-block}
             .vimage img { margin:-1px 15px 0 0; vertical-align:middle} 
@@ -306,10 +303,10 @@
             
             /* Bottom of posts ========================================================================================================= */
             
-            .footer {font-size:0.6em; margin-top:-5px; border-top:1px solid var(--borders)} /*posted by*/
+            .footer {font-size:0.6em; margin-top:-5px; text-transform:uppercase; letter-spacing:0.5px
+                background-color:var(--posts); border-top:1px solid var(--borders)} /*posted by*/
             .footer .postedby {margin-top:4px} /*container that posted by*/
             .footer .imcon { margin-top:-1px} /*fixes the text for the posted by area*/
-            .footer {text-transform:uppercase; letter-spacing:1px}
             
             .user { /*user pfps on posts*/
                 display:inline-block; display:block
@@ -325,7 +322,7 @@
             .like .liked + svg {background:var(--accent3)}
             .like:hover svg, .repost svg:hover {fill:var(--accent1)} 
             .repost svg { height:1.85em; vertical-align:middle; fill:#fff;
-                background:var(--accent1); margin-left:11px; padding:3px}
+                background:var(--accent1); margin-left:11px; padding:3px;}
             
             .like, .taggie {cursor:pointer} 
             .like_button iframe {
@@ -361,34 +358,33 @@
             
             /* specifically post body formatting */
             article {margin-bottom: 20px; background:var(--posts)}
-            article .title { font-size:0.9em; color:var(--titles); font-family:var(--boldstyle);
-                margin: -5px 15px 5px; text-transform:uppercase; letter-spacing:1.1px; line-height:1.5em} 
+            article .title { font-size:0.9em; color:var(--titles); text-transform:uppercase; 
+                margin: -5px 15px 5px; letter-spacing:1.1px; line-height:1.5em} 
             article .title a {color:var(--accent3)}
             
             /* text on posts */
             article .comment {padding: 0 1px}
-            article .comment p {padding: 0 16px; margin:10px 0}
-            article .comment p:first-of-type b {
-                font-size: 1.4em; color:var(--accent2); line-height:0em; margin-top:10px;}
+            article .comment p {margin:10px 0}
+            article .comment p:first-of-type b {font-size: 1.35em; color:var(--accent1); line-height:0.3em}
             article .comment a {border-bottom:1px solid var(--links)} 
             article .comment:last-of-type {padding-bottom:0}
             article .comment:before, .chat li:before, ol.notes li:before {display:none}
             
-            article li {margin:.35em 0} 
+            article li {margin: 17px 0 19px} 
             article li::before {top: 0; content:"-";  left: -10px}
             
             /* container for posts */
             section {
                 width:var(--postwidth); position:relative; border-bottom:1px solid var(--borders);
-                margin:0 20px 20px calc(var(--sidebarl) + 20px)}
-            section p:last-of-type {margin: -5px 0px 15px; padding-bottom: 15px!important}
-            section b, strong {color:var(--titles); font-family:var(--boldstyle)}
+                margin:0 20px 20px calc(var(--sidebarl) + 20px); z-index: 0}
+            section p:last-of-type {margin: -5px 0px 15px}
+            section b, strong {color:var(--titles)}
             
             section blockquote {
                 margin:.5em 0; padding:.25em 0 .25em 15px
                 border-left:1px solid var(--borders)}
             section ul { list-style:none; padding:.25em 0 .25em 15px} 
-            section ol { padding: 0 25px; font-size:0.7em}}
+            section ol { padding: 0 25px; font-size:0.7em}
             
             section hr {
                 border:none; border-top:1px solid var(--borders); 
@@ -442,11 +438,14 @@
             .iframe-controls--desktop {z-index:999; top:-13px!important; right:-90px!important; opacity:0; padding-right:75px; filter:invert(1) contrast(150%); transition:all .15s linear; transform:scale(0.6)}
             .iframe-controls--desktop:hover {opacity:.6}
             /* All this adjusts the default settings of the tumblr image zoom. */
-            .tmblr-lightbox { background:rgba(255,255,255, .60)!important} 
+            .post_media_photo_anchor {cursor:zoom-in}
+            .tmblr-lightbox { background:rgba(255,255,255, .40)!important} 
             .tmblr-lightbox img { opacity:1}
             .lightbox-caption {color:var(--titles)!important; text-shadow:none!important;font-family:inherit!important; font-size:0.6em!important}
-            .lightbox-image {border-radius:0px!important; box-shadow:none!important;background:var(--posts)!important; opacity:1!important}
+            .lightbox-image {border-radius:0px!important; box-shadow:none!important}
             .vignette {opacity:0!Important} /*removes the black shit when clicking on tumblr posts*/
+            #infscr-loading {display:none!important}
+            #pagination {text-align:left;display:none}
             
         </style>
     </head>
@@ -459,29 +458,29 @@
             <div class="logo" id="logo"></div></div>
 
             <asidel id="asidel"> <!-- sidebar navigation -->
-                <div class="wedge"><img src="https://cdn.discordapp.com/attachments/629600253997350912/876469248342515743/ezgif-5-1eec46494d34.gif"/></div>
-                <div class="lsbut" onmousedown="goingto = 0; pageturn()"><t>About</t><div class="i bt0"></div></div>
+                <div class="wedge"><img class="" src="https://cdn.discordapp.com/attachments/629600253997350912/876469248342515743/ezgif-5-1eec46494d34.gif"/></div>
+                <div class="lsbut tc" onmousedown="goingto = 0; pageturn()"><t>About</t><div class="i bt0 tc"></div></div>
                 <div class="lsbut" onmousedown="goingto = 1; pageturn()"><t>Feed</t><div class="i bt1"></div></div>
                 <div class="lsbut" onmousedown="goingto = 2; pageturn()"><t>Artwork</t><div class="i bt2"></div></div>
                 <div class="lsbut" onmousedown="goingto = 3; pageturn()"><t>Design</t><div class="i bt3"></div></div>
                 <div class="lsbut" onmousedown="goingto = 4; pageturn()"><t>Animation</t><div class="i bt4"></div></div>
                 <div class="lsbut" onmousedown="goingto = 5; pageturn()"><t>Workshop</t><div class="i bt5"></div></div>
-                <div class="lsbut" onmousedown="goingto = 6; pageturn()"><t>Javascript</t><div class="i bt6"></div></div>
+                <div class="lsbut bc" onmousedown="goingto = 6; pageturn()"><t>Javascript</t><div class="i bt6 bc"></div></div>
                 <div class="lkblk">
-                    <a class="lkcon c3" target="_blank" href="twitter.com/TheaVanherst"><div class="img i3"></div></a>
+                    <a class="lkcon c3 rc" target="_blank" href="twitter.com/TheaVanherst"><div class="img i3 rc"></div></a>
                     <a class="lkcon c5" target="_blank" href="discord.com/invite/zDJRaZvGmS"><div class="img i5"></div></a>
                     <a class="lkcon c2" target="_blank" href="steamcommunity.com/id/TheaVanherst"><div class="img i2"></div></a>
                     <a class="lkcon c4" target="_blank" href="youtube.com/channel/UCqbZe2XMkd98nXu_dUlObKA"><div class="img i4"></div></a>
                     <a class="lkcon c7" target="_blank" href="ko-fi.com/theavanherst"><div class="img i7"></div></a>
-                    <a class="lkcon c1" target="_blank" href="github.com/TheaVanherst"><div class="img i1"></div></a></div>
-                <div class="block"><p>Vanh.art, established on Aug 1st, 2021</p></div> 
+                    <a class="lkcon c1 lc" target="_blank" href="github.com/TheaVanherst"><div class="img i1 lc"></div></a></div>
+                <div class="block tc"><p>Vanh.art, established on Aug 1st, 2021</p></div> 
                 <!-- Updated Aug 16th 2021, 03:31 GMT --> <!-- I'm currently editing the page, so please stay tuned! -->
-                <div class="stats" style="margin-top: -20px"><p>The site is currently in development. Updated Aug 17th 2021, 22:06 GMT</p></div>
+                <div class="stats" style="margin-top: -20px"><p class="stats bc">The site is currently in development. Updated Aug 19th 2021, 05:06 GMT</p></div>
             </asidel>
             
             <div class="inco" id="page0">
                 <sidelm>
-                    <div class="titlb"><t>About</t><div class="i bt0"></div></div>
+                    <div class="titlb"><t>About</t><div class="i bt0 tc"></div></div>
                     
                     <div class="block">
                         <p>[pg0 side l medium]</p>
@@ -500,21 +499,17 @@
             
             <div class="inco" id="page1">
             
-                <sidell id="posts">
+                <section id="posts">
                 
                     <div class="titlb"><t>Feed</t><div class="i bt1"></div></div>
                 
                     {block:Posts}
                         <article id="{PostID}">
-                            <div class="postbar"></div>
-                            
-                            <div class="when">
+                            <div class="when whb">
                                 <a href="{Permalink}" target="_blank" class="dateposted">{dayofweek}, {shortmonth} {dayofmonth}{dayofmonthsuffix}</a>
                                 {block:NoteCount}<a href="{permalink}" class="notecounter">{notecountwithlabel}</a>{/block:NoteCount}
                                 <a href="{permalink}" class="timestamp">{timestamp}</a>
                             </div>
-                            
-                            <div class="divider"></div>
                             
                                 {block:Quote}
                                     <div class="quote">{Quote}</div>
@@ -711,7 +706,7 @@
                         {/block:PostNotes}
                     {/block:Posts}
                  
-                </sidell>
+                </section>
  
                 <siders id="asider">
 
@@ -719,11 +714,10 @@
                     <div class="search">
                         <div class="searchtop"></div>
                         <form action="/search" class="search-form" method="get" autocomplete="off">
-                            <input id="searchField" name="q" placeholder="Search by tags" type="text" value="{SearchQuery}"/></form>   
-                        <div class="searchbar"></div></div>
+                            <input id="searchField" name="q" placeholder="Search by tags" type="text" value="{SearchQuery}"/></form></div>
     
                     {block:indexpage}
-                        <div class="wedge p" style="margin-top:62px">
+                        <div class="wedge" style="margin:-3px 0 0">
                             <a class="twitter-timeline" href="https://twitter.com/TheaVanherst?ref_src=twsrc%5Etfw"><div class="d cap">Tweets by TheaVanherst</div></a> 
                             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"  loading="eager" data-chrome="nohdr nofooter noborders"></script></div>
                     {/block:indexpage}
@@ -733,48 +727,83 @@
             
             <div class="inco" id="page2">
                 <fullwc>
-                    <incont>
-                        <div class="titleh"><t>landsknecht Marie</t><div class="i tb1"></div></div>
-                        <div class="wedge">
-                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/844557087530680330/unknown.png"/>
-                            <div class="divd">
-                                <p><h>19/05/2021</h> - Added colour with experimental shading on Marie's lower body and lower torso.</p></div></div>
-                        <div class="wedge">
-                            <img src="https://pbs.twimg.com/media/E1f8HA5XsAE_YV5?format=png&name=orig"/>
-                            <div class="divd">
-                                <p><h>15/05/2021</h> - Finalised lines</p></div></div>   
-                        <div class="wedge">
-                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/842644374792831016/unknown.png"/>
-                            <div class="divd">
-                                <p><h>14/05/2021</h></p></div></div>
+                    <div class="titlb"><t>Artwork & Concept Highlights</t><div class="i bt2"></div></div>
+                    <incont style="padding-top: 10px">
+                        <div class="wedge imco sth" style="padding-top: 10px"><div class="stats sth"><p><t>landsknecht Marie</t></p></div>
+                                                <img src="https://cdn.discordapp.com/attachments/630047188520665121/844557087530680330/unknown.png"/></div>
+                        <div class="wedge imco"><img src="https://pbs.twimg.com/media/E1f8HA5XsAE_YV5?format=png&name=orig" class="zoom" style="height:800px;left:-25%"/></div>   
+                        <div class="wedge imco"><img src="https://cdn.discordapp.com/attachments/630047188520665121/842644374792831016/unknown.png" class="zoom" style="height:800px;left:-5%"/>
+                            <div class="divd"><p><h>14/05/2021 - 19/05/2021</h></p></div></div>
+                        <!-- =================================================================================== -->
+                        <div class="wedge imco sth"><div class="stats sth"><p><t>Guide Petra</t></p></div>
+                                                <img src="https://cdn.discordapp.com/attachments/630047188520665121/836818854084214794/download10.gif" class="zoom" style="height:500px;left:-10%"/></div>
+                        <div class="wedge imco"><img src="https://cdn.discordapp.com/attachments/630047188520665121/835262711910105168/unknown.png"/>
+                            <div class="divd"><p><h>23/04/2021</h></p></div></div>
+                        <!-- =================================================================================== -->
+                        <div class="wedge imco sth"><div class="stats sth"><p><t>Chastity</t></p></div>
+                                                <img src="https://cdn.discordapp.com/attachments/630047188520665121/768130727300169728/unknown.png" class="zoom" style="height:500px"/>
+                            <div class="divd"><p><h>20/10/2020</h></p></div></div>
+                        <!-- =================================================================================== -->
+                        <div class="wedge imco sth"><div class="stats sth"><p><t>Futaba</t></p></div>
+                                                <img src="https://cdn.discordapp.com/attachments/629600253997350912/878418621989273650/glowsticktra1.png" class="zoom" style="height:900px"/>
+                            <div class="divd"><p><h>25/05/2019</h></p></div></div>
+                        <!-- =================================================================================== -->
+                        <div class="wedge imco"><div class="stats sth"><p><t>Coffee</t></p></div>
+                                                <img src="https://cdn.discordapp.com/attachments/629600253997350912/878418493815549972/coffeebeachb.png" class="zoom" style="height:900px;left:-45%"/>
+                            <div class="divd"><p><h>12/02/2019</h></p></div></div>
                     </incont>
-                    <incont>
-                        <div class="titleh"><t>Rei / Lilith As Moonlord</t><div class="i tb2"></div></div>
-                        <div class="wedge">
-                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/841079662897659945/unknown.png"/>
-                            <div class="divd">
-                                <p><h>09/05/2021</h> - A newly designed chestpiece for the Moonlord, replacing the Moonlord's heart with a crystal. Held in place with tenticals, inspired by the original moonlord sprite.</p></div></div>
-                        <div class="wedge">
-                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/840834763501207592/unknown.png"/>
-                            <div class="divd">
-                                <p><h>09/05/2021</h> - A completely redrawn sprite update for the moonlord</p></div></div>   
-                        <div class="wedge">
-                            <img src="https://media.discordapp.net/attachments/630047188520665121/840018664182644767/unknown.png"/>
-                            <img src="https://cdn.discordapp.com/attachments/825849257390374923/840056723900727316/unknown.png"/>
-                            <div class="divd">
-                                <p><h>07/05/2021</h> - [After / Before]<br>Updated sprites containing the new rendition of the Mass Produced Evas, and current.</p></div></div>    
+                    <incont style="padding-top: 10px">
+                        <div class="wedge imco sth"><div class="stats sth" style="padding-top: 10px"><p><t>Lilith as Moonlord v0.7</t></p></div>
+                                                <img src="https://cdn.discordapp.com/attachments/629600253997350912/878423650146066472/finalrender.png" class="zoom" style="height: 800px;left: -115%;"/>
+                            <div class="divd"><p><h>03/05/2021</h> - "Newly redesigned and refurbished graphics for my Terraria Moonlord Replacment, along with some comparrisions."</p></div></div>
+                        <!-- =================================================================================== -->
+                        <div class="wedge imco sth"><div class="stats sth"><p><t>Petra Concept Art</t></p></div>
+                                                <img src="https://cdn.discordapp.com/attachments/630047188520665121/819096511249121280/petra.png" class="zoom" style="height:500px; left:-20%"/></div>
+                        <div class="wedge imco"><img src="https://cdn.discordapp.com/attachments/630047188520665121/806562275980214282/unknown.png" class="zoom" style="height: 400px;left: -30%"/>
+                            <div class="divd"><p><h>03/05/2021</h> - "I'm not entirely happy with this due to being so far from the original terraria template, but with some practice I'll revisit this at a later date."</p></div></div>
+                        <!-- =================================================================================== -->
+                        <div class="wedge imco sth"><div class="stats sth"><p><t>Elizabeth Concept Art</t></p></div>
+                                                <img src="https://media.discordapp.net/attachments/630047188520665121/758723378231640125/unknown.png" class="zoom" style="height:300px;left:-60%"/></div>
+                        <div class="wedge imco"><img src="https://cdn.discordapp.com/attachments/630047188520665121/757993982486642738/unknown.png" class="zoom" style="height:700px;left:-30%"/>
+                            <div class="divd"><p><h>19/09/2020 - 23/09/2020</h> - Concept art of a 1960's steampunk showgirl, inspired by Moxxi from Borderlands and Black Ops 3's Shadows Of Evil.</p></div></div>
+                        <!-- =================================================================================== -->
+                        <div class="wedge imco sth"><div class="stats sth"><p><t>Freyja Concept art</t></p></div>
+                                                <img src="https://cdn.discordapp.com/attachments/630047188520665121/673351593818849312/freyja.png" class="zoom" style="height:800px"/>
+                            <div class="divd"><p><h>31/01/2020</h> - A commissioned piece.</p></div></div>
+                        <!-- =================================================================================== -->
+                        <div class="wedge imco sth"><div class="stats sth"><p><t>Lilith Concept Art</t></p></div>
+                                                <img src="https://cdn.discordapp.com/attachments/630047188520665121/743692648896004096/Lilith.png" class="zoom" style="height:800px;left:-95%"/>
+                            <div class="divd"><p><h>12/08/2020</h> - Concept art for a Chineese anthropomorphic Mantis, who moved to the ottoman empire from the silk trade.</p></div></div>
+                        <!-- =================================================================================== -->
+                        <div class="wedge imco sth"><div class="stats sth"><p><t>Rosalina</t></p></div>
+                                                <img src="https://cdn.discordapp.com/attachments/630047188520665121/708937178419298314/rosalina32.png" class="zoom" style="height:800px;left:-86%"/>
+                            <div class="divd"><p><h>20/11/2019 - 08/05/2020</h> - A line clean-up of an old drawing.</p></div></div>
                     </incont>
-                    <inconte>
-                        <div class="titleh tr" style="float: right"><t>Arms Dealer Coffee</t><div class="i tb3"></div></div>
-                        <div class="wedge" style="margin-top: 62px">
-                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/838771577868517436/download18.gif"/>
-                            <div class="divd">
-                                <p><h>03/05/2021</h> - Coffee's walk animation cycle</p>
-                                <p>"I'm not entirely happy with this due to being so far from the original terraria template, but with some practice I'll revisit this at a later date."</p></div></div>
-                        <div class="wedge">
-                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/837239604066254888/unknown.png"/>
-                            <div class="divd">
-                                <p><h>29/04/2021</h></p></div></div> 
+                    <incont style="margin:0!important; padding-top: 10px">
+                        <div class="wedge imco sth"><div class="stats sth" style="padding-top: 10px"><p><t>Arms Dealer Coffee</t></p></div>
+                                                <img src="https://cdn.discordapp.com/attachments/630047188520665121/838771577868517436/download18.gif"/></div>
+                        <div class="wedge imco"><img src="https://cdn.discordapp.com/attachments/630047188520665121/837239604066254888/unknown.png"/>
+                            <div class="divd"><p><h>03/05/2021</h> - "I'm not entirely happy with this due to being so far from the original terraria template, but with some practice I'll revisit this at a later date."</p></div></div>
+                        <!-- =================================================================================== -->
+                        <div class="wedge imco sth"><div class="stats sth"><p><t>SAS Caddy</t></p></div>
+                                                <img src="https://cdn.discordapp.com/attachments/630047188520665121/775817405104128030/Ej8xAprXsAQy7RL.png" class="zoom" style="height:500px;left:-20%"/>
+                            <div class="divd"><p><h>10/10/2020</h> - A losely drawn headshot of Caddy in a gasmask.</p></div></div> 
+                        <!-- =================================================================================== -->
+                        <div class="wedge imco sth"><div class="stats sth"><p><t>FBI Caddy</t></p></div>
+                                                <img src="https://cdn.discordapp.com/attachments/629600253997350912/878056714862203000/discord_knife2.png" class="zoom" style="height:500px"/>
+                            <div class="divd"><p><h>28/05/2020 — 29/05/2020</h> - A losely drawn headshot of Caddy in a gasmask.</p></div></div>
+                        <!-- =================================================================================== -->
+                        <div class="wedge imco sth"><div class="stats sth"><p><t>Emotes.psd</t></p></div>
+                                                <img src="https://cdn.discordapp.com/attachments/630047188520665121/686802608337190912/unknown.png" class="zoom" style="height:700px"/>
+                            <div class="divd"><p><h>07/03/2020</h> - A long and ongoing process of drawing my characters as chibi, emoticon-esc drawings.</p></div></div>   
+                        <!-- =================================================================================== -->
+                        <div class="wedge imco sth"><div class="stats sth"><p><t>Marie Concept art</t></p></div>
+                                                <img src="https://cdn.discordapp.com/attachments/630047188520665121/672919423761252408/unknown.png" class="zoom" style="height:500px;left:-15%"/>
+                            <div class="divd"><p><h>07/03/2020</h> - A long and ongoing process of drawing my characters as chibi, emoticon-esc drawings.</p></div></div>
+                        <!-- =================================================================================== -->
+                        <div class="wedge imco sth"><div class="stats sth"><p><t>Coffee</t></p></div>
+                                                <img src="https://cdn.discordapp.com/attachments/629600253997350912/878419744640888863/D7ayZpGWkAE95Eo.png" class="zoom" style="height:700px;left:-60%"/>
+                            <div class="divd"><p><h>25/05/2019</h></p></div></div>
                     </incont>
                 </fullwc>
             </div>
@@ -956,7 +985,7 @@
         
             function scroll(){
                 //banner scroll check
-                if(probh > $(document).scrollTop()){ 
+                if(probh + 10 > $(document).scrollTop()){ 
                     $('#asidel').css({position: 'absolute', top: ""})
                     $('.search').css({position: 'absolute', top: ""})
                 } else {
@@ -965,7 +994,7 @@
 
             $(document).scroll(function(){
                     //banner scroll check
-                    if(probh > $(document).scrollTop()){ 
+                    if(probh + 10 > $(document).scrollTop()){ 
                     $('#asidel').css({position: 'absolute', top: ""})
                     $('.search').css({position: 'absolute', top: ""})
                 } else {
@@ -983,7 +1012,6 @@
                     photoset: '.photo-slideshow', photoWrap: '.photo-data', photo: '.pxu-photo'})
                 $('.timestamp').timeAgo({time: "short", spaces: true, suffix: " ago" })  
                 
-                {block:indexpage}   
                     var $container = $('section'); 
                     $container.infinitescroll({
                         itemSelector: 'article',
@@ -1017,7 +1045,6 @@
                             
                         resizeVideos()
                     })})
-                {/block:indexpage}
             })
             
             function resizeVideos() {
@@ -1039,6 +1066,3 @@
                        height: Math.floor(vh * ( scale + 1 ) / 2)})
                    $(this).parents('.video').addClass('resized')})}
         </script>
-     
-    </body>
-</html>
