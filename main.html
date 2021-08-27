@@ -31,7 +31,7 @@
                 /*font settings*/
                 --fontstyle: 'Manrope', sans-serif; --boldstyle: 'Rubik', sans-serif; --gerstyle: 'UnifrakturCook', cursive;
                 /*banner settings*/
-                --bannerheight:520; --bannerwidth:3480; 
+                --bannerheight:520; --bannerwidth:3480;
                 --bannerlogo: url('https://cdn.discordapp.com/attachments/870119954232516669/872774193593335849/back30.png');
                 --bannerlogohov: url('https://cdn.discordapp.com/attachments/870119954232516669/872773749454286848/back29.png');
                 --bannerurl: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/vanhbanner3.2.png');
@@ -74,10 +74,11 @@
                 background-size:100% auto; background-image:var(--bannerurlblank); margin: 20px auto}
             
             .bnlogo, .logo {background-size: auto 100%;background-repeat: no-repeat;z-index:999}
-            .logo {width:100%;height:100%;opacity:1;background-image: var(--bannerlogo)}.logo:hover {opacity:0}
+            .logo {width:100%;height:100%;opacity:1;background-image: var(--bannerlogo)}
+            .logo:hover {opacity:0}
             
             .bnlogo { /*logo ontop*/
-                background-image:var(--bannerlogohov);position:absolute;left:50%;transform:translateX(-50%);
+                position:absolute;left:50%;transform:translateX(-50%);background-image:var(--bannerlogohov);
                 height:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) + 10px);
                 width:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 2 + 10px);
                 margin-top:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) - 
@@ -122,7 +123,6 @@
             #page4 {margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page4))}
             #page5 {margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page5))}
             #page6 {margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page6))}
-            
             /*scrollbar*/
             ::-webkit-scrollbar {width:12px;height:12px;background-color:transparent}
             ::-webkit-scrollbar-thumb{background-clip:padding-box;border-radius:6px; 
@@ -184,29 +184,21 @@
             .titlb, .titlb t, .lsbut t, a, svg {transition:color .2s cubic-bezier(0,0,0,1)}
             .lkcon {transition:background .2s cubic-bezier(0,0,0,1)}
             .lsbut, .tfd {transition:margin .2s cubic-bezier(0,0,0,1)}
+            .tfd p {transition:font-size .2s cubic-bezier(0,0,0,1)}
             
             /* LEFT HAND SIDEBAR CONTENT
         /* ===================================== */
         
             .titlb, .lsbut:last-of-type{margin: 0 0 20px!important}
             .lsbut:hover{margin:10px 0}
-            
             .titlb t,.lsbut t{z-index:99;position:absolute;padding:8px 15px;font-size:1.4em!important}
-            
             .titlb {max-width:calc((var(--postwidth) + var(--sidebarr)) + 20px)}
             .titlb,.titleh:hover {z-index:999} 
             .titlb,.lsbut {cursor:pointer}
-            
-            .bt0,.bt1,.bt2,.bt3,.bt4,.bt5,.bt6 {height:42px;background-size:140% auto;background-position:left}
-            .bt0 {background-image:url('https://pbs.twimg.com/media/Eegxc4VWAAc3mvP?format=jpg&name=small')} 
-            .bt1 {background-image:url('https://cdn.discordapp.com/attachments/630047188520665121/877666278452633630/unknown.png')} 
-            .bt2 {background-image:url('https://pbs.twimg.com/media/E6WlGEvXoAMpiYU?format=png&name=small')}
-            .bt3 {background-image:url('https://pbs.twimg.com/media/E7RorOrXMAIbKPk?format=jpg&name=small')} 
-            .bt4 {background-image:url('https://cdn.discordapp.com/attachments/630047188520665121/877668602025766962/HURT2.png')} 
-            .bt5 {background-image:url('https://pbs.twimg.com/media/Er-lFbRXMAAoXNI?format=jpg&name=small')} 
-            .bt6 {background-image:url('https://pbs.twimg.com/media/Dud5G72W0AADvuR?format=jpg&name=small')}
             .titlb:hover .i, .lsbut:hover .i, .titleh:hover .i{opacity: 0.3}
             
+            .bt0,.bt1,.bt2,.bt3,.bt4,.bt5,.bt6 {height:42px;background-size:140% auto;background-position:left}
+
             .lkblk {height:calc((var(--sidebarl) - (10.2px * 5)) / 6); padding: 10px 0}
             .lkblk:hover > * {opacity:0.5} 
             .lkblk:hover > *:hover {opacity:1}
@@ -221,14 +213,6 @@
             .lkcon { width:calc((var(--sidebarl) - (10px * 5) - 1px) / 6); height:calc((var(--sidebarl) - (10px * 5) - 1px) / 6);
                 display:inline-block; margin: 0 10px 0 0}
             .lkcon:last-of-type{margin: 0!important}
-            
-            .lkcon .i1 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/icons/github.png')} /* github */
-            .lkcon .i2 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/icons/steam.png')} /* steam */
-            .lkcon .i3 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/icons/twitter.png')} /* twitter */
-            .lkcon .i4 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/icons/youtube.png')} /* youtube */
-            .lkcon .i5 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/icons/discord.png')} /* discord */
-            .lkcon .i6 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/icons/insta.png')} /* instagram */
-            .lkcon .i7 {background-image:url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/icons/kofi.png')} /* kofi */
             
             /* Page 2 / 3
         /* ===================================== */
@@ -260,13 +244,13 @@
             .sbitems {width:var(--sidebarr);overflow:hidden}
             .sbitems t {margin:10px 0 5px;display:block;letter-spacing:0.5px}
             
-            .tii p {font-size: 0.7em; letter-spacing:.15px;padding:10px 15px 10px!important}
-            .tii t {padding:0!important;line-height:0.9em!important}
+            .tii p {font-size: 0.7em; letter-spacing:.15px; padding:10px 15px 10px!important}
+            .tii t {padding:0!important; line-height:0.9em!important}
             
-            .tfd {margin-top:-20px;font-size:0;z-index:-1;position: relative}
-            .tfd p{font-size: 1em; letter-spacing:.15px;padding:10px 15px 10px!important}
-            .imco:hover .tfd{margin-top: 0px;font-size: 0.7em}
-            .tfd t {padding:0!important;line-height:0.9em!important}
+            .tfd {margin-top:-20px; font-size:0.7em; z-index:-1; position: relative}
+            .tfd p {font-size: 0em; letter-spacing:.15px; padding:10px 15px 10px!important}
+            .imco:hover .tfd {margin-top: 0px} .imco:hover .tfd p {font-size: 1em}
+            .tfd t {padding:0!important; line-height:0.9em!important}
             
             /* RIGHT HAND SIDEBAR CONTENT
         /* ===================================== */
@@ -364,9 +348,6 @@
             
             /* specifically post body formatting */
             article {margin-bottom: 20px; background:var(--posts)}
-            article .title { font-size:0.9em; color:var(--titles); text-transform:uppercase; 
-                margin: -5px 15px 5px; letter-spacing:1.1px; line-height:1.5em} 
-            article .title a {color:var(--accent3)}
             
             /* text on posts */
             article .comment {padding: 0 1px}
@@ -443,7 +424,6 @@
             
             .tmblr-iframe--gdpr-banner {display:none !important}
             .post_media_photo_anchor {cursor:zoom-in}
-            
             .tmblr-lightbox { background:rgba(255,255,255, .40)!important} 
             .tmblr-lightbox img { opacity:1}
             .lightbox-caption {color:var(--titles)!important; text-shadow:none!important;font-family:inherit!important; font-size:0.6em!important}
@@ -457,17 +437,27 @@
             
         </style>
     </head>
-     
+
     <body id="body">
         <div class="cont"> <!-- container for page data -->
         
         <div class="hdr" id="hdr"></div>
         <div class="bnlogo" id="bnlogo" onmousedown="goingto = 1; pageturn()" onmouseover="fadeto()" onmouseout="fadeno()">
             <div class="logo" id="logo"></div></div>
-        <script>function fadeto(){$('#hdr').css({opacity:0.6})}function fadeno(){$('#hdr').css({opacity:1})}</script>
-
+        <script>
+            function fadeto(){$('#hdr').css({opacity:0.6})};function fadeno(){$('#hdr').css({opacity:1})}
+            var git = "https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/";
+            //var lkblk = ["#7dbbe6","#171a21","#1da1f2","#ff0000","#738adb","#e1306c","#ff5e5b"];
+            $(document).ready(function(){ scroll(); resizeVideos(); notes();
+                for(var i=0; i < 7; i++){
+                    $('.bt'+i).css({'background-image': "url('"+git+"icons/sb"+i+".png')"})
+                    $('.i'+i).css({'background-image': "url('"+git+"icons/sm"+i+".png')"})
+                    $('#sc'+i).attr('src', git+"imgs/ams"+i+".png")}
+                    //$('.lkblk:hover > .c' + (i + 1) + ':hover').addClass({'background-color': lkblk[i + 1]}) //idk why this doesn't work
+                $('#pfp').attr('src', git+"imgs/pfp.gif")});
+        </script>
             <asidel id="asidel"> <!-- sidebar navigation -->
-                <div class="wedge"><img class="" src="https://cdn.discordapp.com/attachments/629600253997350912/876469248342515743/ezgif-5-1eec46494d34.gif"/></div>
+                <div class="wedge"><img id="pfp"/></div>
                 <div class="lsbut tc" onmousedown="goingto = 0; pageturn()"><t>About</t><div class="i bt0 tc"></div></div>
                 <div class="lsbut" onmousedown="goingto = 1; pageturn()"><t>Feed</t><div class="i bt1"></div></div>
                 <div class="lsbut" onmousedown="goingto = 2; pageturn()"><t>Artwork</t><div class="i bt2"></div></div>
@@ -476,12 +466,12 @@
                 <div class="lsbut" onmousedown="goingto = 5; pageturn()"><t>Workshop</t><div class="i bt5"></div></div>
                 <div class="lsbut bc" onmousedown="goingto = 6; pageturn()"><t>Javascript</t><div class="i bt6 bc"></div></div>
                 <div class="lkblk">
-                    <a class="lkcon c3 rc" target="_blank" href="twitter.com/TheaVanherst"><div class="wdt i3 rc"></div></a>
-                    <a class="lkcon c5" target="_blank" href="discord.com/invite/zDJRaZvGmS"><div class="wdt i5"></div></a>
+                    <a class="lkcon c3 rc" target="_blank" href="twitter.com/TheaVanherst"><div class="wdt i0 rc"></div></a>
+                    <a class="lkcon c5" target="_blank" href="discord.com/invite/zDJRaZvGmS"><div class="wdt i1"></div></a>
                     <a class="lkcon c2" target="_blank" href="steamcommunity.com/id/TheaVanherst"><div class="wdt i2"></div></a>
-                    <a class="lkcon c4" target="_blank" href="youtube.com/channel/UCqbZe2XMkd98nXu_dUlObKA"><div class="wdt i4"></div></a>
-                    <a class="lkcon c7" target="_blank" href="ko-fi.com/theavanherst"><div class="wdt i7"></div></a>
-                    <a class="lkcon c1 lc" target="_blank" href="github.com/TheaVanherst"><div class="wdt i1 lc"></div></a></div>
+                    <a class="lkcon c4" target="_blank" href="youtube.com/channel/UCqbZe2XMkd98nXu_dUlObKA"><div class="wdt i3"></div></a>
+                    <a class="lkcon c7" target="_blank" href="ko-fi.com/theavanherst"><div class="wdt i4"></div></a>
+                    <a class="lkcon c1 lc" target="_blank" href="github.com/TheaVanherst"><div class="wdt i5 lc"></div></a></div>
                 <div class="block tc"><p>Vanh.art, established on Aug 1st, 2021</p></div> 
                 <!-- Updated Aug 16th 2021, 03:31 GMT --> <!-- I'm currently editing the page, so please stay tuned! -->
                 <div class="tii tan" style="margin-top: -20px"><p class="bc">The site is currently in development. Updated Aug 25th 2021, 08:06 GMT</p></div>
@@ -498,9 +488,7 @@
                     </sidell>
                     
                     <siders>
-                        <div class="imco wdt"> <div class="tii"><p>25/08/2021, By <a href="https://twitter.com/JelqerLysenko/status/1430653535310565393">@JelqerLysenko</a><br><t>1808, Austrian Officer; Petra</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/854964310274474003/880211285160104069/Illustration22.png"/></a></div>
-                        
+                        <div class="imco wdt"><div class="tii"><p>25/08/2021, By <a href="https://twitter.com/JelqerLysenko">@JelqerLysenko</a><br><t>1808, Austrian Officer; Petra</t></p></div><img id="sc1"/></a></div>
                     </siders>
                 </fullwc>
             </div>
@@ -527,7 +515,6 @@
                                 {/block:Quote}
                          
                                 {block:Text}
-                                    {block:Title}<div class="title">{Title}</div>{/block:Title}
                                     {block:RebloggedFrom}
                                         {block:Reblogs}
                                             <li class="comment {block:Title}ted{/block:Title}">
@@ -547,10 +534,7 @@
                          
                                 {block:Link}
                                     <div class="ex">
-                                        <div class="title">
-                                            <a href="{URL}" {Target}>{Name}</a>
-                                        </div>
-                                    {block:Excerpt}<span>{Excerpt}</span>{/block:Excerpt}
+                                        {block:Excerpt}<span>{Excerpt}</span>{/block:Excerpt}
                                     </div>
                                     {block:Description}
                                         {block:NotReblog}
@@ -733,77 +717,81 @@
                 </siders>
             </div>
             
+             <script>
+                var pg2l = [1,1,1,1,2,1,1,1],pg2m = [1,1,1,1,1,1,1,1], pg2r = [1,1,1,1,1,1,1,2];
+                var frt = ["jpeg","png","gif"], sides = ["l","m","r"], sida = [pg2l, pg2m, pg2r];
+                $(document).ready(function(){
+                    for(var t = 0; t < 3; t++){var ap = sida[t];
+                        for(var i = 1; i <= 8; i++){$('#' + sides[t] + 's' + i).attr('src',git + "imgs/" + sides[t] + i + "." + frt[ap[i - 1]])}}})
+            </script>
+            
             <div id="page2">
                 <fullwc>
                     <div class="titlb w3x2"><t>Artwork & Concept Highlights</t><div class="i bt2"></div></div>
                     <incont>
                         <div class="imco mc"> <div class="tii"><p>14/05/2021 - 19/05/2021<br><t>landsknecht Marie</t></p></div>
                             <div class="tfd"><p>19/05/2021<br><t>Shading</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/844557087530680330/unknown.png"/></a></div>
+                            <img id="ls8"/></a></div>
                         <div class="imco mc"> 
                             <div class="tfd"><p>16/05/2021<br><t>Final Linework</t></p></div>
-                            <img src="https://pbs.twimg.com/media/E1f8HA5XsAE_YV5?format=png&name=orig" class="zoom" style="height:800px;left:-25%"/></div>   
+                            <img id="ls7" class="zoom" style="height:800px;left:-25%"/></div>   
                         <div class="imco">
                             <div class="tfd"><p>14/05/2021<br><t>Original Sketch</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/842644374792831016/unknown.png" class="zoom" style="height:800px;left:-5%"/></div>
+                            <img id="ls6" class="zoom" style="height:800px;left:-5%"/></div>
                                                     
                         <div class="imco mc"> <div class="tii"><p>22/04/2021 - 23/04/2021<br><t>Guide Petra</t></p></div>
                             <div class="tfd"><p>23/04/2021<br><t>Walk Sequence</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/836818854084214794/download10.gif" class="zoom" style="height:500px;left:-10%"/></div>
+                            <img id="ls5" class="zoom" style="height:500px;left:-10%"/></div>
                         <div class="imco">
                             <div class="tfd"><p>22/04/2021<br><t>Frame Development</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/835262711910105168/unknown.png"/></div>
+                            <img id="ls4"/></div>
                                                 
                         <div class="imco">    <div class="tii"><p>20/10/2020<br><t>Chastity</t></p></div>
                             <div class="tfd"><p><t>Line Progression</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/768130727300169728/unknown.png" class="zoom" style="height:500px"/></div>
+                            <img id="ls3" class="zoom" style="height:500px"/></div>
                          
                         <div class="imco"><div class="tii"><p>05/10/2019<br><t>Caddy Redesign Concept</t></p></div>
                             <div class="tfd"><p><t>Shading & Colour</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/629600253997350912/880272085946077194/knife8.png" class="zoom" style="height:500px;left:-35%"/>
+                            <img id="ls2" class="zoom" style="height:500px;left:-35%"/>
                             <p>A long and ongoing process of drawing my characters as chibi, emoticon-esc drawings.</p></div>
                                                     
                         <div class="imco">    <div class="tii"><p>25/05/2019<br><t>Futaba</t></p></div>
                             <div class="tfd"><p><t>Lineart</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/629600253997350912/878418621989273650/glowsticktra1.png" class="zoom" style="height:900px"/></div>
-                                                    
-                        <div class="imco">    <div class="tii sth"><p>12/02/2019<br><t>Coffee</t></p></div>
-                            <div class="tfd"><p><t>Final Render</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/629600253997350912/878418493815549972/coffeebeachb.png" class="zoom" style="height:900px;left:-45%"/></div>
+                            <img id="ls1" class="zoom" style="height:900px"/></div>
                     </incont>
                     <incont>
                         <div class="imco">    <div class="tii"><p>03/05/2021<br><t>Lilith as Moonlord v0.7</t></p></div>
                             <div class="tfd"><p><t>Ingame Recreation</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/629600253997350912/878423650146066472/finalrender.png" class="zoom" style="height: 800px;left: -115%;"/>
+                            <img id="ms8" class="zoom" style="height: 800px;left: -115%;"/>
                             <p>"Newly redesigned and refurbished graphics for my Terraria Moonlord Replacment, along with some comparrisions."</p></div>
 
                         <div class="imco mc"> <div class="tii"><p>05/11/2020 - 03/05/2021<br><t>Petra Concept Development</t></p></div>
                             <div class="tfd"><p>10/03/2021<br><t>Upper Body Sketch</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/819096511249121280/petra.png" class="zoom" style="height:500px; left:-20%"/></div>
+                            <img id="ms7" class="zoom" style="height:500px; left:-20%"/></div>
                         <div class="imco">    
                             <div class="tfd"><p>03/02/2021<br><t>Persoanlity Sketch</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/806562275980214282/unknown.png" class="zoom" style="height: 400px;left: -30%"/></div>
+                            <img id="ms6" class="zoom" style="height: 400px;left: -30%"/></div>
 
                         <div class="imco mc"> <div class="tii"><p>19/09/2020 - 23/09/2020<br><t>Elizabeth Concept Art</t></p></div>
                             <div class="tfd"><p>23/09/2020<br><t>Lower body shading</t></p></div>
-                            <img src="https://media.discordapp.net/attachments/630047188520665121/758723378231640125/unknown.png" class="zoom" style="height:300px;left:-60%"/></div>
+                            <img id="ms5" class="zoom" style="height:300px;left:-60%"/></div>
                         <div class="imco">
                             <div class="tfd"><p>19/09/2020<br><t>Lineart</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/757993982486642738/unknown.png" class="zoom" style="height:700px;left:-30%"/>
+                            <img id="ms4" class="zoom" style="height:700px;left:-30%"/>
                             <p>Concept art of a 1960's steampunk showgirl, inspired by Moxxi from Borderlands and Black Ops 3's Shadows Of Evil.</p></div>
                             
                         <div class="imco"><div class="tii"><p>31/01/2020<br><t>Freyja Concept art</t></p></div>
                             <div class="tfd"><p><t>Full colour & shading</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/673351593818849312/freyja.png" class="zoom" style="height:800px"/></div>
+                            <img id="ms3" class="zoom" style="height:800px"/></div>
                             
                         <div class="imco"><div class="tii"><p>12/08/2020<br><t>Lilith Concept Art</t></p></div>
                             <div class="tfd"><p><t>Full colour & shading</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/743692648896004096/Lilith.png" class="zoom" style="height:800px;left:-95%"/>
+                            <img id="ms2" class="zoom" style="height:800px;left:-95%"/>
                             <p>Concept art for a Chineese anthropomorphic Mantis, who moved to the ottoman empire from the silk trade.</p></div>
 
                         <div class="imco"><div class="tii sth"><p>08/05/2020<br><t>Rosalina</t></p></div>
                             <div class="tfd"><p><t>Final Lineart</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/708937178419298314/rosalina32.png" class="zoom" style="height:800px;left:-86%"/>
+                            <img id="ms1" class="zoom" style="height:800px;left:-86%"/>
                             <p>A line clean-up of an old drawing; <h>20/11/2019</h></p></div>
                     </incont>
                     <incont>
@@ -811,35 +799,39 @@
                             
                         <div class="imco mc"><div class="tii"><p>01/05/2021 - 04/05/2021<br><t>Arms Dealer Coffee</t></p></div>
                             <div class="tfd"><p>02/05/2021<br><t>Walk Sequence</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/838771577868517436/download18.gif"/></div>
+                            <img id="rs8"/></div>
                         <div class="imco">
                             <div class="tfd"><p>04/05/2021<br><t>Frame Development</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/837239604066254888/unknown.png"/>
+                            <img id="rs7"/>
                             <p>"I'm not entirely happy with this due to being so far from the original terraria template, but with some practice I'll revisit this at a later date."</p></div>
                             
                         <div class="imco"><div class="tii"><p>10/10/2020<br><t>SAS Caddy</t></p></div>
                             <div class="tfd"><p><t>Final Lineart</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/775817405104128030/Ej8xAprXsAQy7RL.png" class="zoom" style="height:500px;left:-20%"/>
+                            <img id="rs6" class="zoom" style="height:500px;left:-20%"/>
                             <p>A losely drawn headshot of Caddy in a gasmask.</p></div>
                             
                         <div class="imco"><div class="tii"><p>29/05/2020<br><t>FBI Caddy</t></p></div>
                             <div class="tfd"><p><t>Colour & simple shading</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/629600253997350912/878056714862203000/discord_knife2.png" class="zoom" style="height:500px"/>
+                            <img id="rs5" class="zoom" style="height:500px"/>
                             <p>A re-purposed redraw of a drawing from 28/05/2020</p></div>
                             
                         <div class="imco"><div class="tii"><p>07/03/2020<br><t>Emotes.psd</t></p></div>
                             <div class="tfd"><p><t>A partition of a larger page</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/686802608337190912/unknown.png" class="zoom" style="height:700px"/>
+                            <img id="rs4" class="zoom" style="height:700px"/>
                             <p>A long and ongoing process of drawing my characters as chibi, emoticon-esc drawings.</p></div>
                             
                         <div class="imco"><div class="tii"><p>07/03/2020<br><t>Marie Concept art</t></p></div>
                             <div class="tfd"><p><t>Shading & Colour</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/630047188520665121/672919423761252408/unknown.png" class="zoom" style="height:500px;left:-15%"/>
+                            <img id="rs3" class="zoom" style="height:500px;left:-15%"/>
                             <p>A long and ongoing process of drawing my characters as chibi, emoticon-esc drawings.</p></div>  
                             
                         <div class="imco"><div class="tii"><p>25/05/2019<br><t>Coffee</t></p></div>
                             <div class="tfd"><p><t>Final Lineart</t></p></div>
-                            <img src="https://cdn.discordapp.com/attachments/629600253997350912/878419744640888863/D7ayZpGWkAE95Eo.png" class="zoom" style="height:700px;left:-60%"/></div>
+                            <img id="rs2" class="zoom" style="height:700px;left:-60%"/></div>
+                            
+                        <div class="imco">    <div class="tii sth"><p>12/02/2019<br><t>Coffee</t></p></div>
+                            <div class="tfd"><p><t>Final Render</t></p></div>
+                            <img id="rs1" class="zoom" style="height:900px;left:-45%"/></div>
                     </incont>
                 </fullwc>
             </div>
@@ -949,7 +941,6 @@
 
         <script>
             var concurrent = 1, goingto = 1, pgsd = [0,0,0,0,0,0,0]; //default page number
-            
             function pageturn() {
                 if(concurrent != goingto){
                     //$('#body').css({height: ($('#page' + goingto).height() + $("#hdr").height()) + 40 + "px"});
@@ -957,13 +948,13 @@
                     concurrent = goingto;
                     $('html, body').animate({scrollTop: pgsd[concurrent]}, 0)
                     
-                    for(var curpg = 0; curpg < 6 + 1; curpg++){
-                        docelem.style.setProperty('--page' + curpg, curpg - concurrent)
-                        var processedpg = getComputedStyle(document.documentElement).getPropertyValue('--page' + curpg)
+                    for(var i = 0; i < 6 + 1; i++){
+                        docelem.style.setProperty('--page' + i, i - concurrent)
+                        var processedpg = getComputedStyle(document.documentElement).getPropertyValue('--page' + i)
                         
-                        var page = "#page" + curpg;
-                        if(processedpg < 0){$(page).css('margin-left','calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page' + curpg + ') - (var(--sidebarl) + 20px))')
-                        } else {$(page).css('margin-left','calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page' + curpg + '))')}
+                        var page = "#page" + i;
+                        if(processedpg < 0){$(page).css('margin-left','calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page' + i + ') - (var(--sidebarl) + 20px))')
+                        } else {$(page).css('margin-left','calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page' + i + '))')}
                         
                         if(processedpg != 0){ $(page).css('opacity','0.25'); $(page).css('z-index','1')
                         } else { $(page).css('opacity','1'); $(page).css('z-index','9')}}
@@ -1016,7 +1007,6 @@
             var probh = (($("#asidel").width() + $("#asider").width() + $("#posts").width() + 50) / $("#hdr").width()) * $("#hdr").height() + 10;
             
             function scroll(){
-                //banner scroll check
                 if(probh > $(document).scrollTop()){ $('#asidel, .search').css({position: 'absolute', top: ""})
                 } else { $('#asidel, .search').css({position: 'fixed', top: "20px"})}}
             $(document).scroll(function(){
@@ -1024,47 +1014,35 @@
                 } else {$('#asidel, .search').css({position: 'fixed', top: "20px"})}})
 
             $(document).ready(function(){
-                scroll(); resizeVideos(); notes();
                 $('.taggie').each(function() {$(this).click(function() {
                         $(this).closest('article').find('.tags').slideToggle(400)})}) 
                 $('.i').click(function() {$('body, html').animate({scrollTop:0},1000)});   
                 
-                // Tumblr photosets
-                $('.photo-slideshow').pxuPhotoset({ lightbox: true, rounded: false, gutter: '2px',
-                    photoset: '.photo-slideshow', photoWrap: '.photo-data', photo: '.pxu-photo'})
+                $('.photo-slideshow').pxuPhotoset({ lightbox: true, rounded: false, gutter: '2px',photoset: '.photo-slideshow', photoWrap: '.photo-data', photo: '.pxu-photo'})
                 $('.timestamp').timeAgo({time: "short", spaces: true, suffix: " ago" })  
                 
                     var $container = $('section'); 
                     $container.infinitescroll({
-                        itemSelector: 'article',
-                        navSelector: '#pagination',
-                        nextSelector: '#pagination a',
-                        loadingImg: '',
-                        loadingText: '<em></em>',
-                        errorCallback: function(){ $('.load').text('no more posts').parent('footer').delay(4000).slideUp(400); },    
-                        bufferPx: 3000},
-                        
+                        itemSelector: 'article',navSelector: '#pagination',nextSelector: '#pagination a',loadingImg: '',loadingText: '<em></em>',
+                        errorCallback: function(){ $('.load').text('no more posts').parent('footer').delay(4000).slideUp(400);},bufferPx: 3000},
                     function( newElements ) {
-                        var $newElems = $( newElements );
+                        var $newElems = $(newElements);
                         var $newID = $newElems.map(function(){return this.id;}).get()
                         Tumblr.LikeButton.get_status_by_post_ids($newID)
-                        
                         $newElems.find('.photo-slideshow').pxuPhotoset({
-                                lightbox: true, rounded: false,
-                                gutter: '2px', photoset: '.photo-slideshow',
-                                photoWrap: '.photo-data', photo: '.pxu-photo'})
+                            lightbox: true, rounded: false,utter: '2px', photoset: '.photo-slideshow',photoWrap: '.photo-data', photo: '.pxu-photo'})
                         $newElems.find('iframe.tumblr_audio_player').load( function() {
                             $('iframe.tumblr_audio_player').contents().find("head").append(
                                 $("<style type='text/css'> .audio-player{background:var(--accent1) !important} </style>"))})
                         $newElems.find('.notecounter').each(function(){
                             var n = $(this).html().split(' ')[0].replace(/,/g, '')
-                            if (n > 999) { n = Math.floor(n / 100) / 10; $(this).text(n + 'k notes') 
+                            if (n > 999) { n = Math.floor(n / 100) / 10; $(this).text(n + 'k notes')
                             }else if (n > 1 && n <= 999) {$(this).text(n + ' notes')
-                            }else {$(this).text(n + ' note')}});
+                            }else {$(this).text(n + ' note')}})
                         $newElems.find('.timestamp').timeAgo({time:"short",spaces: true,suffix:" ago"})
-                        $newElems.find('.taggie').each(function() {
-                            $(this).click(function(){$(this).closest('article').find('.tags').slideToggle(400)})
-                            
+                        $newElems.find('.taggie').each(function(){
+                            $(this).click(function(){
+                                $(this).closest('article').find('.tags').slideToggle(400)})
                         resizeVideos()
                     })})
             })
