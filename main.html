@@ -37,10 +37,6 @@
                 --bannerurl: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/vanhbanner3.2.png');
                 --bannerurlblank: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/vanhbanner3.b.png');
                 --bannerscoll: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/scrollbanner.png');
-                /*nvbor settings*/
-                --iconheight: 327px; --iconwidth: 617px;
-                /*sidebar settings*/
-                --sidebarl:250px; --sidebarr:350px; --postwidth:500px; /*default sidebar widths*/
                 /*colours*/
                 --accent1:#7565ff; --accent2: #ff62ea; --accent3: #ffb533; --accent4: #3aecb4;
                 --links: #ff8ef4; --titles: #7285fe; --text: #787878;
@@ -48,7 +44,8 @@
                 --background: #f4f4f4; --posts: #ffffff; --artposts: #8781bd; --borders: #d8d5d5; /*--background: #1d1d1d; --posts: #141414; --borders: #090909*/
                 --scrollbar: #aaaaaa; 
                 /* page margin multiplier settings */
-                --page0: -1; --page1: 0; --page2: 1; --page3: 2; --page4: 3; --page5: 4; --page6: 5;
+                --sidebarl:250px; --sidebarr:350px; --postwidth:500px; /*default sidebar widths*/
+                --page0: -1; --page1: 0; --page2: 1; --page3: 2; --page4: 3; --page5: 4; --page6: 5; /* page debug info */
             }
                 
             body { background:var(--background); font-family:var(--fontstyle); color:var(--text); 
@@ -74,7 +71,7 @@
                 background-size:100% auto; background-image:var(--bannerurlblank); margin: 20px auto}
             
             .bnlogo, .logo {background-size: auto 100%;background-repeat: no-repeat;z-index:999}
-            .logo {width:100%;height:100%;opacity:1;background-image: var(--bannerlogo)}
+            .logo {width:100%;height:100%;opacity:1;background-image: var(--bannerlogo); cursor:pointer}
             .logo:hover {opacity:0}
             
             .bnlogo { /*logo ontop*/
@@ -125,6 +122,10 @@
             .pg.pg6 {margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page6))}
             .pagefocus {opacity: 1!important; z-index: 9!important; cursor:auto!important}
             
+            .nmb {float:right;height:42px;width:42px;margin-right:-62px; background-color:var(--accent1); cursor:pointer;
+                margin-top:calc(((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth) - 42px)}
+            .nmb svg {scale:0.65;fill:white} .nmb:hover svg {fill:var(--accent3)}
+            
             /*scrollbar*/
             ::-webkit-scrollbar {width:12px;height:12px;background-color:transparent}
             ::-webkit-scrollbar-thumb{background-clip:padding-box;border-radius:6px; 
@@ -147,7 +148,7 @@
             .when:first-of-type,.whb,.search,.lsbut:first-of-type,.lsbut:first-of-type i{
                 border-top-left-radius:6px;border-top-right-radius:6px;
                 border-bottom-left-radius:0px!important;border-bottom-right-radius:0px!important}
-            .block,.titlb .i,.titlb,.vimage,.lkcon,.imco,.immc,.hdr,
+            .block,.titlb .i,.titlb,.vimage,.lkcon,.imco,.immc,.hdr,.nmb,
             article,asidel .wedge,asidel .wedge img,.vimage img,.repost svg{border-radius:6px}
             
             /* DUMB ACCENT COLOURS I CAN'T DECIDE ON
@@ -178,16 +179,17 @@
             /* transition dumps
         /* ===================================== */
         
-            .w32{transition: width .2s cubic-bezier(0,0,0,1), opacity .2s cubic-bezier(0,0,0,1)}
-            .lkcon, .bnlogo, .logo, .hdr, .titlb .i, .lkblk:hover > * {transition:opacity .2s cubic-bezier(0,0,0,1)}
-            .titlb, .titlb t, .lsbut t, a, svg {transition:color .2s cubic-bezier(0,0,0,1)}
-            .lkcon {transition:background .2s cubic-bezier(0,0,0,1)}
+            .w32 {transition: width .2s cubic-bezier(0,0,0,1), opacity .2s cubic-bezier(0,0,0,1)}
+            .lkcon, .logo, .hdr, .titlb .i, .lkblk:hover > * {transition:opacity .2s cubic-bezier(0,0,0,1)}
+            .titlb, .titlb t, .lsbut t, a, .nmb svg, svg {transition:color .2s cubic-bezier(0,0,0,1), fill .2s cubic-bezier(0,0,0,1)}
+            .bnlogo {transition:width .2s cubic-bezier(0,0,0,1), height .2s cubic-bezier(0,0,0,1), 
+                opacity .2s cubic-bezier(0,0,0,1), margin .2s cubic-bezier(0,0,0,1)}
             .lsbut, .tfd {transition:margin .2s cubic-bezier(0,0,0,1)}
             .tfd p {transition:font-size .2s cubic-bezier(0,0,0,1)}
             
             /* LEFT HAND SIDEBAR CONTENT
         /* ===================================== */
-        
+            
             .titlb, .lsbut:last-of-type{margin: 0 0 20px!important}
             .lsbut:hover{margin:10px 0!important}
             .titlb t,.lsbut t{z-index:99;position:absolute;padding:8px 15px;font-size:1.4em!important}
@@ -196,8 +198,6 @@
             .titlb,.lsbut {cursor:pointer}
             .titlb:hover .i, .lsbut:hover .i, .titleh:hover .i{opacity: 0.6!important}
             
-            .bt0,.bt1,.bt2,.bt3,.bt4,.bt5,.bt6 {height:42px;background-size:140% auto;background-position:left}
-
             .lkblk {height:calc((var(--sidebarl) - (10.2px * 5)) / 6); padding: 10px 0}
             .lkblk:hover > * {opacity:0.5} 
             .lkblk:hover > *:hover {opacity:1}
@@ -224,8 +224,9 @@
             .zoom {position:relative;width:auto}
             .zoom:hover {background-size:110%}
             
+            .w2x1 {width:calc((var(--sidebarr) + var(--postwidth)) / 2)}
             .w3x3 {width:calc(var(--sidebarr) + var(--postwidth) + 20px)}
-            .w3x2 {width:calc((((var(--sidebarr) + var(--postwidth) - 20px) / 3) * 2) + 20px)}
+            .w3x2 {width:calc((((var(--sidebarr) + var(--postwidth) + 40px) / 3)) * 2 - 20px)}
             .w32con {width:calc(((var(--sidebarr) + var(--postwidth) + 20px) / 3) * 2); margin-bottom: -5px}
             
             .w32 {display: inline-block; overflow:hidden; height:inherit}
@@ -264,11 +265,9 @@
             input:-ms-input-placeholder {color:var(--text)}
             
             .search {position:absolute; top:auto}
-            
             /* searchbar grad + mask */
             .search .searchtop {height:20px;width:var(--sidebarr);
                 margin-top:-20px;background-color:var(--background)}
-            
             /* search bar form */
             .search .search-form {
                 width:calc(var(--sidebarr) - 30px);padding:12px 15px;
@@ -328,6 +327,7 @@
             
             /* tags on permalink posts */
             .tags { padding:0 15px 15px; text-transform:uppercase; font-size:0.6em}
+            .tags a {color:var(--accent3)}
             .tags a:hover {color:var(--accent2)}
             .tags a:after {content:'•'; margin:0 5px} 
             .tags a:last-of-type::after {display:none}
@@ -336,7 +336,7 @@
             .pagenotes .con {padding: 10px 0; text-transform:uppercase} /* adjusts the padding for notes */
             .pagenotes .con .divider {margin: 8px 0 10px!important}
             
-            ol.notes {list-style-type:none; padding:0px; margin:13px 0 0} /*thing that says "notes" at post footer*/
+            ol.notes {list-style-type:none; padding:0px; margin:0} /*thing that says "notes" at post footer*/
             ol.notes li:before {display:none}
             ol.notes li.note blockquote {
                 margin: 6px 15px 6px 15px; padding: 5px 10px; 
@@ -355,6 +355,7 @@
             article {margin-bottom: 20px; background:var(--posts)}
             
             /* text on posts */
+            section .chat {margin:0;padding:0;list-style:none;text-align:left}
             article .comment {padding: 0 1px}
             article .comment p {margin:10px 0}
             article .comment p:first-of-type b {font-size: 1.35em; color:var(--accent1); line-height:0.3em}
@@ -362,7 +363,7 @@
             article .comment:last-of-type {padding-bottom:0}
             article .comment:before, .chat li:before, ol.notes li:before {display:none}
             
-            article li {margin: 17px 0 19px} 
+            article li {margin: 15px 0 5px} 
             article li::before {top: 0; content:"-";  left: -10px}
             
             /* container for posts */
@@ -373,6 +374,7 @@
             section b, strong {color:var(--titles)}
             
             section blockquote {margin:.5em 0; padding:.25em 0 .25em 15px}
+            section blockquote a {font-weight: 600; text-transform:none!important}
             section ul {list-style:none; padding:.25em 0 .25em 15px} 
             section ol {padding: 0 25px; font-size:0.7em}
             
@@ -384,33 +386,32 @@
             section .asker {text-transform:lowercase;font-weight:800;display:block;margin-bottom:5px}
             
             /*image container*/
-            section .imgcon {position:relative; overflow:hidden; margin: -17px 0 15px} 
-            section .imgcon img {width:100%; display:block}
+            section .imgcon {position:relative; overflow:hidden; margin:1px 0} 
+            section .imgcon img {width:100%; height:auto; display:block}
             
             body div.npf_row {margin:0px!important}
             section .npf_row, .npf_row + p {margin: 10px 0!important}
             section .npf_col:first-child {padding-right: 1px!important} /* this fixes the gap between images to be 1 pixel wide, apposed to 2. */
             section .npf_col:last-child {padding-left: 0px!important} /* this fixes the gap between images to be 1 pixel wide, apposed to 2. */
             
+            article img, article li, article blockquote, article img {max-width:100%;}
+            
             /* Photoset frames */
-            section .photo-slideshow a {border:0;}
+            section .photo-slideshow a {border:0; display: inline-block}
             section .photo-slideshow .processed {visibility:visible;margin:0;display:block}
             section .photo-slideshow .processed .pxu-photo img {width:100%!important;height:auto!important;display:block}
             
             section .photo-slideshow .row {clear:both;width:100%}
-            section .photo-slideshow .row:last-of-type {margin-bottom:0!important} 
+            section .photo-slideshow .row:last-of-type {margin-bottom:5px!important} 
             
             section .photo-slideshow .pxu-photo {display:block;float:left;margin-bottom:0;width:100%;overflow:hidden}
             section .photo-slideshow .pxu-photo img {display:block}
             section .photo-slideshow .pxu-photo:first-child img {margin-left: 0}
             
+            section .photo-data {display: inline-block}
             section .photo-slideshow .count-1 {width:100%} .photo-slideshow .count-2 {width:50%}
             section .photo-slideshow .count-3 {width:33.23%} .photo-slideshow .count-4 {width:25%}
             section .photo-slideshow .count-5 {width:20%} .photo-slideshow .info {display:none}
-            
-            section .source a {border-bottom:1px solid var(--links)}
-            section .source {margin-top:15px}
-            section .chat {margin:0;padding:0;list-style:none;text-align:left}
             
             /* Video */
             section .ex {margin:-20px 0 -10px; padding:20px; background:var(--accent1)} 
@@ -439,28 +440,42 @@
             #pagination {text-align:left;display:none}
             
             .timeline-Tweet-text{margin-bottom: -12px!important}
-            
         </style>
     </head>
 
     <body id="body">
         <div class="cont">
-        
-            <script>function fadeto(){$('#hdr').css({opacity:0.6})};function fadeno(){$('#hdr').css({opacity:1})}</script>
+            
+            <div class="nmb">
+                <svg xmlns="http://www.w3.org/2000/svg" id="nm0" viewBox="0 0 16 16"><path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" id="nm1" style="display:none" viewBox="0 0 16 16"><path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8.5 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm5-5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm-11 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9.743-4.036a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm-7.779 7.779a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm7.072 0a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707zM3.757 4.464a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707z"/></svg></div>
+
             <div class="hdr" id="hdr"></div>
-            <div class="bnlogo" id="bnlogo" onmousedown="goingto = 1; pageturn()" onmouseover="fadeto()" onmouseout="fadeno()">
+            <div class="bnlogo pg1" onmouseover="fadeto()" onmouseout="fadeno()">
                 <div class="logo" id="logo"></div></div>
-                
+            
             <script>
-                var git = "https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/";
+                var git="https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/";
                 //var lkblk = ["#7dbbe6","#171a21","#1da1f2","#ff0000","#738adb","#e1306c","#ff5e5b"];
+                var dr,bm=["","none"],nm=0;
+                
+                function fadeto(){$('#hdr').css({opacity:0.6})};
+                function fadeno(){$('#hdr').css({opacity:1})}
+                
+                $('.nmb').bind('click',function(event) {
+                    if(nm==1){dr=[0,1];nm = 0}else{dr=[1,0];nm=1}
+                    for(var i=0;i<2;i++){$("#nm"+i).css({"display":bm[dr[i]]})}})
+                    
                 $(document).ready(function(){
                     for(var i = 0; i < 7; i++){
-                        $('.bt' + i).css({'background-image': "url('" + git + "icons/sb" + i + ".png')"})
+                        $('.bt' + i).css({'background-image': "url('" + git + "icons/sb" + i + ".png')",
+                            'height':'42px','background-size':'140% auto','background-position':'left'})
                         $('.i' + i).css({'background-image': "url('" + git + "icons/sm" + i + ".png')"})
                         $('#sc'+i).attr('src', git + "imgs/ams" + i + ".png")}
                         //$('.lkblk:hover > .c' + (i + 1) + ':hover').addClass({'background-color': lkblk[i + 1]}) //idk why this doesn't work
                     $('#pfp').attr('src', git + "imgs/pfp.gif")});
+ 
+                window.addEventListener('load',function(){$('#loading').css('opacity','0')})
             </script>
             
             <asidel id="asidel"> <!-- sidebar navigation -->
@@ -481,7 +496,7 @@
                     <a class="lkcon c1 lc" target="_blank" href="github.com/TheaVanherst"><div class="wdt i5 lc"></div></a></div>
                 <div class="block tc"><p>Vanh.art, established on Aug 1st, 2021</p></div> 
                 <!-- Updated Aug 16th 2021, 03:31 GMT --> <!-- I'm currently editing the page, so please stay tuned! -->
-                <div class="tii tan" style="margin-top: -20px"><p class="bc">The site is currently in development. Updated Aug 25th 2021, 08:06 GMT</p></div>
+                <div class="tii tan" style="margin-top: -20px"><p class="bc">The site is currently in development. Updated Aug 30th 2021, 08:06 GMT</p></div>
             </asidel>
             
             <div class="pg pg0">
@@ -639,10 +654,6 @@
                              
                             <div class="when footer">
                                 <span class="repost">
-                                    <a href="{Permalink}" target="_blank" class="r" title="reblog">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z"/></svg>
-                                    </a>
-                                
                                     <a href="{ReblogURL}" target="_blank" class="r" title="reblog">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5.115 3.515c4.617-4.618 12.056-4.676 16.756-.195l2.129-2.258v7.938h-7.484l2.066-2.191c-2.82-2.706-7.297-2.676-10.073.1-4.341 4.341-1.737 12.291 5.491 12.291v4.8c-3.708 0-6.614-1.244-8.885-3.515-4.686-4.686-4.686-12.284 0-16.97z"/></svg>
                                     </a>
@@ -685,10 +696,8 @@
                  
                         {block:PostNotes} 
                             <article class="pagenotes">
+                                <div class="when whb"> <a class="dateposted">{block:NoteCount}{notecountwithlabel}{/block:NoteCount}</a></div>
                                 <div class="con" id="in">
-                                    {block:NoteCount}<t>{notecountwithlabel}</t>
-                                    <div class="divider"></div> {/block:NoteCount}
-                                    
                                     {block:RebloggedFrom}
                                         via: <a href="{ReblogParentURL}">{ReblogParentName}</a>
                                         {block:ContentSource}
@@ -721,19 +730,18 @@
             </div>
             
              <script>    // 1,2,3,4,5,6,7,8           1,2,3,4,5,6,7,8           1,2,3,4,5,6,7,8
-                var pg2l=[1,1,1,1,2,1,1,1],pg2m=[1,1,1,1,1,1,1,1],pg2r=[1,1,1,1,1,1,1,2],sid2a=[pg2l,pg2m,pg2r]; //image format
+                var pg2l=[1,1,1,1,2,1,1,1],pg2m=[1,1,1,1,1,1,1,1],pg2r=[1,1,1,1,1,1,1,2],sid2a=[pg2l,pg2m,pg2r]; //image format : frt[]
                 var pg2zl=[1,1,1,0,1,1,1,0],pg2zm=[1,1,1,1,1,1,1,1],pg2zr=[1,1,1,1,1,1,0,0],sid2z=[pg2zl,pg2zm,pg2zr]; //adds zoom class
                 var pg2hl=[9,5,5,0,5,8,8,0],pg2hm=[8,8,8,7,3,4,5,8],pg2hr=[9,7,5,7,5,5,0,0],sid2h=[pg2hl,pg2hm,pg2hr]; //image hights
                 var pg2ll=[50,35,50,0,10,5,25,0],pg2lm=[86,95,50,30,60,30,20,115],pg2lr=[45,60,15,0,50,20,0,0],sid2l=[pg2ll,pg2lm,pg2lr] //left pos
-                var frt=["jpeg","png","gif"], sides = ["l","m","r"];
-                $(document).ready(function(){ 
-                    for(var t = 0; t < 3; t++){ 
-                        var ap2 = sid2a[t], az2 = sid2z[t], ah2 = sid2h[t], al2 = sid2l[t];
-                        for(var i = 1; i <= 8; i++){ if (az2[i - 1] == 1){ 
-                                $('#' + sides[t] + 's' + i).addClass('zoom')
-                                $('#' + sides[t] + 's' + i).css('height', (ah2[i - 1] * 100) + "px")
-                                $('#' + sides[t] + 's' + i).css('left', (al2[i - 1] * -1) + "%")}
-                            $('#' + sides[t] + 's' + i).attr('src',git + "imgs/" + sides[t] + i + "." + frt[ap2[i - 1]]);}}})
+                var frt=["jpg","png","gif"], sides = ["l","m","r"]; //for different file types, then loops through which coloumn is currently being looped
+                $(document).ready(function(){ //called on page load
+                    for(var t = 0; t < 3; t++){ //toggles between sides, because it's easier to read and bugfix
+                        var ap2 = sid2a[t], az2 = sid2z[t], ah2 = sid2h[t], al2 = sid2l[t]; //flips between which array is currently active
+                        for(var i = 1; i <= pg2l.length; i++){ if (az2[i - 1] == 1){ //loops through based on amount of images in left side coloumn
+                            $('#' + sides[t] + 's' + i).addClass('zoom') //adds zoom class to images to save class spamming
+                            $('#' + sides[t] + 's' + i).css({'height': (ah2[i - 1] * 100) + "px", 'left': (al2[i - 1] * -1) + "%"}) //adds image data from array loops
+                        }; $('#' + sides[t] + 's' + i).attr('src',git + "imgs/" + sides[t] + i + "." + frt[ap2[i - 1]]);}}}) //adds the url to each img class
             </script>
             
             <div class="pg pg2">
@@ -758,8 +766,7 @@
                                                     
                         <div class="imco"><div class="tii"><p>25/05/2019<br><t>Futaba</t></p></div>
                             <div class="tfd"><p><t>Lineart</t></p></div><img id="ls1"/></div>
-                    </incont>
-                    <incont>
+                    </incont><incont>
                         <div class="imco"><div class="tii"><p>03/05/2021<br><t>Lilith as Moonlord v0.7</t></p></div>
                             <div class="tfd"><p><t>Ingame Recreation</t></p></div><img id="ms8"/>
                             <p>"Newly redesigned and refurbished graphics for my Terraria Moonlord Replacment, along with some comparrisions."</p></div>
@@ -783,8 +790,7 @@
                         <div class="imco"><div class="tii sth"><p>08/05/2020<br><t>Rosalina</t></p></div>
                             <div class="tfd"><p><t>Final Lineart</t></p></div><img id="ms1"/>
                             <p>A line clean-up of an old drawing; <h>20/11/2019</h></p></div>
-                    </incont>
-                    <incont>
+                    </incont><incont>
                         <div class="tii tan imco" style="margin-top:-62px;"><p>This page contains a small selection of cherry picked drawings and their development process.</p></div>
                             
                         <div class="immc"><div class="tii"><p>01/05/2021 - 04/05/2021<br><t>Arms Dealer Coffee</t></p></div>
@@ -817,23 +823,29 @@
                 </fullwc>
             </div>
 
+             <script>
+                var pgdh=[460,460,460,475,475,234,610,610,610,610,610,610,234,475,475,450,450,234,234,595,595,595,153,206,450]
+                var pg3h=[355,355,355,425,425,182,560,560,560,560,772,560,184,425,425,400,400,184,184,460,460,460,153,153,400]//image hights
+                var pg3l=[14,64,64,0,0,0,17,11,11,2,6,11,0,0,0,13,20,0,0,105,39,32,0,10,13] //left pos
+                var ap3=[0,0,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1]
+                $(document).ready(function(){ //called on page load
+                    for(var i = 0; i <= pg3h.length; i++){ var temp = ap3[i]
+                        $('#dp' + i).addClass('zoom'); //adds zoom class to images to save class spamming
+                        $('#dp' + i).css({'height': pg3h[i] + "px", 'left': (pg3l[i] * -1) + "%"}) //adds image data from array loops
+                        $('#dp' + i).attr('src',git + "imgs/d" + i + "."+ frt[temp]) //adds image src url
+                        $('#dp' + i).parent().css({'height': pgdh[i] + "px"})} //assigns the parent height to limit overflow for dropdown text
+                }) //adds the url to each img class
+            </script>
+
             <div class="pg pg3">
                 <fullwc>
                     <div class="titlb"><t>Digital Design</t><div class="i bt3"></div></div>
-   
-                    <incont>
-                        <div class="imco" style="height:495px">
-                            <div class="tii"><p>04/08/2019<br><t>Mothership</t></p></div>
-                            <div class="tfd dac"><p><t>Concept Album Artwork</t></p></div>
-                            <img src="https://64.media.tumblr.com/b9f2f024b139bb1d69d645b80b270b36/tumblr_pvq215CF521tlj5o2o1_540.png" class="zoom" style="height:460px;left:-18%"/></div>
-                        
-                        <div class="imco"style="height:365px">
-                            <div class="tii"><p>18/01/2019<br><t>Vial of Me</t></p></div>
-                            <div class="tfd dac"><p><t>Album Artwork Design</t></p></div>
-                            <img src="https://64.media.tumblr.com/09bcef10f1e6d92e75a5d1207c7b2529/tumblr_pigm63GGlG1tlj5o2o1_540.png" class="zoom" style="height:400px;left:-28%;top:-18%;"/></div>
-                    </incont>
-                    
-                    <incont class="w3x2">
+                    <!--
+                        <div class="imco" style="height:355px">
+                            <div class="tii"><p>04/08/2019<br><t>Rainpro.Dash</t></p></div>
+                            <div class="tfd"><p><t>CS:GO Team Logo</t></p></div>
+                            <img src="https://cdn.discordapp.com/attachments/629600253997350912/878805369428783174/rainprodash6.png" class="zoom" style="height:305px;left:-5%;"/></div>
+    
                         <div class="imco w3x2" style="height:355px">
                             <div class="tii"><p>02/06/2021<br><t>VanH Logo Development</t></p></div>
                             <div class="w32con">
@@ -842,28 +854,62 @@
                                 <div class="w32"><div class="tfd"><p><t>Finalised</t></p></div>
                                     <img src="https://cdn.discordapp.com/attachments/629600253997350912/879990744780267530/vanherst5FSMALL.png" class="zoom" style="height:250px"/></div></div>
                             <p> hello, this is a text box test for this specific container, it doesn't really do much right now other than to prove a quantative value for how much text I can display and applicable formatting. </p></div>
+                    -->
+                    <div class="immc w3x3"><div class="tii"><p>06/06/2021 - 02/08/2021<br><t>VanH Social Media Banner</t></p></div><img id="dp23"/></div>
+                    <div class="imco w3x3"><img id="dp22"/></div>
                     
-                        <div class="imco w3x2" style="height:505px">
-                            <div class="tii"><p>01/06/2019<br><t>Rainpro.dash</t></p></div>
-                            <div class="w32con">
-                                <div class="w32"><div class="tfd dac"><p><t>Concept</t></p></div>
-                                    <img src="https://cdn.discordapp.com/attachments/629600253997350912/881057995981733908/rainprodash2.png" class="zoom" style="height:400px"/></div>
-                                <div class="w32"><div class="tfd"><p><t>Default</t></p></div>
-                                    <img src="https://cdn.discordapp.com/attachments/629600253997350912/878805369428783174/rainprodash6.png" class="zoom" style="height:400px"/></div></div>
-                            <p> hello, this is a text box test for this specific container, it doesn't really do much right now other than to prove a quantative value for how much text I can display and applicable formatting. </p></div>
-                    </incont>
+                    <div class="imco"><div class="tii"><p>15/12/2018<br><t>Vial Of Me.js</t></p></div>
+                        <div class="tfd dac"><p><t>Three.js Render</t></p></div><img id="dp21"/>
+                        <p> hello, this is a text box test for this specific container, it doesn't really do much right now other than to prove a quantative value for how much text I can display and applicable. </p></div>
+                    <div class="imco"><div class="tii"><p>02/12/2018<br><t>Blender Redesign</t></p></div>
+                        <div class="tfd"><p><t>In-software preview</t></p></div><img id="dp20"/>
+                        <p> hello, this is a text box test for this specific container, it doesn't really do much right now other than to prove a quantative value for how much text I can display and applicable. </p></div>
+                    <div class="imco"><div class="tii"><p>20/11/2014<br><t>Nothing But Noise</t></p></div>
+                        <div class="tfd"><p><t>Album Artwork Design</t></p></div><img id="dp19"/>
+                        <p> hello, this is a text box test for this specific container, it doesn't really do much right now other than to prove a quantative value for how much text I can display and applicable. </p></div>
                     
-                    <div class="imco w3x3 mc">
-                        <div class="tii"><p>10/06/2021 - 02/08/2021<br><t>VanH Branding</t></p></div>
-                        <div class="tfd"><p><t>Social Media Banner</t></p></div>
-                        <img class="zoom" src="https://cdn.discordapp.com/attachments/629600253997350912/879963121102508072/vanhbanner3.2.png" style="width:120%;left:-10%"/></div>
-                    <div class="immc w3x3">
-                        <div class="tfd dac"><p><t>Halloween Social Media Banner</t></p></div>
-                        <img class="zoom" src="https://cdn.discordapp.com/attachments/630047188520665121/871571084544200754/halloweenbanner.png" style="width:100%;left: 0%"/>
-                        <p> hello, this is a text box test for this specific container, it doesn't really do much right now other than to prove a quantative value for how much text I can display and applicable formatting. </p></div>
+                    <div class="imco w3x3"><div class="tii"><p>22/10/18<br><t>Polygram Social Media Banner</t></p></div><img id="dp18"/></div>
+                    <div class="imco w3x3"><div class="tii"><p>19/05/18<br><t>Bachoo Branding</t></p></div><img id="dp17"/></div>
+
+                    <div class="imco"><div class="tii"><p>17/11/18<br><t>Nikotin</t></p></div>
+                        <div class="tfd"><p><t>Concept Album Artwork</t></p></div><img id="dp16"/></div>
+                    <div class="imco"><div class="tii"><p>14/01/2017<br><t>Girl</t></p></div>
+                        <div class="tfd dac"><p><t>Official Single Artwork</t></p></div><img id="dp24"/></div>
+                    <div class="imco"><div class="tii"><p>25/10/2016<br><t>System Overload</t></p></div>
+                        <div class="tfd"><p><t>Official Single Artwork</t></p></div><img id="dp15"/></div>
+
+                    <div class="imco w2x1"><div class="tii"><p>22/10/2017<br><t>Flippo Sounds</t></p></div>
+                        <div class="tfd"><p><t>Soundpack Artwork Art</t></p></div><img id="dp14"/></div>
+                    <div class="imco w2x1"><div class="tii"><p>15/09/2017<br><t>Ink Trace</t></p></div>
+                        <div class="tfd dac"><p><t>Single Artwork</t></p></div><img id="dp13"/></div>
+                    
+                    <div class="imco w3x3"><div class="tii"><p>28/09/17<br><t>Flippo Social Media Branding</t></p></div><img id="dp12"/></div>
+
+                    <div class="imco"><div class="tii"><p>15/10/16<br><t>Polygon Dust</t></p></div><img id="dp11"/></div>
+                    <div class="imco"><div class="tii"><p>16/09/2016<br><t>Hymn Of The Haunted Hunter</t></p></div><img id="dp10" style="top:-36%"/></div>
+                    <div class="imco"><div class="tii"><p>15/08/2016<br><t>Gratitude</t></p></div><img id="dp9"/></div>
+                    
+                    <div class="imco"><div class="tii"><p>15/10/16<br><t>Polygon Dust</t></p></div><img id="dp8"/></div>
+                    <div class="imco"><div class="tii"><p>16/09/2016<br><t>Hymn Of The Haunted Hunter</t></p></div><img id="dp7"/></div>
+                    <div class="imco"><div class="tii"><p>15/08/2016<br><t>Gratitude</t></p></div><img id="dp6"/></div>
+               
+                    <div class="immc w3x3"><div class="tii"><p>05/12/15<br><t>CentricArts Branding</t></p></div><img id="dp5"/></div>
                         
-                        
-                        
+                    <div class="imco w2x1"><div class="tii"><p>04/08/2019<br><t>Mothership</t></p></div>
+                        <div class="tfd"><p><t>Concept Album Artwork</t></p></div><img id="dp4"/></div>
+                    <div class="imco w2x1"><div class="tii"><p>12/05/2015<br><t>Syndicate</t></p></div>
+                        <div class="tfd dac"><p><t>Official Album Artwork</t></p></div><img id="dp3"/></div>
+
+                    <div class="imco"><div class="tii"><p>21/12/2014<br><t>Ponies</t></p></div>
+                        <div class="tfd"><p><t>Single Artwork</t></p></div><img id="dp2"/>
+                        <p> hello, this is a text box test for this specific container. </p></div>
+                    <div class="imco"><div class="tii"><p>15/11/2014<br><t>Nothing But Noise</t></p></div>
+                        <div class="tfd"><p><t>Official Album Artwork</t></p></div><img id="dp1"/>
+                        <p> hello, this is a text box test for this specific container. </p></div>
+                    <div class="imco"><div class="tii"><p>29/05/2014<br><t>Mothership</t></p></div>
+                        <div class="tfd"><p><t>Official Album Artwork</t></p></div><img id="dp0"/>
+                        <p> hello, this is a text box test for this specific container. </p></div>
+
                 </fullwc>
             </div>
             
@@ -930,8 +976,6 @@
              
             var resize = function() { // Page rescaling
                 headr = $("#hdr").height();
-                $("#bnlogo").css('transition', "opacity .2s"); $("#logo").css('transition', "opacity .2s"); 
-                
                 if ($('body').width() < (page3 + 80)){ //200 / 80
                     if ($('body').width() <= (page3 + 80) && $('body').width() > 900){ //200 / 80
                         var pagescl3 = (page3 / ($('body').width() - 80)); //200 / 80
@@ -948,15 +992,12 @@
                             docelem.style.setProperty('--sidebarl', -20 + "px")
                             docelem.style.setProperty('--sidebarr', (righb / pagescl2).toFixed(2) + 10 + "px")
                             docelem.style.setProperty('--postwidth', (middb / pagescl2).toFixed(2) + 10 + "px")}}}
-                            
                 if ($('body').width() > (page3 + 80)) { //200 / 80
                     $('#asidel').css('opacity', 1); 
                     docelem.style.setProperty('--sidebarl', leftb + "px")
                     docelem.style.setProperty('--sidebarr', righb + "px")
                     docelem.style.setProperty('--postwidth', middb + "px")
-                    $('section').css('margin','0 20px 0 calc(var(--sidebarl) + 20px)')}
-                    
-                $("#bnlogo").css('transition', "all .15s"); $("#logo").css('transition', "all .15s")}
+                    $('section').css('margin','0 20px 0 calc(var(--sidebarl) + 20px)')}}
 
             $(document).ready(resize)
             $(window).on("load resize", resize)
@@ -971,6 +1012,8 @@
                     $('.pg' + i).children().on('click', function(e) {
                         if(concurrent != i){
                             pgsd[concurrent] = $(document).scrollTop()
+                            var tran = "." + Math.abs((i - concurrent) * 1.5) + "s";
+                            $(".pg").css({"transition": "margin " + tran + " cubic-bezier(0,0,0,1), opacity " + tran + " cubic-bezier(0,0,0,1)"})
                             concurrent = i; 
                             $('html, body').animate({scrollTop: pgsd[i]}, 0)
                             for(var e = 0; e < 6 + 1; e++){ 
@@ -987,7 +1030,7 @@
                 
                 $('asidel, .search').toggleClass("strict", $(document).scrollTop() >= (20 + headr))
                 $('.taggie').each(function() {$(this).click(function(){$(this).closest('article').find('.tags').slideToggle(400)})})
-                $('.photo-slideshow').pxuPhotoset({ lightbox: true, rounded: false, gutter: '2px',photoset: '.photo-slideshow', photoWrap: '.photo-data', photo: '.pxu-photo'})
+                $('.photo-slideshow').pxuPhotoset({lightbox: true,rounded: false,gutter: '1px',photoset: '.photo-slideshow',photoWrap: '.photo-data',photo: '.pxu-photo'}); 
                 $('.timestamp').timeAgo({time: "short", spaces: true, suffix: " ago" }) 
                 
                 $('.video:not(.resized) iframe:not(.tumblr_video_iframe)').each(function(){
@@ -1017,7 +1060,7 @@
                         var $newID = $newElems.map(function(){return this.id;}).get()
                         Tumblr.LikeButton.get_status_by_post_ids($newID)
                         $newElems.find('.photo-slideshow').pxuPhotoset({
-                            lightbox: true, rounded: false,utter: '2px', photoset: '.photo-slideshow',photoWrap: '.photo-data', photo: '.pxu-photo'})
+                            lightbox: true, rounded: false, gutter: '1px', photoset: '.photo-slideshow',photoWrap: '.photo-data', photo: '.pxu-photo'})
                         $newElems.find('iframe.tumblr_audio_player').load( function() {
                             $('iframe.tumblr_audio_player').contents().find("head").append(
                                 $("<style type='text/css'> .audio-player{background:var(--accent1) !important} </style>"))})
