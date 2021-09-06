@@ -7,7 +7,10 @@
              PAGE SCRIPTS 
         =================================================================================================--> 
         
-        <script>var docelem = document.documentElement</script> <!-- this saves time later -->
+        <script>
+            var docelem = document.documentElement,
+                git="https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/";
+        </script> <!-- this saves time later -->
         
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
@@ -32,21 +35,18 @@
                 --fontstyle: 'Manrope', sans-serif; --boldstyle: 'Rubik', sans-serif; --gerstyle: 'UnifrakturCook', cursive;
                 /*banner settings*/
                 --bannerheight:520; --bannerwidth:3480;
-                --bannerlogo: url('https://cdn.discordapp.com/attachments/870119954232516669/872774193593335849/back30.png');
-                --bannerlogohov: url('https://cdn.discordapp.com/attachments/870119954232516669/872773749454286848/back29.png');
-                --bannerurl: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/vanhbanner3.2.png');
+                --bannerlogo: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/back30.png');
+                --bannerlogohov: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/back29.png');
                 --bannerurlblank: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/vanhbanner3.b.png');
                 --bannerscoll: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/scrollbanner.png');
                 /*colours*/
                 --accent1:#7565ff; --accent2: #ff62ea; --accent3: #ffb533; --accent4: #3aecb4;
-                --links: #ff8ef4; --titles: #7285fe; --text: #787878;
-                --darkac1: #787878; --darkac2: #505050; --darkac3: #2b2b2b;
-                --background: #f4f4f4; --posts: #ffffff; --artposts: #8781bd; --borders: #d8d5d5; /*--background: #1d1d1d; --posts: #141414; --borders: #090909*/
-                --scrollbar: #aaaaaa; 
+                --invaccent: #505050; --links: #ff8ef4; --titles: #7285fe; --text: #787878;
+                --background: #f4f4f4; --posts: #ffffff; --artposts: #8781bd; --borders: #d8d5d5;
+                --scrollbar: #aaaaaa; --defopacity: 1; --fadeto: 0.6;
                 /* page margin multiplier settings */
                 --sidebarl:250px; --sidebarr:350px; --postwidth:500px; /*default sidebar widths*/
-                --page0: -1; --page1: 0; --page2: 1; --page3: 2; --page4: 3; --page5: 4; --page6: 5; /* page debug info */
-            }
+                --page0: -1; --page1: 0; --page2: 1; --page3: 2; --page4: 3; --page5: 4; --page6: 5; /* page debug info */ }
                 
             body { background:var(--background); font-family:var(--fontstyle); color:var(--text); 
                 word-wrap:break-word; margin:0; overflow-x: hidden;}
@@ -63,30 +63,6 @@
             img {width:100%;display:block;opacity:1;border:0;background-position:center}
                 
         /* ==================================================================================================== */
-            /* postbar FORMATTING */
-        /* ==================================================================================================== */
-            
-            .hdr { /*header image*/
-                height:calc(((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth));
-                background-size:100% auto; background-image:var(--bannerurlblank); margin: 20px auto}
-            
-            .bnlogo, .logo {background-size: auto 100%;background-repeat: no-repeat;z-index:999}
-            .logo {width:100%;height:100%;opacity:1;background-image: var(--bannerlogo); cursor:pointer}
-            .logo:hover {opacity:0}
-            
-            .bnlogo { /*logo ontop*/
-                position:absolute;left:50%;transform:translateX(-50%);background-image:var(--bannerlogohov);
-                height:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) + 10px);
-                width:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 2 + 10px);
-                margin-top:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) - 
-                    ((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 2) - 25px)}
-            .bnlogo:hover {
-                height:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) - 10px);
-                width:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 1.9 - 10px);
-                margin-top:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) - 
-                    ((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 2) - 15px)}
-
-        /* ==================================================================================================== */
             /* MAIN FORMATTING */
         /* ==================================================================================================== */
         
@@ -98,13 +74,13 @@
             incont,.imco, .immc{display:inline-block;vertical-align:top;margin:0px 20px 0 0;width:calc((var(--sidebarr) + var(--postwidth) - 21px) / 3)}
             fullwc{margin-left:calc(var(--sidebarl) + 20px);width:calc((var(--sidebarr) + var(--postwidth)) + 20px)}
             
-            asidel,sidels,siders,sidelm,siderm,sidell,siderl,fullwc,section{
+            sidels,siders,sidelm,siderm,sidell,siderl,fullwc,section{
                 display:inline-block;vertical-align:top;overflow-x:hidden;
                 width:calc((var(--postwidth) + var(--sidebarr)) + 41px)} 
                 /*this is 40, apposed to 20 because it saves a bunch of margin formatting*/
             sidels,sidelm,sidell,section{margin:0 20px 0 0}
             
-            asidel{z-index:9999; position:absolute; top:auto}
+            asidel{z-index:9999;position:fixed;top:20px}
             asidel,section{width:var(--sidebarl)}
             sidell,siderl,section{width:var(--postwidth)}
             sidelm,siderm{width:calc((var(--sidebarr) + var(--postwidth)) / 2)}
@@ -121,11 +97,7 @@
             .pg.pg5 {margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page5))}
             .pg.pg6 {margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page6))}
             .pagefocus {opacity: 1!important; z-index: 9!important; cursor:auto!important}
-            
-            .nmb {float:right;height:42px;width:42px;margin-right:-62px; background-color:var(--accent1); cursor:pointer;
-                margin-top:calc(((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth) - 42px)}
-            .nmb svg {scale:0.65;fill:white} .nmb:hover svg {fill:var(--accent3)}
-            
+
             /*scrollbar*/
             ::-webkit-scrollbar {width:12px;height:12px;background-color:transparent}
             ::-webkit-scrollbar-thumb{background-clip:padding-box;border-radius:6px; 
@@ -143,12 +115,12 @@
             .rc,.tc{border-top-right-radius:6px}.lc,.tc{border-top-left-radius:6px}
             .rc,.bc{border-bottom-right-radius:6px}.lc,.bc{border-bottom-left-radius:6px}
             
-            .when:last-of-type,.lsbut:last-of-type,.lsbut:last-of-type i{
+            .when:last-of-type,asidel .lsbut:last-of-type,asidel .lsbut:last-of-type i{
                 border-bottom-left-radius:6px;border-bottom-right-radius:6px}
-            .when:first-of-type,.whb,.search,.lsbut:first-of-type,.lsbut:first-of-type i{
+            .when:first-of-type,.whb,.search,asidel .lsbut:first-of-type,asidel .lsbut:first-of-type i{
                 border-top-left-radius:6px;border-top-right-radius:6px;
                 border-bottom-left-radius:0px!important;border-bottom-right-radius:0px!important}
-            .block,.titlb .i,.titlb,.vimage,.lkcon,.imco,.immc,.hdr,.nmb,
+            #nav,.block,.titlb .i,.titlb,.vimage,.lkcon,.imco,.immc,.hdr,.nmb, 
             article,asidel .wedge,asidel .wedge img,.vimage img,.repost svg{border-radius:6px}
             
             /* DUMB ACCENT COLOURS I CAN'T DECIDE ON
@@ -157,24 +129,26 @@
             .imco p, .immc p {background:var(--posts)}
             .imco a, .immc a{color:var(--accent3)}.imco a:hover {color:var(--accent4)}
             .imco img, .immc img{background-color:var(--artposts)}
-            .tii p {background-color:var(--accent1); color:var(--posts)}
+            .tii p {background-color:var(--accent1); color:white}
             .tfd p {background-color:var(--accent2); color:var(--posts)}
-            .tii t, .tfd t {color:var(--posts)!important}
+            .tii t, .tfd t {color:white!important}
             
             .titlb:hover t,.lsbut:hover t {color:var(--accent2)}
             .titlb,.lsbut,.titlb {background-color:var(--posts)}
             
-            .titlb t,.lsbut t{color: var(--posts)}
+            .titlb t,.lsbut t{color:white;}
             
             .lkblk:hover > * {background-color:var(--accent1)} 
             .when, .lkcon {background-color:var(--accent1)}
             
-            .search, .tan p {background-color:var(--darkac2)}
+            .search, .tan p {background-color:var(--invaccent)}
             .dac p {background-color: var(--accent3)!important}
             
             .repost svg {fill:var(--posts); background-color:var(--accent1)}
             .like .liked + svg {background-color:var(--accent3)}
             .like:hover svg, .repost svg:hover {fill:var(--accent1)} 
+            
+            .timeline-Widget{background-color:var(--posts)!important; color:var(--text)!important}
             
             /* transition dumps
         /* ===================================== */
@@ -187,19 +161,54 @@
             .lsbut, .tfd {transition:margin .2s cubic-bezier(0,0,0,1)}
             .tfd p {transition:font-size .2s cubic-bezier(0,0,0,1)}
             
+            body, body * {transition:color .1s cubic-bezier(0,0,0,1), background .1s cubic-bezier(0,0,0,1)}
+            
+            /* Top Navbar CONTENT
+        /* ===================================== */
+  
+            .hdr { /*header image*/
+                height:calc(((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth));
+                width: calc(var(--sidebarr) + var(--postwidth) + 20px); margin: 20px auto 20px calc(var(--sidebarl) + 20px);
+                background-size:140% auto; background-image:var(--bannerurlblank)}
+            
+            .bnlogo, .logo {background-size: auto 100%;background-repeat: no-repeat;z-index:999}
+            .logo {width:100%;height:100%;opacity:1;background-image: var(--bannerlogo); cursor:pointer}
+            .logo:hover {opacity:0}
+            
+            .bnlogo { /*logo ontop*/
+                position:absolute;left:50%;transform:translateX(-50%);background-image:var(--bannerlogohov);margin-left:calc(var(--sidebarl)/2);
+                margin-top:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) - 
+                    ((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 2) - 25px);
+                height:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) + 10px);
+                width:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 2 + 10px)}
+            .bnlogo:hover {
+                margin-top:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) - 
+                    ((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 2) - 15px);
+                height:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) - 10px);
+                width:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 1.9 - 10px)}
+        
+            .nmb {float:right;height:42px;width:42px;margin-right:-62px; background-color:var(--accent1); cursor:pointer;
+                margin-top:calc(((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth) - 42px)}
+            .nmb svg {-webkit-transform: scale(.65); -moz-transform: scale(.65); -o-transform: scale(.65);  -ms-transform: scale(.65); transform: scale(.65); fill:white} 
+            .nmb:hover svg {fill:var(--accent3)}
+            
+            #nav {display:none; overflow:hidden; margin:0 0 20px; z-index: 99999; position: relative; width:calc((var(--postwidth) + var(--sidebarr)) + 20px)!important}
+            #nav .lsbut {width:calc((var(--sidebarr) + var(--postwidth) + 20px)/3); display: inline-block; margin:0 0 -5px}
+            
             /* LEFT HAND SIDEBAR CONTENT
         /* ===================================== */
             
-            .titlb, .lsbut:last-of-type{margin: 0 0 20px!important}
-            .lsbut:hover{margin:10px 0!important}
+            asidel .lsbut:last-of-type, .titlb{margin: 0 0 20px!important}
+            asidel .lsbut:hover{margin:10px 0!important}
             .titlb t,.lsbut t{z-index:99;position:absolute;padding:8px 15px;font-size:1.4em!important}
             .titlb {max-width:calc((var(--postwidth) + var(--sidebarr)) + 20px)}
             .titlb,.titleh:hover {z-index:999} 
             .titlb,.lsbut {cursor:pointer}
-            .titlb:hover .i, .lsbut:hover .i, .titleh:hover .i{opacity: 0.6!important}
+            .titlb .i, .lsbut .i,.titleh .i{opacity: var(--defopacity)}
+            .titlb:hover .i, .lsbut:hover .i, .titleh:hover .i{opacity: var(--fadeto)!important}
             
             .lkblk {height:calc((var(--sidebarl) - (10.2px * 5)) / 6); padding: 10px 0}
-            .lkblk:hover > * {opacity:0.5} 
+            .lkblk:hover > * {opacity:0.6} 
             .lkblk:hover > *:hover {opacity:1}
             .lkblk:hover > .c1:hover {background: #7dbbe6}
             .lkblk:hover > .c2:hover {background: #171a21}
@@ -230,7 +239,7 @@
             .w32con {width:calc(((var(--sidebarr) + var(--postwidth) + 20px) / 3) * 2); margin-bottom: -5px}
             
             .w32 {display: inline-block; overflow:hidden; height:inherit}
-            .w32:last-child{width: calc((100% / 3) * 2); opacity:1}
+            .w32:last-child{width: calc((100% / 3) * 2); opacity:1} 
             .w32:first-child, .w32con:hover > *{ width:calc((100% / 3) * 1); opacity:0.5}
             .w32con:hover > *:hover{width:calc((100% / 3) * 2); opacity:1} /* this has to be seperated, don't try it*/
             
@@ -264,11 +273,10 @@
             input:-moz-placeholder {color:var(--text)} 
             input:-ms-input-placeholder {color:var(--text)}
             
-            .search {position:absolute; top:auto}
             /* searchbar grad + mask */
-            .search .searchtop {height:20px;width:var(--sidebarr);
-                margin-top:-20px;background-color:var(--background)}
-            /* search bar form */
+            .searchtop {height:61px;margin-top:-20px;position:absolute;
+                width:var(--sidebarr);background-color:var(--background)}
+            .search {position:absolute; top:auto}
             .search .search-form {
                 width:calc(var(--sidebarr) - 30px);padding:12px 15px;
                 margin:0;outline:none;border:none;display:block}
@@ -276,7 +284,7 @@
                 text-transform:lowercase;font-size:11px;letter-spacing:.15px;width:100%;
                 background-color: inherit;display:block;border:transparent;border:0}
             .search .search-form input[type=text], input::placeholder {
-                color: var(--posts);font-family: var(--fontstyle)}
+                color:white;font-family: var(--fontstyle)}
             
             .strict {position:fixed!important; top:20px!important}
             
@@ -286,10 +294,10 @@
 
             /* Top of posts ========================================================================================================= */
             .notecounter, .timestamp {
-                color:var(--posts); font-size:0.8em; display:inline-block !important} /*top of the post, notes and time posted.*/
+                color:white; font-size:0.8em; display:inline-block !important} /*top of the post, notes and time posted.*/
             .notecounter:hover, .timestamp:hover {color:var(--accent3)}
-            .notecounter:after {content:'•'; margin:0 5px; color:var(--posts)!important} 
-            .dateposted {color:var(--posts); font-family:var(--boldstyle); text-transform:uppercase}
+            .notecounter:after {content:'•'; margin:0 5px; color:white!important} 
+            .dateposted {color:white; font-family:var(--boldstyle); text-transform:uppercase}
             .dateposted:hover {color:var(--accent4)}
             
             .when {padding:15px; line-height:1em} /* container that holds .time, and .d */ 
@@ -450,38 +458,71 @@
                 <svg xmlns="http://www.w3.org/2000/svg" id="nm0" viewBox="0 0 16 16"><path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/></svg>
                 <svg xmlns="http://www.w3.org/2000/svg" id="nm1" style="display:none" viewBox="0 0 16 16"><path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8.5 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm5-5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm-11 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9.743-4.036a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm-7.779 7.779a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm7.072 0a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707zM3.757 4.464a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707z"/></svg></div>
 
+            <script>function fadeto(){$('#hdr').css({opacity:0.6})}function fadeno(){$('#hdr').css({opacity:1})}</script>
+
             <div class="hdr" id="hdr"></div>
             <div class="bnlogo pg1" onmouseover="fadeto()" onmouseout="fadeno()">
                 <div class="logo" id="logo"></div></div>
             
             <script>
-                var git="https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/";
-                //var lkblk = ["#7dbbe6","#171a21","#1da1f2","#ff0000","#738adb","#e1306c","#ff5e5b"];
-                var dr,bm=["","none"],nm=0;
-                
-                function fadeto(){$('#hdr').css({opacity:0.6})};
-                function fadeno(){$('#hdr').css({opacity:1})}
-                
-                $('.nmb').bind('click',function(event) {
-                    if(nm==1){dr=[0,1];nm = 0}else{dr=[1,0];nm=1}
-                    for(var i=0;i<2;i++){$("#nm"+i).css({"display":bm[dr[i]]})}})
-                    
+                var dmc=["#7565ff","#ff62ea","#ffb533","#3aecb4","#505050","#ff8ef4","#7285fe","#787878","#f4f4f4","#ffffff","#8781bd","#d8d5d5","1","0.6"], //brightmode colours
+                    nmc=["#7246ee","#f267e3","#ffa85b","#3aecb4","#313131","#ff8ef4","#7285fe","#787878","#1d1d1d","#141414","#534b71","#090909","0.3","1"], //nightmode colours
+                    ml=["accent1","accent2","accent3","accent4","invaccent","links","titles","text","background","posts","artposts","borders","defopacity","fadeto"], //root var arr
+                    nm=true,cm,dr,bm=["","none"];
+                var concurrent = 1, pgsd = [0,0,0,0,0,0,0];
+
+                $('.nmb').bind('click',function(event){nm=!nm;
+                    document.cookie="lightmode="+nm+";"+"expires=Fri, 31 Dec 9999 23:59:59 GMT" 
+                    dr=[(nm?0:1),(!nm?0:1)];if(nm==true){cm=dmc;}else{cm=nmc;} 
+                    for(var i=0;i<=bm.length;i++){$("#nm"+i).css({"display":bm[dr[i]]})}
+                    for(var i=0;i<=cm.length;i++){docelem.style.setProperty("--"+ml[i],cm[i])};}) 
+
                 $(document).ready(function(){
-                    for(var i = 0; i < 7; i++){
-                        $('.bt' + i).css({'background-image': "url('" + git + "icons/sb" + i + ".png')",
+                    if(document.cookie.includes("lightmode=") == true){
+                        nm=document.cookie.split('; ').find(row=>row.startsWith('lightmode=')).split('=')[1];nm=(nm==='true')}else{nm=true;}
+                    dr=[(nm?0:1),(!nm?0:1)]; 
+                    if(nm==true){cm=dmc;}else{cm=nmc;
+                        for(var i=0;i<=cm.length;i++){docelem.style.setProperty("--"+ml[i],cm[i])}
+                        for(var i=0;i<=bm.length;i++){$("#nm"+i).css({"display":bm[dr[i]]})}}
+                        
+                    for(var i=0;i<7;i++){
+                        $('.bt'+i).css({'background-image': "url('"+git+"icons/sb"+i+".png')",
                             'height':'42px','background-size':'140% auto','background-position':'left'})
-                        $('.i' + i).css({'background-image': "url('" + git + "icons/sm" + i + ".png')"})
-                        $('#sc'+i).attr('src', git + "imgs/ams" + i + ".png")}
+                        $('.i'+i).css({'background-image': "url('"+git+"icons/sm"+i+".png')"})
+                        $('#sc'+i).attr('src',git+"imgs/ams"+i+".png")}
                         //$('.lkblk:hover > .c' + (i + 1) + ':hover').addClass({'background-color': lkblk[i + 1]}) //idk why this doesn't work
-                    $('#pfp').attr('src', git + "imgs/pfp.gif")});
- 
-                window.addEventListener('load',function(){$('#loading').css('opacity','0')})
+                    $('#pfp').attr('src',git+"imgs/pfp.gif")
+                        
+                    for(let i = 0; i < 6 + 1; i++) {
+                        $('.pg' + i).children().on('click', function(e) {
+                            if(concurrent != i){
+                                pgsd[concurrent] = $(document).scrollTop()
+                                var tran = "." + Math.abs((i - concurrent) * 1.5) + "s";
+                                $(".pg").css({"transition": "margin " + tran + " cubic-bezier(0,0,0,1), opacity " + tran + " cubic-bezier(0,0,0,1)"})
+                                concurrent = i; 
+                                $('html, body').animate({scrollTop: pgsd[i]}, 0)
+                                for(var e = 0; e < 6 + 1; e++){ 
+                                    docelem.style.setProperty('--page' + e, e - i); 
+                                    var page = ".pg.pg" + e, clc = "calc(((var(--postwidth) + var(--sidebarr)) + 40px) * (var(--page", temp;
+                                    if(e < i){temp = clc + e + ")) - (var(--sidebarl) + 20px"} else {temp = clc + e}
+                                    $(page).css("margin-left", temp + "))"); 
+                                    $("asidel .lsbut.pg" + e).css({"margin":"0"}); $("asidel .lsbut.pg" + i).css({"margin":"10px 0"});
+                                    $(".lsbut.pg"+e+" .i").css({"opacity":"var(--defopacity)"}); $(".lsbut.pg"+i+" .i").css({"opacity":"var(--fadeto)"});
+                                    if(e != i){$(page).removeClass("pagefocus")} else {$(page).addClass("pagefocus")}}}})};})
             </script>
-            
+            <fullwc id="nav">
+                <div class="lsbut pg1"><t>Feed</t><div class="i bt1"></div></div>
+                <div class="lsbut pg2"><t>Artwork</t><div class="i bt2"></div></div>
+                <div class="lsbut pg3"><t>Design</t><div class="i bt3"></div></div>
+                <div class="lsbut pg4"><t>Animation</t><div class="i bt4"></div></div>
+                <div class="lsbut pg5"><t>Workshop</t><div class="i bt5"></div></div>
+                <div class="lsbut pg6"><t>Javascript</t><div class="i bt6"></div></div>
+            </fullwc>
+
             <asidel id="asidel"> <!-- sidebar navigation -->
                 <div class="wedge"><img id="pfp"/></div>
                 <div class="lsbut pg0 tc"><t>About</t><div class="i bt0 tc"></div></div>
-                <div class="lsbut pg1"><t>Feed</t><div class="i bt1"></div></div>
+                <div class="lsbut pg1" style="margin: 10px 0"><t>Feed</t><div class="i bt1"></div></div>
                 <div class="lsbut pg2"><t>Artwork</t><div class="i bt2"></div></div>
                 <div class="lsbut pg3"><t>Design</t><div class="i bt3"></div></div>
                 <div class="lsbut pg4"><t>Animation</t><div class="i bt4"></div></div>
@@ -496,7 +537,7 @@
                     <a class="lkcon c1 lc" target="_blank" href="github.com/TheaVanherst"><div class="wdt i5 lc"></div></a></div>
                 <div class="block tc"><p>Vanh.art, established on Aug 1st, 2021</p></div> 
                 <!-- Updated Aug 16th 2021, 03:31 GMT --> <!-- I'm currently editing the page, so please stay tuned! -->
-                <div class="tii tan" style="margin-top: -20px"><p class="bc">The site is currently in development. Updated Aug 30th 2021, 08:06 GMT</p></div>
+                <div class="tii tan" style="margin-top: -20px"><p class="bc">The site is currently in development. Updated Sept 6th 2021, 20:05 GMT</p></div>
             </asidel>
             
             <div class="pg pg0">
@@ -715,8 +756,8 @@
                 <siders id="asider">
 
                     <!--search block-->
+                    <div class="searchtop"></div>
                     <div class="search">
-                        <div class="searchtop"></div>
                         <form action="/search" class="search-form" method="get" autocomplete="off">
                             <input id="searchField" name="q" placeholder="Search by tags" type="text" value="{SearchQuery}"/></form></div>
     
@@ -736,12 +777,11 @@
                 var pg2ll=[50,35,50,0,10,5,25,0],pg2lm=[86,95,50,30,60,30,20,115],pg2lr=[45,60,15,0,50,20,0,0],sid2l=[pg2ll,pg2lm,pg2lr] //left pos
                 var frt=["jpg","png","gif"], sides = ["l","m","r"]; //for different file types, then loops through which coloumn is currently being looped
                 $(document).ready(function(){ //called on page load
-                    for(var t = 0; t < 3; t++){ //toggles between sides, because it's easier to read and bugfix
-                        var ap2 = sid2a[t], az2 = sid2z[t], ah2 = sid2h[t], al2 = sid2l[t]; //flips between which array is currently active
-                        for(var i = 1; i <= pg2l.length; i++){ if (az2[i - 1] == 1){ //loops through based on amount of images in left side coloumn
-                            $('#' + sides[t] + 's' + i).addClass('zoom') //adds zoom class to images to save class spamming
-                            $('#' + sides[t] + 's' + i).css({'height': (ah2[i - 1] * 100) + "px", 'left': (al2[i - 1] * -1) + "%"}) //adds image data from array loops
-                        }; $('#' + sides[t] + 's' + i).attr('src',git + "imgs/" + sides[t] + i + "." + frt[ap2[i - 1]]);}}}) //adds the url to each img class
+                    for(var t=0;t<3;t++){ //toggles between sides, because it's easier to read and bugfix
+                        var ap2=sid2a[t],az2=sid2z[t],ah2=sid2h[t],al2=sid2l[t]; //flips between which array is currently active
+                        for(var i=1;i<=pg2l.length;i++){if(az2[i- 1]==1){ //loops through based on amount of images in left side coloumn
+                            $('#'+sides[t]+'s'+i).addClass('zoom').css({'height':(ah2[i- 1]*100)+"px",'left':(al2[i- 1]*-1)+"%"})} //adds image data from array loops
+                        $('#'+sides[t]+'s'+i).attr('src',git+"imgs/"+sides[t]+i+"."+frt[ap2[i- 1]]);}}}) //adds the url to each img class
             </script>
             
             <div class="pg pg2">
@@ -828,13 +868,8 @@
                 var pg3h=[355,355,355,425,425,182,560,560,560,560,772,560,184,425,425,400,400,184,184,460,460,460,153,153,400]//image hights
                 var pg3l=[14,64,64,0,0,0,17,11,11,2,6,11,0,0,0,13,20,0,0,105,39,32,0,10,13] //left pos
                 var ap3=[0,0,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1]
-                $(document).ready(function(){ //called on page load
-                    for(var i = 0; i <= pg3h.length; i++){ var temp = ap3[i]
-                        $('#dp' + i).addClass('zoom'); //adds zoom class to images to save class spamming
-                        $('#dp' + i).css({'height': pg3h[i] + "px", 'left': (pg3l[i] * -1) + "%"}) //adds image data from array loops
-                        $('#dp' + i).attr('src',git + "imgs/d" + i + "."+ frt[temp]) //adds image src url
-                        $('#dp' + i).parent().css({'height': pgdh[i] + "px"})} //assigns the parent height to limit overflow for dropdown text
-                }) //adds the url to each img class
+                $(document).ready(function(){for(var i=0;i<=pg3h.length;i++){var temp=ap3[i]; //fuck you trying to figure this out
+                    $('#dp'+i).addClass('zoom').css({'height':pg3h[i]+"px",'left':(pg3l[i]*-1)+"%"}).attr('src',git+"imgs/d"+i+"."+frt[temp]).parent().css({'height':pgdh[i]+"px"});}})
             </script>
 
             <div class="pg pg3">
@@ -979,7 +1014,7 @@
                 if ($('body').width() < (page3 + 80)){ //200 / 80
                     if ($('body').width() <= (page3 + 80) && $('body').width() > 900){ //200 / 80
                         var pagescl3 = (page3 / ($('body').width() - 80)); //200 / 80
-                        $('#asidel').css('opacity', 1); 
+                        $('#asidel').css('display','block'); $('#nav').css('display','none')
                         docelem.style.setProperty('--sidebarl', (leftb / pagescl3).toFixed(2) + "px")
                         docelem.style.setProperty('--sidebarr', (righb / pagescl3).toFixed(2) + "px")
                         docelem.style.setProperty('--postwidth', (middb / pagescl3).toFixed(2) + "px")
@@ -987,13 +1022,13 @@
                     } else {
                         if ($('body').width() > 560 + 80){ //200 / 80
                             var pagescl2 = (page2 / ($('body').width() - 60)) //180 / 60
-                            $('#asidel').css('opacity', 0); 
-                            $('section').css('margin-left','0px')
+                            $('#asidel').css('display','none'); $('#nav').css('display','block')
                             docelem.style.setProperty('--sidebarl', -20 + "px")
                             docelem.style.setProperty('--sidebarr', (righb / pagescl2).toFixed(2) + 10 + "px")
-                            docelem.style.setProperty('--postwidth', (middb / pagescl2).toFixed(2) + 10 + "px")}}}
+                            docelem.style.setProperty('--postwidth', (middb / pagescl2).toFixed(2) + 10 + "px")};
+                }}
                 if ($('body').width() > (page3 + 80)) { //200 / 80
-                    $('#asidel').css('opacity', 1); 
+                    $('#asidel').css('display','block'); $('#nav').css('display','none')
                     docelem.style.setProperty('--sidebarl', leftb + "px")
                     docelem.style.setProperty('--sidebarr', righb + "px")
                     docelem.style.setProperty('--postwidth', middb + "px")
@@ -1003,27 +1038,13 @@
             $(window).on("load resize", resize)
             
             $(document).scroll(function(){
-                $('asidel, .search').toggleClass("strict", $(document).scrollTop() >= (20 + headr))})
+                $('.search, .searchtop').toggleClass("strict", $(document).scrollTop() >= (20 + headr))
+                var twiheight = $('#twitter-widget-0').css('height');
+                if($(document).scrollTop() >= twiheight){
+                    $('.timeline-LoadMore-prompt').click();}
+            })
                 
             $(document).ready(function(){ 
-                
-                var concurrent = 1, pgsd = [0,0,0,0,0,0,0]; //default page number
-                for(let i = 0; i < 6 + 1; i++) {
-                    $('.pg' + i).children().on('click', function(e) {
-                        if(concurrent != i){
-                            pgsd[concurrent] = $(document).scrollTop()
-                            var tran = "." + Math.abs((i - concurrent) * 1.5) + "s";
-                            $(".pg").css({"transition": "margin " + tran + " cubic-bezier(0,0,0,1), opacity " + tran + " cubic-bezier(0,0,0,1)"})
-                            concurrent = i; 
-                            $('html, body').animate({scrollTop: pgsd[i]}, 0)
-                            for(var e = 0; e < 6 + 1; e++){ 
-                                docelem.style.setProperty('--page' + e, e - i); 
-                                var page = ".pg.pg" + e, clc = "calc(((var(--postwidth) + var(--sidebarr)) + 40px) * (var(--page", temp;
-                                if(e < i){temp = clc + e + ")) - (var(--sidebarl) + 20px"} else {temp = clc + e}
-                                $(page).css("margin-left", temp + "))"); 
-                                $(".lsbut.pg" + e).css({"margin":"0"}); $(".lsbut.pg" + i).css({"margin":"10px 0"});
-                                if(e != i){$(page).removeClass("pagefocus")} else {$(page).addClass("pagefocus")}}}})}
-                
                 $('article').find('.notecounter').each(function(){
                    var n = $(this).html().split(' ')[0].replace(/,/g, '')
                    if (n > 1) {$(this).text(n + ' notes')}else{$(this).text(n + ' note')}})
