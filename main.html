@@ -43,13 +43,13 @@
                 --accent1:#7565ff; --accent2: #ff62ea; --accent3: #ffb533; --accent4: #3aecb4;
                 --invaccent: #505050; --links: #ff8ef4; --titles: #7285fe; --text: #787878;
                 --background: #f4f4f4; --posts: #ffffff; --artposts: #8781bd; --borders: #d8d5d5;
-                --scrollbar: #aaaaaa; --defopacity: 1; --fadeto: 0.6;
+                --scrollbar: #aaaaaa; --defopacity: 1; --fadeto: 0.4;
                 /* page margin multiplier settings */
                 --sidebarl:250px; --sidebarr:350px; --postwidth:500px; /*default sidebar widths*/
                 --page0: -1; --page1: 0; --page2: 1; --page3: 2; --page4: 3; --page5: 4; --page6: 5; /* page debug info */ }
                 
             body { background:var(--background); font-family:var(--fontstyle); color:var(--text); 
-                word-wrap:break-word; margin:0; overflow-x: hidden;}
+                word-wrap:break-word; margin:0; overflow-x: hidden; position: relative}
 
             a{color:var(--accent1);text-decoration:none;border-color:var(--accent3);font-weight:900}a:hover {color:var(--links)}
             t{ color:var(--accent2);font-family:var(--boldstyle);text-transform:uppercase;padding:0 15px;font-size:1.1em}
@@ -72,32 +72,32 @@
             
             /* alt pages data =============== */
             incont,.imco, .immc{display:inline-block;vertical-align:top;margin:0px 20px 0 0;width:calc((var(--sidebarr) + var(--postwidth) - 21px) / 3)}
-            fullwc{margin-left:calc(var(--sidebarl) + 20px);width:calc((var(--sidebarr) + var(--postwidth)) + 20px)}
             
             sidels,siders,sidelm,siderm,sidell,siderl,fullwc,section{
                 display:inline-block;vertical-align:top;overflow-x:hidden;
                 width:calc((var(--postwidth) + var(--sidebarr)) + 41px)} 
                 /*this is 40, apposed to 20 because it saves a bunch of margin formatting*/
+                
+            fullwc{margin-left:calc(var(--sidebarl) + 20px); display:none}
             sidels,sidelm,sidell,section{margin:0 20px 0 0}
             
-            asidel{z-index:9999;position:fixed;top:20px}
+            asidel{z-index:9999;position:fixed;display:none;top:20px}
             asidel,section{width:var(--sidebarl)}
             sidell,siderl,section{width:var(--postwidth)}
             sidelm,siderm{width:calc((var(--sidebarr) + var(--postwidth)) / 2)}
             sidels,siders{width:var(--sidebarr)}
             
             /*section, asider, asidel, asider, sidel, sider, header {transition:width .1s ease-out}*/
-            .pg{ cursor:pointer; position:absolute; opacity: 0.25; z-index: 1; 
+            .pg{ cursor:pointer; position:absolute; opacity: 0.25; z-index: 1; display:hidden;
                 transition:margin .5s cubic-bezier(0,0,0,1), opacity .5s cubic-bezier(0,0,0,1)}
-            .pg.pg0 {margin-left: calc((((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page0)) - (var(--sidebarl) + 20px))}
-            .pg.pg1 {margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page1))}
-            .pg.pg2 {margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page2))}
-            .pg.pg3 {margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page3))}
-            .pg.pg4 {margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page4))}
-            .pg.pg5 {margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page5))}
-            .pg.pg6 {margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page6))}
-            .pagefocus {opacity: 1!important; z-index: 9!important; cursor:auto!important}
+            .pg.pg1 {margin-left: calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page1)); display:block;}
 
+            .pagefocus {opacity: 1!important; z-index: 9!important; cursor:auto!important}
+            .pageon {display:block; z-index: 9!important; cursor:auto!important}
+            
+            .loader {border: 5px solid #f3f3f3;border-radius: 50%;border-top: 5px solid var(--accent1); width: 25px;height: 25px;
+              margin-top: 30px; margin-left: calc(((var(--postwidth) + var(--sidebarr))/2) + var(--sidebarl));}
+    
             /*scrollbar*/
             ::-webkit-scrollbar {width:12px;height:12px;background-color:transparent}
             ::-webkit-scrollbar-thumb{background-clip:padding-box;border-radius:6px; 
@@ -120,7 +120,7 @@
             .when:first-of-type,.whb,.search,asidel .lsbut:first-of-type,asidel .lsbut:first-of-type i{
                 border-top-left-radius:6px;border-top-right-radius:6px;
                 border-bottom-left-radius:0px!important;border-bottom-right-radius:0px!important}
-            #nav,.block,.titlb .i,.titlb,.vimage,.lkcon,.imco,.immc,.hdr,.nmb, 
+            #nav,.block,.vimage,.lkcon,.imco,.immc,.hdr,.nmb, 
             article,asidel .wedge,asidel .wedge img,.vimage img,.repost svg{border-radius:6px}
             
             /* DUMB ACCENT COLOURS I CAN'T DECIDE ON
@@ -133,10 +133,10 @@
             .tfd p {background-color:var(--accent2); color:var(--posts)}
             .tii t, .tfd t {color:white!important}
             
-            .titlb:hover t,.lsbut:hover t {color:var(--accent2)}
-            .titlb,.lsbut,.titlb {background-color:var(--posts)}
+            .lsbut:hover t {color:var(--accent2)}
+            .lsbut {background-color:var(--posts)}
             
-            .titlb t,.lsbut t{color:white;}
+            .lsbut t{color:white;}
             
             .lkblk:hover > * {background-color:var(--accent1)} 
             .when, .lkcon {background-color:var(--accent1)}
@@ -148,20 +148,22 @@
             .like .liked + svg {background-color:var(--accent3)}
             .like:hover svg, .repost svg:hover {fill:var(--accent1)} 
             
-            .timeline-Widget{background-color:var(--posts)!important; color:var(--text)!important}
-            
             /* transition dumps
         /* ===================================== */
         
             .w32 {transition: width .2s cubic-bezier(0,0,0,1), opacity .2s cubic-bezier(0,0,0,1)}
-            .lkcon, .logo, .hdr, .titlb .i, .lkblk:hover > * {transition:opacity .2s cubic-bezier(0,0,0,1)}
-            .titlb, .titlb t, .lsbut t, a, .nmb svg, svg {transition:color .2s cubic-bezier(0,0,0,1), fill .2s cubic-bezier(0,0,0,1)}
+            .lkcon, .logo, .hdr, .lkblk:hover > * {transition:opacity .2s cubic-bezier(0,0,0,1)}
+            .lsbut t, a, .nmb svg, svg {transition:color .2s cubic-bezier(0,0,0,1), fill .2s cubic-bezier(0,0,0,1)}
             .bnlogo {transition:width .2s cubic-bezier(0,0,0,1), height .2s cubic-bezier(0,0,0,1), 
                 opacity .2s cubic-bezier(0,0,0,1), margin .2s cubic-bezier(0,0,0,1)}
             .lsbut, .tfd {transition:margin .2s cubic-bezier(0,0,0,1)}
             .tfd p {transition:font-size .2s cubic-bezier(0,0,0,1)}
             
             body, body * {transition:color .1s cubic-bezier(0,0,0,1), background .1s cubic-bezier(0,0,0,1)}
+            
+            .loader {-webkit-animation: spin 1s ease-in-out infinite; animation: spin 1s ease-in-out infinite}
+            @-webkit-keyframes spin {0% {-webkit-transform: rotate(0deg)} 100% {-webkit-transform: rotate(360deg)}}
+            @keyframes spin {0% {transform:rotate(0deg)}100% {transform:rotate(360deg)}}
             
             /* Top Navbar CONTENT
         /* ===================================== */
@@ -187,7 +189,7 @@
                 height:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) - 10px);
                 width:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 1.9 - 10px)}
         
-            .nmb {float:right;height:42px;width:42px;margin-right:-62px; background-color:var(--accent1); cursor:pointer;
+            .nmb {float:right;height:42px;width:42px;margin-right:-62px; background-color:var(--accent1); cursor:pointer; display:none;
                 margin-top:calc(((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth) - 42px)}
             .nmb svg {-webkit-transform: scale(.65); -moz-transform: scale(.65); -o-transform: scale(.65);  -ms-transform: scale(.65); transform: scale(.65); fill:white} 
             .nmb:hover svg {fill:var(--accent3)}
@@ -198,14 +200,13 @@
             /* LEFT HAND SIDEBAR CONTENT
         /* ===================================== */
             
-            asidel .lsbut:last-of-type, .titlb{margin: 0 0 20px!important}
+            asidel .lsbut:last-of-type {margin: 0 0 20px!important}
             asidel .lsbut:hover{margin:10px 0!important}
-            .titlb t,.lsbut t{z-index:99;position:absolute;padding:8px 15px;font-size:1.4em!important}
-            .titlb {max-width:calc((var(--postwidth) + var(--sidebarr)) + 20px)}
-            .titlb,.titleh:hover {z-index:999} 
-            .titlb,.lsbut {cursor:pointer}
-            .titlb .i, .lsbut .i,.titleh .i{opacity: var(--defopacity)}
-            .titlb:hover .i, .lsbut:hover .i, .titleh:hover .i{opacity: var(--fadeto)!important}
+            .lsbut t{z-index:99;position:absolute;padding:8px 15px;font-size:1.4em!important}
+            .titleh:hover {z-index:999} 
+            .lsbut {cursor:pointer}
+            .lsbut .i,.titleh .i{opacity: var(--defopacity)}
+            .lsbut:hover .i, .titleh:hover .i{opacity: var(--fadeto)!important}
             
             .lkblk {height:calc((var(--sidebarl) - (10.2px * 5)) / 6); padding: 10px 0}
             .lkblk:hover > * {opacity:0.6} 
@@ -436,7 +437,9 @@
             .iframe-controls--desktop:hover {opacity:.6}
             /* All this adjusts the default settings of the tumblr image zoom. */
             
-            .tmblr-iframe--gdpr-banner {display:none !important}
+            .iframe-controls--phone-mobile, .tmblr-iframe--gdpr-banner, .tmblr-iframe--app-cta-button.tmblr-iframe--loaded {display:none !important}
+            .tmblr-iframe-pushdown{padding-top: 0px!important};
+            
             .post_media_photo_anchor {cursor:zoom-in}
             .tmblr-lightbox { background:rgba(255,255,255, .40)!important} 
             .tmblr-lightbox img { opacity:1}
@@ -461,10 +464,12 @@
             <script>function fadeto(){$('#hdr').css({opacity:0.6})}function fadeno(){$('#hdr').css({opacity:1})}</script>
 
             <div class="hdr" id="hdr"></div>
-            <div class="bnlogo pg1" onmouseover="fadeto()" onmouseout="fadeno()">
-                <div class="logo" id="logo"></div></div>
-            
+            {block:PermalinkPage}<a href="https://vanh.art/"><div class="bnlogo" onmouseover="fadeto()" onmouseout="fadeno()"><div class="logo"></div></div></a>{/block:PermalinkPage}
+            {block:IndexPage}<div class="bnlogo pg1" onmouseover="fadeto()" onmouseout="fadeno()"><div class="logo" id="logo"></div></div>{/block:IndexPage}
+
             <script>
+                var pgready = false
+            
                 var dmc=["#7565ff","#ff62ea","#ffb533","#3aecb4","#505050","#ff8ef4","#7285fe","#787878","#f4f4f4","#ffffff","#8781bd","#d8d5d5","1","0.6"], //brightmode colours
                     nmc=["#7246ee","#f267e3","#ffa85b","#3aecb4","#313131","#ff8ef4","#7285fe","#787878","#1d1d1d","#141414","#534b71","#090909","0.3","1"], //nightmode colours
                     ml=["accent1","accent2","accent3","accent4","invaccent","links","titles","text","background","posts","artposts","borders","defopacity","fadeto"], //root var arr
@@ -473,42 +478,70 @@
 
                 $('.nmb').bind('click',function(event){nm=!nm;
                     document.cookie="lightmode="+nm+";"+"expires=Fri, 31 Dec 9999 23:59:59 GMT" 
-                    dr=[(nm?0:1),(!nm?0:1)];if(nm==true){cm=dmc;}else{cm=nmc;} 
+                    dr=[(nm?0:1),(!nm?0:1)]; //flips the nm setting
+                    if(nm==true){cm=dmc;}else{cm=nmc;} //sets colour mode array
+                    
                     for(var i=0;i<=bm.length;i++){$("#nm"+i).css({"display":bm[dr[i]]})}
                     for(var i=0;i<=cm.length;i++){docelem.style.setProperty("--"+ml[i],cm[i])};}) 
-
-                $(document).ready(function(){
+  
+                document.addEventListener("DOMContentLoaded", function(){
                     if(document.cookie.includes("lightmode=") == true){
-                        nm=document.cookie.split('; ').find(row=>row.startsWith('lightmode=')).split('=')[1];nm=(nm==='true')}else{nm=true;}
+                        nm=document.cookie.split('; ').find(row=>row.startsWith('lightmode=')).split('=')[1];
+                        nm=(nm==='true')}else{nm=true;}
                     dr=[(nm?0:1),(!nm?0:1)]; 
                     if(nm==true){cm=dmc;}else{cm=nmc;
                         for(var i=0;i<=cm.length;i++){docelem.style.setProperty("--"+ml[i],cm[i])}
-                        for(var i=0;i<=bm.length;i++){$("#nm"+i).css({"display":bm[dr[i]]})}}
-                        
-                    for(var i=0;i<7;i++){
-                        $('.bt'+i).css({'background-image': "url('"+git+"icons/sb"+i+".png')",
-                            'height':'42px','background-size':'140% auto','background-position':'left'})
-                        $('.i'+i).css({'background-image': "url('"+git+"icons/sm"+i+".png')"})
-                        $('#sc'+i).attr('src',git+"imgs/ams"+i+".png")}
-                        //$('.lkblk:hover > .c' + (i + 1) + ':hover').addClass({'background-color': lkblk[i + 1]}) //idk why this doesn't work
+                        for(var i=0;i<=bm.length;i++){$("#nm"+i).css({"display":bm[dr[i]]})}}})
+                      
+                $(document).ready(function(){
+                    var pgc = pgsd.length
                     $('#pfp').attr('src',git+"imgs/pfp.gif")
-                        
-                    for(let i = 0; i < 6 + 1; i++) {
-                        $('.pg' + i).children().on('click', function(e) {
-                            if(concurrent != i){
-                                pgsd[concurrent] = $(document).scrollTop()
-                                var tran = "." + Math.abs((i - concurrent) * 1.5) + "s";
-                                $(".pg").css({"transition": "margin " + tran + " cubic-bezier(0,0,0,1), opacity " + tran + " cubic-bezier(0,0,0,1)"})
-                                concurrent = i; 
-                                $('html, body').animate({scrollTop: pgsd[i]}, 0)
-                                for(var e = 0; e < 6 + 1; e++){ 
-                                    docelem.style.setProperty('--page' + e, e - i); 
-                                    var page = ".pg.pg" + e, clc = "calc(((var(--postwidth) + var(--sidebarr)) + 40px) * (var(--page", temp;
-                                    if(e < i){temp = clc + e + ")) - (var(--sidebarl) + 20px"} else {temp = clc + e}
-                                    $(page).css("margin-left", temp + "))"); 
-                                    $("asidel .lsbut.pg" + e).css({"margin":"0"}); $("asidel .lsbut.pg" + i).css({"margin":"10px 0"});
-                                    $(".lsbut.pg"+e+" .i").css({"opacity":"var(--defopacity)"}); $(".lsbut.pg"+i+" .i").css({"opacity":"var(--fadeto)"});
-                                    if(e != i){$(page).removeClass("pagefocus")} else {$(page).addClass("pagefocus")}}}})};})
+                    $('#sc1').attr('src',git+"imgs/ams1.png") //adds images on page 0
+
+                    for(let i = 0; i < pgc; i++){
+                        if (/Mobi|Android/i.test(navigator.userAgent)) {
+                            $('.pg.pg'+i).css({'display':'none','opacity':'1'})
+                            $('.pg' + i).children().on('click', function(e) {
+                                if(concurrent != i){
+                                    pgsd[concurrent] = $(document).scrollTop()
+                                    $('.pg.pg'+concurrent).css('display','none'); 
+                                    $('.pg.pg'+i).css('display','inline-block')
+                                    concurrent = i;$('html, body').animate({scrollTop: pgsd[i]}, 0)
+                                    for(var e = 0; e < pgc; e++){ 
+                                        docelem.style.setProperty('--page' + e, e - i); 
+                                        $(".lsbut.pg"+e+" .i").css({"opacity":"var(--defopacity)"}); 
+                                        $(".lsbut.pg"+i+" .i").css({"opacity":"var(--fadeto)"});
+                                        var page = ".pg.pg" + e;
+                                        if(e != i){$(page).removeClass("pageon")
+                                        } else {$(page).addClass("pageon")}}}})
+                        } else {
+                            if(i == 0){$('.pg.pg'+i).css('margin-left','calc((((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page'+ i +')) - (var(--sidebarl) + 20px))')
+                            } else {$('.pg.pg'+i).css('margin-left','calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page' + i +'))')}
+                            $('.pg' + i).children().on('click', function(e) {
+                                if(concurrent != i){
+                                    pgsd[concurrent] = $(document).scrollTop()
+                                    var tran = "." + Math.abs((i - concurrent) * 1.5) + "s";
+                                    $(".pg").css({"transition": "margin " + tran + " cubic-bezier(0,0,0,1), opacity " + tran + " cubic-bezier(0,0,0,1)"})
+                                    concurrent = i; $('html, body').animate({scrollTop: pgsd[i]}, 0)
+                                    
+                                    for(var e = 0; e < pgc; e++){ 
+                                        docelem.style.setProperty('--page' + e, e - i); 
+                                        var page = ".pg.pg" + e, clc = "calc(((var(--postwidth) + var(--sidebarr)) + 40px) * (var(--page", temp;
+                                        if(e < i){temp = clc + e + ")) - (var(--sidebarl) + 20px"} else {temp = clc + e}
+                                        $(page).css("margin-left", temp + "))"); 
+                                        $("asidel .lsbut.pg" + e).css({"margin":"0"}); $("asidel .lsbut.pg" + i).css({"margin":"10px 0"});
+                                        $(".lsbut.pg"+e+" .i").css({"opacity":"var(--defopacity)"}); $(".lsbut.pg"+i+" .i").css({"opacity":"var(--fadeto)"});
+                                        if(e != i){$(page).removeClass("pagefocus")} else {$(page).addClass("pagefocus")}}}
+                                        
+                                $('.pg.pg'+i).css('margin-left','calc(((var(--postwidth) + var(--sidebarr)) + 40px) * var(--page' + i +'))')});}
+                        $('.bt'+i).css({'background-image': "url('"+git+"icons/sb"+i+".png')",'height':'42px','background-size':'140% auto','background-position':'left'})
+                        //$('.lkblk:hover > .c' + (i + 1) + ':hover').addClass({'background-color': lkblk[i + 1]}) //idk why this doesn't work
+                        $('.i'+i).css({'background-image': "url('"+git+"icons/sm"+i+".png')"})}
+                    
+                    if (/Mobi|Android/i.test(navigator.userAgent)){$('.pg.pg1').addClass("pageon").css({'display':'block'})
+                    } else {$('.pg.pg1').addClass("pagefocus");$('nmb').css('display','block')}
+                    
+                }); 
             </script>
             <fullwc id="nav">
                 <div class="lsbut pg1"><t>Feed</t><div class="i bt1"></div></div>
@@ -540,28 +573,29 @@
                 <div class="tii tan" style="margin-top: -20px"><p class="bc">The site is currently in development. Updated Sept 6th 2021, 20:05 GMT</p></div>
             </asidel>
             
-            <div class="pg pg0">
+            <script>
+                $(document).ready(function(){
+                    console.log("page 0 loading")
+                        $('.pg0 fullwc').css('display','block');
+                        $('.pg0 .loader').hide()})
+            </script>
+            
+            {block:IndexPage}<div class="pg pg0">
+                <div class="loader"></div>
                 <fullwc>
                     <sidell>
-                        <div class="titlb"><t>About</t><div class="i bt0"></div></div>
-                        
                         <div class="block">
                             <p>[pg0 side l medium]</p>
                         </div>
                     </sidell>
-                    
                     <siders>
                         <div class="imco wdt"><div class="tii"><p>25/08/2021, By <a href="https://twitter.com/JelqerLysenko">@JelqerLysenko</a><br><t>1808, Austrian Officer; Petra</t></p></div><img id="sc1"/></a></div>
                     </siders>
                 </fullwc>
-            </div>
+            </div>{/block:IndexPage}
             
-            <div class="pg pg1 pagefocus">
-            
+            <div class="pg pg1">
                 <section id="posts">
-                
-                    <div class="titlb"><t>Feed</t><div class="i bt1"></div></div>
-                
                     {block:Posts}
                         <article id="{PostID}">
                             <div class="when whb">
@@ -634,7 +668,8 @@
                                             {block:Photos}
                                             <div class="photo-data">
                                                 <div class="pxu-photo">
-                                                    <img src="{PhotoURL-500}" width="{PhotoWidth-500}" height="{PhotoHeight-500}" data-highres="{PhotoURL-HighRes}" data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}">
+                                                    <img src="{PhotoURL-500}" width="{PhotoWidth-500}" height="{PhotoHeight-500}" 
+                                                         data-highres="{PhotoURL-HighRes}" data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}">
                                                 </div>
                                                 <a class="tumblr-box" rel="post-{PostID}" href="{PhotoURL-HighRes}"></a>
                                             </div>
@@ -764,7 +799,7 @@
                     {block:indexpage}
                         <div class="wedge" style="margin:-3px 0 0">
                             <a class="twitter-timeline" href="https://twitter.com/TheaVanherst?ref_src=twsrc%5Etfw"><div class="d cap">Tweets by TheaVanherst</div></a> 
-                            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"  loading="eager" data-chrome="nohdr nofooter noborders"></script></div>
+                            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8" data-theme="dark" data-chrome="nohdr nofooter noborders"></script></div>
                     {/block:indexpage}
                     
                 </siders>
@@ -776,17 +811,27 @@
                 var pg2hl=[9,5,5,0,5,8,8,0],pg2hm=[8,8,8,7,3,4,5,8],pg2hr=[9,7,5,7,5,5,0,0],sid2h=[pg2hl,pg2hm,pg2hr]; //image hights
                 var pg2ll=[50,35,50,0,10,5,25,0],pg2lm=[86,95,50,30,60,30,20,115],pg2lr=[45,60,15,0,50,20,0,0],sid2l=[pg2ll,pg2lm,pg2lr] //left pos
                 var frt=["jpg","png","gif"], sides = ["l","m","r"]; //for different file types, then loops through which coloumn is currently being looped
-                $(document).ready(function(){ //called on page load
+                
+                //window.addEventListener("load", function(){#
+                $(document).ready(function(){
+                    console.log("page 2 loading")
+                    $('.pg2 fullwc').css('display','block');
+                    $('.pg2 .loader').hide();
                     for(var t=0;t<3;t++){ //toggles between sides, because it's easier to read and bugfix
-                        var ap2=sid2a[t],az2=sid2z[t],ah2=sid2h[t],al2=sid2l[t]; //flips between which array is currently active
-                        for(var i=1;i<=pg2l.length;i++){if(az2[i- 1]==1){ //loops through based on amount of images in left side coloumn
-                            $('#'+sides[t]+'s'+i).addClass('zoom').css({'height':(ah2[i- 1]*100)+"px",'left':(al2[i- 1]*-1)+"%"})} //adds image data from array loops
-                        $('#'+sides[t]+'s'+i).attr('src',git+"imgs/"+sides[t]+i+"."+frt[ap2[i- 1]]);}}}) //adds the url to each img class
+                        var ap2=sid2a[t],az2=sid2z[t],
+                            ah2=sid2h[t],al2=sid2l[t]; //flips between which array is currently active
+                        for(var i=1;i<=pg2l.length;i++){
+                            if(az2[i- 1]==1){ //loops through based on amount of images in left side coloumn
+                                $('#'+sides[t]+'s'+i)
+                                    .addClass('zoom')
+                                    .css({'height':(ah2[i- 1]*100)+"px",'left':(al2[i- 1]*-1)+"%"})} //adds image data from array loops
+                            $('#'+sides[t]+'s'+i)
+                                .attr('src',git+"imgs/"+sides[t]+i+"."+frt[ap2[i- 1]]);}}}) //adds the url to each img class
             </script>
             
-            <div class="pg pg2">
+            {block:IndexPage}<div class="pg pg2">
+                <div class="loader"></div>
                 <fullwc>
-                    <div class="titlb w3x2"><t>Artwork & Concept Highlights</t><div class="i bt2"></div></div>
                     <incont>
                         <div class="immc"> <div class="tii"><p>14/05/2021 - 19/05/2021<br><t>landsknecht Marie</t></p></div>
                             <div class="tfd"><p>19/05/2021<br><t>Shading</t></p></div><img id="ls8"/></a></div>
@@ -831,7 +876,7 @@
                             <div class="tfd"><p><t>Final Lineart</t></p></div><img id="ms1"/>
                             <p>A line clean-up of an old drawing; <h>20/11/2019</h></p></div>
                     </incont><incont>
-                        <div class="tii tan imco" style="margin-top:-62px;"><p>This page contains a small selection of cherry picked drawings and their development process.</p></div>
+                        <div class="tii tan imco"><p>This page contains a small selection of cherry picked drawings and their development process.</p></div>
                             
                         <div class="immc"><div class="tii"><p>01/05/2021 - 04/05/2021<br><t>Arms Dealer Coffee</t></p></div>
                             <div class="tfd"><p>02/05/2021<br><t>Walk Sequence</t></p></div><img id="rs8"/></div>
@@ -861,20 +906,29 @@
                             <div class="tfd"><p><t>Final Render</t></p></div><img id="rs1"/></div>
                     </incont>
                 </fullwc>
-            </div>
+            </div>{/block:IndexPage}
 
-             <script>
+            <script>
                 var pgdh=[460,460,460,475,475,234,610,610,610,610,610,610,234,475,475,450,450,234,234,595,595,595,153,206,450]
                 var pg3h=[355,355,355,425,425,182,560,560,560,560,772,560,184,425,425,400,400,184,184,460,460,460,153,153,400]//image hights
                 var pg3l=[14,64,64,0,0,0,17,11,11,2,6,11,0,0,0,13,20,0,0,105,39,32,0,10,13] //left pos
                 var ap3=[0,0,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1]
-                $(document).ready(function(){for(var i=0;i<=pg3h.length;i++){var temp=ap3[i]; //fuck you trying to figure this out
-                    $('#dp'+i).addClass('zoom').css({'height':pg3h[i]+"px",'left':(pg3l[i]*-1)+"%"}).attr('src',git+"imgs/d"+i+"."+frt[temp]).parent().css({'height':pgdh[i]+"px"});}})
+                
+                //window.addEventListener("load", function(){
+                $(document).ready(function(){
+                    console.log("page 3 loading")
+                    $('.pg3 fullwc').css('display','block');
+                    $('.pg3 .loader').hide();
+                    for(var i=0;i<=pg3h.length;i++){
+                        $('#dp'+i).addClass('zoom')
+                            .css({'height':pg3h[i]+"px",'left':(pg3l[i]*-1)+"%"})
+                            .attr('src',git+"imgs/d"+i+"."+frt[ap3[i]])
+                            .parent().css({'height':pgdh[i]+"px"});}})
             </script>
 
-            <div class="pg pg3">
+            {block:IndexPage}<div class="pg pg3" id="pg3">
+                <div class="loader"></div>
                 <fullwc>
-                    <div class="titlb"><t>Digital Design</t><div class="i bt3"></div></div>
                     <!--
                         <div class="imco" style="height:355px">
                             <div class="tii"><p>04/08/2019<br><t>Rainpro.Dash</t></p></div>
@@ -946,13 +1000,11 @@
                         <p> hello, this is a text box test for this specific container. </p></div>
 
                 </fullwc>
-            </div>
+            </div>{/block:IndexPage}
             
-            <div class="pg pg4">
+            {block:IndexPage}<div class="pg pg4">
                 <fullwc>
                     <sidelm>
-                        <div class="titlb"><t>Animation & Content</t><div class="i bt4"></div></div>
-                    
                         <div class="block">
                             <p>[pg4 side l medium]</p>
                         </div>
@@ -964,25 +1016,23 @@
                         </div>
                     </siderm>
                 </fullwc>
-            </div>
+            </div>{/block:IndexPage}
             
-            <div class="pg pg5">
+            {block:IndexPage}<div class="pg pg5">
                 <fullwc>
                     <sidell>
-                        <div class="titlb"><t>Workshop</t><div class="i bt5"></div></div>
+                    
                     </sidell>
                     
                     <siders>
 
                     </siders>
                 </fullwc>
-            </div>
+            </div>{/block:IndexPage}
             
-            <div class="pg pg6">
+            {block:IndexPage}<div class="pg pg6">
                 <fullwc>
                     <sidelm>
-                        <div class="titlb"><t>Javascript</t><div class="i bt6"></div></div>
-                    
                         <div class="block">
                             <p>[pg6 side l medium]</p>
                         </div>
@@ -994,7 +1044,7 @@
                         </div>
                     </siderm>
                 <fullwc>
-            </div>
+            </div>{/block:IndexPage}
 
             {block:Pagination} 
                 <div id="pagination" class="pag">
@@ -1005,53 +1055,53 @@
     </body>
 
         <script>
-            var headr, righb = $("#asider").width(), leftb = $("#asidel").width(), middb = $("#posts").width(),
-                page3 = $('body').width() - ($('body').width() - ($("#asidel").width() + $("#asider").width() + $("#posts").width())), 
-                page2 = $('body').width() - ($('body').width() - ($("#asider").width() + $("#posts").width()));
-             
+            var righb = $("#asider").width(), leftb = $("#asidel").width(), middb = $("#posts").width(), bod = $('body').width(),
+                page3 = bod - (bod - (righb + middb + leftb)), page2 = bod - (bod - (righb + middb)), headr;
+            
             var resize = function() { // Page rescaling
-                headr = $("#hdr").height();
-                if ($('body').width() < (page3 + 80)){ //200 / 80
-                    if ($('body').width() <= (page3 + 80) && $('body').width() > 900){ //200 / 80
-                        var pagescl3 = (page3 / ($('body').width() - 80)); //200 / 80
-                        $('#asidel').css('display','block'); $('#nav').css('display','none')
-                        docelem.style.setProperty('--sidebarl', (leftb / pagescl3).toFixed(2) + "px")
-                        docelem.style.setProperty('--sidebarr', (righb / pagescl3).toFixed(2) + "px")
-                        docelem.style.setProperty('--postwidth', (middb / pagescl3).toFixed(2) + "px")
-                        $('section').css('margin','0 20px 0 calc(var(--sidebarl) + 20px)')
-                    } else {
-                        if ($('body').width() > 560 + 80){ //200 / 80
+                if (/Mobi|Android/i.test(navigator.userAgent)) {
+                    var pagescl2 = (page2 / ($('body').width() - 60)) //180 / 60
+                    $('#asidel').css('display','none');$('#nav').css('display','block');
+                    docelem.style.setProperty('--sidebarl', -20 + "px")
+                    docelem.style.setProperty('--sidebarr', (righb / pagescl2).toFixed(2) + 10 + "px")
+                    docelem.style.setProperty('--postwidth', (middb / pagescl2).toFixed(2) + 10 + "px")
+                } else {
+                    $('body').css('left','')
+                    if ($('body').width() < (page3 + 80)){ //200 / 80
+                        if ($('body').width() <= (page3 + 80) && $('body').width() > 900){ //200 / 80
+                            var pagescl3 = (page3 / ($('body').width() - 80)); //200 / 80
+                            $('#asidel').css('display','block');$('#nav').css('display','none');
+                            docelem.style.setProperty('--sidebarl', (leftb / pagescl3).toFixed(2) + "px")
+                            docelem.style.setProperty('--sidebarr', (righb / pagescl3).toFixed(2) + "px")
+                            docelem.style.setProperty('--postwidth', (middb / pagescl3).toFixed(2) + "px")
+                            $('section').css('margin','0 20px 0 calc(var(--sidebarl) + 20px)')
+                        } else {
                             var pagescl2 = (page2 / ($('body').width() - 60)) //180 / 60
-                            $('#asidel').css('display','none'); $('#nav').css('display','block')
+                            $('#asidel').css('display','none');$('#nav').css('display','block');
                             docelem.style.setProperty('--sidebarl', -20 + "px")
                             docelem.style.setProperty('--sidebarr', (righb / pagescl2).toFixed(2) + 10 + "px")
-                            docelem.style.setProperty('--postwidth', (middb / pagescl2).toFixed(2) + 10 + "px")};
-                }}
-                if ($('body').width() > (page3 + 80)) { //200 / 80
-                    $('#asidel').css('display','block'); $('#nav').css('display','none')
-                    docelem.style.setProperty('--sidebarl', leftb + "px")
-                    docelem.style.setProperty('--sidebarr', righb + "px")
-                    docelem.style.setProperty('--postwidth', middb + "px")
-                    $('section').css('margin','0 20px 0 calc(var(--sidebarl) + 20px)')}}
-
+                            docelem.style.setProperty('--postwidth', (middb / pagescl2).toFixed(2) + 10 + "px")}
+                    } else {
+                        $('#asidel, titlb').css('display','block');$('#nav').css('display','none');
+                        docelem.style.setProperty('--sidebarl', leftb + "px")
+                        docelem.style.setProperty('--sidebarr', righb + "px")
+                        docelem.style.setProperty('--postwidth', middb + "px")
+                        $('section').css('margin','0 20px 0 calc(var(--sidebarl) + 20px)')
+                    }
+                }
+            }
+            
             $(document).ready(resize)
             $(window).on("load resize", resize)
-            
-            $(document).scroll(function(){
-                $('.search, .searchtop').toggleClass("strict", $(document).scrollTop() >= (20 + headr))
-                var twiheight = $('#twitter-widget-0').css('height');
-                if($(document).scrollTop() >= twiheight){
-                    $('.timeline-LoadMore-prompt').click();}
-            })
-                
+
             $(document).ready(function(){ 
                 $('article').find('.notecounter').each(function(){
                    var n = $(this).html().split(' ')[0].replace(/,/g, '')
                    if (n > 1) {$(this).text(n + ' notes')}else{$(this).text(n + ' note')}})
                 
-                $('asidel, .search').toggleClass("strict", $(document).scrollTop() >= (20 + headr))
+                $('.search').toggleClass("strict", $(document).scrollTop() >= (20 + $("#hdr").height()))
                 $('.taggie').each(function() {$(this).click(function(){$(this).closest('article').find('.tags').slideToggle(400)})})
-                $('.photo-slideshow').pxuPhotoset({lightbox: true,rounded: false,gutter: '1px',photoset: '.photo-slideshow',photoWrap: '.photo-data',photo: '.pxu-photo'}); 
+                $('.photo-slideshow').pxuPhotoset({lightbox: true,rounded: true,gutter: '1px',photoset: '.photo-slideshow',photoWrap: '.photo-data',photo: '.pxu-photo'}); 
                 $('.timestamp').timeAgo({time: "short", spaces: true, suffix: " ago" }) 
                 
                 $('.video:not(.resized) iframe:not(.tumblr_video_iframe)').each(function(){
