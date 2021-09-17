@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+    <head>
+        <title>VanH.art</title>
+        <link rel="shortcut" href="https://cdn.discordapp.com/attachments/630047188520665121/854534149658771456/Untitled-3.png">
+
+        <script>
+            var docelem = document.documentElement,
+                git = "https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/";
+        </script> <!-- this saves time later -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600&display=swap" rel="stylesheet"> <!-- SLIM FONT -->
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap" rel="stylesheet"> <!-- SLIM FONT -->
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@800&display=swap" rel="stylesheet"> <!-- BOLD FONT -->
+        <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet"> <!-- GERMANIC FONT -->
+
+        <link rel="stylesheet" href="style.css"> <!-- general page formatting -->
+        <link rel="stylesheet" href="pages.css"> <!-- page formatting -->
+        <link rel="stylesheet" href="cosmetic.css"> <!-- colour css -->
+
+        <script async src="https://platform.twitter.com/widgets.js"></script>
+        <script type="text/javascript" src="pageflip.js"></script> <!-- page turning scripts -->
+        <script type="text/javascript" src="nightmode.js"></script> <!-- page turning scripts -->
+    </head>
+
+    <body>
+        <asidel id="asidel"> <!-- sidebar navigation -->
+            <div class="wedge"><img id="pfp"/></div>
+            <div class="lsbut pg0 tc"><t>About</t><div class="i bt0 tc"></div></div>
+            <div class="lsbut pg1"><t>Feed</t><div class="i bt1"></div></div>
+            <div class="lsbut pg2"><t>Artwork</t><div class="i bt2"></div></div>
+            <div class="lsbut pg3"><t>Design</t><div class="i bt3"></div></div>
+            <div class="lsbut pg4"><t>Animation</t><div class="i bt4"></div></div>
+            <div class="lsbut pg5"><t>Workshop</t><div class="i bt5"></div></div>
+            <div class="lsbut pg6 bc"><t>Javascript</t><div class="i bt6 bc"></div></div>
+            <div class="lkblk">
+                <a class="lkcon c3 rc" target="_blank" href="https://twitter.com/TheaVanherst"><div class="wdt i0 rc"></div></a>
+                <a class="lkcon c5" target="_blank" href="https://discord.com/invite/zDJRaZvGmS"><div class="wdt i1"></div></a>
+                <a class="lkcon c2" target="_blank" href="https://steamcommunity.com/id/TheaVanherst"><div class="wdt i2"></div></a>
+                <a class="lkcon c4" target="_blank" href="https://youtube.com/channel/UCqbZe2XMkd98nXu_dUlObKA"><div class="wdt i3"></div></a>
+                <a class="lkcon c7" target="_blank" href="https://ko-fi.com/theavanherst"><div class="wdt i4"></div></a>
+                <a class="lkcon c1 lc" target="_blank" href="https://github.com/TheaVanherst"><div class="wdt i5 lc"></div></a></div>
+            <div class="block tc"><p>Vanh.art, established on Aug 1st, 2021</p></div>
+            <!-- Updated Aug 16th 2021, 03:31 GMT --> <!-- I'm currently editing the page, so please stay tuned! -->
+            <div class="wedge tii tan" style="margin-top: -20px"><p class="bc">The site is currently in development. Updated Sept 11th 2021, 04:12 GMT</p></div>
+        </asidel>
+
+        <div class="cont">
+
+            <script>
+                function fadeto(){$('#hdr').css({opacity:0.6})}
+                function fadeno(){$('#hdr').css({opacity:1})}
+            </script>
+
+            <div class="hdr" id="hdr"></div>
+            <div class="bnlogo pg1" onmouseover="fadeto()" onmouseout="fadeno()">
+                <div class="logo" id="logo"></div>
+            </div>
+
+            <fullwc id="nav">
+                <div class="lsbut pg1"><t>Feed</t><div class="i bt1"></div></div>
+                <div class="lsbut pg2"><t>Artwork</t><div class="i bt2"></div></div>
+                <div class="lsbut pg3"><t>Design</t><div class="i bt3"></div></div>
+                <div class="lsbut pg4"><t>Animation</t><div class="i bt4"></div></div>
+                <div class="lsbut pg5"><t>Workshop</t><div class="i bt5"></div></div>
+                <div class="lsbut pg6"><t>Javascript</t><div class="i bt6"></div></div>
+            </fullwc>
+            <div class="nmb">
+                <svg xmlns="http://www.w3.org/2000/svg" id="nm0" viewBox="0 0 16 16">
+                    <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" id="nm1" viewBox="0 0 16 16">
+                    <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8.5 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm5-5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm-11 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9.743-4.036a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm-7.779 7.779a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm7.072 0a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707zM3.757 4.464a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707z"/></svg></div>
+
+            <script>
+                var dmc=["#7565ff","#ff62ea","#ffb533","#3aecb4","#505050","#ff8ef4","#7285fe","#787878","#f4f4f4","#ffffff","#8781bd","#d8d5d5","1","0.6"], //brightmode colours
+                    nmc=["#7246ee","#f267e3","#ffa85b","#3aecb4","#282828","#ff8ef4","#7285fe","#787878","#1d1d1d","#141414","#534b71","#090909","0.3","1"], //nightmode colours
+                    ml=["accent1","accent2","accent3","accent4","invaccent","links","titles","text","background","posts","artposts","borders","defopacity","fadeto"], //root var arr
+                    nm,cm,dr,bm=["block","none"];
+
+                $('.nmb').bind('click',function(){
+                    nm=!nm;
+                    document.cookie="lightmode="+nm+";"+"SameSite=None; Secure; expires=Fri, 31 Dec 9999 23:59:59 GMT"
+
+                    dr=[(nm?0:1),(!nm?0:1)];
+                    if(nm==true){cm=dmc; $('#twitter').attr("data-theme","dark")
+                    }else{cm=nmc; $('#twitter').attr("data-theme","light")}
+
+                    for(var i = 0;i < dr.length;i++){
+                        $("#nm"+i+", #twitter-widget-"+i).css({"display":bm[dr[i]]});}
+                    for(var i = 0; i<=cm.length;i++){
+                        docelem.style.setProperty("--"+ml[i],cm[i])}
+                })
+
+                document.addEventListener("DOMContentLoaded", function(){
+                    var temp = document.cookie.split("; ")
+                    if(temp.find(a =>a.includes('lightmode')) != undefined){
+                        if(temp.find(a =>a.includes('lightmode')).replace('lightmode=','') == false){
+                            nm = !nm; $('.nmb').click()}
+                    } else {
+                        if(window.matchMedia('(prefers-color-scheme: dark)').matches == true){
+                            console.log("Nightmode Preference")
+                            nm = true; $('.nmb').click()}}
+
+                    for(var i = 0;i < dr.length;i++){
+                        $("#nm"+i).css({"display":bm[dr[i]]})}
+
+                    jQuery('#twitter-widget-0').ready(function (){
+                        setTimeout(function() {
+                            for(var i = 0;i < dr.length;i++){
+                                $("#twitter-widget-"+i).css({"display":bm[dr[i]]})}
+                        },2000)
+                    })
+                })
+            </script>
+
+            <div class="pg pg0">
+                <fullwc>
+                    <sidell>
+                        <div class="block">
+                            <p>[pg0 side l medium]</p>
+                        </div>
+                    </sidell>
+                    <siders>
+                        <div class="imco wdt">
+                            <div class="tii">
+                                <p>25/08/2021, By <a href="https://twitter.com/JelqerLysenko">@JelqerLysenko</a><br>
+                                    <t>1808, Austrian Officer; Petra</t></p>
+                            </div>
+                            <img id="sc1"/>
+                        </div>
+                    </siders>
+                </fullwc>
+            </div>
+
+            <script>
+                let postamount=16, currentpc=postamount + 1, article=currentpc;
+                function loadpostelement(){
+                    for (var i=0;i<4;i++){
+                        currentpc = currentpc - 1;
+
+                        var data = $.get(("/posts/"+(currentpc)+".txt"),function(data){
+                            var postdata = data.split("<meta>");
+
+                            const date = new Date(postdata[1]),
+                                day1 = date.toLocaleString('en-us',{weekday:'long'}),
+                                day2 = date.toLocaleString('en-us',{day:'numeric'}),
+                                month = date.toLocaleString('en-us',{month:'short'}),
+                                year = date.toLocaleString('en-us',{year:'numeric'});
+
+                            var posttime =  postdata[1].split("T"), hours = posttime[1].split(":"), pmam;
+                            if(hours[0] > 12){ hours[0] = hours[0] - 12; pmam = "pm"} else {"am"}
+
+                            function getOrdinal(n) {
+                                let ord = ["st","nd","rd"], exceptions = [11,12,13],
+                                    nth = ord[(n % 10) - 1] == undefined || exceptions.includes(n % 100) ? "th" : ord[(n % 10) - 1]
+                                return n + nth}
+
+                            function calcDate(date1,date2) {
+                                var plur, t="Posted ",
+                                    diff = Math.floor(date1.getTime() - date2.getTime()), day = 1000 * 60 * 60 * 24,
+                                    days = Math.floor(diff/day), months = Math.floor(days/31), years = Math.floor(months/12);
+                                if(days > 1 && months < 1 || months > 1 && years < 1 || years>1){ plur = "s" } else { plur = "" }
+
+                                if(months<1){
+                                    if(days<7){if(days==7){t=t+"earlier today at "}else{t=t+"on "+day1+" at "}t=t+hours[0]+":"+hours[1]+pmam}
+                                    else{if(days>14){t=t+"a few"}else{t=t+"over a"}t=t+" week"+plur}}
+                                if(months>0){if(months==1){if(days>45){t=t+" over"};t=t+" a month"}else{t=t+months+" month"+plur}}
+                                if (years>0){if(years==1){t=t+"a year"}else{t=t+years+" year"+plur}}if (days>7){t=t+" ago"}
+
+                                return t
+                            }
+
+                            article = article - 1; //this genuinelly needs a seperate variable looping in the for loop, because "lol"
+                            $('<article id='+article+'>'+
+                                '<div class="when">'+
+                                    '<a class="dateposted">'+day1+", "+month+" "+getOrdinal(day2)+" "+year+'</a>'+
+                                    '<a class="timestamp">'+calcDate(new Date(),date)+'</a>'+
+                                '</div>'+
+                                postdata[2] +
+                                '<div class="when footer">'+
+                                    '<a class="vimage"></a>'+
+                                    '<div class="imcon">posted by<br>'+
+                                        '<a class="postedby">vanherst</a>'+
+                                    '</div>' +
+                                '</div>' +
+                            '</article>').appendTo("#posts")
+                        });
+                    }
+                    if(currentpc == 1){$('#postcont .loadmore').hide()}
+                }
+            </script>
+
+            <div class="pg pg1">
+                <section id="postcont">
+                    <div id="posts"></div>
+                    <div class="loadmore" onmousedown="loadpostelement()">
+                        <p>Load More</p></div>
+                </section>
+
+
+                <siders id="asider">
+                    <div class="wedge">
+                        <a class="twitter-timeline" href="https://twitter.com/TheaVanherst?ref_src=twsrc%5Etfw" data-tweet-limit="16" data-chrome="nohdr nofooter noborders"></a>
+                        <a data-theme="dark" class="twitter-timeline" href="https://twitter.com/TheaVanherst?ref_src=twsrc%5Etfw" data-tweet-limit="16" data-chrome="nohdr nofooter noborders"></a>
+                    </div>
+                </siders>
+            </div>
+
+             <script>
+                var pg2l=[1,1,1,1,2,1,1,1],pg2m=[1,1,1,1,1,1,1,1],pg2r=[1,1,1,1,1,1,1,2],sid2a=[pg2l,pg2m,pg2r], //image format : frt[]
+                    pg2hl=[9,5,5,0,5,8,7,7],pg2hm=[8.5,8,8,8,3,4,5,8],pg2hr=[9,7,5,7,5,5,9,4],sid2h=[pg2hl,pg2hm,pg2hr]; //image hights
+                var frt=["jpg","png","gif"],sides = ["l","m","r"]; //for different file types, then loops through which coloumn is currently being looped
+
+                //window.addEventListener("load", function(){#
+                $(document).ready(function(){
+                    for(var t=0;t<3;t++) { //toggles between sides, because it's easier to read and bugfix
+                        var ap2=sid2a[t],ah2=sid2h[t]; //flips between which array is currently active
+                        for (var i=1;i<=pg2l.length;i++) {
+                            $('#'+sides[t]+'s'+i).addClass('zoom img')
+                                .css({'height':(ah2[i- 1]*100)+"px",
+                                      'background-image':"url('"+git+"imgs/"+sides[t]+i+"."+frt[ap2[i- 1]]+"')"});}}})
+            </script>
+
+            <div class="pg pg2">
+                <fullwc>
+                    <incont>
+                        <div class="immc"> <div class="tii"><p>14/05/2021 - 19/05/2021<br><t>landsknecht Marie</t></p></div>
+                            <div class="tfd"><p>19/05/2021<br><t>Shading</t></p></div><div id="ls8"></div></div>
+                        <div class="immc"><div class="tfd"><p>16/05/2021<br><t>Final Linework</t></p></div><div id="ls7"></div></div>
+                        <div class="imco"><div class="tfd"><p>14/05/2021<br><t>Original Sketch</t></p></div><div id="ls6"></div></div>
+
+                        <div class="immc"> <div class="tii"><p>22/04/2021 - 23/04/2021<br><t>Guide Petra</t></p></div>
+                            <div class="tfd"><p>23/04/2021<br><t>Walk Sequence</t></p></div><div id="ls5"></div> </div>
+                        <div class="imco"><div class="tfd"><p>22/04/2021<br><t>Frame Development</t></p></div><div id="ls4"></div></div>
+
+                        <div class="imco"><div class="tii"><p>20/10/2020<br><t>Chastity</t></p></div>
+                            <div class="tfd"><p><t>Line Progression</t></p></div><div id="ls3"></div></div>
+
+                        <div class="imco"><div class="tii"><p>05/10/2019<br><t>Caddy Redesign Concept</t></p></div>
+                            <div class="tfd"><p><t>Shading & Colour</t></p></div><div id="ls2"></div>
+                            <p>A long and ongoing process of drawing my characters as chibi, emoticon-esc drawings.</p></div>
+
+                        <div class="imco"><div class="tii sth"><p>08/05/2020<br><t>Rosalina</t></p></div>
+                            <div class="tfd"><p><t>Final Lineart</t></p></div><div id="ms1"></div>
+                            <p>A line clean-up of an old drawing; <h>20/11/2019</h></p></div>
+
+                        <!--<div class="imco"><div class="tii"><p>25/05/2019<br><t>Futaba</t></p></div>
+                            <div class="tfd"><p><t>Lineart</t></p></div><div class="img" id="ls1"></div> </div>-->
+                    </incont><incont>
+                        <div class="imco"><div class="tii"><p>03/05/2021<br><t>Lilith as Moonlord v0.7</t></p></div>
+                            <div class="tfd"><p><t>Ingame Recreation</t></p></div><div id="ms8"></div>
+                            <p>"Newly redesigned and refurbished graphics for my Terraria Moonlord Replacment, along with some comparrisions."</p></div>
+
+                        <div class="immc"><div class="tii"><p>05/11/2020 - 03/05/2021<br><t>Petra Concept Development</t></p></div>
+                            <div class="tfd"><p>10/03/2021<br><t>Upper Body Sketch</t></p></div><div id="ms7"></div></div>
+                        <div class="imco"><div class="tfd"><p>03/02/2021<br><t>Persoanlity Sketch</t></p></div><div id="ms6"></div></div>
+
+                        <div class="immc"><div class="tii"><p>19/09/2020 - 23/09/2020<br><t>Elizabeth Concept Art</t></p></div>
+                            <div class="tfd"><p>23/09/2020<br><t>Lower body shading</t></p></div><div id="ms5"></div></div>
+                        <div class="imco"><div class="tfd"><p>19/09/2020<br><t>Lineart</t></p></div><div id="ms4"></div>
+                            <p>Concept art of a 1960's steampunk showgirl, inspired by Moxxi from Borderlands and Black Ops 3's Shadows Of Evil.</p></div>
+
+                        <div class="imco"><div class="tii"><p>31/01/2020<br><t>Freyja Concept art</t></p></div>
+                            <div class="tfd"><p><t>Full colour & shading</t></p></div><div id="ms3"></div></div>
+
+                        <div class="imco"><div class="tii"><p>12/08/2020<br><t>Lilith Concept Art</t></p></div>
+                            <div class="tfd"><p><t>Full colour & shading</t></p></div><div id="ms2"></div>
+                            <p>Concept art for a Chineese anthropomorphic Mantis, who moved to the ottoman empire from the silk trade.</p>
+
+                            <!-- this is a fucking mess ignore it -->
+                            <div class="loadmore" style="left:50%;transform:translateX(-50%);margin-top:20px">
+                                <p>Nothing more to see.</p></div>
+
+                        </div>
+
+                        <!--<div class="imco"><div class="tii sth"><p>08/05/2020<br><t>Rosalina</t></p></div>
+                            <div class="tfd"><p><t>Final Lineart</t></p></div><div class="img" id="ms1"></div>
+                            <p>A line clean-up of an old drawing; <h>20/11/2019</h></p></div>-->
+                    </incont><incont>
+                        <div class="tii tan imco"><p>This page contains a small selection of cherry-picked drawings and their development process.</p></div>
+
+                        <div class="immc"><div class="tii"><p>01/05/2021 - 04/05/2021<br><t>Arms Dealer Coffee</t></p></div>
+                            <div class="tfd"><p>02/05/2021<br><t>Walk Sequence</t></p></div><div id="rs8"></div></div>
+                        <div class="imco"><div class="tfd"><p>04/05/2021<br><t>Frame Development</t></p></div><div id="rs7"></div>
+                            <p>"I'm not entirely happy with this due to being so far from the original terraria template, but with some practice I'll revisit this at a later date."</p></div>
+
+                        <div class="imco"><div class="tii"><p>10/10/2020<br><t>SAS Caddy</t></p></div>
+                            <div class="tfd"><p><t>Final Lineart</t></p></div><div id="rs6"></div>
+                            <p>A losely drawn headshot of Caddy in a gasmask.</p></div>
+
+                        <div class="imco"><div class="tii"><p>29/05/2020<br><t>FBI Caddy</t></p></div>
+                            <div class="tfd"><p><t>Colour & simple shading</t></p></div><div id="rs5"></div>
+                            <p>A re-purposed redraw of a drawing from 28/05/2020</p></div>
+
+                        <div class="imco"><div class="tii"><p>07/03/2020<br><t>Emotes.psd</t></p></div>
+                            <div class="tfd"><p><t>A partition of a larger page</t></p></div><div id="rs4"></div>
+                            <p>A long and ongoing process of drawing my characters as chibi, emoticon-esc drawings.</p></div>
+
+                        <div class="imco"><div class="tii"><p>07/03/2020<br><t>Marie Concept art</t></p></div>
+                            <div class="tfd"><p><t>Shading & Colour</t></p></div><div id="rs3"></div>
+                            <p>A long and ongoing process of drawing my characters as chibi, emoticon-esc drawings.</p></div>
+
+                        <div class="imco"><div class="tii"><p>25/05/2019<br><t>Coffee</t></p></div>
+                            <div class="tfd"><p><t>Final Lineart</t></p></div><div id="rs2"></div>
+                            <p>A unfinished drawing, featuring the finalised design of Coffee's character as a concept.
+                                A piece focused on experimenting with point perspective as a personal study.</p></div>
+
+                        <!--<div class="imco"><div class="tii sth"><p>12/02/2019<br><t>Coffee</t></p></div>
+                            <div class="tfd"><p><t>Final Render</t></p></div><img id="rs1"/></div>-->
+                    </incont>
+                </fullwc>
+
+            </div>
+
+            <script>
+                var pgdh=[460,460,460,475,475,234,610,610,610,610,610,610,234,475,475,450,450,234,234,595,595,595,153,206,450]
+                var pg3h=[355,355,355,425,425,184,560,560,560,560,772,560,184,425,425,400,400,184,184,460,460,460,153,156,400]//image hights
+                var ap3=[0,0,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1]
+
+                $(document).ready(function(){
+                    for(var i=0;i<=pg3h.length;i++){
+                        $('#dp'+i).addClass('zoom img')
+                            .css({'height':pg3h[i]+"px",
+                                  'background-image':"url('/Website assets/imgs/d"+i+"."+frt[ap3[i]]+"')"})
+                            .parent().css({'height':pgdh[i]+"px"})}})
+            </script>
+
+            <div class="pg pg3">
+                <fullwc>
+                    <!--
+                        <div class="imco" style="height:355px">
+                            <div class="tii"><p>04/08/2019<br><t>Rainpro.Dash</t></p></div>
+                            <div class="tfd"><p><t>CS:GO Team Logo</t></p></div>
+                            <img src="https://cdn.discordapp.com/attachments/629600253997350912/878805369428783174/rainprodash6.png" class="zoom" style="height:305px;left:-5%;"/></div>
+
+                        <div class="imco w3x2" style="height:355px">
+                            <div class="tii"><p>02/06/2021<br><t>VanH Logo Development</t></p></div>
+                            <div class="w32con">
+                                <div class="w32"><div class="tfd dac"><p><t>Concept</t></p></div>
+                                    <img src="https://cdn.discordapp.com/attachments/629600253997350912/879990712324743188/vanherst3.png" class="zoom" style="height:250px"/></div>
+                                <div class="w32"><div class="tfd"><p><t>Finalised</t></p></div>
+                                    <img src="https://cdn.discordapp.com/attachments/629600253997350912/879990744780267530/vanherst5FSMALL.png" class="zoom" style="height:250px"/></div></div>
+                            <p> hello, this is a text box test for this specific container, it doesn't really do much right now other than to prove a quantative value for how much text I can display and applicable formatting. </p></div>
+                    -->
+                    <div class="immc w3x3"><div class="tii"><p>06/06/2021 - 02/08/2021<br><t>VanH Social Media Banner</t></p></div><div id="dp23"></div></div>
+                    <div class="imco w3x3"><div class="img" id="dp22"></div></div>
+
+                    <div class="imco"><div class="tii"><p>15/12/2018<br><t>Vial Of Me.js</t></p></div>
+                        <div class="tfd dac"><p><t>Three.js Render</t></p></div><div id="dp21"></div>
+                        <p> hello, this is a text box test for this specific container, it doesn't really do much right now other than to prove a quantative value for how much text I can display and applicable. </p></div>
+                    <div class="imco"><div class="tii"><p>02/12/2018<br><t>Blender Redesign</t></p></div>
+                        <div class="tfd"><p><t>In-software preview</t></p></div><div id="dp20"></div>
+                        <p> hello, this is a text box test for this specific container, it doesn't really do much right now other than to prove a quantative value for how much text I can display and applicable. </p></div>
+                    <div class="imco"><div class="tii"><p>20/11/2014<br><t>Nothing But Noise</t></p></div>
+                        <div class="tfd"><p><t>Album Artwork Design</t></p></div><div id="dp19"></div>
+                        <p> hello, this is a text box test for this specific container, it doesn't really do much right now other than to prove a quantative value for how much text I can display and applicable. </p></div>
+
+                    <div class="imco w3x3"><div class="tii"><p>22/10/18<br><t>Polygram Social Media Banner</t></p></div><div id="dp18"></div></div>
+                    <div class="imco w3x3"><div class="tii"><p>19/05/18<br><t>Bachoo Branding</t></p></div><div id="dp17"></div></div>
+
+                    <div class="imco"><div class="tii"><p>17/11/18<br><t>Nikotin</t></p></div>
+                        <div class="tfd"><p><t>Concept Album Artwork</t></p></div><div id="dp16"></div></div>
+                    <div class="imco"><div class="tii"><p>14/01/2017<br><t>Girl</t></p></div>
+                        <div class="tfd dac"><p><t>Official Single Artwork</t></p></div><div id="dp24"></div></div>
+                    <div class="imco"><div class="tii"><p>25/10/2016<br><t>System Overload</t></p></div>
+                        <div class="tfd"><p><t>Official Single Artwork</t></p></div><div id="dp15"></div></div>
+
+                    <div class="imco w2x1"><div class="tii"><p>22/10/2017<br><t>Flippo Sounds</t></p></div>
+                        <div class="tfd"><p><t>Soundpack Artwork Art</t></p></div><div id="dp14"></div></div>
+                    <div class="imco w2x1"><div class="tii"><p>15/09/2017<br><t>Ink Trace</t></p></div>
+                        <div class="tfd dac"><p><t>Single Artwork</t></p></div><div id="dp13"></div></div>
+
+                    <div class="imco w3x3"><div class="tii"><p>28/09/17<br><t>Flippo Social Media Branding</t></p></div><div id="dp12"></div></div>
+
+                    <div class="imco"><div class="tii"><p>15/10/16<br><t>Polygon Dust</t></p></div><div id="dp11"></div></div>
+                    <div class="imco"><div class="tii"><p>16/09/2016<br><t>Hymn Of The Haunted Hunter</t></p></div><div id="dp10"></div></div>
+                    <div class="imco"><div class="tii"><p>15/08/2016<br><t>Gratitude</t></p></div><div id="dp9"></div></div>
+
+                    <div class="imco"><div class="tii"><p>15/10/16<br><t>Polygon Dust</t></p></div><div id="dp8"></div></div>
+                    <div class="imco"><div class="tii"><p>16/09/2016<br><t>Hymn Of The Haunted Hunter</t></p></div><div id="dp7"></div></div>
+                    <div class="imco"><div class="tii"><p>15/08/2016<br><t>Gratitude</t></p></div><div id="dp6"></div></div>
+
+                    <div class="immc w3x3"><div class="tii"><p>05/12/15<br><t>CentricArts Branding</t></p></div><div id="dp5"></div></div>
+
+                    <div class="imco w2x1"><div class="tii"><p>04/08/2019<br><t>Mothership</t></p></div>
+                        <div class="tfd"><p><t>Concept Album Artwork</t></p></div><div id="dp4"></div></div>
+                    <div class="imco w2x1"><div class="tii"><p>12/05/2015<br><t>Syndicate</t></p></div>
+                        <div class="tfd dac"><p><t>Official Album Artwork</t></p></div><div id="dp3"></div></div>
+
+                    <div class="imco"><div class="tii"><p>21/12/2014<br><t>Ponies</t></p></div>
+                        <div class="tfd"><p><t>Single Artwork</t></p></div><div id="dp2"></div>
+                        <p> hello, this is a text box test for this specific container. </p></div>
+                    <div class="imco"><div class="tii"><p>15/11/2014<br><t>Nothing But Noise</t></p></div>
+                        <div class="tfd"><p><t>Official Album Artwork</t></p></div><div id="dp1"></div>
+                        <p> hello, this is a text box test for this specific container. </p></div>
+                    <div class="imco"><div class="tii"><p>29/05/2014<br><t>Mothership</t></p></div>
+                        <div class="tfd"><p><t>Official Album Artwork</t></p></div><div  id="dp0"></div>
+                        <p> hello, this is a text box test for this specific container. </p></div>
+                </fullwc>
+                <div class="loadmore">
+                    <p>Nothing more to see.</p></div>
+            </div>
+
+            <div class="pg pg4">
+                <fullwc>
+                    <sidell>
+                        <div class="block">
+                           <p>test</p>
+                        </div>
+                    </sidell>
+
+                    <siders>
+                        <div class="block">
+                            <p>This page is currently a test page for the future replacement of tumblr-based posts. Anything on this page will be changed in a future update and eventually a replacement for the feed page.</p>
+                        </div>
+                    </siders>
+                </fullwc>
+            </div>
+
+            <div class="pg pg5">
+                <fullwc>
+                    <sidell>
+                        <div class="block">
+                            <p>[pg5 side l medium]</p>
+                        </div>
+                    </sidell>
+
+                    <siders>
+                        <div class="block">
+                            <p>[pg5 side r medium]</p>
+                        </div>
+                    </siders>
+                </fullwc>
+            </div>
+
+            <div class="pg pg6">
+                <fullwc>
+                    <sidelm>
+                        <div class="block">
+                            <p>[pg6 side l medium]</p>
+                        </div>
+                    </sidelm>
+
+                    <siderm>
+                        <div class="block">
+                            <p>[pg6 side r medium]</p>
+                        </div>
+                    </siderm>
+                </fullwc>
+            </div>
+        </div>
+
+        <script>
+            var righb = $("#asider").width(),leftb = $("#asidel").width(),
+                middb = $("#posts").width(),bod = $('body').width();
+
+            var page3 = bod - (bod - (righb + middb + leftb)),
+                page2 = bod - (bod - (righb + middb));
+
+            var body = $('body').width(), headr = $('#hdr').height();
+
+            $(window).ready(function(){
+                if (/Mobi|Android/i.test(navigator.userAgent)) {
+                    $('#nav').css('display','block');
+                } else {
+                    $('#asidel').css('display','block');
+                    setTimeout(function() {
+                        $("<style type='text/css'>" +
+                            ".pg{transition:" +
+                                "margin .5s cubic-bezier(0,0,0,1)," +
+                                "opacity .5s cubic-bezier(0,0,0,1)}" +
+                            "</style>").appendTo("head")},200)}})
+
+            var resize = function() { // Page rescaling
+                headr = $('#hdr').height();
+                body = $('body').width();
+
+                if (/Mobi|Android/i.test(navigator.userAgent)) {
+                    var pagescl2 = (page2 / (body - 60)) //180 / 60
+                    $('#asidel').css('display','none');$('#nav').css('display','block');
+                    docelem.style.setProperty('--sidebarl', -20 + "px")
+                    docelem.style.setProperty('--sidebarr', (righb / pagescl2).toFixed(2) + 10 + "px")
+                    docelem.style.setProperty('--postwidth', (middb / pagescl2).toFixed(2) + 10 + "px")
+                } else {
+                    if (body > 900){ //200 / 80
+                        if(body <= (page3 + 80)){
+                            var pagescl3 = (page3 / (body - 80)); //200 / 80
+                            $('#asidel').css('display','block');
+                            $('#nav').css('display','none');
+                            docelem.style.setProperty('--sidebarl', (leftb / pagescl3).toFixed(2) + "px")
+                            docelem.style.setProperty('--sidebarr', (righb / pagescl3).toFixed(2) + "px")
+                            docelem.style.setProperty('--postwidth', (middb / pagescl3).toFixed(2) + "px")
+                            $('section').css('margin','0 20px 0 calc(var(--sidebarl) + 20px)')
+                        } else {
+                            docelem.style.setProperty('--sidebarl', leftb+"px")
+                            docelem.style.setProperty('--sidebarr', righb+"px")
+                            docelem.style.setProperty('--postwidth', middb+"px")}
+                    } else {
+                        var pagescl2 = (page2 / (body- 60)) //180 / 60
+                        $('#asidel').css('display','none');
+                        $('#nav').css('display','block');
+                        docelem.style.setProperty('--sidebarl', -20 + "px")
+                        docelem.style.setProperty('--sidebarr', (righb / pagescl2).toFixed(2) + 10 + "px")
+                        docelem.style.setProperty('--postwidth', (middb / pagescl2).toFixed(2) + 10 + "px")}}}
+
+            $(document).ready(resize)
+            $(window).on("load resize", resize)
+
+            $(window).scroll(function() {
+
+                if ($('body').width() > 900){
+                    if($(document).scrollTop() >= (20 + headr)){
+                        $('#search, #searchtop').addClass("strict")
+                    } else {$('#search, #searchtop').removeClass("strict")}
+                } else {
+                    if($(document).scrollTop() >= (124 + headr)){
+                        $('#search, #searchtop').addClass("strict")
+                    } else {$('#search, #searchtop').removeClass("strict")}}})
+        </script>
+    </body>

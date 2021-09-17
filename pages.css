@@ -1,0 +1,161 @@
+/* Page 1
+/* ===================================== */
+
+/* Top of posts ========================================================================================================= */
+.timestamp {
+    font-size:13px;
+    display:inline-block !important} /*top of the post, notes and time posted.*/
+.timestamp:before{margin:0 3px}
+.dateposted {
+    font-family:var(--boldstyle);
+    text-transform:uppercase}
+
+.when {
+    padding:15px;
+    line-height:1em} /* container that holds .time, and .d */
+.when a {
+    display:block} /* these also include the repost tags at the bottom of posts. */
+
+.vimage {
+    float:left;
+    width:26px;
+    height:26px;
+    margin:-2px 13px 0 -2px;
+    background-image:var(--pfp);
+    background-size:100% 100%;}
+
+/* Bottom of posts ========================================================================================================= */
+.footer {
+    font-size:0.6em;
+    text-transform:uppercase;
+    letter-spacing:0.5px} /*posted by*/
+.footer .postedby {
+    margin-top:4px} /*container that posted by*/
+
+/* Post formatting ========================================================================================================= */
+
+/* specifically post body formatting */
+article {margin-bottom: 20px}
+
+article li {padding:1px} /* for edges of images */
+article li p:first-of-type {margin: 15px 0 10px}
+article li p:last-of-type {margin: 10px 0 13px}
+article li p:first-of-type b {font-size: 15px; line-height:0}
+article li:before, .chat li:before, ol.notes li:before {display:none}
+
+/*article ul {list-style:none; padding:.25em 0 .25em 15px}*/
+article ol { padding:0 15px 0 35px}
+article li li::before {content:"- "}
+
+article .poster {
+    height: calc(var(--postwidth) / 1.6);
+    background-position: center}
+
+article .poster .title{ /*workshop title*/
+    opacity: 0.9;
+    background-color: var(--invaccent);
+    padding: 10px;
+    color: white;
+    position: absolute;
+    width: calc(var(--postwidth) - 22px);
+    margin: calc(var(--postwidth)/2 + 5px) 0;
+    font-weight: 900;
+    font-family: var(--boldstyle);
+    text-transform: uppercase}
+article .poster:hover .title{
+    opacity: 0.9}
+
+article .bottom{ /*workshop footer*/
+    font-size: 10px;
+    padding: 5px 10px;
+    width: calc(var(--postwidth)- 1px);
+    margin: 0;}
+
+article figure {
+    width: 100%;
+    margin: 0;
+    font-size: 0}
+div.npf_row {
+    margin:0!important;
+    align-items: center;
+    display: flex;
+    overflow: hidden;}
+div.npf_row .npf_col figure img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover}
+div.npf_row .npf_col figure {
+    position: relative;
+    padding-bottom: 100%;
+    text-align: left}
+
+article .npf_col {width: calc(50% - 1px);}
+article .npf_row, .npf_row + p {margin: 10px 0!important}
+article .npf_col:first-child {padding-right: 1px!important} /* this fixes the gap between images to be 1 pixel wide, apposed to 2. */
+article .npf_col:last-child {padding-left: 0!important} /* this fixes the gap between images to be 1 pixel wide, apposed to 2. */
+
+/* This stuff is important but i want it out the way ========================================================================================================= */
+
+.loadmore{
+    position:relative;
+    text-align:center;
+    width:200px;
+    left:calc((var(--postwidth) + var(--sidebarl) + var(--sidebarr) + 100px) / 2);;
+}
+.loadmore p{
+    padding: 4px!important;
+    font-weight:900;
+    font-size:12px;
+}
+
+#postcont .loadmore{
+    left:50%;
+    transform:translateX(-50%);
+    display:none;
+    font-size:18px;
+    cursor:pointer
+}
+
+/* Page 2 / 3
+/* ===================================== */
+
+.imco:not(.tfd) p, .immc:not(.tfd) p {margin-top:0;position:relative}
+.imco, .immc {overflow:hidden;margin-bottom:20px}
+.imco p, .immc p{padding:13px 15px}
+.immc {margin-bottom:10px!important}
+.imco .img, .immc .img{background-color:var(--artposts)}
+
+.zoom {
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;}
+
+.w2x1 {width:calc((var(--sidebarr) + var(--postwidth)) / 2)}
+.w3x3 {width:calc(var(--sidebarr) + var(--postwidth) + 20px)}
+.w3x2 {width:calc((((var(--sidebarr) + var(--postwidth) + 40px) / 3)) * 2 - 20px)}
+.w32con {width:calc(((var(--sidebarr) + var(--postwidth) + 20px) / 3) * 2);
+    margin-bottom: -5px}
+
+.w32con:hover > *:hover{
+    width:calc((100% / 3) * 2);
+    opacity:var(--defopacity)} /* this has to be seperated, don't try it*/
+
+.w32 img, .w32con:hover > *:hover img {left: 0!important}
+.w32con:hover > * img {left: -30%!important}
+
+/* Page 5
+/* ===================================== */
+
+.sbitems {width:var(--sidebarr);overflow:hidden}
+.sbitems t {margin:10px 0 5px;display:block;letter-spacing:0.5px}
+
+.tii {z-index:9; position:relative}
+.tii p {font-size: 0.7em; letter-spacing:.15px; padding:10px 15px 10px!important}
+.tii t {padding:0!important; line-height:0.9em!important}
+
+.tfd {margin-top:-20px; font-size:0.7em; z-index:8; position: relative}
+.tfd p {font-size: 0; letter-spacing:.15px; padding:10px 15px 10px!important}
+.imco:hover .tfd, .immc:hover .tfd {margin-top: 0}
+.imco:hover .tfd p, .immc:hover .tfd p {font-size: 1em}
+.tfd t {padding:0!important; line-height:0.9em!important}

@@ -1,0 +1,209 @@
+:root {
+    --page0: -1; --page1: 0; --page2: 1;
+    --page3: 2; --page4: 3; --page5: 4;
+    --page6: 5; /* page debug info */
+
+    /*font settings*/
+    --fontstyle: 'Manrope', sans-serif;
+    --boldstyle: 'Rubik', sans-serif;
+    --gerstyle: 'UnifrakturCook', cursive;
+
+    /*default sidebar widths*/
+    --sidebarl:250px; --sidebarr:350px; --postwidth:500px;}
+
+body {
+    font-family:var(--fontstyle);
+    word-wrap:break-word;
+    margin:0;
+    overflow-x: hidden;
+    /* debug dump */
+    font-size:0;
+    vertical-align: top;
+    clear:none;}
+
+a {
+    text-decoration:none;
+    font-weight:900}
+
+p {
+    font-size:0.72em;
+    padding:0 15px}
+p:first-of-type{
+    margin-top:0}
+p:last-of-type {
+    margin-bottom:0}
+p:first-of-type t{
+    font-size:1.4em;
+    line-height:0;
+    margin-top:10px}
+
+t {
+    font-family:var(--boldstyle);
+    text-transform:uppercase;
+    padding:0 15px;
+    font-size:1.1em}
+
+ol{font-size:12px}
+li{list-style:none}
+li:last-of-type{margin:0}
+
+img {
+    width:100%;
+    display:block;
+    opacity:1;
+    border:0;
+    background-position:center;}
+
+/* ===================================== */
+/* Containers =============== */
+
+.cont { /*needed to fix width of page*/
+    position: absolute;
+    left:50%;transform:translateX(-50%);}
+.block, .wedge {
+    margin-bottom:20px;
+    font-size:14px;}
+.block {
+    padding:12px 0}
+
+incont,.imco,.immc{
+    display:inline-block;
+    margin-right:20px;
+    width:calc((var(--sidebarr) + var(--postwidth) - 21px) / 3);
+    float: left;}
+
+sidels,siders,sidelm,siderm,sidell,siderl,fullwc,section{
+    display:inline-block;
+    overflow-x:hidden;
+    vertical-align:top;
+    width:calc((var(--postwidth) + var(--sidebarr)) + 41px);
+    font-size:16px}
+asidel{
+    left:calc(50% - ((var(--postwidth) + var(--sidebarr) + var(--sidebarl)) / 2 + 20px));
+    z-index:99;
+    position:fixed;
+    top:20px;
+    display:none}
+
+fullwc{margin-left: calc(var(--sidebarl) + 20px)}
+section{margin:0 20px 0 calc(var(--sidebarl) + 20px)}
+sidels,sidelm,sidell{margin:0 20px 0 0}
+
+asidel{width:var(--sidebarl)}
+sidell,siderl,section{width:var(--postwidth)}
+sidelm,siderm{width:calc((var(--sidebarr) + var(--postwidth)) / 2)}
+sidels,siders{width:var(--sidebarr)}
+
+.pg{
+    width:calc(var(--sidebarl) + var(--postwidth) + var(--sidebarr) + 60px);
+    cursor:pointer;
+    position:absolute;
+    opacity: 0;
+    z-index: 1;
+    padding-bottom:20px;
+    display:inline-block}
+.pagefocus {
+    opacity: 1!important;
+    z-index: 2!important;
+    cursor:auto!important}
+
+.divider {
+    margin-bottom:15px}
+
+/* ===================================== */
+/* Top Navbar CONTENT */
+
+.hdr { /*header image*/
+    height:calc(((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth));
+    width: calc(var(--sidebarr) + var(--postwidth) + 20px); margin: 20px auto 20px calc(var(--sidebarl) + 20px);
+    background-size:140% auto;
+    background-image:var(--bannerurlblank)}
+
+.bnlogo, .logo {
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    z-index:999}
+.logo {
+    width:100%;height:100%;
+    opacity:1;
+    background-image: var(--bannerlogo);
+    cursor:pointer}
+.logo:hover {
+    opacity:0}
+
+.bnlogo { /*logo ontop*/
+    position:absolute;
+    left: 50%;transform:translateX(-50%);
+    background-image:var(--bannerlogohov);
+    margin-left:calc(var(--sidebarl)/2);
+    margin-top:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) -
+    ((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 2) - 25px);
+    height:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) + 10px);
+    width:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 2 + 10px)}
+.bnlogo:hover {
+    margin-top:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) -
+    ((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 2) - 15px);
+    height:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) - 10px);
+    width:calc((((var(--sidebarl) + var(--sidebarr) + var(--postwidth) + 40px) * var(--bannerheight)) / var(--bannerwidth)) * 1.9 - 10px)}
+
+.nmb {
+    float:right;
+    height:42px;
+    width:42px;
+    margin-right:-62px;
+    cursor:pointer;
+    margin-top:-62px;)}
+.nmb svg {
+    -webkit-transform: scale(.65);
+    -moz-transform: scale(.65);
+    -o-transform: scale(.65);
+    -ms-transform: scale(.65);
+    transform: scale(.65);}
+
+/* navigation buttons */
+
+#nav {
+    width:calc((var(--postwidth) + var(--sidebarr)) + 20px);
+    display:none;
+    overflow:hidden;
+    margin:0 0 20px;
+    z-index: 99999;
+    position: relative;
+    font-size:0px;}
+#nav .lsbut {
+    width:calc((var(--sidebarr) + var(--postwidth) + 20px)/3);
+    display: inline-block;
+    margin:0;}
+
+asidel .lsbut {margin:0}
+asidel .lsbut:last-of-type {margin: 0 0 20px!important}
+asidel .lsbut:hover{margin:10px 0!important}
+
+.lsbut t{
+    z-index:99;
+    position:absolute;
+    padding:8px 15px;
+    font-size:23px}
+.lsbut {
+    cursor:pointer; font-size:0}
+.lsbut .i{opacity: var(--defopacity)}
+.lsbut:hover .i, .buttonfocus .i{opacity: var(--fadeto)!important}
+
+.lkblk {
+    height:calc((var(--sidebarl) - (10.2px * 5)) / 6);
+    padding: 10px 0}
+.lkblk:hover > * {opacity:0.4}
+.lkblk:hover > *:hover {opacity:1}
+
+.wdt {width:100%;
+    height:100%;
+    background-position:center;
+    background-size:cover}
+
+.lkcon {
+    width:calc((var(--sidebarl) - (10px * 5) - 1px) / 6);
+    height:calc((var(--sidebarl) - (10px * 5) - 1px) / 6);
+    display:inline-block;
+    margin: 0 10px 0 0}
+.lkcon:last-of-type{
+    margin: 0!important}

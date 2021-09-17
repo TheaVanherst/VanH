@@ -1,0 +1,163 @@
+:root{
+    /*banner settings*/
+    --bannerheight:520; --bannerwidth:3480;
+    --bannerlogo: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/back30.png');
+    --bannerlogohov: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/back29.png');
+    --bannerurlblank: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/vanhbanner3.b.png');
+    --bannerscoll: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/scrollbanner.png');
+    --pfp: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/imgs/pfp.gif');
+    --defopacity: 1; --fadeto: 0.4;
+
+    /*colours*/
+    --accent1:#7565ff; --accent2: #ff62ea;
+    --accent3: #ffb533; --accent4: #3aecb4;
+
+    --invaccent: #505050; --links: #ff8ef4;
+    --titles: #7285fe; --text: #787878;
+
+    --background: #f4f4f4; --posts: #ffffff;
+    --artposts: #8781bd; --borders: #d8d5d5;}
+
+/* ===================================== */
+/* FILL COLOURS */
+
+.nmb svg {fill:white}
+.nmb:hover svg {fill:var(--accent3)}
+
+/* ===================================== */
+/* TEXT COLOURS */
+
+body {color:var(--text)}
+
+p:first-of-type t{color:var(--accent2);}
+a {color:var(--accent1)}
+a:hover {color:var(--links)}
+t {color: var(--accent2)}
+h {color:var(--accent3)}
+
+.buttonfocus t {color:var(--accent2)}
+.lsbut:hover t {color:var(--accent3)}
+.lsbut t{color:white!important;}
+
+.dateposted, .timestamp {color:white}
+.timestamp:before {color:white!important}
+.timestamp:hover {color:var(--accent3)}
+.dateposted:hover {color:var(--accent4)}
+
+.loadmore p{color:white!important}
+
+.imco p, .immc p{color:var(--text)}
+.imco a, .immc a{color:var(--accent3)}
+.imco a:hover {color:var(--accent4)}
+
+.tii, .tii p, .tii t,.tfd t{color:white!important;}
+.tfd p {color:var(--posts)}
+
+/* ===================================== */
+/* BACKGROUND COLOURS */
+
+body {background:var(--background)}
+.block, .wedge {background-color:var(--posts)}
+
+#asider .wedge {background-color:var(--background)}
+
+.nmb {background-color:var(--accent1)}
+.lsbut {background-color:var(--posts)}
+.lkcon, .lkblk:hover > * {background-color:var(--accent1)}
+
+.when:not(.footer){background-color:var(--accent1)}
+
+article {background-color:var(--posts)}
+article li p:first-of-type b {color:var(--accent1)}
+article li b {color:var(--titles)}
+article .poster:hover .title{background-color: var(--accent1)}
+
+article .bottom{background-color: var(--text)}
+
+.imco p, .immc p {background-color:var(--posts)}
+.imco img, .immc img{background-color:var(--artposts)}
+
+.tii p {background-color:var(--accent1)}
+.tfd p {background-color:var(--accent2)}
+.dac p {background-color:var(--accent3)!important}
+.tan p {background-color:var(--invaccent)}
+
+.loadmore p {background-color:var(--invaccent)}
+#postcont .loadmore p {background-color:var(--accent1)}
+#postcont .loadmore:hover p {background-color:var(--accent2)}
+
+/* ===================================== */
+/* BORDER COLOURS */
+
+a {border-color:var(--accent3);}
+
+.divider {border-top:1px solid var(--borders)}
+
+.footer {border-top:1px solid var(--borders)}
+
+/* ===================================== */
+/* BORDER ROUNDING CORNERS */
+
+.rc,.tc{border-top-right-radius:6px}
+.lc,.tc{border-top-left-radius:6px}
+.rc,.bc{border-bottom-right-radius:6px}
+.lc,.bc{border-bottom-left-radius:6px}
+
+#nav,.block,.vimage,.lkcon,.imco,.immc,.hdr,.nmb,.loadmore p, .search,
+article,asidel .wedge,asidel .wedge img,.vimage img,.repost svg{
+    border-radius:6px}
+
+.when:last-of-type{
+    border-bottom-left-radius:6px;
+    border-bottom-right-radius:6px}
+
+asidel:first-of-type{
+    border-top-left-radius:6px;
+    border-top-right-radius:6px}
+asidel .lsbut:last-of-type,asidel .lsbut:last-of-type i{
+    border-bottom-left-radius:6px;
+    border-bottom-right-radius:6px}
+asidel .lsbut:first-of-type, asidel .lsbut:first-of-type i{
+    border-top-left-radius:6px;
+    border-top-right-radius:6px}
+
+asidel .block {
+    border-bottom-left-radius:0;
+    border-bottom-right-radius:0}
+
+.when:not(.footer){
+    border-top-left-radius:6px;
+    border-top-right-radius:6px}
+
+/* ===================================== */
+/* transition dumps */
+
+a{transition:
+        color .2s cubic-bezier(0,0,0,1)}
+
+.logo, .hdr {transition:
+        opacity .2s cubic-bezier(0,0,0,1)}
+.bnlogo {transition:
+        width .2s cubic-bezier(0,0,0,1),
+        height .2s cubic-bezier(0,0,0,1),
+        opacity .2s cubic-bezier(0,0,0,1),
+        margin .2s cubic-bezier(0,0,0,1)}
+.nmb svg, svg {transition:
+        color .2s cubic-bezier(0,0,0,1),
+        fill .2s cubic-bezier(0,0,0,1)}
+
+.lsbut t{transition:
+        color .2s cubic-bezier(0,0,0,1)}
+.lsbut, .tfd {transition:
+        opacity .2s cubic-bezier(0,0,0,1),
+        margin .2s cubic-bezier(0,0,0,1)}
+.lkcon, .lkblk:hover > * {transition:
+        opacity .2s cubic-bezier(0,0,0,1)}
+
+.tfd p {transition:
+        font-size .2s cubic-bezier(0,0,0,1)}
+.w32 img {transition: all .2s}
+
+body, body * {transition:
+        color .1s cubic-bezier(0,0,0,1),
+        background .1s cubic-bezier(0,0,0,1)}
