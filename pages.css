@@ -1,6 +1,3 @@
-/* Page 1
-/* ===================================== */
-
 /* Top of posts ========================================================================================================= */
 .timestamp {
     font-size:13px;
@@ -96,7 +93,6 @@ article .npf_col:first-child {padding-right: 1px!important} /* this fixes the ga
 article .npf_col:last-child {padding-left: 0!important} /* this fixes the gap between images to be 1 pixel wide, apposed to 2. */
 
 /* This stuff is important but i want it out the way ========================================================================================================= */
-
 .loadmore{
     position:relative;
     text-align:center;
@@ -108,7 +104,6 @@ article .npf_col:last-child {padding-left: 0!important} /* this fixes the gap be
     font-weight:900;
     font-size:12px;
 }
-
 #postcont .loadmore{
     left:50%;
     transform:translateX(-50%);

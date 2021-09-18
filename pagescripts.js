@@ -1,6 +1,6 @@
 
-function fadeto(){$('#hdr').css({opacity:0.6})}
-function fadeno(){$('#hdr').css({opacity:1})}
+function fadeto(){$(this).css({opacity:0}); $('#hdr').css({"background-size":"150% auto","opacity":"0.6"})}
+function fadeno(){$(this).css({opacity:1}); $('#hdr').css({"background-size":"140% auto","opacity":"1"})}
 
 $(".pg.pg1").ready(function(){
     $('.pg1 .loadmore').css('display','block');
@@ -11,57 +11,49 @@ let postamount=16, currentpc=postamount + 1, article=currentpc;
 function loadpostelement(){
     for (var i=0;i<4;i++){
         setTimeout(function(){
-
             currentpc = currentpc - 1;
-
             var data = $.get(("/posts/"+(currentpc)+".txt"),function(data){
+                var postd = data.split("<meta>");
 
-                var postd = data.split("<meta>"), post =  postd[1].split("T"),
-                    hours = post[1].split(":"), pmam, postdays, daycheck;
-
-                const date = new Date(postd[1]),
+                let date = new Date(postd[1]),
                     day1 = date.toLocaleString('en-us',{weekday:'long'}),
                     day2 = date.toLocaleString('en-us',{day:'numeric'}),
                     mnth = date.toLocaleString('en-us',{month:'short'}),
                     year = date.toLocaleString('en-us',{year:'numeric'});
 
-                var diff = Math.floor(new Date().getTime() - date.getTime()), day = 1000 * 60 * 60 * 24,
-                    days = Math.floor(diff/day), mnths = Math.floor(days/31), yrs = Math.floor(mnths/12);
+                var day = 1000 * 60 * 60 * 24, ord = ["st","nd","rd"], expt = [11,12,13],
+                    plur = "", t="Posted ", daycheck = "", pmam,
+                    post =  postd[1].split("T"), hours = post[1].split(":");
+                    diff = Math.floor(new Date().getTime() - date.getTime()),
+                    days = Math.floor(diff/day), week = Math.floor(days/7),
+                    mnths = Math.floor(days/31), yrs = Math.floor(mnths/12),
+                    nth = ord[(day2 % 10) - 1] == undefined || expt.includes(day2 % 100) ? "th" : ord[(day2 % 10) - 1]
 
-                if(days => 7){daycheck = daycheck=day1+", "}
-                if(hours[0] > 12){ hours[0] = hours[0] - 12; pmam = "pm"} else {"am"}
+                if(days >= 7){daycheck+=day1+", "} else {
+                    mnth = date.toLocaleString('en-us',{month:'long'})}
+                if(hours[0] > 12){hours[0] = hours[0]- 12; pmam="pm"} else {pmam="am"}
+                if(days>1&&mnths<1||week>1&&week<9||mnths>1&&yrs<1||yrs>1){plur="s"}
 
-                function getOrdinal(n) {
-                    let ord = ["st","nd","rd"], expt = [11,12,13],
-                        nth = ord[(n % 10) - 1] == undefined || expt.includes(n % 100) ? "th" : ord[(n % 10) - 1]
-                    return n + nth}
-
-                var plur, t="Posted ";
-                if(days > 1 && mnths < 1 || mnths > 1 && yrs < 1 || yrs>1){ plur = "s" }
-
-                if(mnths<1){
-                    if(days<7){if(days==7){t+="earlier today at "}else{t+="on "+day1+" at "}t+=hours[0]+":"+hours[1]+pmam}
-                    else{if(days>14){t+="a few"}else{t=t+"over a"}t+=" week"+plur}}
-                else if(mnths>0){if(mnths==1){if(days>45){t+=" over"};t+=" a month"}else{t+=mnths+" month"+plur}}
-                else {if(yrs==1){t+="a year"}else{t+=yrs+" year"+plur}}
-                if (days>7){t+=" ago"}
+                if(mnths<3){if(days<7){if(days==7){t+="earlier today at "}else{t+="on "+day1+" at "}t+=hours[0]+":"+hours[1]+pmam}
+                    else{if(week==1){t+="a"}else if(day>7&&day<14){t+="over a"}else{t+=week+" "}t+=" week"+plur}}
+                else if(yrs<1){t+=mnths+" month"+plur}else{if(yrs==1){t+="a"}else{t+=yrs}t+=" year"+plur}if(days>6){t+=" ago"}
 
                 article = article - 1; //this genuinelly needs a seperate variable looping in the for loop, because "lol"
                 $('<article id='+article+'>'+
                     '<div class="when">'+
-                    '<a class="dateposted">'+daycheck+mnth+" "+getOrdinal(day2)+" "+year+'</a>'+
-                    '<a class="timestamp">'+t+'</a>'+
+                        '<a class="dateposted">'+daycheck+mnth+" "+day2+nth+" "+year+'</a>'+
+                        '<a class="timestamp">'+t+'</a>'+
                     '</div>'+
                     postd[2] +
                     '<div class="when footer">'+
-                    '<a class="vimage"></a>'+
-                    '<div class="imcon">posted by<br>'+
-                    '<a class="postedby">vanherst</a>'+
+                        '<a class="vimage"></a>'+
+                        '<div class="imcon">posted by<br>'+
+                            '<a class="postedby">vanherst</a>'+
+                        '</div>' +
                     '</div>' +
-                    '</div>' +
-                    '</article>').appendTo("#posts")
+                '</article>').appendTo("#posts")
             });
-        },5) //makes sure everything loads in the correct order
+        },250) //makes sure everything loads in the correct order
     }
     if(currentpc == 1){$('#postcont .loadmore').hide()}
 }

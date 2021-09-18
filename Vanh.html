@@ -1,15 +1,14 @@
 <!DOCTYPE html>
     <head>
-        <title>VanH.art</title>
-        <link rel="shortcut" href="https://cdn.discordapp.com/attachments/630047188520665121/854534149658771456/Untitled-3.png">
-
-        <script>
-            var docelem = document.documentElement,
-                git = "https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/";
-        </script> <!-- this saves time later -->
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script async src="https://platform.twitter.com/widgets.js"></script>
+        <!-- colour css -->
+        <link rel="stylesheet" href="cosmetic.css"> <!-- colour css -->
+        <script type="text/javascript" src="nightmode.js"></script> <!-- page turning scripts -->
+
+        <link rel="stylesheet" href="style.css"> <!-- general page formatting -->
+        <link rel="stylesheet" href="pages.css"> <!-- page formatting -->
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,13 +17,13 @@
         <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@800&display=swap" rel="stylesheet"> <!-- BOLD FONT -->
         <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet"> <!-- GERMANIC FONT -->
 
-        <link rel="stylesheet" href="style.css"> <!-- general page formatting -->
-        <link rel="stylesheet" href="pages.css"> <!-- page formatting -->
-        <link rel="stylesheet" href="cosmetic.css"> <!-- colour css -->
+        <link rel="shortcut" href="https://cdn.discordapp.com/attachments/630047188520665121/854534149658771456/Untitled-3.png">
+        <title>VanH.art</title>
 
-        <script async src="https://platform.twitter.com/widgets.js"></script>
-        <script type="text/javascript" src="pageflip.js"></script> <!-- page turning scripts -->
-        <script type="text/javascript" src="nightmode.js"></script> <!-- page turning scripts -->
+        <script>
+            var docelem = document.documentElement,
+                git = "https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/";
+        </script>
     </head>
 
     <body>
@@ -50,16 +49,11 @@
         </asidel>
 
         <div class="cont">
-
-            <script>
-                function fadeto(){$('#hdr').css({opacity:0.6})}
-                function fadeno(){$('#hdr').css({opacity:1})}
-            </script>
-
             <div class="hdr" id="hdr"></div>
-            <div class="bnlogo pg1" onmouseover="fadeto()" onmouseout="fadeno()">
-                <div class="logo" id="logo"></div>
-            </div>
+            <div class="bnlogo lo0 pg1" onmouseover="fadeto(this)" onmouseout="fadeno(this)">
+                <div class="logo lo0 dm"></div></div>
+            <div class="bnlogo lo1 pg1" onmouseover="fadeto(this)" onmouseout="fadeno(this)">
+                <div class="logo lo1 nm"></div></div>
 
             <fullwc id="nav">
                 <div class="lsbut pg1"><t>Feed</t><div class="i bt1"></div></div>
@@ -69,53 +63,11 @@
                 <div class="lsbut pg5"><t>Workshop</t><div class="i bt5"></div></div>
                 <div class="lsbut pg6"><t>Javascript</t><div class="i bt6"></div></div>
             </fullwc>
-            <div class="nmb">
+            <div class="nmb" onclick="nightmode()">
                 <svg xmlns="http://www.w3.org/2000/svg" id="nm0" viewBox="0 0 16 16">
                     <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/></svg>
                 <svg xmlns="http://www.w3.org/2000/svg" id="nm1" viewBox="0 0 16 16">
                     <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8.5 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm5-5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm-11 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9.743-4.036a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm-7.779 7.779a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm7.072 0a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707zM3.757 4.464a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707z"/></svg></div>
-
-            <script>
-                var dmc=["#7565ff","#ff62ea","#ffb533","#3aecb4","#505050","#ff8ef4","#7285fe","#787878","#f4f4f4","#ffffff","#8781bd","#d8d5d5","1","0.6"], //brightmode colours
-                    nmc=["#7246ee","#f267e3","#ffa85b","#3aecb4","#282828","#ff8ef4","#7285fe","#787878","#1d1d1d","#141414","#534b71","#090909","0.3","1"], //nightmode colours
-                    ml=["accent1","accent2","accent3","accent4","invaccent","links","titles","text","background","posts","artposts","borders","defopacity","fadeto"], //root var arr
-                    nm,cm,dr,bm=["block","none"];
-
-                $('.nmb').bind('click',function(){
-                    nm=!nm;
-                    document.cookie="lightmode="+nm+";"+"SameSite=None; Secure; expires=Fri, 31 Dec 9999 23:59:59 GMT"
-
-                    dr=[(nm?0:1),(!nm?0:1)];
-                    if(nm==true){cm=dmc; $('#twitter').attr("data-theme","dark")
-                    }else{cm=nmc; $('#twitter').attr("data-theme","light")}
-
-                    for(var i = 0;i < dr.length;i++){
-                        $("#nm"+i+", #twitter-widget-"+i).css({"display":bm[dr[i]]});}
-                    for(var i = 0; i<=cm.length;i++){
-                        docelem.style.setProperty("--"+ml[i],cm[i])}
-                })
-
-                document.addEventListener("DOMContentLoaded", function(){
-                    var temp = document.cookie.split("; ")
-                    if(temp.find(a =>a.includes('lightmode')) != undefined){
-                        if(temp.find(a =>a.includes('lightmode')).replace('lightmode=','') == false){
-                            nm = !nm; $('.nmb').click()}
-                    } else {
-                        if(window.matchMedia('(prefers-color-scheme: dark)').matches == true){
-                            console.log("Nightmode Preference")
-                            nm = true; $('.nmb').click()}}
-
-                    for(var i = 0;i < dr.length;i++){
-                        $("#nm"+i).css({"display":bm[dr[i]]})}
-
-                    jQuery('#twitter-widget-0').ready(function (){
-                        setTimeout(function() {
-                            for(var i = 0;i < dr.length;i++){
-                                $("#twitter-widget-"+i).css({"display":bm[dr[i]]})}
-                        },2000)
-                    })
-                })
-            </script>
 
             <div class="pg pg0">
                 <fullwc>
@@ -136,64 +88,6 @@
                 </fullwc>
             </div>
 
-            <script>
-                let postamount=16, currentpc=postamount + 1, article=currentpc;
-                function loadpostelement(){
-                    for (var i=0;i<4;i++){
-                        currentpc = currentpc - 1;
-
-                        var data = $.get(("/posts/"+(currentpc)+".txt"),function(data){
-                            var postdata = data.split("<meta>");
-
-                            const date = new Date(postdata[1]),
-                                day1 = date.toLocaleString('en-us',{weekday:'long'}),
-                                day2 = date.toLocaleString('en-us',{day:'numeric'}),
-                                month = date.toLocaleString('en-us',{month:'short'}),
-                                year = date.toLocaleString('en-us',{year:'numeric'});
-
-                            var posttime =  postdata[1].split("T"), hours = posttime[1].split(":"), pmam;
-                            if(hours[0] > 12){ hours[0] = hours[0] - 12; pmam = "pm"} else {"am"}
-
-                            function getOrdinal(n) {
-                                let ord = ["st","nd","rd"], exceptions = [11,12,13],
-                                    nth = ord[(n % 10) - 1] == undefined || exceptions.includes(n % 100) ? "th" : ord[(n % 10) - 1]
-                                return n + nth}
-
-                            function calcDate(date1,date2) {
-                                var plur, t="Posted ",
-                                    diff = Math.floor(date1.getTime() - date2.getTime()), day = 1000 * 60 * 60 * 24,
-                                    days = Math.floor(diff/day), months = Math.floor(days/31), years = Math.floor(months/12);
-                                if(days > 1 && months < 1 || months > 1 && years < 1 || years>1){ plur = "s" } else { plur = "" }
-
-                                if(months<1){
-                                    if(days<7){if(days==7){t=t+"earlier today at "}else{t=t+"on "+day1+" at "}t=t+hours[0]+":"+hours[1]+pmam}
-                                    else{if(days>14){t=t+"a few"}else{t=t+"over a"}t=t+" week"+plur}}
-                                if(months>0){if(months==1){if(days>45){t=t+" over"};t=t+" a month"}else{t=t+months+" month"+plur}}
-                                if (years>0){if(years==1){t=t+"a year"}else{t=t+years+" year"+plur}}if (days>7){t=t+" ago"}
-
-                                return t
-                            }
-
-                            article = article - 1; //this genuinelly needs a seperate variable looping in the for loop, because "lol"
-                            $('<article id='+article+'>'+
-                                '<div class="when">'+
-                                    '<a class="dateposted">'+day1+", "+month+" "+getOrdinal(day2)+" "+year+'</a>'+
-                                    '<a class="timestamp">'+calcDate(new Date(),date)+'</a>'+
-                                '</div>'+
-                                postdata[2] +
-                                '<div class="when footer">'+
-                                    '<a class="vimage"></a>'+
-                                    '<div class="imcon">posted by<br>'+
-                                        '<a class="postedby">vanherst</a>'+
-                                    '</div>' +
-                                '</div>' +
-                            '</article>').appendTo("#posts")
-                        });
-                    }
-                    if(currentpc == 1){$('#postcont .loadmore').hide()}
-                }
-            </script>
-
             <div class="pg pg1">
                 <section id="postcont">
                     <div id="posts"></div>
@@ -209,21 +103,6 @@
                     </div>
                 </siders>
             </div>
-
-             <script>
-                var pg2l=[1,1,1,1,2,1,1,1],pg2m=[1,1,1,1,1,1,1,1],pg2r=[1,1,1,1,1,1,1,2],sid2a=[pg2l,pg2m,pg2r], //image format : frt[]
-                    pg2hl=[9,5,5,0,5,8,7,7],pg2hm=[8.5,8,8,8,3,4,5,8],pg2hr=[9,7,5,7,5,5,9,4],sid2h=[pg2hl,pg2hm,pg2hr]; //image hights
-                var frt=["jpg","png","gif"],sides = ["l","m","r"]; //for different file types, then loops through which coloumn is currently being looped
-
-                //window.addEventListener("load", function(){#
-                $(document).ready(function(){
-                    for(var t=0;t<3;t++) { //toggles between sides, because it's easier to read and bugfix
-                        var ap2=sid2a[t],ah2=sid2h[t]; //flips between which array is currently active
-                        for (var i=1;i<=pg2l.length;i++) {
-                            $('#'+sides[t]+'s'+i).addClass('zoom img')
-                                .css({'height':(ah2[i- 1]*100)+"px",
-                                      'background-image':"url('"+git+"imgs/"+sides[t]+i+"."+frt[ap2[i- 1]]+"')"});}}})
-            </script>
 
             <div class="pg pg2">
                 <fullwc>
@@ -315,19 +194,6 @@
                 </fullwc>
 
             </div>
-
-            <script>
-                var pgdh=[460,460,460,475,475,234,610,610,610,610,610,610,234,475,475,450,450,234,234,595,595,595,153,206,450]
-                var pg3h=[355,355,355,425,425,184,560,560,560,560,772,560,184,425,425,400,400,184,184,460,460,460,153,156,400]//image hights
-                var ap3=[0,0,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1]
-
-                $(document).ready(function(){
-                    for(var i=0;i<=pg3h.length;i++){
-                        $('#dp'+i).addClass('zoom img')
-                            .css({'height':pg3h[i]+"px",
-                                  'background-image':"url('/Website assets/imgs/d"+i+"."+frt[ap3[i]]+"')"})
-                            .parent().css({'height':pgdh[i]+"px"})}})
-            </script>
 
             <div class="pg pg3">
                 <fullwc>
@@ -522,3 +388,6 @@
                     } else {$('#search, #searchtop').removeClass("strict")}}})
         </script>
     </body>
+
+<script type="text/javascript" src="pagescripts.js"></script> <!-- page turning scripts -->
+<script type="text/javascript" src="pageflip.js"></script> <!-- page scripts -->

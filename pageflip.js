@@ -1,5 +1,3 @@
-
-var lkblk=['171a21','1da1f2','ff0000','738adb','e1306c','ff5e5b'] //default colour pallet
 var concurrent=1,pgsd=[0,0,0,0,0,0,0],pgc=pgsd.length; //
 
 $(document).ready(function(){
@@ -7,8 +5,7 @@ $(document).ready(function(){
     $('#sc1').attr('src',git+"imgs/ams1.png"); //saves a bit of css lol
 
     for(let i=0;i<6;i++){
-        $('.i'+i).css({'background-image':"url('"+git+"icons/sm"+i+".png')"})
-        $("<style> .lkblk:hover > .c"+(i+ 1)+":hover{ background-color: #"+lkblk[i+ 1]+"} </style>").appendTo("head")}
+        $('.i'+i).css({'background-image':"url('"+git+"icons/sm"+i+".png')"})}
 
     for(let i=0;i<pgc;i++){
         if (/Mobi|Android/i.test(navigator.userAgent)){
@@ -35,7 +32,7 @@ $(document).ready(function(){
                     $(".pg.pg"+concurrent+", .pg.pg"+i).toggleClass("pagefocus") //removes class from concurrent page + adds it to newly active page
                     $(".lsbut.pg"+concurrent+", .lsbut.pg"+i).toggleClass("buttonfocus") //removes class from concurrent button + adds it to newly active button
 
-                    var tran = "." + Math.abs((i-concurrent)*1.5)+"s" //transition data based on difference with a multiplier
+                    var tran = (Math.abs((i-concurrent)*2)/10) + "s" //transition data based on difference with a multiplier
                     $(".pg").css({"transition": //adds transitions for initial movement.
                             "margin "+tran+" cubic-bezier(0,0,0,1), " +
                             "opacity "+tran+" cubic-bezier(0,0,0,1)"})

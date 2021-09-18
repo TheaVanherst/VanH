@@ -1,13 +1,17 @@
 :root{
     /*banner settings*/
     --bannerheight:520; --bannerwidth:3480;
-    --bannerlogo: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/back30.png');
-    --bannerlogohov: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/back29.png');
-    --bannerurlblank: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/vanhbanner3.b.png');
-    --bannerscoll: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/scrollbanner.png');
-    --pfp: url('https://raw.githubusercontent.com/TheaVanherst/VanH/main/Website%20assets/imgs/pfp.gif');
-    --defopacity: 1; --fadeto: 0.4;
 
+    --logodm: url('/Website%20assets/back29.png');
+    --logodmhov: url('/Website%20assets/back30.png');
+    --logonm: url('/Website%20assets/back31.png');
+    --logonmhov: url('/Website%20assets/back32.png');
+
+    --bannerurlblank: url('/Website%20assets/vanhbanner3.b.png');
+    --bannerscoll: url('/Website%20assets/scrollbanner.png');
+    --pfp: url('/Website%20assets/imgs/pfp.gif');
+
+    --defopacity: 1; --fadeto: 0.4;
     /*colours*/
     --accent1:#7565ff; --accent2: #ff62ea;
     --accent3: #ffb533; --accent4: #3aecb4;
@@ -60,6 +64,12 @@ body {background:var(--background)}
 .block, .wedge {background-color:var(--posts)}
 
 #asider .wedge {background-color:var(--background)}
+.lkblk:hover > .c1:hover{ background-color:#738adb}
+.lkblk:hover > .c2:hover{ background-color:#171a21}
+.lkblk:hover > .c3:hover{ background-color:#1da1f2}
+.lkblk:hover > .c4:hover{ background-color:#ff0000}
+.lkblk:hover > .c5:hover{ background-color:#4E5D94}
+.lkblk:hover > .c7:hover{ background-color:#ff5e5b}
 
 .nmb {background-color:var(--accent1)}
 .lsbut {background-color:var(--posts)}
@@ -136,7 +146,8 @@ a{transition:
         color .2s cubic-bezier(0,0,0,1)}
 
 .logo, .hdr {transition:
-        opacity .2s cubic-bezier(0,0,0,1)}
+        opacity .2s cubic-bezier(0,0,0,1),
+        background-size 1s cubic-bezier(0,0,0,1)}
 .bnlogo {transition:
         width .2s cubic-bezier(0,0,0,1),
         height .2s cubic-bezier(0,0,0,1),
