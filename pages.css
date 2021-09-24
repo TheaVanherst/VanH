@@ -1,37 +1,36 @@
-/* Top of posts ========================================================================================================= */
-.timestamp {
-    font-size:13px;
-    display:inline-block !important} /*top of the post, notes and time posted.*/
-.timestamp:before{margin:0 3px}
-.dateposted {
-    font-family:var(--boldstyle);
-    text-transform:uppercase}
+section {
+    height:5235px;
+    width:calc(var(--postwidth) - 6px);
+    overflow-y:scroll; overflow-x:hidden;
+    display:inline-block;
+    padding: 3px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;}
 
-.when {
-    padding:15px;
-    line-height:1em} /* container that holds .time, and .d */
-.when a {
-    display:block} /* these also include the repost tags at the bottom of posts. */
+/* ===================================== */
+/* PAGE 0 */
 
-.vimage {
-    float:left;
-    width:26px;
-    height:26px;
-    margin:-2px 13px 0 -2px;
-    background-image:var(--pfp);
-    background-size:100% 100%;}
+.pg0 section{margin:0 20px 0 0}
+.pg0 siders {height: 800px;}
+.pg0 .tii{width:var(--sidebarr); position:absolute; display:inline-block}
 
-/* Bottom of posts ========================================================================================================= */
-.footer {
-    font-size:0.6em;
-    text-transform:uppercase;
-    letter-spacing:0.5px} /*posted by*/
-.footer .postedby {
-    margin-top:4px} /*container that posted by*/
+.postcont{z-index:99}
 
-/* Post formatting ========================================================================================================= */
+#sc1{
+    width: calc(var(--postwidth) + var(--sidebarr)); height: auto;
+    display:inline-block; position:fixed;
+    margin: calc((var(--postwidth) / -10) - (var(--postwidth) / 5)) 0 0 calc(var(--postwidth) / -2.1)}
 
-/* specifically post body formatting */
+/* ===================================== */
+/* PAGE 1 */
+
+.postcont {position: relative;}
+
+.pg1 section{margin:0 20px 0 calc(var(--sidebarl) + 20px);}
+
+article .timestamp:before{margin:0 3px}
+article .when {padding:15px} /* container that holds .time, and .d */
+
 article {margin-bottom: 20px}
 
 article li {padding:1px} /* for edges of images */
@@ -39,28 +38,13 @@ article li p:first-of-type {margin: 15px 0 10px}
 article li p:last-of-type {margin: 10px 0 13px}
 article li p:first-of-type b {font-size: 15px; line-height:0}
 article li:before, .chat li:before, ol.notes li:before {display:none}
-
 /*article ul {list-style:none; padding:.25em 0 .25em 15px}*/
 article ol { padding:0 15px 0 35px}
 article li li::before {content:"- "}
 
-article .poster {
-    height: calc(var(--postwidth) / 1.6);
-    background-position: center}
-
-article .poster .title{ /*workshop title*/
-    opacity: 0.9;
-    background-color: var(--invaccent);
-    padding: 10px;
-    color: white;
-    position: absolute;
-    width: calc(var(--postwidth) - 22px);
-    margin: calc(var(--postwidth)/2 + 5px) 0;
-    font-weight: 900;
-    font-family: var(--boldstyle);
-    text-transform: uppercase}
-article .poster:hover .title{
-    opacity: 0.9}
+article .when .new-post:after {content: 'NEW'}
+article .when .new-post{padding: 7px 20px; float: Right; margin: 2px;}
+article .when .new-post:hover{animation: shake 0.5s; animation-iteration-count: infinite;}
 
 article .bottom{ /*workshop footer*/
     font-size: 10px;
@@ -68,10 +52,7 @@ article .bottom{ /*workshop footer*/
     width: calc(var(--postwidth)- 1px);
     margin: 0;}
 
-article figure {
-    width: 100%;
-    margin: 0;
-    font-size: 0}
+article figure { width: 100%; margin: 0}
 div.npf_row {
     margin:0!important;
     align-items: center;
@@ -92,65 +73,104 @@ article .npf_row, .npf_row + p {margin: 10px 0!important}
 article .npf_col:first-child {padding-right: 1px!important} /* this fixes the gap between images to be 1 pixel wide, apposed to 2. */
 article .npf_col:last-child {padding-left: 0!important} /* this fixes the gap between images to be 1 pixel wide, apposed to 2. */
 
+article .poster {
+    height: calc(var(--postwidth) / 1.6);
+    background-position: center;
+    background-size: cover;
+    position:relative}
+article .poster .title{ /*workshop title*/
+    opacity: 0.9;
+    padding: 10px;
+    position: absolute;
+    width: calc(var(--postwidth) - 22px);
+    position: absolute;
+    bottom: 0}
+article .poster:hover .title{opacity: 0.9}
+
+article .vimage {
+    float:left;
+    overflow:hidden;
+    width:26px; height:26px;
+    margin:-2px 13px 0 -2px;
+    background-size:100% 100%;}
+article .footer .postedby {
+    margin-top:4px} /*container that posted by*/
+
+#twitter{
+    height: 5235px;
+    overflow: hidden;
+    padding: 3px}
+#twitter .load-more {
+    position:absolute;
+    bottom:40px;
+    padding:20px calc((var(--sidebarr) / 2) - 100px);
+    left:calc(var(--sidebarl) + var(--postwidth) + 40px)}
+#twitter .load-more p:hover {transform: scale(1.1)}
+
 /* This stuff is important but i want it out the way ========================================================================================================= */
-.loadmore{
-    position:relative;
-    text-align:center;
-    width:200px;
-    left:calc((var(--postwidth) + var(--sidebarl) + var(--sidebarr) + 100px) / 2);;
-}
-.loadmore p{
-    padding: 4px!important;
-    font-weight:900;
-    font-size:12px;
-}
-#postcont .loadmore{
-    left:50%;
-    transform:translateX(-50%);
-    display:none;
-    font-size:18px;
-    cursor:pointer
-}
+.load-more{ position:relative; width:200px}
+.load-more p{padding: 4px!important}
+
+section .load-more {left:50%; transform:translateX(-50%); margin: 20px 0 20px 0;}
+#posttop.load-more {position:fixed; left: calc(50% - 50px);}
+
+.load-more p::after {content:"Nothing more to see."}
+#twitter .load-more p::after {content:"Take me to see more!"!important}
+#posttop p::after {content:"Scroll to the top"!important}
+
+.load-more p {background-size: 300% 300%}
 
 /* Page 2 / 3
 /* ===================================== */
 
-.imco:not(.tfd) p, .immc:not(.tfd) p {margin-top:0;position:relative}
-.imco, .immc {overflow:hidden;margin-bottom:20px}
-.imco p, .immc p{padding:13px 15px}
-.immc {margin-bottom:10px!important}
-.imco .img, .immc .img{background-color:var(--artposts)}
+incont,.imco,.immc{display:inline-block; float: left; margin-right:20px;}
 
-.zoom {
-    background-repeat: no-repeat;
-    background-position: center center;
-    -webkit-background-size: cover;}
+incont{padding:3px; background-color:var(--postback); height:5235px;
+    width:calc((var(--sidebarr) + var(--postwidth) - 40px) / 3)}
+
+.imco,.immc{width:calc((var(--sidebarr) + var(--postwidth) - 20px - (3 * 6px)) / 3)}
+.imco:not(.tfd) p, .immc:not(.tfd) p {margin-top:0; position:relative}
+.imco, .immc { overflow:hidden; margin-bottom:20px}
+.imco p, .immc p{padding:13px 15px}
+.imco:last-of-type,.immc:last-of-type{margin-bottom:0px}
+.immc {margin-bottom:10px!important}
+
+.pg2 .load-more{margin:20px 0; left: 50%; transform:translateX(-50%)}
+.pg3 .load-more{left: calc(50% + var(--sidebarl) /2);transform:translateX(-50%)}
+
+.zoom { background-repeat: no-repeat;
+    background-position: center center; -webkit-background-size: cover}
 
 .w2x1 {width:calc((var(--sidebarr) + var(--postwidth)) / 2)}
 .w3x3 {width:calc(var(--sidebarr) + var(--postwidth) + 20px)}
 .w3x2 {width:calc((((var(--sidebarr) + var(--postwidth) + 40px) / 3)) * 2 - 20px)}
-.w32con {width:calc(((var(--sidebarr) + var(--postwidth) + 20px) / 3) * 2);
-    margin-bottom: -5px}
+.w32con {width:calc(((var(--sidebarr) + var(--postwidth) + 20px) / 3) * 2); margin-bottom: -5px}
 
-.w32con:hover > *:hover{
-    width:calc((100% / 3) * 2);
-    opacity:var(--defopacity)} /* this has to be seperated, don't try it*/
-
+.w32con:hover > *:hover{width:calc((100% / 3) * 2); opacity:var(--defopacity)}
 .w32 img, .w32con:hover > *:hover img {left: 0!important}
 .w32con:hover > * img {left: -30%!important}
 
 /* Page 5
 /* ===================================== */
 
-.sbitems {width:var(--sidebarr);overflow:hidden}
-.sbitems t {margin:10px 0 5px;display:block;letter-spacing:0.5px}
+.sbitems {
+    width:var(--sidebarr);
+    overflow:hidden}
+.sbitems t {
+    margin:10px 0 5px;
+    display:block;
+    letter-spacing:0.5px}
 
-.tii {z-index:9; position:relative}
-.tii p {font-size: 0.7em; letter-spacing:.15px; padding:10px 15px 10px!important}
-.tii t {padding:0!important; line-height:0.9em!important}
+.tii {
+    z-index:9;
+    position:relative}
+.tii p {padding:10px 15px 10px!important}
+.tii t {padding:0!important}
 
-.tfd {margin-top:-20px; font-size:0.7em; z-index:8; position: relative}
-.tfd p {font-size: 0; letter-spacing:.15px; padding:10px 15px 10px!important}
+.tfd {
+    margin-top:-20px;
+    z-index:8;
+    position: relative}
+.tfd p {padding:10px 15px 10px!important}
 .imco:hover .tfd, .immc:hover .tfd {margin-top: 0}
-.imco:hover .tfd p, .immc:hover .tfd p {font-size: 1em}
-.tfd t {padding:0!important; line-height:0.9em!important}
+.tfd t {padding:0!important}
