@@ -1,30 +1,35 @@
-section {
-    height:5235px;
-    width:calc(var(--postwidth) - 6px);
-    overflow-y:scroll; overflow-x:hidden;
-    display:inline-block;
-    padding: 3px;
-    -ms-overflow-style: none;
-    scrollbar-width: none;}
+section { overflow-y:scroll; overflow-x:hidden;
+    height:5070px; width:calc(var(--postwidth) - 6px);
+    display:inline-block; padding: 3px;
+    -ms-overflow-style: none; scrollbar-width: none;}
 
 /* ===================================== */
 /* PAGE 0 */
 
+.pg0 article{z-index:99}
 .pg0 section{margin:0 20px 0 0}
-.pg0 siders {height: 800px;}
-.pg0 .tii{width:var(--sidebarr); position:absolute; display:inline-block}
 
-.postcont{z-index:99}
+.pg0 siders > div {overflow: hidden; margin-bottom:10px;}
 
-#sc1{
-    width: calc(var(--postwidth) + var(--sidebarr)); height: auto;
-    display:inline-block; position:fixed;
-    margin: calc((var(--postwidth) / -10) - (var(--postwidth) / 5)) 0 0 calc(var(--postwidth) / -2.1)}
+.pg0 siders div div {background-size: cover; opacity:var(--defopacity); height: inherit}
+.pg0 siders > div:first-of-type {height: 1000px}
+
+.pg0 siders > div img{height:auto; pointer-events: none; z-index: 1; position: relative;}
+.pg0 siders > div:first-of-type img { width: calc(var(--postwidth) + var(--sidebarr)); position: absolute;
+    margin: calc((var(--postwidth) / -10) - (var(--postwidth) * 2.12)) 0 0 calc(var(--postwidth) / -2.3)}
+
+.pg0 siders > div p{z-index: 999; position: absolute; width: calc(var(--sidebarr) - 20px)}
+.pg0 siders > div:first-of-type p{margin-top:calc((var(--postwidth) + var(--sidebarr)) * -0.21)}
+
+.pg0 siders > div:nth-child(1) div {background-image:url('https://cdn.discordapp.com/attachments/629600253997350912/891508114770259978/unknown.png')}
+
+.pg0 siders.active {overflow: hidden}
+.pg0 siders.active div img {position:relative}
+
+.pg0 .wedge {width:var(--sidebarr); display: inline-block}
 
 /* ===================================== */
 /* PAGE 1 */
-
-.postcont {position: relative;}
 
 .pg1 section{margin:0 20px 0 calc(var(--sidebarl) + 20px);}
 
@@ -42,7 +47,7 @@ article li:before, .chat li:before, ol.notes li:before {display:none}
 article ol { padding:0 15px 0 35px}
 article li li::before {content:"- "}
 
-article .when .new-post:after {content: 'NEW'}
+article .when .new-post:after {content: 'NEW'; color:white}
 article .when .new-post{padding: 7px 20px; float: Right; margin: 2px;}
 article .when .new-post:hover{animation: shake 0.5s; animation-iteration-count: infinite;}
 
@@ -96,13 +101,8 @@ article .vimage {
 article .footer .postedby {
     margin-top:4px} /*container that posted by*/
 
-#twitter{
-    height: 5235px;
-    overflow: hidden;
-    padding: 3px}
-#twitter .load-more {
-    position:absolute;
-    bottom:40px;
+#twitter{ height: 5070px; overflow: hidden; padding: 3px}
+#twitter .load-more {position:absolute; bottom:20px;
     padding:20px calc((var(--sidebarr) / 2) - 100px);
     left:calc(var(--sidebarl) + var(--postwidth) + 40px)}
 #twitter .load-more p:hover {transform: scale(1.1)}
@@ -123,32 +123,43 @@ section .load-more {left:50%; transform:translateX(-50%); margin: 20px 0 20px 0;
 /* Page 2 / 3
 /* ===================================== */
 
-incont,.imco,.immc{display:inline-block; float: left; margin-right:20px;}
+incont{overflow:hidden}
+incont, incont > * {display:inline-block; float: left; margin-right:10px}
 
-incont{padding:3px; background-color:var(--postback); height:5235px;
-    width:calc((var(--sidebarr) + var(--postwidth) - 40px) / 3)}
+incont > * {overflow:hidden; width:calc(((var(--sidebarr) + var(--postwidth)) - (3 * var(--skirting))) / 3)}
+incont > *:last-of-type{margin-bottom:0px}
 
-.imco,.immc{width:calc((var(--sidebarr) + var(--postwidth) - 20px - (3 * 6px)) / 3)}
-.imco:not(.tfd) p, .immc:not(.tfd) p {margin-top:0; position:relative}
-.imco, .immc { overflow:hidden; margin-bottom:20px}
-.imco p, .immc p{padding:13px 15px}
-.imco:last-of-type,.immc:last-of-type{margin-bottom:0px}
-.immc {margin-bottom:10px!important}
+incont > w3x3 {width:calc((var(--sidebarr) + var(--postwidth) + 20px) - (var(--skirting)))!important}
+incont > w2x1 {width:calc((var(--sidebarr) + var(--postwidth) + 10px) / 2 - (var(--skirting) / 2))!important}
 
-.pg2 .load-more{margin:20px 0; left: 50%; transform:translateX(-50%)}
-.pg3 .load-more{left: calc(50% + var(--sidebarl) /2);transform:translateX(-50%)}
+incont > * div:first-of-type p, incont > * p:last-of-type, incont > *:hover drp p{padding:8px 10px 10px}
 
-.zoom { background-repeat: no-repeat;
-    background-position: center center; -webkit-background-size: cover}
+incont > * tcb p {z-index:9; position:relative}
+incont > * drp p {margin-top:-20px!important}
+incont > *:hover drp p {margin-top: 0!important}
 
-.w2x1 {width:calc((var(--sidebarr) + var(--postwidth)) / 2)}
-.w3x3 {width:calc(var(--sidebarr) + var(--postwidth) + 20px)}
-.w3x2 {width:calc((((var(--sidebarr) + var(--postwidth) + 40px) / 3)) * 2 - 20px)}
-.w32con {width:calc(((var(--sidebarr) + var(--postwidth) + 20px) / 3) * 2); margin-bottom: -5px}
+incont > * t {padding:0!important}
 
-.w32con:hover > *:hover{width:calc((100% / 3) * 2); opacity:var(--defopacity)}
-.w32 img, .w32con:hover > *:hover img {left: 0!important}
-.w32con:hover > * img {left: -30%!important}
+#hover-element {
+    -webkit-filter: drop-shadow(7px 7px 7px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(7px 7px 7px rgba(0, 0, 0, 0.3));
+    position:absolute; width:0px; white-space: nowrap; z-index:999; opacity:1!important;
+    background-color: transparent; background-size: contain; opacity:1}
+
+.pg2 incont {padding:calc(var(--skirting)/2); height:5030px;
+    width:calc((var(--sidebarr) + var(--postwidth) - 20px + (var(--skirting) / 2)) / 3)}
+.pg2 incont > * {margin-bottom:10px}
+
+.pg3 incont {overflow:hidden; padding:calc(var(--skirting)/2); margin-bottom:10px;
+    width:calc(var(--sidebarr) + var(--postwidth) + 20px - var(--skirting))}
+.pg3 incont:last-of-type{margin-bottom:0}
+.pg3 incont > * {margin-right:10px; width: calc(((var(--sidebarr) + var(--postwidth)) - (var(--skirting) + 1px)) / 3)}
+.pg3 incont > *:last-of-type{margin-right:0!important}
+.pg3 fullwc {display:inline-block}
+
+.zoom { background-repeat: no-repeat; background-position: center center; -webkit-background-size: cover}
+
+.pg2 .load-more, .pg3 .load-more{margin:20px 0; left: calc(50% + (var(--sidebarl)/2)); transform:translateX(-50%)}
 
 /* Page 5
 /* ===================================== */
@@ -160,17 +171,3 @@ incont{padding:3px; background-color:var(--postback); height:5235px;
     margin:10px 0 5px;
     display:block;
     letter-spacing:0.5px}
-
-.tii {
-    z-index:9;
-    position:relative}
-.tii p {padding:10px 15px 10px!important}
-.tii t {padding:0!important}
-
-.tfd {
-    margin-top:-20px;
-    z-index:8;
-    position: relative}
-.tfd p {padding:10px 15px 10px!important}
-.imco:hover .tfd, .immc:hover .tfd {margin-top: 0}
-.tfd t {padding:0!important}

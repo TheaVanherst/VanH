@@ -11,99 +11,48 @@
     /*default sidebar widths*/
     --sidebarl:250px; --sidebarr:350px; --postwidth:500px;}
 
-body {
-    font-family:var(--fontstyle);
-    word-wrap:break-word;
-    margin:0;
-    overflow-x: hidden;
-    /* debug dump */
-    font-size:0;
-    vertical-align: top;
-    clear:none;}
+body { margin:0; overflow-x: hidden;vertical-align: top; clear:none;}
 
-a {
-    text-decoration:none;
-    font-weight:900}
+p { padding:0 15px}
+p:first-of-type{ margin-top:0}
+p:last-of-type { margin-bottom:0}
+p:first-of-type t{margin-top:10px}
 
-p {
-    font-size:0.72em;
-    padding:0 15px}
-p:first-of-type{
-    margin-top:0}
-p:last-of-type {
-    margin-bottom:0}
-p:first-of-type t{
-    font-size:1.4em;
-    line-height:0;
-    margin-top:10px}
-
-t {
-    font-family:var(--boldstyle);
-    text-transform:uppercase;
-    padding:0 15px;
-    font-size:1.1em}
-
-ol{font-size:12px}
 li{list-style:none}
 li:last-of-type{margin:0}
 
-img {
-    width:100%;
-    height: 100%;
-    display:block;
-    opacity:1;
-    border:0;
-    background-position:center;}
+img { width:100%; height: 100%; border:0; background-position:center;}
 
 /* ===================================== */
 /* Containers =============== */
 
-.cont { /*needed to fix width of page*/
-    position: absolute;
-    left:50%;transform:translateX(-50%);}
-.block, .wedge {
-    overflow:hidden;
-    margin-bottom:20px}
-.block {
-    padding:12px 0}
+.cont { position: absolute; left:50%;transform:translateX(-50%);}
+.block, .wedge { overflow:hidden; margin-bottom:20px}
+.block { padding:12px 0}
+.tii p, .tan p{padding: 8px 10px}
 
 sidels,siders,sidelm,siderm,sidell,siderl,fullwc{
-    display:inline-block;
-    overflow-x:hidden;
-    vertical-align:top;
-    width:calc((var(--postwidth) + var(--sidebarr)) + 41px);
-    font-size:16px}
-asidel{
-    left:calc(50% - ((var(--postwidth) + var(--sidebarr) + var(--sidebarl)) / 2 + 20px));
-    z-index:99;
-    position:fixed;
-    top:20px;
-    display:none}
+    display:inline-block; overflow-x:hidden; vertical-align:top}
+
+asidel{ z-index:99; position:fixed; top:20px; display:none;
+    left:calc(50% - ((var(--postwidth) + var(--sidebarr) + var(--sidebarl)) / 2 + 20px));}
+asidel .wedge p {padding: 8px 10px}
 
 fullwc{margin-left: calc(var(--sidebarl) + 20px)}
 sidels,sidelm,sidell{margin:0 20px 0 0}
+
+fullwc{width:calc((var(--postwidth) + var(--sidebarr)) + 40px)}
 asidel{width:var(--sidebarl)}
 sidell,siderl{width:var(--postwidth)}
 sidelm,siderm{width:calc((var(--sidebarr) + var(--postwidth)) / 2)}
 sidels,siders{width:var(--sidebarr)}
 
-.pg{
-    width:calc(var(--sidebarl) + var(--postwidth) + var(--sidebarr) + 60px);
-    cursor:pointer;
-    position:absolute;
-    opacity: 0;
-    z-index: 1;
-    padding-bottom:20px;
-    display:inline-block}
-.pg.active{
-    opacity:0.25}
-.pageful {
-    opacity: 1!important;
-    z-index: 2!important;
-    cursor:auto!important}
+.pg{width:calc(var(--sidebarl) + var(--postwidth) + var(--sidebarr) + 60px);
+    cursor:pointer; position:absolute; opacity: 0; z-index: 1; display:inline-block}
+.pg.active{ opacity:0.25}
+.pageful { opacity: 1!important; z-index: 2!important; cursor:auto!important}
 
-.divider {
-    margin-bottom:15px}
+.divider {margin-bottom:15px}
 
 /* ===================================== */
 /* Top Navbar CONTENT */
@@ -166,6 +115,8 @@ sidels,siders{width:var(--sidebarr)}
     position: relative}
 
 #side {display:block}
+#side > img {margin-bottom: 20px; width: calc(var(--sidebarl) - (var(--skirting) / 2));
+background-color:var(--postback); padding:calc(var(--skirting) / 2);}
 #side.active .button-focus{margin: 10px 0!important}
 #side.active{display:none!important}
 

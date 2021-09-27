@@ -12,7 +12,9 @@
     --pfp: url('/Website%20assets/imgs/pfp.gif');
 
     --defopacity: 1; --fadeto: 0.6;
-    --borderrad: 6px; --skirting: 3px;
+    --borderrad: 6px; --skirting: 6px;
+    --tiny-fonts: 11px; --small-fonts: 13px;
+    --mid-fonts: 16px; --large-fonts: 21px;
     /*colours*/
     --accent1:#7565ff; --accent2: #ff62ea;
     --accent3: #ffb533; --accent4: #3aecb4;
@@ -35,46 +37,45 @@
 /* FONT DATA */
 /* ===================================== */
 
-.block, .wedge {font-size:14px}
-section {font-size:16px}
+body {font-size:0; font-family:var(--fontstyle);word-wrap:break-word}
+
+a {text-decoration:none; font-weight:900}
+p {font-size:var(--tiny-fonts)}
+p:first-of-type t{font-size:1.4em; line-height:0}
+t { font-family:var(--boldstyle); text-transform:uppercase;  font-size:1.1em}
+ol{font-size:12px}
+
+sidels,siders,sidelm,siderm,sidell,siderl,fullwc{font-size:16px}
+section {font-size:var(--mid-fonts)}
+.block, .wedge {font-size:var(--small-fonts)}
 
 #top-nav {font-size:0}
 .ls t{font-size: 21px;}
+
+.load-more{text-align:center}
+.load-more p{font-weight:900; font-size:var(--tiny-fonts)}
 
 /* ===================================== */
 /* PAGE 1 */
 
 article .when {line-height:1em}
-article .when .timestamp {font-size:13px}
-article .when .dateposted {
-    font-family:var(--boldstyle);
-    text-transform:uppercase}
-article .when .new-post{
-    font-size: 16px;
-    letter-spacing: 1px;
-    font-family: var(--boldstyle)}
+article .when .timestamp {font-size:var(--small-fonts)}
+article .when .dateposted {font-family:var(--boldstyle); text-transform:uppercase}
+article .when .new-post{font-size: var(--mid-fonts); letter-spacing: 1px; font-family: var(--boldstyle)}
 
-article .poster .title{ /*workshop title*/
-    font-weight: 900;
-    font-family: var(--boldstyle);
-    text-transform: uppercase}
+article .poster .title{font-weight: 900; font-family: var(--boldstyle); text-transform: uppercase}
 article figure {font-size: 0}
 
-.load-more{text-align:center}
-.load-more p{font-weight:900; font-size:12px;}
-
-.footer {
-    font-size:0.6em;
-    text-transform:uppercase;
-    letter-spacing:0.5px} /*posted by*/
+.footer {font-size:var(--tiny-fonts);text-transform:uppercase;letter-spacing:0.5px} /*posted by*/
 
 /* ===================================== */
 /* PAGE 2 / 3 */
-.tfd p {font-size: 0}
-.tfd, .tii p {font-size:0.7em}
-.immc:hover .tfd p, .imco:hover .tfd p {font-size:11px}
-.tfd t,.tii t {line-height:0.9em!important}
-.tfd p, .tii p {letter-spacing:.15px}
+
+incont > * drp p {font-size:0!important}
+incont > *:hover drp p {font-size:var(--tiny-fonts)!important}
+
+incont > * drp t,incont > * div:first-of-type t {line-height:0.9em!important}
+incont > * drp p,incont > * div:first-of-type p {letter-spacing:.15px}
 
 /* ===================================== */
 /* TEXT COLOURS */
@@ -82,11 +83,13 @@ article figure {font-size: 0}
 
 body {color:var(--text)}
 
-p:first-of-type t{color:var(--accent2);}
 a {color:var(--accent3)}
 a:hover {color:var(--links)}
 t {color: var(--accent2)}
 h {color:var(--accent3)}
+
+.tan p, .tii p, .tii{color:white}
+.tan t, .tii t, .tan{color:white}
 
 .button-focus t {color:var(--accent2)}
 #side-nav div:hover t, #top-nav div:hover t  {color:var(--accent3)}
@@ -110,13 +113,13 @@ article .bottom {color:white}
 /* ===================================== */
 /* PAGE 2 */
 
+incont > * p{color:var(--text)}
+incont > * a{color:var(--accent3)}
+incont > * a:hover {color:var(--accent4)}
 
-.imco p, .immc p{color:var(--text)}
-.imco a, .immc a{color:var(--accent3)}
-.imco a:hover {color:var(--accent4)}
-
-.tii, .tii p, .tii t,.tfd t{color:white!important;}
-.tfd p {color:var(--posts)}
+incont > * div, incont > * drp t,
+incont > * tcb p, incont > * tcb t {color:white!important;}
+incont > * drp p {color:var(--posts)}
 
 /* ===================================== */
 /* BACKGROUND COLOURS */
@@ -124,10 +127,12 @@ article .bottom {color:white}
 
 body {background:var(--background)}
 .block, .wedge {background-color:var(--posts)}
-.imco .img, .immc .img{background-color:var(--artposts)}
+incont > * .img{background-color:var(--artposts)}
+
+.pg3 incont, .pg2 incont{background-color: var(--postback)}
 
 .vimage {background-image:var(--pfp)}
-.hdr {background-image:var(--banner)}
+#hdr {background-image:var(--banner)}
 
 .logo-f.lo0 {background-image: var(--logonm)}
 .logo-f.lo1 {background-image: var(--logobm)}
@@ -141,10 +146,15 @@ body {background:var(--background)}
 
 section {background-color: var(--postback)}
 
+.dac p {background-color:var(--accent3)!important}
+.tan p {background-color:var(--invaccent)}
+.tii p {background-color:var(--accent2)}
+
 /* ===================================== */
 /* PAGE 0 */
 
-.pg0 siders {background: var(--postback)}
+.pg0 siders > div {background: var(--postback)}
+.pg0 siders > div p{background-color:var(--accent1)}
 
 /* ===================================== */
 /* PAGE 1 */
@@ -169,13 +179,11 @@ article .poster:hover .title {background-color: var(--accent2)}
 
 /* ===================================== */
 /* PAGE 2/3 */
-.imco p, .immc p {background-color:var(--posts)}
-.imco img, .immc img{background-color:var(--artposts)}
+incont > * p {background-color:var(--posts)}
+incont > * img{background-color:var(--artposts)}
 
-.tii p {background-color:var(--accent1)}
-.tfd p {background-color:var(--accent2)}
-.dac p {background-color:var(--accent3)!important}
-.tan p {background-color:var(--invaccent)}
+incont > * tcb p {background-color:var(--accent1)}
+incont > * drp p {background-color:var(--accent2)}
 
 /* ===================================== */
 /* ALL */
@@ -205,18 +213,20 @@ a {border-color:var(--accent3);}
 .rc,.bc{border-bottom-right-radius:var(--borderrad)}
 .lc,.bc{border-bottom-left-radius:var(--borderrad)}
 
+#side .wedge:last-of-type p,
 .ntc{border-top-right-radius:0!important; border-top-left-radius:0!important}
+#side .wedge:first-of-type p,
 .nbc{border-bottom-right-radius:0!important; border-bottom-left-radius:0!important}
 
-#top-nav,#twitter,.wedge,.block,.vimage,#side-media a,
-.imco,.immc,.hdr,.load-more p,.search,.new-post,
-#side-nav,incont,section,article,asidel,siders,asidel .wedge{
+#top-nav,#side #pfp,#twitter,.wedge,.tii,.block,.vimage,#side-media a,
+incont > *, #hdr,.load-more p,.search,.new-post,.tii p, .tan p,
+#hoverelm, #side-nav,incont,section,article,asidel,siders{
     border-radius:var(--borderrad)}
 
 .when:not(.footer){
     border-top-left-radius:var(--borderrad);
     border-top-right-radius:var(--borderrad)}
-.when:last-of-type{
+.when:last-of-type, incont > * > p{
     border-bottom-left-radius:var(--borderrad);
     border-bottom-right-radius:var(--borderrad)}
 
@@ -227,7 +237,7 @@ a {border-color:var(--accent3);}
 a{transition:
         color .2s cubic-bezier(0,0,0,1)}
 
-.logo, .hdr {transition:
+.logo, #hdr {transition:
         opacity .5s cubic-bezier(0,0,0,1),
         background-size 1s cubic-bezier(0,0,0,1)}
 .logo-f {transition:
@@ -241,18 +251,22 @@ a{transition:
 
 #side-nav div i, #top-nav div i{transition:
         background .2s cubic-bezier(0,0,0,1)}
-#side-nav div, #top-nav div, .tfd {transition:
+#side-nav div, #top-nav div, incont > * drp p {transition:
         opacity .1s cubic-bezier(0,0,0,1),
         margin .3s cubic-bezier(0,0,0,1)}
 #side-media:hover > * {transition:
         opacity .2s cubic-bezier(0,0,0,1)}
 
+incont > div > div {transition:
+    opacity .0s cubic-bezier(0,0,0,1)}
+
+#hoverelm{transition:
+    opacity .5s cubic-bezier(0,0,0,1)}
+
 .load-more p {transition:
         transform .2s cubic-bezier(0,0,0,1),
         background .2s cubic-bezier(0,0,0,1)}
 
-.tfd p {transition:
-        font-size .2s cubic-bezier(0,0,0,1)}
 .w32 img {transition: all .2s}
 
 body, body * {transition:
