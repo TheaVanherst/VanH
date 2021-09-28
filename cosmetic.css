@@ -13,7 +13,7 @@
 
     --defopacity: 1; --fadeto: 0.6;
     --borderrad: 6px; --skirting: 6px;
-    --tiny-fonts: 11px; --small-fonts: 13px;
+    --tiny-fonts: 10px; --small-fonts: 13px;
     --mid-fonts: 16px; --large-fonts: 21px;
     /*colours*/
     --accent1:#7565ff; --accent2: #ff62ea;
@@ -37,7 +37,7 @@
 /* FONT DATA */
 /* ===================================== */
 
-body {font-size:0; font-family:var(--fontstyle);word-wrap:break-word}
+body {font-size:11px; font-family:var(--fontstyle);word-wrap:break-word}
 
 a {text-decoration:none; font-weight:900}
 p {font-size:var(--tiny-fonts)}
@@ -58,7 +58,7 @@ section {font-size:var(--mid-fonts)}
 /* ===================================== */
 /* PAGE 1 */
 
-article .when {line-height:1em}
+article .when {line-height:0.9em}
 article .when .timestamp {font-size:var(--small-fonts)}
 article .when .dateposted {font-family:var(--boldstyle); text-transform:uppercase}
 article .when .new-post{font-size: var(--mid-fonts); letter-spacing: 1px; font-family: var(--boldstyle)}
@@ -77,6 +77,11 @@ incont > *:hover drp p {font-size:var(--tiny-fonts)!important}
 incont > * drp t,incont > * div:first-of-type t {line-height:0.9em!important}
 incont > * drp p,incont > * div:first-of-type p {letter-spacing:.15px}
 
+/* Page 5
+/* ===================================== */
+
+.sbitems t {letter-spacing:0.5px}
+
 /* ===================================== */
 /* TEXT COLOURS */
 /* ===================================== */
@@ -88,10 +93,12 @@ a:hover {color:var(--links)}
 t {color: var(--accent2)}
 h {color:var(--accent3)}
 
-.tan p, .tii p, .tii{color:white}
-.tan t, .tii t, .tan{color:white}
+.tan p, .tii p, .tii{color:white;}
+.tan t, .tii t, .tan{color:white;}
 
 .button-focus t {color:var(--accent2)}
+
+#side .wedge:last-of-type {color:white;}
 #side-nav div:hover t, #top-nav div:hover t  {color:var(--accent3)}
 #side-nav div t, #top-nav div t{color:white!important;}
 /* ===================================== */
@@ -127,7 +134,6 @@ incont > * drp p {color:var(--posts)}
 
 body {background:var(--background)}
 .block, .wedge {background-color:var(--posts)}
-incont > * .img{background-color:var(--artposts)}
 
 .pg3 incont, .pg2 incont{background-color: var(--postback)}
 
@@ -142,6 +148,7 @@ incont > * .img{background-color:var(--artposts)}
 
 .nmb {background-color:var(--accent1)}
 #side-nav div {background-color:var(--posts)}
+#side div.wedge:last-of-type {background-color:var(--invaccent)}
 #side-media a, #side-media:hover > * {background-color:var(--accent1)}
 
 section {background-color: var(--postback)}
@@ -173,6 +180,7 @@ article .poster:hover .title {background-color: var(--accent2)}
 
 #article9 .poster:hover .title {background-color: var(--accent4)}
 
+.double-bounce1, .double-bounce2 {background-color: var(--accent1)}
 #twitter {background-color: var(--postback)!important}
 #twitter .load-more {background-color:rgba(0.5,0.5,0.5,0.3)}
 #twitter .load-more p {background:var(--accent1)}
@@ -181,6 +189,7 @@ article .poster:hover .title {background-color: var(--accent2)}
 /* PAGE 2/3 */
 incont > * p {background-color:var(--posts)}
 incont > * img{background-color:var(--artposts)}
+incont > * .img{background-color:var(--artposts)}
 
 incont > * tcb p {background-color:var(--accent1)}
 incont > * drp p {background-color:var(--accent2)}
@@ -213,9 +222,7 @@ a {border-color:var(--accent3);}
 .rc,.bc{border-bottom-right-radius:var(--borderrad)}
 .lc,.bc{border-bottom-left-radius:var(--borderrad)}
 
-#side .wedge:last-of-type p,
 .ntc{border-top-right-radius:0!important; border-top-left-radius:0!important}
-#side .wedge:first-of-type p,
 .nbc{border-bottom-right-radius:0!important; border-bottom-left-radius:0!important}
 
 #top-nav,#side #pfp,#twitter,.wedge,.tii,.block,.vimage,#side-media a,
@@ -252,15 +259,12 @@ a{transition:
 #side-nav div i, #top-nav div i{transition:
         background .2s cubic-bezier(0,0,0,1)}
 #side-nav div, #top-nav div, incont > * drp p {transition:
-        opacity .1s cubic-bezier(0,0,0,1),
+        opacity .2s cubic-bezier(0,0,0,1),
         margin .3s cubic-bezier(0,0,0,1)}
 #side-media:hover > * {transition:
         opacity .2s cubic-bezier(0,0,0,1)}
 
-incont > div > div {transition:
-    opacity .0s cubic-bezier(0,0,0,1)}
-
-#hoverelm{transition:
+incont > * > div.zoom {transition:
     opacity .5s cubic-bezier(0,0,0,1)}
 
 .load-more p {transition:

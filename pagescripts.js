@@ -3,7 +3,6 @@ var righb = 350, leftb = 250, middb = 500, //these are root vars numbers from st
     bod = $('body').width(),
     page3 = bod - (bod - (righb + middb + leftb)),
     page2 = bod - (bod - (righb + middb));
-let postamount=16, article=postamount;
 
 $(document).ready(resize); $(window).on("load resize", resize)
 
@@ -17,83 +16,34 @@ $(document).ready(function() {
 })
 
 var arthover = function () {
-    $('incont > *').children('div.zoom').css("opacity","1")
     $('#hover-element').remove(); $('#side').css("z-index","99")
 
-    var target = $('#' + event.target.id);
+    var target = $('.pageful #' + event.target.id);
+    $('div.zoom').css({"opacity":"1"})
     target.clone(true, true).insertAfter(target);
     $(target).attr("id", "hover-element");
 
     var image, image_url = $('#hover-element').css('background-image');
     if (image_url !== undefined) {
-        image_url = image_url.match(/^url\("?(.+?)"?\)$/);
-        image_url = image_url[1];
-        image = new Image();
-        image.src = image_url;
+        image_url = image_url.match(/^url\("?(.+?)"?\)$/); image_url = image_url[1];
+        image = new Image(); image.src = image_url;
 
+        $('#side').css("z-index","0")
         $('#hover-element').css({
             "width": target.height() * (image.width / image.height),
             "height": target.height(), "min-width":target.parent().width()}).css(
             "margin-left", ((target.width() / -2) + (target.parent().width() / 2))
-        ).parent().children('div.zoom').css("opacity","0.4")
+        ).parent().children('div.zoom').css({"opacity":"0.6"})
     }
 }
 
 $('incont > * > div').click(arthover).hover(arthover)
-$('incont > * > div').hover(function(){$('#side').css("z-index","0")
-}).mouseout(function() {$('#side').css("z-index","99")})
+$('incont > * > div').mouseout(function() {$('#side').css("z-index","99")})
 
 $(function (){$('.hdrlogo').hover(
         function(){$('#hdr, #bck').addClass("hov")},
-        function(){$('#hdr, #bck').removeClass("hov")}
-)})
-
-$(".pg.pg1").ready(function(){loadpostelement()})
-
-function loadpostelement(){
-    $.get(("/posts/"+(article)+".txt"),function(data){
-        var postmt = data.split("<meta>");
-        let date = new Date(postmt[1]),
-            day1 = date.toLocaleString('en-us',{weekday:'long'}),
-            day2 = date.toLocaleString('en-us',{day:'numeric'}),
-            mnth = date.toLocaleString('en-us',{month:'short'}),
-            year = date.toLocaleString('en-us',{year:'numeric'});
-
-        var day = 1000 * 60 * 60 * 24, ord = ["st","nd","rd"], expt = [11,12,13],
-            t = "Posted ", daycheck = "", newpost = "", pmam = "",
-            post =  postmt[1].split("T"), hours = post[1].split(":"),
-            diff = Math.floor(new Date().getTime() - date.getTime()),
-            days = Math.floor(diff/day), week = Math.floor(days/7),
-            mnths = Math.floor(days/31), yrs = Math.floor(mnths/12),
-            nth = ord[(day2 % 10) - 1] == undefined || expt.includes(day2 % 100) ? "th" : ord[(day2 % 10) - 1]
-
-        if(days>=14){daycheck+=day1+", "}else{mnth=date.toLocaleString('en-us',{month:'long'})
-            if(hours[0]>12){hours[0]=hours[0]- 12;pmam="pm";}else{pmam="am";}}
-        if(days<=7){newpost = '<div class="new-post"></div>';}
-
-        if(mnths<3){if(days<7){if(days==0){t+="earlier today at ";}else{t+="on "+day1+" at ";}t+=hours[0]+":"+hours[1]+pmam;}
-        else{if(week==1){t+="last week on "+day1+" the "+day2+nth;}else if(day>7&&day<14){t+="on "+day1+" last week at ";}else{t+=week+" weeks";}}}
-        else if(yrs<1){t+=mnths+" months";}else{if(yrs==1){t+="a";}else{t+=yrs;}t+=" year s";}if(days>13){t+=" ago";}
-
-        $('<article id=article'+article+'>'+
-            '<div class="when">'+ newpost +
-                '<a class="dateposted">'+daycheck+mnth+" "+day2+nth+" "+year+'</a><br>'+
-                '<a class="timestamp">'+t+'</a>'+
-            '</div>'+
-            postmt[2] +
-            '<div class="when footer">'+
-                '<a class="vimage"></a>'+
-                '<div class="imcon">posted by<br>'+
-                    '<a class="postedby">vanherst</a>'+
-                '</div>' +
-            '</div>' +
-        '</article>').appendTo("#posts")
-    })
-    .done(function() {
-        article = article - 1;
-        loadpostelement();
-    })
-}
+        function(){$('#hdr, #bck').removeClass("hov")})
+})
 
 var frt = ["jpg","png","gif"];
 
@@ -127,13 +77,16 @@ $(document).ready(function(){
         for (var i=1;i<=pg2l.length;i++) {
             $('#'+sides[t]+'s'+i).addClass('zoom img')
                 .css({'height':(ah2[i- 1]*100)+"px",
-                    'background-image':"url('/Website assets/imgs/"+sides[t]+i+"."+frt[ap2[i- 1]]+"')"});}}
-
+                    'background-image':"url('/Website assets/imgs/"+sides[t]+i+"."+frt[ap2[i- 1]]+"')"});
+        }
+    }
     for(var i=0;i<=pg3h.length;i++){
         $('#dp'+i).addClass('zoom img')
             .css({'height':pg3h[i]+"px",
                 'background-image':"url('/Website assets/imgs/d"+i+"."+frt[ap3[i]]+"')"})
-            .parent().css({'height':pgdh[i]+"px"})};})
+            .parent().css({'height':pgdh[i]+"px"})
+    }
+})
 
 window.twttr = (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0],
