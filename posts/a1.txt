@@ -1,0 +1,10 @@
+<meta>2014-10-24T14:02:00<meta>
+<li>
+    <p><b>Dj-Pon3</b></p>
+    <figure><img src="/posts/img/a1a.png"></figure>
+    <div class="npf_row">
+        <div class="npf_col"><figure><img src="/posts/img/a1b.png"></figure></div>
+        <div class="npf_col"><figure><img src="/posts/img/a1c.jpg"></figure></div>
+    </div>
+    <figure><img src="/posts/img/a1d.png"></figure>
+</li>

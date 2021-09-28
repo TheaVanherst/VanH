@@ -1,0 +1,90 @@
+<meta>2021-05-14T11:40:00<meta>
+<li>
+    <p>
+        <b>Another lunge into Terraria Mod Development.</b>
+    </p>
+    <p>
+        I’ve been meaning to post this for the past few weeks,
+        I just never managed to get around to it. My main focus
+        right now is getting trying to get this major overhaul
+        cleaned up and finished, but I can't wait any longer to
+        talk about it, so I’m just gonna start posting the deets.
+    </p>
+    <p>
+        For the past month I’ve been working on a Third Impact
+        resource pack for Terraria, inspired by Evangelion Neon
+        Genesis. I don’t know how I got onto this topic to be honest,
+        a month ago I wanted to make a new spritesheet for my website,
+        now i’m developing an entire resource pack.
+    </p>
+    <figure><img src="/posts/img/p9a.png"></figure>
+    <p>
+        I haven’t formally announced the pack previously, simply
+        because I think there’s a lot more potential for general design
+        exploration, even if it was just a graphical re-haul.
+    </p>
+    <p>
+        So that’s what I’ve been upto for the past week, because I
+        genuinely felt like there was a lot of room to improve in an
+        area AND art style I’ve never really touched previously.
+    </p>
+    <div class="npf_row">
+        <div class="npf_col"><figure><img src="/posts/img/p9b.png"></figure></div>
+        <div class="npf_col"><figure><img src="/posts/img/p9c.png"></figure></div>
+    </div>
+    <p>
+        Personally, I’m still not 100% pleased with it when it comes
+        to the hands are. But the current differences between the
+        original conception and the current state is a<b> HUGE</b>
+        fucking improvement, and I’m super happy with how it’s come
+        out.
+    </p>
+    <p>
+        I’m gonna get around to it but there’s a lot to work on and
+        think about due to technical limitations with terraria and how
+        little I have to work with due to ((resource pack)).
+    </p>
+    <p>
+        Either way,<a href="https://href.li/?https://twitter.com/TheaVanherst/status/1390888310025990149/photo/1"> It’s been a long development process</a>
+        of learning general shading styles and improving working at
+        such a small scale, and since the original conception of the
+        idea it’s in a much better state than it was as of a week ago.
+    </p>
+    <figure><img src="/posts/img/p9d.gif"></figure>
+    <p>
+        Here’s a small little render PRIOR to the latest graphic
+        upgrades I’ve managed to do, and set aside bias and such, I
+        still think it’s a nice option to play with, even without the
+        technical limitations of a resource pack.</p><p>And people
+        seem to really enjoy the recent content I’ve been producing
+        since the original release, and with over <b>10000 current
+        subscriptions</b> to the mod, it’s probably one of the biggest
+        projects I’ve been to town on.
+    </p>
+    <p>
+        There’s a <i>LOT</i> of assets I’ve been working on
+        simultaneously, and even though most assets are barely 50x50
+        pixels, to conceptually make it seem consistent with the show
+        is a difficult feat.
+    </p>
+    <p>
+        I ended up taking a 1-2 week break on developing animation
+        cycles for a bunch of NPC related mods, in order to try and
+        refresh my mind and just generally take a break from working
+        on the same scheme of assets. In-which, I’ll probably talk
+        about at a future date and / or post.
+    </p>
+    <div class="steamworkshop">
+        <a target="_blank" href="https://href.li/?https://steamcommunity.com/sharedfiles/filedetails/?id=2449497541">
+            <div class="poster" style="background-image:url(https://64.media.tumblr.com/2ab45becf8076a2ab917b865daaadded/48a9fc2a99d4782c-ef/s540x810/9e0dd9a1f131a7fffe76a910802ca2e9da2a5dd9.jpg)">
+                <div class="title">Moonlord Replaced with the Third Impact 0.59v [ MUSIC UPDATE ]</div></div>
+            <div class="bottom">Thea Vanherst @ steamcommunity.com</div>
+        </a>
+    </div>
+    <p>
+        Anyway, just a small update for what I’ve been upto for the
+         month or so. I haven’t posted anything yet, but I’m gonna
+         post another couple pieces about the website and other
+         terraria related items. So stay tuned for that.
+    </p>
+</li>

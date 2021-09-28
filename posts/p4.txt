@@ -1,0 +1,48 @@
+<meta>2020-12-16T00:43:00<meta>
+<li>
+    <p>
+        <b>Win98 Update 1</b>
+    </p>
+    <p>
+        It’s close to the end of 2020 and I’m two weeks
+        into working on my blog, <a href="https://vher98.tumblr.com/">vher98.tumblr.com</a>.
+        Not much has <i>visually</i> changed, but there’s
+        been tons of work that I’ve been doing that you won’t
+        see unless you see the back end in comparison.
+    </p>
+    <p>
+        I  knew website development took a long time, but
+        I never really knew it  would take <i>this long</i>
+        for such simple features. The majority of the time
+        invested into the site as of late is a more
+        functional start menu, the code upto now is really
+        jank, but I’m pretty confident being able to set up
+        a basic interface and trimming down the fat in the
+        next few days is probably the best way to go.
+    </p>
+    <p>
+        I know it’ll be way incredibly better for a more
+        effective learning process for myself, alongside
+        remembering a bit more of how to lay things out the
+        way it should be.
+    </p>
+    <figure>
+        <iframe src="https://www.youtube.com/watch?v=m8DMSVHuA-I"></iframe>
+    </figure>
+    <p>
+        It’s been a fun personal project I’ve been working
+        on and streaming. If you want to come check out my
+        slow and (not at all) entertaining progress, then come and join
+        my stream. I’ve been trying to stream every day but
+        most of my streams either get taken down or YouTube
+        just… doesn’t function the way it intends to.
+    </p>
+    <p>
+        Anyway, a lot of what I’m doing is a learning
+        process with a slow and steady learning curve. (I’ll
+        get there eventually…)
+    </p>
+    <p>
+        See you in a few weeks.
+    </p>
+</li>

@@ -1,0 +1,64 @@
+<meta>2021-07-21T05:18:00<meta>
+<li>
+    <p><b>Polishing Touches</b></p>
+    <p>
+        I’ve managed to get around to cleaning up and vectoring
+        my logo as of late, which is good news for future projects
+        and to flex my ability to do some clean looking graphics
+        for once in my life. It’s not as perfect as it could be in
+        terms of mastering consistency in thickness of text, border
+        thickness and general connotation of shapes and angles…
+        but it’s at a much better position than it was.
+    </p>
+    <p>
+        I had to do a bit of cleanup and polish a lot of the angles
+        that was originally in the design and fix some intent I
+        originally had during the design conception, but don’t
+        think I did an <i>entirely</i> effective job at. One of
+        which being the horns on the logo being a representation
+        of the design elements of Petra, and I think the quick
+        mock-up I designed really struggles to give the intended
+        shape and the outlines just don’t do justice to the shape
+        of the logo itself.
+    </p>
+    <p>
+        Regardless, here’s the final design, with all of it’s
+        slight imperfections:
+    </p>
+    <figure><img src="/posts/img/p13a.png"></figure>
+    <figure><img src="/posts/img/p13b.png"></figure>
+    <p>
+        Top image: Newly vectorised logo<br>Bottom image: Original
+        logo design with an additional outer-glow.
+    </p>
+    <p>
+        As an extra side-note, I also designed the new vector with
+        and without an outline. The older, original design has a
+        default black glow with tons of manual tweaking in order
+        to get the same general shape, but it’s really lazy
+        looking and doesn’t portray the shape that it’s supposed
+        to.
+    </p>
+    <p>
+        …Alongside, of course, additional tweaks to the colour
+        pallet that the logo is displayed as. Not to mention a
+        different outline hue to contrast the new base purple a
+        bit better.
+    </p>
+    <p>
+        Regardless of my little quibbles of slight design
+        imperfections, elements as simple as consistent line
+        thickness and the 16,000 x 8,000 of glory is a much more
+        glamorous result than the original concept piece. I’ll
+        be soon to get around to swapping any current usage of
+        my logo out with this. The vast increase in quality is
+        such an eye-opener I couldn’t <i>not</i> do it.
+    </p>
+    <figure><img src="/posts/img/p13c.png"></figure>
+    <p>
+        (And an additional benefit of getting around to
+        vectoring and having a finalised product is the ability
+        to convert it for other usages that work effectively
+        individually!)
+    </p>
+</li>
