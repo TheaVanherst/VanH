@@ -1,0 +1,45 @@
+<meta>2020-12-07T23:51:00<meta>
+<li>
+    <p>
+        <b>Introducing Win98</b>
+    </p>
+    <p>
+        Well, it’s coming close to the end of the year and
+        it’s time to show off some recent personal projects
+        i’ve been doing.
+    </p>
+    <div class="row">
+        <div><figure><img src="/blog/img/p3a.png"></figure></div>
+        <div><figure><img src="/blog/img/p3b.png"></figure></div>
+    </div>
+    <p>
+        I’ve recently been having some problems with my
+        sideblog, <a href="https://thealonic.tumblr.com/">Thealonic</a>.
+        A lot of the “Win98″ theme I was using was either
+        completely jank or  having issues. I did try to
+        polish it up and do adjustments to the HTML  to
+        make images wrap properly, but regardless of my
+        work, the theme is  generally flawed and
+        underdeveloped so over the past week i’ve just
+        decided to redo it.
+    </p>
+    <p>
+        Even though it’s the similar kinds of design and
+        vibes, <i>trust me</i>, it’s a completely different
+        backend from the ground up in both the CSS and
+        HTML department. It’s basically a complete rewrite.
+        Although I am  using a basic html sheet for things
+        such as animated buttons or  simplistic title bars,
+        there’s still <i>so</i> much work I’ve had to do
+        to make both the theme AND Tumblr behave properly.
+    </p>
+    <p>
+        Either  way, the progression on the overhall is
+        going SUPER well and the time  investment has been
+        very worthwhile, so I’m sharing it here.
+    </p>
+    <p>
+        If you want to check out the current progress on
+        the site, <b><a href="https://thealonic.tumblr.com/">check it here</a></b>
+    </p>
+</li>

@@ -1,0 +1,192 @@
+<meta>2021-04-03T16:03:00<meta>
+<li>
+    <p><b>Vher98 Update 5</b></p>
+    <p>
+        I know it’s only been a couple of weeks since the
+        last blog post about my recent updates towards
+        developing Vher98, but trust me it’s for a good
+        reason, I’ll split it up into chapters to sorta
+        give a bit more of an explanation towards
+        developments and get a bit more in depth about it
+        for once.
+    </p>
+    <p><b>Display properties.</b></p>
+    <p>
+        This has been delayed for SO long, and finally I’ve
+        gotten around to doing it. Finishing the display
+        properties menu. The display properties has been
+        the bane of my existence about this website but yet
+        my best feature, just from the schemes feature alone.
+        But this week I have a new addition, and that is to
+        say I now have desktop icon schemes! In-which, allows
+        you to change the desktop icons based on preselected
+        spritesheets (Which you can also change by the
+        command prompt!).
+    </p>
+    <p>
+        At the moment there are 6 presets which you can select,
+        I recently did a massive sprite redesign for desktop
+        icons based on my new character, Petra! But that’s
+        for a future update, for now I’ve set the default
+        spritesheet and included all of the old ones, which
+        you can select from, alongside being able preview
+        them at a smaller resolution to be compatible with
+        the display properties window.
+    </p>
+    <figure><img src="/blog/img/p8a.png"></figure>
+    <p>
+        I’ve also added a few other settings which you can
+        see previews of, not all of which are programmed yet,
+        so at a future date I’ll either change them around or
+        program them. But for now, I’ve added the ability to
+        change desktop icon sizes to a more native modern
+        scale, but leaving the default setting as the classic
+        windows 98 recreation.
+    </p>
+    <p>
+        I’ve also added additional wallpapers, only accessible
+        through the effects tab and “CSGO MODE” which was
+        featured in the background of the preview blog post,
+        which recreates the settings for my counterstrike
+        main menu, along with adjusting the desktop icons and
+        wallpaper to fit.
+    </p>
+    <figure><img src="/blog/img/p8b.png"></figure>
+    <p>
+        As previewed above, designed to be a slight nod to my
+        recent “Neon Genesis Evanjollion” video, featured on
+        my youtube channel. I’ve recorded and animated my
+        counterstrike character with loopable animations which
+        play continuously in the background.
+    </p>
+    <p>
+        Now, I know this is a lot of text for what seemingly
+        is a minor update, but the main reason I was able to
+        design the latest additions to the effects tab was
+        because of the recent massive rewrite I’ve had to do in
+        order to fix a bunch of problems I was coming across,
+        one of which being how unoptimised themes were
+        relatively.
+    </p>
+    <div class="row">
+        <div><figure><img src="/blog/img/p8c.png"></figure></div>
+        <div><figure><img src="/blog/img/p8d.png"></figure></div>
+    </div>
+    <p>
+        <i>Left: new code which include schemes selection and the new effects menu toggles.<br>
+           Right: old code, only including schemes selection.</i>
+    </p>
+    <p>
+        This entire re-write revolves around basically storing
+        arrays of data rather than manually switching values
+        of variables, along with tons of adjustments to
+        unneeded variables and how theme data is required to
+        be stored, as CSMODE needs to store the theme data to
+        be able to toggle from the data needed to switch from
+        the current scheme to CSGO mode.
+    </p>
+    <p>
+        I cannot understate howmuch of a rewrite this is, and
+        as much as I would like to say “I really don’t get why
+        I ever did it otherwise”, I would be lying. But this is
+        a super incredable optimisation and looking at this
+        comparritively makes me super pleased with how far i’ve
+        come from knowing nothing about HTML/JS to this. Jquery
+        is a godsend.
+    </p>
+    <p><b>Start Menu</b></p>
+    <p>
+        On my newly found optimisation craze, I’ve also done
+        tons of rewriting to the startmenu, another long overdue
+        reform. Even though I’ve recently done a rewrite on this
+        thing, I knew there was still tons of improvements with
+        my new knowledge of jquery.
+    </p>
+    <figure><img src="/blog/img/p8e.png"></figure>
+    <figure><img src="/blog/img/p8f.png"></figure>
+    <p>
+        <i>Top image: old code in Javascript<br>
+           Bottom image: new code in Jquery</i>
+    </p>
+    <p>
+        I’ve also put aside a few hours of time to dedicate
+        creating new assets for the start menu. It became
+        REALLY hard to find a nice and consistent style which
+        windows 98 used, but it was really hard to find sources
+        of any of the original assets but also have the levels
+        of details I knew windows 98 for, especially when tons
+        of the assets from windows 98 came from windows 95,
+        which still relied on 8 bit colour in some instances.
+    </p>
+    <p>
+        So I did a bunch of digging and found the assets Windows
+        98 used at the end of it’s lifespan and modified them a
+        bunch to put into Vher98, giving my own personal touch
+        and hopefully to keep the art direction of icons a bit
+        more consistant and unique to look at and use.
+    </p>
+    <p><b>Task management</b></p>
+    <p>
+        Alright, last big one. Task management. Another long
+        overdue reform was needed for this thing. Prior to this
+        month, tasks relied on whatever manual order I decide
+        to create the task and assign a number to, the number
+        will dedicate placement on the taskbar depending on
+        which value was the highest.
+    </p>
+    <p>
+        So for example, the Display Properties will ALWAYS be
+        the third task on the taskbar if you was to open
+        everything up, simply because I didn’t know how to
+        calculate the placement prior to designing tons of
+        assets. Especially when the original conception of the
+        site RELIED on myself manually creating the visual
+        look of the taskbar as the entire site was designed
+        based on images. From windows, taskbar to the
+        start menu. It was awfully inefficient.
+    </p>
+    <figure><img src="/blog/img/p8g.png"></figure>
+    <figure><img src="/blog/img/p8h.png"></figure>
+    <p>
+        <i>Top image: Example of windows being opened from oldest (left) to newest (right).<br>
+           Bottom image: The new optimised and redesigned code for calculating taskbar placement and task assignment.</i>
+    </p>
+    <p>
+        Anyway, that being said I now have automated calculation
+        for taskbar task placement. <b><i>If you open a task,
+        it will open and remain in the order of the task being
+        ordered. </i></b>Writing this makes me have a smug
+        little grin on my face just from how happy I am I was
+        even able to get this to work properly, and it’s only
+        a few lines of math to even get the result I have.
+    </p>
+    <p><b>Conclusion</b></p>
+    <p>
+        There’s tons of other stuff I wish to go on about, but
+        that’s why I have patch-notes. if you wish to read them,
+        you can check them out on my Github, or in the Start menu
+        of Vher98.
+    </p>
+    <p>
+        There’s a few bugs I need to get around to fixing,
+        but I’ve invested a few hundred hours into this
+        thing over the past month alone, and I really should
+        take a break to get onto other projects I wish to
+        get around to completing.
+    </p>
+    <p>
+        I recently started developing a mod for Terraria
+        and some drawings I want to get around to finishing
+        sooner or later. But, the most important thing I
+        REALLY need to get around to is branding. Over the
+        past month or two I’ve been growing more and more
+        displeased with how I present myself and the fact I
+        have stagnated a bit within the realms of my career
+        and I need to get around to sorting these personal
+        matters sooner rather than later.
+    </p>
+    <p>
+        I’ll be back with a couple of projects. It might take
+        a while but I promise it’s for a good cause.
+    </p>
+</li>

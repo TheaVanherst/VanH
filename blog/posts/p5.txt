@@ -1,0 +1,63 @@
+<meta>2021-01-19T00:34:00<meta>
+<li>
+    <p>
+        <b>Win98 Update 2</b>
+    </p>
+    <p>
+        Development has been <i><b>long and slow.</b></i>
+        Even though there isn’t much of a visual “overhaul”
+        to it for the past month or so, the website has
+        come a <i>looooong</i> way since I started
+        development on it.
+    </p>
+    <p>
+        Over the past month I have completely rewritten
+        <b>everything</b>. There is a completely functional
+        start menu, draggable windows, random  image
+        generators alongside tons of new formatting such
+        as taskbar  functionality and windows task layering.
+        Even though it’s far from done, it’s the best there
+        is when it comes to Tumblr themes.
+    </p>
+    <div class="row">
+        <div><figure><img src="/blog/img/p5a.png"></figure></div>
+        <div><figure><img src="/blog/img/p5b.png"></figure></div>
+    </div>
+    <p>
+        It’s been such a wild few months of learning the
+        process of web development and general tips and
+        tricks when it comes to general usage of Jquery
+        and javascript, and even though I’m far from done
+        on this site, it’s in a lot better position than
+        when I originally started.
+    </p>
+    <p>
+        I’ll be continuing work to do a few more backend
+        adjustments and then I’ll be ready to start making
+        different themes and give user customisation. One
+        thing I wanna get around to trying out first is
+        giving the chance to  change the desktop wallpaper
+        through the display properties, and futher down the
+        line design a way to change colour scheme and have
+        a few premade themes such as dark mode.
+    </p>
+    <p>
+        This is just a “brief” glimpse on what I have been
+        working on all this time. I’ve recently redone how
+        posts are visually handled to make them look more
+        visually interesting but meaningful with newly
+        implimented tumblr compatbilities.
+    </p>
+    <figure><img src="/blog/img/p5c.png"></figure>
+    <p>
+        Posts still need a tiny bit of work on the backend,
+        such as video handling and padding, but I’ll leave
+        it at that for now.
+    </p>
+    <p>
+        Anyways, as mentioned before, I <i>try</i> to
+        stream the development I do daily. Check out my
+        <a href="https://href.li/?https://www.youtube.com/watch?v=1aSfPX-BQKY">latest stream</a>.
+        Otherwise, all my other streams are <a href="https://href.li/?https://www.youtube.com/watch?v=oFu7-VxnU8E&amp;list=PLNcem2Adr0D6ZaukKoeuIDd_F64cVdR6n">avaliable here</a>.
+    </p>
+</li>

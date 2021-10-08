@@ -1,0 +1,23 @@
+<meta>2020-09-18T01:34:00<meta>
+<li>
+    <p>
+        <b>Neon Genesis Evanjollion</b>
+    </p>
+    <p>
+        I’ve been playing a lot of Counter-Strike recently.
+        I'm worried it's becoming a bit obsessive considering
+        I’ve given myself the pleasure of sitting down and
+        editing together what felt like a chaotic story of a
+        regular competitive game of Counter Strike.
+    </p>
+    <iframe src="https://www.youtube.com/embed/HJrzOIXB2lQ"></iframe>
+    <p>
+        I’m pretty happy with it, but it’s probably going
+        be the last video I make in Sony Vegas. I’ve come
+        to the realisation that in terms of actually editing
+        and composing, it’s easier to smash clips together.
+        However, when it  comes to <b>actual</b> editing, it
+        becomes too much of a hassle. Anyway, I’ll probably
+        get around to remastering it at some point.
+    </p>
+</li>
