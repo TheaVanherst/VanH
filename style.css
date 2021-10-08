@@ -12,25 +12,28 @@
     --gutter:20px;
     --sidebarl:250px; --sidebarr:350px; --postwidth:500px;}
 
-body {margin:0; overflow-x: hidden;vertical-align: top; clear:none}
+body {margin: 0;overflow-x:hidden;
+    vertical-align:top;clear:none;
+    -webkit-user-select: none;-moz-user-select: moz-none;
+    -ms-user-select: none; user-select: none}
 
 p {padding:0 15px}
 p:first-of-type{ margin-top:0}
 p:last-of-type { margin-bottom:0}
 p:first-of-type t{margin-top:10px}
-
-p, t, h, .when a {cursor:default}
+p, h, .when a {cursor:default}
 
 li{list-style:none}
 li:last-of-type{margin:0}
 
-img { width:100%; height: 100%; border:0; background-position:center;}
+img { width:100%; height: 100%; border:0;
+    background-position:center; pointer-events:none}
 
 /* ===================================== */
 /* Containers =============== */
 
 .cont { position: absolute; left:50%;transform:translateX(-50%);}
-.block, .wedge { overflow:hidden; margin-bottom:var(--gutter)}
+.block, .wedge {margin-bottom:var(--gutter)}
 .block { padding:12px 0}
 .tii p, .tan p{padding: 8px 10px}
 
@@ -94,8 +97,8 @@ sidels,siders{width:var(--sidebarr)}
 #side.active .button-focus{margin: 10px 0!important}
 #side.active{display:none!important}
 
-#top-nav { width:calc((var(--postwidth) + var(--sidebarr)) + var(--gutter)); display:none;
-    overflow:hidden; margin:0 0 var(--gutter); z-index: 99999; position: relative}
+#top-nav { width:calc((var(--postwidth) + var(--sidebarr)) + var(--gutter));
+    display:none; margin:0 0 var(--gutter); z-index: 99999; position: relative}
 #top-nav div { width:calc((var(--sidebarr) + var(--postwidth) - (var(--gutter) * 2))/3); display: inline-block; margin:0}
 #top-nav.active {display: block!important; width:calc((var(--postwidth) + var(--sidebarr)) - 40px)!important}
 #top-nav.active a {width: calc(100% /3)}

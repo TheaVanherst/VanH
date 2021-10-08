@@ -1,69 +1,101 @@
+$(".pg.pg1").ready(function(){
+    loadpostelement()})
 
-var day = 1000 * 60 * 60 * 24, ord = ["st","nd","rd"], expt = [11,12,13];
+function timeget(data) {
+    let date = new Date(data);
+    var ord = ["st","nd","rd"], expt = [11,12,13];
 
-let postamount=15, post=postamount, artamount=1, art=artamount;
-$(".pg.pg1").ready(function(){loadpostelement(); loadartelement()})
+    var days = Math.floor((new Date().getTime() - new Date(date).getTime())/(1000 * 60 * 60 * 24)),
+        weeks = Math.floor(days/7),
+        yrs = Math.floor(new Date().getFullYear() - date.getFullYear()),
+        mnths = Math.floor(new Date().getMonth() - date.getMonth()),
+        diff = Math.floor(new Date().getTime() - date.getTime());
+
+    var year = date.toLocaleString('en-us', {year: 'numeric'}),
+        monthlong = date.toLocaleString('en-us',{month:'long'}),
+        monthshort = date.toLocaleString('en-us',{month:'short'}),
+        dayshort = date.toLocaleString('en-us', {day: 'numeric'}),
+        daylong = date.toLocaleString('en-us', {weekday: 'long'}),
+        nth = ord[(dayshort % 10) - 1] == undefined || expt.includes(dayshort % 100) ? "th" : ord[(dayshort % 10) - 1],
+        temp = date.toString().split(/[t: ]+/),
+        hours = temp[4], mins = temp[5];
+
+    if (mnths < 0) {
+        yrs--;
+        mnths = mnths + 12}
+
+    return { yrs, mnths, weeks, days, diff, //relative data
+        year, monthlong, monthshort, daylong, dayshort, nth, hours, mins}} //absolute data
 
 function postedwhen(data) {
+    let wn=timeget(data);
+    var pm=" ",t="Posted ";
 
-    var postdata = data.split("<meta>"), date = new Date(postdata[1]);
-    var days = Math.floor(Math.floor(new Date().getTime() - new Date(postdata[1]).getTime())/day),
-        week = Math.floor(days/7), mnths = Math.floor(days/31), yrs = Math.floor(mnths/12);
-    var day1 = date.toLocaleString('en-us', {weekday: 'long'}),
-        day2 = date.toLocaleString('en-us', {day: 'numeric'}),
-        nth = ord[(day2 % 10) - 1] == undefined || expt.includes(day2 % 100) ? "th" : ord[(day2 % 10) - 1]
-    var post =  postdata[1].split("T"), hours = post[1].split(":"), pmam = "", t = "Posted ";
+    if(wn.hours>12){
+        wn.hours=wn.hours- 12; pm="pm"}
+    else{
+        pm="am"}
 
-    if(hours[0]>12){hours[0]=hours[0]- 12;pmam="pm";}else{pmam="am"}
-    if(days < 14) {
-        if (days === 0) { t += "earlier today"
-        } else if (days < 14 && days !== 7) { t += "on" }
-        if (days > 0 && days !== 7) { t += " " + day1 + " "}
-        if (days > 7) {t += "last week"}
-        if (week !== 1) {t += " at " + post[1] + pmam
-        } else if (days < 7) {t += " the " + day2 + nth}
-    } else if (mnths < 3 && days > 13) {t += week + " weeks"
-    } else if (yrs < 1){t += mnths + " months"
-    } else {t+=yrs+" year"; if(yrs > 1){t+="s"}
-        t+= ", " + (mnths - (parseInt(mnths / 10, 12) * 10)) + " months"}
-    if(days > 13){t += " ago"}
-    return '<a class="timestamp">' + t + '</a>';
-}
+    if(wn.days<14){
+        if(wn.days===0){
+            t+="earlier today"}
+        else if(wn.days<14&&wn.days!==7){
+            t+="on"}
+        if(wn.days>0&&wn.days!==7){
+            t+=" "+wn.daylong+" "}
+        if(wn.days>7){
+            t+="last week"}
+        if(wn.weeks!==1){
+            t+=" at "+wn.hours+":"+wn.mins+pm}
+        else if(wn.days<7){
+            t+=" the "+wn.dayshort+wn.nth}}
+    else if(wn.mnths<3&&wn.days>13 && wn.yrs<1){
+        t+=wn.weeks+" weeks"}
+    else if(wn.yrs<1){
+        t+=wn.mnths+" months"}
+    else{
+        t+=wn.yrs+" year";
+        if(wn.yrs>1){
+            t+="s"}
+        t+=", "+wn.mnths+" months"}
+    if(wn.days>13){
+        t+=" ago"}
+    return '<a class="timestamp">'+t+'</a>'}
 
 function dateposted(data) {
-    var postdata = data.split("<meta>"), date = new Date(postdata[1]),
-        diff = Math.floor(new Date().getTime() - date.getTime()), daycheck,
-        day2 = date.toLocaleString('en-us', {day: 'numeric'}),
-        year = date.toLocaleString('en-us', {year: 'numeric'}),
-        nth = ord[(day2 % 10) - 1] == undefined || expt.includes(day2 % 100) ? "th" : ord[(day2 % 10) - 1]
+    let when = timeget(data), dc;
+    if(Math.floor(when.diff/when.days)<14){
+        dc = when.monthlong}
+    else{
+        dc = when.daylong+", "+when.monthshort}
 
-    if(Math.floor(diff/day)<14){ daycheck = date.toLocaleString('en-us',{month:'long'})
-    }else{daycheck = date.toLocaleString('en-us',{weekday:'long'})+", "+date.toLocaleString('en-us',{month:'short'})}
-
-    return '<a class="dateposted">'+daycheck+" "+day2+nth+" "+year+'</a><br>'
-}
+    return '<a class="dateposted">'+dc+" "+when.dayshort+when.nth+" "+when.year+'</a>'}
 
 function when(data) {
-    var postdata = data.split("<meta>"), date = new Date(postdata[1]), newpost = "";
-    if(Math.floor(Math.floor(new Date().getTime() - date.getTime())/(1000 * 60 * 60 * 24)) <= 7){
-        newpost = '<div class="new-post"></div>'}
-    return newpost
-}
+    if(Math.floor(Math.floor(new Date().getTime() - new Date(data).getTime())/(1000 * 60 * 60 * 24)) <= 7){
+        return '<div class="new-post"></div>'}
+    else{
+        return ""}}
 
-//function escapeRegExp(string){return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");}
-//function replaceAll(str, term, replacement) {return str.replace(new RegExp(escapeRegExp(term), 'g'), replacement)}
-
+function escapeRegExp(string){
+    return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");}
+function replaceAll(str, term, replacement) {
+    return str.replace(new RegExp(escapeRegExp(term), 'g'), replacement)}
 //put this in the loadpost elements
 //data = replaceAll(data, '/posts/img/', 'https://raw.githubusercontent.com/TheaVanherst/VanH/og-backup/posts/img/')
 
+var pt=15 //the amount of docs to check through
+//this shouldn't be here, but i can't be bothered to come up with a better system
+//that doesn't include shoving all of my thoughts into one singular document.
+
 function loadpostelement(){
-    $.get(("/posts/p"+post+".txt"),function(data){
+    $.get(("/blog/posts/p"+pt+".txt"),function(data){
         var postmt = data.split("<meta>");
-        $('<article id=post'+post+'>'+
+        $('<article id=post'+pt+'>'+
             '<div class="when">'+
-                when(data) +
-                dateposted(data) +
-                postedwhen(data) + '</div>'+
+                when(postmt[1]) +
+                dateposted(postmt[1]) + '<br>' +
+                postedwhen(postmt[1]) + '</div>'+
             postmt[2] +
             '<div class="when footer">'+
                 '<a class="vimage"></a>'+
@@ -71,29 +103,46 @@ function loadpostelement(){
                     '<a class="postedby">vanherst</a>'+
                 '</div>' +
             '</div>' +
-        '</article>').appendTo("#posts")
-    })
-    .done(function() {post--;
-        if(post>0){loadpostelement()}})
+        '</article>').appendTo("#posts")})
+    .done(function(){
+        if(pt>0){pt--;
+            loadpostelement()}})}
+
+var at, pd, currentpost;
+
+$(".pg.pg0").ready(function(){ //this needs rewriting
+    $.get(("/artelements.html"),function(data) {
+        pd = data.split("///");
+        currentpost = pd.length;
+        artgeneration()})
+})
+
+//artmt[4]
+function artgeneration(){
+    if(currentpost > 0){
+        currentpost--
+        if($('#arts0').outerHeight() > $('#arts1').outerHeight()){
+            at = "1"}
+        else{
+            at = "0"}
+
+        var data = pd[currentpost].split("<>"), pt;
+
+        if (data[3]!==""){
+            pt='<a>'+data[3]+'</a>'}
+        else{
+            pt=" "}
+
+        var afd=
+            $('<article id=art'+currentpost+'>'+
+                data[2]+
+                '<div class="when">'+
+                    pt+dateposted(data[1])+
+                '</div></article>')
+            $("#arts" + at).append(afd)
+
+        $('#art'+currentpost).imagesLoaded( function() {
+            artgeneration()})
+    }
 }
 
-function loadartelement(){
-    $.get(("/posts/a"+art+".txt"),function(data){
-        var artmt = data.split("<meta>");
-        $('<article id=art'+art+'>'+
-            '<div class="when">'+ when(data) +
-                '<a class="dateposted">'+dateposted(data)+'</a><br>'+
-                '<a class="timestamp">'+postedwhen(data)+'</a>'+
-            '</div>'+ artmt[2] +
-            '<div class="when footer">'+
-                '<a class="vimage"></a>'+
-                '<div class="imcon">posted by<br>'+
-                    '<a class="postedby">vanherst</a>'+
-                '</div>' +
-            '</div>' +
-        '</article>').appendTo("#arts")
-    })
-    .done(function() {art--;
-        if(art>0){loadartelement()}
-    })
-}

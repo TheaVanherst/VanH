@@ -1,5 +1,3 @@
-var concurrent=1,pgsd=[0,0,0,0,0,0,0]; //
-
 $(document).ready(function(){
     for(let i=0;i<6;i++){
         $('.i'+i).css({'background-image':"url('/Website assets/icons/sm"+i+".png')"})}

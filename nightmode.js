@@ -1,6 +1,6 @@
-var dmc=["#8364fd","#e662ff","#fd963b","#3aecb4","#ff4fc7","#737475","#ff8ef4","#7285fe","#787878","#f4f4f4","#ffffff","#8781bd","#d8d5d5","#e3e3e3","1","0.6"], //brightmode colours
-    nmc=["#7246ee","#e644ae","#ffb533","#00d893","#ff7498","#383c44","#ff8ef4","#7285fe","#787878","#21252b","#191e23","#534b71","#21252b","#292c31","0.4","1"], //nightmode colours
-    ml=["accent1","accent2","accent3","accent4","accent5","invaccent","links","titles","text","background","posts","artposts","borders","postback","defopacity","fadeto"], //root var arr
+var dmc=["#8364fd","#e662ff","#fd963b","#3aecb4","#ff4fc7","#737475","#ff8ef4","#7285fe","#787878","#f4f4f4","#ffffff","#8781bd","#d8d5d5","#e3e3e3","1","0.6","1"], //brightmode colours
+    nmc=["#7246ee","#e644ae","#ffb533","#00d893","#ff7498","#383c44","#ff8ef4","#7285fe","#787878","#21252b","#191e23","#534b71","#21252b","#292c31","0.4","1","0"], //nightmode colours
+    ml=["accent1","accent2","accent3","accent4","accent5","invaccent","links","titles","text","background","posts","artposts","borders","postback","defopacity","fadeto","logoinv"], //root var arr
     nm,cm,dr,bm=["block","none"];
 
 function nightmode(){

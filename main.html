@@ -2,24 +2,25 @@
     <head>
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
         <meta content="utf-8" http-equiv="encoding">
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-        <script async src="https://platform.twitter.com/widgets.js"></script>
+        <script type="text/javascript" src="/libaries/twitterwidget.js"></script>
+        <script type="text/javascript" src="/libaries/localisedtwitter.js"></script>
+        <!-- jquery scripts -->
+        <script type="text/javascript" src="/libaries/jquerymin.js"></script>
+        <script type="text/javascript" src="/libaries/jqueryui.js"></script>
         <!-- colour css -->
         <link rel="stylesheet" href="cosmetic.css"> <!-- colour css -->
         <script type="text/javascript" src="nightmode.js"></script> <!-- page turning scripts -->
-
+        <!-- main page formatting -->
         <link rel="stylesheet" href="style.css"> <!-- general page formatting -->
         <link rel="stylesheet" href="pages.css"> <!-- page formatting -->
-
+        <!-- font styling -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600&display=swap" rel="stylesheet"> <!-- SLIM FONT -->
         <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap" rel="stylesheet"> <!-- SLIM FONT -->
         <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@800&display=swap" rel="stylesheet"> <!-- BOLD FONT -->
         <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet"> <!-- GERMANIC FONT -->
-
+        <!-- page scaling -->
         <script type="text/javascript" src="scaler.js"></script> <!-- page scaling scripts -->
         <script type="text/javascript" src="postelems.js"></script> <!-- page scaling scripts -->
 
@@ -57,20 +58,10 @@
 
             <div class="pg pg0">
                 <fullwc>
-
-                    <section>
-                        <div id="arts"></div>
-                        <div class="load-more"><p></p></div>
-                    </section>
-
-                    <siders>
-                        <div class="tii">
-                            <div></div>
-                            <p>25/08/2021, By <a href="https://twitter.com/JelqerLysenko">@JelqerLysenko</a><br>
-                                <t>1808 Austrian Officer; Petra</t></p>
-                            <img id="sc1"/></div>
-                    </siders>
-
+                    <incont>
+                        <w2x1 id="arts0"></w2x1>
+                        <w2x1 id="arts1"></w2x1>
+                    </incont>
                 </fullwc>
             </div>
 
@@ -277,8 +268,9 @@
                     </siderm>
                 </fullwc>
             </div>
-        </div>
+        </w3x3>
     </body>
 
+    <script type="text/javascript" src="/libaries/imagesloaded.js"></script> <!-- needed for the art element loading -->
     <script type="text/javascript" src="pagescripts.js"></script> <!-- page turning scripts -->
     <script type="text/javascript" src="pageflip.js"></script> <!-- page scripts -->
