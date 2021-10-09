@@ -9,7 +9,6 @@
     --logobck: url('/Website%20assets/logobck.png');
 
     --banner: url('/Website%20assets/banner.png');
-    --pfp: url('/Website%20assets/imgs/pfp.gif');
 
     --defopacity: 1; --fadeto: 0.6;
     --borderrad: 6px; --skirting: 6px;
@@ -155,7 +154,6 @@ body {background:var(--background)}
 
 .pg3 incont, .pg2 incont{background-color: var(--postback)}
 
-.vimage {background-image:var(--pfp)}
 #hdr {background-image:var(--banner)}
 
 .logo-f.lo0 {background-image: var(--logonm)}

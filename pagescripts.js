@@ -1,4 +1,4 @@
-var concurrent=1,pgsd=[0,0,0,0,0,0,0]; //
+var cct=1,pgsd=[0,0,0,0,0,0,0]; //
 var righb = 350, leftb = 250, middb = 500, //these are root vars numbers from style.css
     bod = $('body').width(),
     page3 = bod - (bod - (righb + middb + leftb)),
@@ -11,14 +11,14 @@ $(document).ready(function() {
         $(".nmb, #top-nav, #side, .pg0 siders").addClass("active");
         $(".pg").removeClass("active")}
 
-    $('#pfp').attr('src',"/Website Assets/imgs/pfp.gif");
+    $('#pfp').attr('src',"/Website Assets/pfp.gif");
     $('#sc1').attr('src',"/Website Assets/imgs/ams1.png")
 })
 
-var arthover = function () {
+var arthover = function (e) {
     $('#hover-element').remove(); $('#side').css("z-index","99")
 
-    var target = $('.pageful #' + event.target.id);
+    var target = $('.pageful #' + e.target.id);
     $('div.zoom').css({"opacity":"1"})
     target.clone(true, true).insertAfter(target);
     $(target).attr("id", "hover-element");
@@ -87,66 +87,4 @@ $(document).ready(function(){
                 'background-image':"url('/Website assets/imgs/d"+i+"."+frt[ap3[i]]+"')"})
             .parent().css({'height':pgdh[i]+"px"})
     }
-})
-
-var pos1, pos2, clicking = false;
-
-$(window).mouseup(function(e){
-    clicking = false //latch gate for the movement checker.
-    pos2 = e.pageX; //this is needed, otherwise it runs through the mouse move data and changes page every time you click off center.
-    let i = concurrent; //placement replacer because no "i" int is generated otherwise, unlike buttons.
-
-    $(".pg").css("pointer-events","")
-    //Compares before and after mouse release to check position values, then compares them
-    if(pos1 < pos2 && pos1-pos2 < (((middb*2)+righb+40)*-1)/5){
-        i+=Math.floor((pos1-pos2)/((middb*2)+righb+40))} //limits to the left hand side to the closest negative.
-    else if (pos1 > pos2 && pos1-pos2 > (((middb*2)+righb+40)*1)/5){
-        i+=Math.ceil((pos1-pos2)/((middb*2)+righb+40))}  //limits to the right hand side to the closest positive
-
-    if(i>pgsd.length-1){
-        i=pgsd.length-1}
-    else if(i<0){
-        i=0} //limits page location
-
-    if(concurrent !== i){ //checks if button clicked is different than the active button
-        $(".pg.pg"+concurrent+", .pg.pg"+i).toggleClass("pageful") //removes class from concurrent page + adds it to newly active page
-        $(".ls.pg"+concurrent+", .ls.pg"+i).toggleClass("button-focus") //removes class from concurrent button + adds it to newly active button
-
-        var tran = (Math.abs(i-concurrent)/20) + .3 + "s" //transition data based on difference with a multiplier
-        $(".pg").css({"transition": //adds transitions for initial movement.
-                "left "+tran+" cubic-bezier(0,0,0,1), " +
-                "margin "+tran+" cubic-bezier(0,0,0,1), " +
-                "opacity "+tran+" cubic-bezier(0,0,0,1)"})
-        $(".pg").css("left","0") // transitions to the default left position, gained from the mousemove function.
-
-        pgsd[concurrent] = $(document).scrollTop() //sets scroll height to array of current page
-        concurrent = i; //updates i as the new active page
-        $('html, body').animate({scrollTop:pgsd[i]},0)  //adds page transition
-
-        for(var e = 0; e < pgsd.length; e++){ //loops through all pages and updates positional data
-            docelem.style.setProperty('--page'+e,e-i) //root data for page position multipliers
-            if(e < i){ //checks if page is to the left of the current active page
-                var temp = "calc(((var(--postwidth) + var(--sidebarr)) + 40px) * (var(--page"+e+")) - (var(--sidebarl) + 20px))"
-            }else{ //checks if page location is to the right of the current active page
-                var temp = "calc(((var(--postwidth) + var(--sidebarr)) + 40px) * (var(--page"+e+")))"}
-            $(".pg.pg"+e).css("margin-left",temp)} //updates page position
-
-    } else {
-        $(".pg").css({"transition":"left 1s cubic-bezier(0,0,0,1), margin 1s cubic-bezier(0,0,0,1)", "left":"0"})}
-})
-
-$(window).mousedown(function(e){
-    $(".pg.pg"+concurrent).css("pointer-events","none")
-    clicking = true; //latch gate for the movement checker.
-    pos1 = e.pageX
-}) //sets pos 1 on initial mousedown
-
-$(window).mousemove(function(e){
-    var opc
-    if(clicking){ //checks if mouse is currently being held down
-        pos2 = e.pageX //sets pos 2 while holding down the mouse
-        opc = ((middb*2)+righb+40)/(((middb*2)+righb+40)-(Math.abs(pos2-pos1)* -1))
-
-        $(".pg").css({"left":pos2-pos1})
-        $(".pageful").css("opacity",opc)} //idk why this doesn't work
 })

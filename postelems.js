@@ -82,51 +82,60 @@ function escapeRegExp(string){
 function replaceAll(str, term, replacement) {
     return str.replace(new RegExp(escapeRegExp(term), 'g'), replacement)}
 //put this in the loadpost elements
-//data = replaceAll(data, '/posts/img/', 'https://raw.githubusercontent.com/TheaVanherst/VanH/og-backup/posts/img/')
+//$.get(("https://raw.githubusercontent.com/TheaVanherst/VanH/og-backup/blog/posts/p"+(article)+".txt"), function(data){
+//    data = replaceAll(data, '/blog/img/', 'https://raw.githubusercontent.com/TheaVanherst/VanH/og-backup/blog/img/')
 
 var pt=15 //the amount of docs to check through
 //this shouldn't be here, but i can't be bothered to come up with a better system
 //that doesn't include shoving all of my thoughts into one singular document.
 
 function loadpostelement(){
-    $.get(("/blog/posts/p"+pt+".txt"),function(data){
-        var postmt = data.split("<meta>");
-        $('<article id=post'+pt+'>'+
-            '<div class="when">'+
+    if(pt > 0) {
+        $.get(("/blog/posts/p" + pt + ".txt"), function (data) {
+            var postmt = data.split("<meta>");
+            $('<article id=post' + pt + '>' +
+                '<div class="when">' +
                 when(postmt[1]) +
                 dateposted(postmt[1]) + '<br>' +
-                postedwhen(postmt[1]) + '</div>'+
-            postmt[2] +
-            '<div class="when footer">'+
-                '<a class="vimage"></a>'+
-                    '<div class="imcon">posted by<br>'+
-                    '<a class="postedby">vanherst</a>'+
+                postedwhen(postmt[1]) + '</div>' +
+                postmt[2] +
+                '<div class="when footer">' +
+                '<a class="vimage"></a>' +
+                '<div class="imcon">posted by<br>' +
+                '<a class="postedby">vanherst</a>' +
                 '</div>' +
-            '</div>' +
-        '</article>').appendTo("#posts")})
-    .done(function(){
-        if(pt>0){pt--;
-            loadpostelement()}})}
+                '</div>' +
+                '</article>').appendTo("#posts")
+        })
+        .done(function () {
+            if (pt > 0) {
+                pt--;
+                loadpostelement()
+            }
+        })
+    }
+}
 
-var at, pd, currentpost;
+var at, pd, cp;
 
 $(".pg.pg0").ready(function(){ //this needs rewriting
     $.get(("/artelements.html"),function(data) {
         pd = data.split("///");
-        currentpost = pd.length;
-        artgeneration()})
+        cp = pd.length;
+        artgeneration()
+    })
 })
 
 //artmt[4]
 function artgeneration(){
-    if(currentpost > 0){
-        currentpost--
+    if(cp > 0){
+        cp--
         if($('#arts0').outerHeight() > $('#arts1').outerHeight()){
             at = "1"}
         else{
             at = "0"}
 
-        var data = pd[currentpost].split("<>"), pt;
+        var data = pd[cp].split("<>"), pt;
 
         if (data[3]!==""){
             pt='<a>'+data[3]+'</a>'}
@@ -134,14 +143,14 @@ function artgeneration(){
             pt=" "}
 
         var afd=
-            $('<article id=art'+currentpost+'>'+
+            $('<article id=art'+cp+'>'+
                 data[2]+
                 '<div class="when">'+
                     pt+dateposted(data[1])+
                 '</div></article>')
             $("#arts" + at).append(afd)
 
-        $('#art'+currentpost).imagesLoaded( function() {
+        $('#art'+cp).imagesLoaded( function() {
             artgeneration()})
     }
 }

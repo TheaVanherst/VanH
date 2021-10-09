@@ -55,8 +55,12 @@ sidels,siders{width:var(--sidebarr)}
 
 .pg{width:calc(var(--sidebarl) + var(--postwidth) + var(--sidebarr) + (var(--gutter) * 3));
     cursor:pointer; position:absolute; opacity: 0; z-index: 1; display:inline-block}
+
 .pg.active{ opacity:0.25}
-.pageful { opacity: 1!important; z-index: 2!important; cursor:auto!important}
+.pg.active > * {overflow:hidden} /*this fixes scrolling when the cursor is over a non-focused page.*/
+.pg.active.pageful > * {overflow:auto} /*this defaults scrolling back to normal on a focused page.*/
+
+.pg.active.pageful {opacity: 1; z-index: 2!important; cursor:auto!important}
 
 .divider {margin-bottom:15px}
 
