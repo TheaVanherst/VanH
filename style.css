@@ -60,7 +60,9 @@ sidels,siders{width:var(--sidebarr)}
 .pg.active > * {overflow:hidden} /*this fixes scrolling when the cursor is over a non-focused page.*/
 .pg.active.pageful > * {overflow:auto} /*this defaults scrolling back to normal on a focused page.*/
 
-.pg.active.pageful {opacity: 1; z-index: 2!important; cursor:auto!important}
+/*Page placement and layering fixes*/
+.pg.active.pageful {opacity:1; z-index: 2!important; cursor:auto!important} /*desktop devices*/
+.pageful{opacity:1} /*For mobile devices*/
 
 .divider {margin-bottom:15px}
 

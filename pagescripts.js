@@ -7,7 +7,7 @@ var righb = 350, leftb = 250, middb = 500, //these are root vars numbers from st
 $(document).ready(resize); $(window).on("load resize", resize)
 
 $(document).ready(function() {
-    if (/Mobi|Android/i.test(navigator.userAgent) === true) {
+    if (mbl) {
         $(".nmb, #top-nav, #side, .pg0 siders").addClass("active");
         $(".pg").removeClass("active")}
 
@@ -16,7 +16,7 @@ $(document).ready(function() {
 })
 
 var arthover = function (e) {
-    $('#hover-element').remove(); $('#side').css("z-index","99")
+    $('#hover-element').remove(); $('#side').css({"z-index":"99"})
 
     var target = $('.pageful #' + e.target.id);
     $('div.zoom').css({"opacity":"1"})
@@ -88,3 +88,15 @@ $(document).ready(function(){
             .parent().css({'height':pgdh[i]+"px"})
     }
 })
+
+
+$('.pg1 section').scroll(function() {
+    var scrl = 100 * ($('.pg1 section').scrollTop() / ($('#posts').height() - $('.pg1 section').height()));
+    $(document).scrollTop((scrl * ($(document).height() / 100)))
+});
+
+$('.pg0 incont').scroll(function() {
+    var scrl = 100 * ($('.pg0 incont').scrollTop() / ($('#posts').height() - $('.pg0 incont').height()));
+    $(document).scrollTop((scrl * ($(document).height() / 100)))
+});
+

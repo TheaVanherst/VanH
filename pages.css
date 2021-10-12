@@ -1,10 +1,10 @@
-section { overflow-y:scroll; overflow-x:hidden;
-    height:5030px; width:calc(var(--postwidth) + (var(--gutter)/2) - var(--skirting));
+section { overflow-y:scroll; overflow-x:hidden; height: 5030px;
+    width:calc(var(--postwidth) + (var(--gutter)/2) - var(--skirting));
     display:inline-block; padding: calc(var(--skirting)/2);
     -ms-overflow-style: none; scrollbar-width: none}
 
-article .when {
-    padding:13px 17px 13px}
+article .when { overflow:hidden;
+    white-space: nowrap; padding:13px 17px 13px}
 
 article{margin-bottom: var(--gutter)}
 article:last-of-type{margin-bottom:0!important;}
@@ -15,10 +15,10 @@ article iframe {border:0}
 article .footer {padding:14px 17px 10px} /* container that holds .time, and .d */
 .imcon {margin-top: -4px;}
 
-.row { margin:0!important;
+.row, .triple { margin:0!important;
     display: flex; overflow: hidden}
-.row > *:first-child {width:calc(50% - 1px)} /* this fixes the gap between images to be 1 pixel wide, apposed to 2. */
-.row > *:last-child {width:calc(50%)} /* this fixes the gap between images to be 1 pixel wide, apposed to 2. */
+.row > * {width:50%} /* this fixes the gap between images to be 1 pixel wide, apposed to 2. */
+.triple > * {width:33.3%}
 
 .row img {height: auto}
 .row > * figure img { position:absolute;
@@ -26,10 +26,9 @@ article .footer {padding:14px 17px 10px} /* container that holds .time, and .d *
 .row > * figure {position: relative;
     padding-bottom: 100%; text-align: left}
 
-#hover-element { -webkit-filter: drop-shadow(7px 7px 7px rgba(0, 0, 0, 0.3));
-    filter: drop-shadow(7px 7px 7px rgba(0, 0, 0, 0.5)); opacity:1!important;
+#hover-element { -webkit-filter: drop-shadow(7px 7px 7px rgba(0, 0, 0, 0.3)); opacity:1!important;
     position:absolute; white-space: nowrap; z-index:99; filter: blur(0)!important;
-    background-color: transparent; background-size: contain;}
+    background-color: transparent; background-size: contain}
 
 /* ===================================== */
 /* PAGE 0 */
@@ -89,8 +88,7 @@ article ol {padding:0 15px 0 35px}
     margin:-2px 13px 0 -2px;
     background-size:100% 100%}
 
-#twitter{
-    height: 5030px; overflow: hidden;
+#twitter{ height: 5030px; overflow: hidden;
     padding: calc(var(--skirting)/2)}
 
 /* This stuff is important but i want it out the way */

@@ -1,5 +1,3 @@
-$(".pg.pg1").ready(function(){
-    loadpostelement()})
 
 function timeget(data) {
     let date = new Date(data);
@@ -85,9 +83,12 @@ function replaceAll(str, term, replacement) {
 //$.get(("https://raw.githubusercontent.com/TheaVanherst/VanH/og-backup/blog/posts/p"+(article)+".txt"), function(data){
 //    data = replaceAll(data, '/blog/img/', 'https://raw.githubusercontent.com/TheaVanherst/VanH/og-backup/blog/img/')
 
-var pt=15 //the amount of docs to check through
+//the amount of docs to check through
 //this shouldn't be here, but i can't be bothered to come up with a better system
 //that doesn't include shoving all of my thoughts into one singular document.
+var pt=15
+$(".pg.pg1").ready(function(){
+    loadpostelement()})
 
 function loadpostelement(){
     if(pt > 0) {
@@ -108,16 +109,13 @@ function loadpostelement(){
                 '</article>').appendTo("#posts")
         })
         .done(function () {
-            if (pt > 0) {
-                pt--;
-                loadpostelement()
-            }
+            if (pt > 0) { pt--;
+                loadpostelement()}
         })
     }
 }
 
 var at, pd, cp;
-
 $(".pg.pg0").ready(function(){ //this needs rewriting
     $.get(("/artelements.html"),function(data) {
         pd = data.split("///");

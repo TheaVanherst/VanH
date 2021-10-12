@@ -221,6 +221,8 @@ section .load-more:hover p {background-color:var(--accent2)}
 a {border-color:var(--accent3);}
 
 .row > *:first-child {border-right:1px solid var(--borders)}
+.triple > *:not(:last-child) {border-right:1px solid var(--borders)}
+
 .divider {border-top:1px solid var(--borders)}
 .footer {border-top:1px solid var(--borders)}
 

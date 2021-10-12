@@ -4,7 +4,7 @@ $(document).ready(function(){
 
     for(let i=0;i<pgsd.length;i++){
 
-        if (/Mobi|Android/i.test(navigator.userAgent)){
+        if (mbl){
             $('.pg'+i).children().on('click',function(){
                 if(cct!=i){ //checks if button clicked is different than the active button
                     $('.pg.pg'+cct).toggleClass("pageful") //removes the page focus class from current page
@@ -67,23 +67,26 @@ $(document).ready(function(){
     console.log("Page binding complete.")
 });
 
-var x1, x2, clicking = false;
+var x1, x2, pw, clicking = false;
 $(window).mouseup(function(e){
-    if(clicking == true){
+    if(clicking && !mbl){
         x2 = e.pageX; //this is needed, otherwise it runs through the mouse move data and changes page every time you click off center.
-        let i = cct; //placement replacer because no "i" int is generated otherwise, unlike buttons.
+        var i = cct, //placement replacer because no "i" int is generated otherwise, unlike buttons.
+            prf = x1 - x2; //sets pos 2 while holding down the mouse
 
         setTimeout(function(){$(".pg.pg"+i).css("pointer-events","")},500) //this reenables page clickability when no longer being held
         $("#side").css("z-index","99")
 
         //Compares before and after mouse release to check position values, then compares them
-        if(x1<x2 && x1-x2 < (((middb+righb+40)+leftb)*-1)/5){
-            i+=Math.floor((x1-x2)/((middb+righb+40)+leftb))} //limits to the left hand side to the closest negative.
-        else if (x1>x2 && x1-x2 > righb){
-            i+=Math.ceil((x1-x2)/((middb+righb+40)+leftb))} //limits to the right hand side to the closest positive
+        if(x1<x2 && prf < (pw * -1)/ 5){
+            i+=Math.floor(prf / pw)} //limits to the left hand side to the closest negative.
+        else if (x1>x2 && prf > righb){
+            i+=Math.ceil(prf/ pw)} //limits to the right hand side to the closest positive
 
-        if(i>pgsd.length-1){i=pgsd.length-1}
-        else if(i<0){i=0} //limits page location
+        if(i>pgsd.length-1){
+            i=pgsd.length-1}
+        else if(i<0){
+            i=0} //limits page location
 
         if(cct !== i){ //checks if button clicked is different than the active button
             $(".pg.pg"+cct+", .pg.pg"+i).toggleClass("pageful") //removes class from concurrent page + adds it to newly active page
@@ -91,23 +94,26 @@ $(window).mouseup(function(e){
 
             $(".pg.pg"+i).css("opacity","1")
 
-            var tran = (Math.abs(i-cct)/20) + .3 + "s" //transition data based on difference with a multiplier
+            var tran = (Math.abs(i-cct)/ 20) + .3 + "s" //transition data based on difference with a multiplier
+            console.log("tran DEBUG; ", tran)
             $(".pg").css({"transition": //adds transitions for initial movement.
-                    "left "+tran+" cubic-bezier(0,0,0,1), " +
-                    "margin "+tran+" cubic-bezier(0,0,0,1), " +
-                    "opacity "+tran+" cubic-bezier(0,0,0,1)"})
+                    "left " + tran + " cubic-bezier(0,0,0,1), " +
+                    "margin " + tran + " cubic-bezier(0,0,0,1), " +
+                    "opacity " + tran + " cubic-bezier(0,0,0,1)"})
             $(".pg").css("left","0") // transitions to the default left position, gained from the mousemove function.
 
             pgsd[cct] = $(document).scrollTop() //sets scroll height to array of current page
             cct = i; //updates i as the new active page
             $('html, body').animate({scrollTop:pgsd[i]},0)  //adds page transition
         } else {
-            $(".pg.pg"+i).css("opacity","1")
-            $(".pg").css({"transition":
-                    "left 1.5s cubic-bezier(0,0,0,1), " +
-                    "margin 1s cubic-bezier(0,0,0,1)," +
-                    "opacity 1s cubic-bezier(0,0,0,1)",
-                "left":"0"})}
+            tran = "0.3s"
+            $(".pg").css({
+                "transition": //adds transitions for initial movement.
+                    "left " + tran + " cubic-bezier(0,0,0,1), " +
+                    "margin " + tran + " cubic-bezier(0,0,0,1), " +
+                    "opacity " + tran + " cubic-bezier(0,0,0,1)"})
+            $(".pg").css("left", "0") // transitions to the default left position, gained from the mousemove function.
+        }
 
         for(var e = 0; e < pgsd.length; e++){ //loops through all pages and updates positional data
             docelem.style.setProperty('--page'+e,e-i) //root data for page position multipliers
@@ -115,42 +121,58 @@ $(window).mouseup(function(e){
                 var temp = "calc(((var(--postwidth) + var(--sidebarr)) + 40px) * (var(--page"+e+")) - (var(--sidebarl) + 20px))"
             }else{ //checks if page location is to the right of the current active page
                 var temp = "calc(((var(--postwidth) + var(--sidebarr)) + 40px) * (var(--page"+e+")))"}
-            $(".pg.pg"+e).css("margin-left",temp)} //updates page position
+            $(".pg.pg"+e).css("margin-left",temp)//updates page position
+        }
+        clicking = false //latch gate for the movement checker.
     }
-    clicking = false //latch gate for the movement checker.
 })
 
 $(window).mousedown(function(e){
-    $(".pg.pg"+cct).css("pointer-events","none")
-    clicking = true; //latch gate for the movement checker.
-    x1 = e.pageX //sets pos 1 on initial mousedown
+    if(!mbl){
+        clicking = true; //latch gate for the movement checker.
+        $(".pg.pg" + cct).css("pointer-events", "none")
+        pw = middb + righb + 40 + leftb; //page width precalc for efficency on mouse move
+        x1 = e.pageX //sets pos 1 on initial mousedown
+
+        $(".pg").css({ "transition": //adds transitions for initial movement.
+            "left 0.05s cubic-bezier(0,0,0,1), " +
+            "margin 0.5s cubic-bezier(0,0,0,1), " +
+            "opacity 0.2s cubic-bezier(0,0,0,1)"
+        })
+    }
 })
 
 $(window).mousemove(function(e){
-    var opc, g = cct;
+    var g = cct;
 
-    if(clicking){ //checks if mouse is currently being held down
-        x2 = e.pageX //sets pos 2 while holding down the mouse
-        opc = 1-Math.abs(((middb*2)+righb+40)/(((middb*2)+righb+40)-(Math.abs(x2-x1)*-1)))+0.6 //calculates page opacity based on position
-        $(".pg").css({"left":x2-x1}) //enables dynamic page dragging
+    if(clicking && !mbl){ //checks if mouse is currently being held down
+        x2 = e.pageX;
+        var prf = x1 - x2 //sets pos 2 while holding down the mouse
 
+        $(".pg").css({"left": x2 - x1}) //enables dynamic page dragging
+        $('html').css('cursor', 'row-resize');
         //Compares before and after mouse release to check position values, then compares them
-        if(x1<x2 && x1-x2 < (((middb+righb+40)+leftb)*-1)/5){
-            g+=Math.floor((x1-x2)/((middb+righb+40)+leftb))} //limits to the left hand side to the closest negative.
-        else if (x1>x2 && x1-x2 > righb){
-            g+=Math.ceil((x1-x2)/((middb+righb+40)+leftb))} //limits to the right hand side to the closest positive
+        if(x1 < x2 && prf < (pw * -1)/ 5){
+            g += Math.floor(prf / pw)} //limits to the left hand side to the closest negative.
+        else if (x1>x2 && prf > righb){
+            g += Math.ceil(prf / pw)} //limits to the right hand side to the closest positive
+
+        //page rubber banding to prevent going on a none-existant page.
+        if(g > pgsd.length - 1){
+            g = pgsd.length - 1}
+        else if(g < 0){
+            g = 0} //limits page location
 
         for(var e = 0; e < pgsd.length; e++){
-            if(cct!==g){$(".pg.pg"+g).css("opacity",opc)} //focuses page opacity when hovered near
-            if(cct==g){$(".pg.pg"+g).css("opacity","1")}
-            $(".pg.pg"+e).css("opacity","0.6") //fades all other pages other than dragged focused
+            $(".pg.pg"+g).css("opacity","1")
+            $(".pg.pg"+e).css("opacity","0.25") //fades all other pages other than dragged focused
 
             var np;
             if(e < g){ //checks if page is to the left of the current active page
-                np = "calc(((var(--postwidth) + var(--sidebarr)) + 40px) * (var(--page"+e+")) - (var(--sidebarl) + 20px))"
+                np = "calc(((var(--postwidth) + var(--sidebarr)) + 40px) * (var(--page" + e + ")) - (var(--sidebarl) + 20px))"
             }else{ //checks if page location is to the right of the current active page
-                np = "calc(((var(--postwidth) + var(--sidebarr)) + 40px) * (var(--page"+e+")))"}
-            $(".pg.pg"+e).css("margin-left",np)} //updates page position
+                np = "calc(((var(--postwidth) + var(--sidebarr)) + 40px) * (var(--page" + e + ")))"}
+            $(".pg.pg"+e).css("margin-left", np)} //updates page position
         $("#side").css("z-index","9999")
     }
 })
