@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 function nightmode(){
     nm=!nm;
-    document.cookie="lightmode="+nm+";"+"SameSite=None; Secure; expires=Fri, 31 Dec 9999 23:59:59 GMT"
+    document.cookie="lightmode="+nm+"; expires=Fri, 31 Dec 9999 23:59:59 GMT; SameSite=Strict;"
 
     dr=[(nm?0:1),(!nm?0:1)];
     if(nm==true){cm=dmc; $('#twitter').attr("data-theme","dark")

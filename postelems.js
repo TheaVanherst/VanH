@@ -109,8 +109,10 @@ function loadpostelement(){
                 '</article>').appendTo("#posts")
         })
         .done(function () {
-            if (pt > 0) { pt--;
-                loadpostelement()}
+            if (pt > 0) {
+                pt--;
+                loadpostelement()
+                PostsHeight = ($('#posts').height() / 100)}
         })
     }
 }

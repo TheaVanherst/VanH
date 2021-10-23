@@ -6,12 +6,11 @@
     --logobmhov: url('/Website%20assets/logobm.png');
     --logonm: url('/Website%20assets/logonmh.png');
     --logonmhov: url('/Website%20assets/logonm.png');
-    --logobck: url('/Website%20assets/logobck.png');
 
     --banner: url('/Website%20assets/banner.png');
 
     --defopacity: 1; --fadeto: 0.6;
-    --borderrad: 6px; --skirting: 6px;
+    --borderrad: 5px; --skirting: 5px;
     --tiny-fonts: 0.69em; --small-fonts: 0.80em;
     --mid-fonts: 1.00em; --large-fonts: 1.30em;
     --logoinv: 1;
@@ -56,16 +55,17 @@ section {font-size:var(--mid-fonts)}
 
 /* ===================================== */
 /* PAGE 0 */
-
 .pg0 article li{font-size:0}
 .pg0 article .when a {font-size: var(--tiny-fonts)}
 
 /* ===================================== */
 /* PAGE 1 */
+.when {line-height:14px}
+.timestamp {font-size:var(--small-fonts)}
+.dateposted {font-family:var(--boldstyle); text-transform:uppercase}
 
-article .when {line-height:14px}
-article .when .timestamp {font-size:var(--small-fonts)}
-article .when .dateposted {font-family:var(--boldstyle); text-transform:uppercase}
+.vimage {background-image:url('/Website Assets/pfp.gif')}
+.imcon {font-size:0.9em; line-height:1.3em}
 
 .new-post{font-size: var(--mid-fonts); letter-spacing: 1px; font-family: var(--boldstyle)}
 .new-post:after {content: 'NEW'; color:white}
@@ -160,7 +160,6 @@ body {background:var(--background)}
 .logo-f.lo1 {background-image: var(--logobm)}
 .logo.lo0 {background-image: var(--logonmhov)}
 .logo.lo1 {background-image: var(--logobmhov)}
-.logo-f.bck {background-image: var(--logobck)}
 
 .nmb {background-color:var(--accent1)}
 #side-nav div {background-color:var(--posts)}
@@ -226,7 +225,6 @@ a {border-color:var(--accent3);}
 .divider {border-top:1px solid var(--borders)}
 .footer {border-top:1px solid var(--borders)}
 
-.pg0 article .when {border-top: 1px solid var(--borders) !important}
 .pg0 article li > *:not(:first-child){border-top: 1px solid var(--borders) !important}
 
 /* ===================================== */
@@ -241,7 +239,7 @@ a {border-color:var(--accent3);}
 .wedge,.tii,.block,.vimage,.load-more p,.search,.new-post,.tii p, .tan p{
     border-radius:var(--borderrad); overflow: hidden}
 
-#side-nav,article,asidel,siders,.pg2 incont > *,.pg3 incont > div{
+article,siders,.pg2 incont > *,.pg3 incont > div{
     border-radius:var(--borderrad); overflow: hidden}
 incont, section {
     border-radius:calc(var(--borderrad) + (var(--skirting)/2)); overflow: hidden}
@@ -258,6 +256,10 @@ incont > * > p{
 /* ===================================== */
 /* TRANSITION DATA */
 /* ===================================== */
+
+body, body * {transition:
+        color .3s cubic-bezier(0,0,0,1),
+        background .3s cubic-bezier(0,0,0,1)}
 
 a{transition:
         color .2s cubic-bezier(0,0,0,1)}
@@ -284,6 +286,9 @@ a{transition:
 
 invert{transition: filter .2s cubic-bezier(0,0,0,1)}
 
+.pg1 #posts { transition: top .7s cubic-bezier(0,0,0,1)}
+w3x3.cont { transition: top .5s cubic-bezier(0,0,0,1)}
+
 incont > * > div.zoom {transition:
     opacity .5s cubic-bezier(0,0,0,1)}
 
@@ -292,10 +297,6 @@ incont > * > div.zoom {transition:
         background .2s cubic-bezier(0,0,0,1)}
 
 .w32 img {transition: all .2s}
-
-body, body * {transition:
-        color .3s cubic-bezier(0,0,0,1),
-        background .3s cubic-bezier(0,0,0,1)}
 
 /* ===================================== */
 /* ANIMATION DATA */

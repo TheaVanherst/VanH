@@ -1,4 +1,3 @@
-var cct=1,pgsd=[0,0,0,0,0,0,0]; //
 var righb = 350, leftb = 250, middb = 500, //these are root vars numbers from style.css
     bod = $('body').width(),
     page3 = bod - (bod - (righb + middb + leftb)),
@@ -46,23 +45,23 @@ $(function (){
         function(){$('#hdr, #bck').removeClass("hov")})
 })
 
-var frt = ["jpg","png","gif"];
-
 var buttontext = ["Archive","Blog","Artwork","Design","Animation","Workshop","Javascript"],
     buttoncolour = ["#1da1f2","#5265fa","#171a21","#ff0000","#ff5e5b","#738adb"],
     tv = "/TheaVanherst", buttonlinks = ["twitter.com"+tv,"discord.com/invite/zDJRaZvGmS","steamcommunity.com/id"+tv,
         "youtube.com/channel/UCqbZe2XMkd98nXu_dUlObKA","ko-fi.com"+tv,"github.com"+tv]
 
 $(document).ready(function(){
-    for(var i = 0; i<buttoncolour.length; i++){
+    for(var i = 0; i < buttoncolour.length; i++){
         $('<a target="_blank" href="https://'+buttonlinks[i]+'"><div class="wdt i'+(i)+'"></div></a>').appendTo("#side-media");
         $('head').append('<style>#side-media:hover > a:nth-child('+(i+1)+'):hover{background-color:'+buttoncolour[i]+'}</style>');}
 
-    for(var i = 0; i<buttontext.length; i++){
+    for(var i = 0; i < buttontext.length; i++){
         var temp = '#side-nav';
         if(i != 5){temp = temp + ', #top-nav'}
         $('<div class="ls pg'+i+'"><t>'+buttontext[i]+'</t><div class="i bt'+i+'"></div></div>').appendTo(temp)}
 })
+
+var frt = ["jpg","png","gif"];
 
 var pg2l=[1,1,1,1,2,1,1,1],pg2m=[1,1,1,1,1,1,1,1],pg2r=[1,1,1,1,1,1,1,2],sid2a=[pg2l,pg2m,pg2r], //image format : frt[]
     pg2hl=[9,5,5,0,5,8,7,7],pg2hm=[8.5,8,8,8,3,4,5,8],pg2hr=[9,7,5,7,5,5,9,4],sid2h=[pg2hl,pg2hm,pg2hr], //image hights
@@ -88,15 +87,3 @@ $(document).ready(function(){
             .parent().css({'height':pgdh[i]+"px"})
     }
 })
-
-
-$('.pg1 section').scroll(function() {
-    var scrl = 100 * ($('.pg1 section').scrollTop() / ($('#posts').height() - $('.pg1 section').height()));
-    $(document).scrollTop((scrl * ($(document).height() / 100)))
-});
-
-$('.pg0 incont').scroll(function() {
-    var scrl = 100 * ($('.pg0 incont').scrollTop() / ($('#posts').height() - $('.pg0 incont').height()));
-    $(document).scrollTop((scrl * ($(document).height() / 100)))
-});
-

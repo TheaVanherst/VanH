@@ -20,8 +20,12 @@ $(window).ready(function(){
 
 var pagescl2, pagescl3;
 var resize = function() { // Page rescaling
-    headr = $('#hdr').height();
+    HeaderW = $('#hdr').height();
     bodyw = $('body').width();
+
+    MiddbRighB40 = middb + righb + 40
+    Leftb20 = leftb + 20
+    ContentWidth = middb + righb + 40 + leftb; //page width precalc for efficency on mouse move
 
     if (mbl) {
         pagescl2 = (page2 / (bodyw - 60)) //180 / 60

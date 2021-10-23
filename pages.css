@@ -1,7 +1,3 @@
-section { overflow-y:scroll; overflow-x:hidden; height: 5030px;
-    width:calc(var(--postwidth) + (var(--gutter)/2) - var(--skirting));
-    display:inline-block; padding: calc(var(--skirting)/2);
-    -ms-overflow-style: none; scrollbar-width: none}
 
 article .when { overflow:hidden;
     white-space: nowrap; padding:13px 17px 13px}
@@ -11,9 +7,6 @@ article:last-of-type{margin-bottom:0!important;}
 
 article figure{width:100%; margin:0;padding:3px 0}
 article iframe {border:0}
-
-article .footer {padding:14px 17px 10px} /* container that holds .time, and .d */
-.imcon {margin-top: -4px;}
 
 .row, .triple { margin:0!important;
     display: flex; overflow: hidden}
@@ -42,7 +35,7 @@ article .footer {padding:14px 17px 10px} /* container that holds .time, and .d *
     width: calc((var(--postwidth) + var(--sidebarr) + 5px) / 2);
     height: calc(((var(--postwidth) + var(--sidebarr)) / 2)/16 * 9)}
 .pg0 incont > * p:last-of-type {padding:0 12px}
-.pg0 incont {overflow-y: scroll; scrollbar-width: none; height:5030px;
+.pg0 incont {overflow-y: hidden; height:5030px;
     background-color: var(--postback); padding:calc(var(--skirting)/2);
     width:calc(var(--sidebarr)+ var(--postwidth)+ var(--gutter)- var(--skirting))}
 
@@ -56,7 +49,14 @@ article ol {padding:0 15px 0 35px}
 
 /* ===================================== */
 /* PAGE 1 */
+.pg1 article .footer {padding:14px 17px 10px} /* container that holds .time, and .d */
+.pg1.imcon {margin-top: -4px;}
+.pg1 section {overflow:hidden; height: 5030px;
+    width:calc(var(--postwidth) + (var(--gutter)/2) - var(--skirting));
+    display:inline-block; padding: calc(var(--skirting)/2)}
+
 .pg1 section{margin:0 calc(var(--gutter)/2) 0 calc(var(--sidebarl) + (var(--gutter)))}
+.pg1 #posts {position:relative}
 
 .pg1 article li {padding:1px} /* for edges of images */
 .pg1 article iframe {margin-bottom: -5px;
