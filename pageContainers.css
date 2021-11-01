@@ -1,0 +1,124 @@
+:root{
+    --sidebarl:250px; --sidebarr:350px; --postwidth:500px; /*main page divisional factors*/
+    --gutter:20px; --skirting: 8px;
+
+    /* Some precalcs that save time later CONTENT */
+    --innerPageCalc: calc(var(--postwidth) + var(--sidebarr) + var(--gutter));
+    --innerPageWoConCalc: calc(var(--postwidth) + var(--sidebarr));
+    --containerWidthCalc: calc(var(--postwidth) + var(--sidebarr) + var(--sidebarl));
+    --fullBodyCalc: calc(var(--postwidth) + var(--sidebarr) + var(--sidebarl) + (var(--gutter) * 2));
+
+    --halfSkirting: calc(var(--skirting)/2);
+    --halfGutter: calc(var(--gutter)/2)}
+
+/* main page logic */
+
+pageData {
+    left:50%; transform:translateX(-50%);
+    position: absolute;
+    transition:
+            margin-top .6s cubic-bezier(0,0,0,1)}
+
+pg{  /*default page setting*/
+    width:var(--fullBodyCalc);
+    position:absolute; display:inline-block;
+    opacity: 0.25; font-size: 0;
+    transition:
+            margin .5s cubic-bezier(0,0,0,1),
+            opacity .5s cubic-bezier(0,0,0,1)}
+pg > * > *{font-size:16px}
+/*Page placement and layering fixes*/
+pg.pageful {
+    opacity:1!important; z-index: 2!important;
+    cursor:auto!important} /*desktop devices*/
+
+/* inner inner containers */
+pageContainer{ /*this just prevents container overflow and offset*/
+    font-size: 0; border-radius: var(--skirting);
+    display:inline-block; overflow-x:hidden;
+    width:var(--innerPageCalc);
+    margin-left: calc(var(--sidebarl) + var(--gutter))}
+pageContainer > * {
+    font-size: 15px}
+
+pageContainer > *:not(incont):first-child {
+    margin-right: var(--halfGutter)}
+
+/* page inner containers */
+smallContainer,midContainer,largeContainer{
+    display:inline-block;
+    border-radius: var(--skirting);
+    overflow-x:hidden; vertical-align:top}
+
+smallContainer > *,midContainer > *,largeContainer > *{
+    border-radius: var(--halfSkirting)!important;}
+
+/*inner containers that determine width*/
+largeContainer, section{ /* 66% */
+    padding:calc(var(--skirting)/2); background-color: var(--postback);
+    width:calc(var(--postwidth) + var(--halfGutter) - var(--skirting))}
+midContainer{ /* 50% */
+    padding:calc(var(--skirting)/2); background-color: var(--postback);
+    width:calc(((var(--innerPageWoConCalc) + var(--halfGutter)) / 2) - var(--skirting))}
+smallContainer:not(#asider){ /* 33% */
+    padding:var(--halfSkirting); background-color: var(--postback);
+    width:calc(var(--sidebarr) - var(--skirting))}
+#asider{width:calc(var(--sidebarr))}
+
+.block, .wedge {
+    border-radius:var(--skirting);
+    margin-bottom:var(--gutter);
+    background-color:var(--posts)}
+.block {padding:12px 0}
+
+/* inner, inner inner page data holders */
+article{overflow: hidden; border-radius:var(--halfSkirting);}
+article:last-of-type{margin-bottom:0!important;}
+
+/* text posts */
+article li p:first-of-type b {font-size: 15px; line-height:0} /*this is the post title */
+article li li:not(:last-of-type) {padding-bottom:5px}
+article li p b {color:var(--accent5)}
+article li p:first-of-type b {color:var(--accent3)}
+article li b {color:var(--titles)}
+
+.when a:not(.postedby){cursor:default; color:white;}
+/* adjustments to inner, inner container info */
+article .when { /* footer of posts */
+    line-height:14px;
+    overflow:hidden; white-space: nowrap;
+    padding:13px 17px 13px}
+
+article figure{
+    width:100%; margin:0; padding:3px 0}
+article iframe {border:0}
+
+/* globally applicable additions */
+
+.load-more{
+    text-align:center; position:relative; width:200px}
+.load-more p{
+    font-weight:900; font-size:var(--tiny-fonts);
+    padding: 4px!important; border-radius:var(--skirting);
+    background: linear-gradient(-45deg, var(--accent2), var(--accent3), var(--accent4));
+    background-size:300% 300%; color:white!important;
+    transition:
+            transform .2s cubic-bezier(0,0,0,1),
+            background .2s cubic-bezier(0,0,0,1);
+    animation:
+            newbuttonfade 10s cubic-bezier(0,0,0,1) infinite;}
+.load-more p::after {
+    font-size: 11px;
+    content:"Nothing more to see."}
+
+w2x1 .load-more, .pg1 .load-more { /* centers the loadmore button for 50% grade containers */
+    left:50%; transform:translateX(-50%);
+    margin: var(--gutter) 0 var(--gutter) 0}
+
+@-webkit-keyframes sk-bounce {
+    0%, 100% { -webkit-transform: scale(0.0) }
+    50% { -webkit-transform: scale(1.0) } }
+
+@keyframes sk-bounce {
+    0%, 100% {transform: scale(0.0); -webkit-transform: scale(0.0);
+    } 50% {transform: scale(1.0); -webkit-transform: scale(1.0);} }

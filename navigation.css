@@ -1,0 +1,178 @@
+
+/* Top Navbar CONTENT */
+:root{
+    --banner: url('/Website%20assets/banner.png');
+    --bannerheight:520; --bannerwidth:3480;
+    --bannerPreCalc:calc((var(--fullBodyCalc) * var(--bannerheight)) / var(--bannerwidth))}
+
+/* header CSS */
+#header {
+    height:var(--bannerPreCalc); width: var(--innerPageCalc);
+    margin: var(--gutter) auto var(--gutter) calc(var(--sidebarl) + var(--gutter));
+    border-radius:var(--skirting); overflow: hidden;
+
+    z-index: 3; position: relative;
+    background-image:var(--banner);
+    background-size:140% auto; background-position:center;
+
+    transition:
+            opacity .5s cubic-bezier(0,0,0,1),
+            background-size 1s cubic-bezier(0,0,0,1)}
+#header.hov {
+    background-size:150% auto;
+    opacity:0.6}
+
+/* banner logo */
+
+:root{
+    --logobm: url('/Website%20assets/logobmh.png');
+    --logobmhov: url('/Website%20assets/logobm.png');
+    --logonm: url('/Website%20assets/logonmh.png');
+    --logonmhov: url('/Website%20assets/logonm.png')}
+/* This was a real pain in the ass to setup, please don't fuck with it. */
+.headerLogo > * {
+    position:absolute; background-size: 100% 100%;
+    left: 50%; transform:translateX(-50%);
+
+    margin: calc((var(--bannerPreCalc) * -1) - 25px) 0 0 calc(var(--sidebarl) / 2);
+    height:calc(var(--bannerPreCalc) + 10px);
+    width:calc(var(--bannerPreCalc) * 2 + 10px);
+
+    transition:
+            width .2s cubic-bezier(0,0,0,1),
+            height .2s cubic-bezier(0,0,0,1),
+            opacity .5s cubic-bezier(0,0,0,1),
+            margin .2s cubic-bezier(0,0,0,1)}
+.headerLogo > *:hover{
+    margin-top:calc((var(--bannerPreCalc) * -1) - 15px);
+    height:calc(var(--bannerPreCalc) - 10px);
+    width:calc(var(--bannerPreCalc) * 1.9 - 10px)}
+
+.headerLogo > * > * {
+    background-size: 100% 100%;
+    width: inherit;
+    height:inherit;
+    transition:
+            opacity .5s cubic-bezier(0,0,0,1),
+            background-size 1s cubic-bezier(0,0,0,1)}
+.headerLogo > * > *:hover{
+    cursor:pointer;
+    opacity:0!important;}
+
+.headerLogo > .lo0 {background-image: var(--logonm)}
+.headerLogo > .lo1 {background-image: var(--logobm)}
+.headerLogo > * > .lo0 {background-image: var(--logonmhov)}
+.headerLogo > * > .lo1 {background-image: var(--logobmhov)}
+
+/* Nightmode buttons */
+.nmb {
+    border-radius:var(--skirting);
+    height:42px; width:42px;
+    z-index:9999; position:relative;
+    margin: -62px -62px 0 0;
+
+    background-color:var(--accent1);
+    float:right; cursor:pointer}
+.nmb svg {
+    fill:white;
+    -webkit-transform: scale(.65); -moz-transform: scale(.65);
+    -o-transform: scale(.65); -ms-transform: scale(.65);
+    transform: scale(.65);
+    transition:
+            color .2s cubic-bezier(0,0,0,1),
+            fill .2s cubic-bezier(0,0,0,1)}
+
+.nmb.active {margin: -104px 0 0 0; height: 84px}
+.nmb.active svg{top: 25%; position: relative}
+
+/* ===================================== */
+/* Sidebar Navbar CONTENT */
+/* Desktop sidebar */
+
+:root{
+    --profilepicture: url('/Website Assets/pfp.gif')}
+
+sideNav { /* sidebar container */
+    position:fixed;
+    left: calc(50% - ( var(--innerPageWoConCalc) / 2) - var(--gutter));
+    transform: translateX(-50%);
+    top:var(--gutter);
+    width:var(--sidebarl)}
+sideNav .wedge:last-of-type {color:white;}
+sideNav .wedge p {padding: 8px 10px}
+
+/*sidebar image container*/
+#pfp {
+    width: var(--sidebarl); height: var(--sidebarl);
+    margin-bottom: var(--gutter); border-radius:var(--skirting);
+    background-size: cover; background-image:var(--profilepicture)}
+
+/* Sidebar Navigation buttons */
+#sideNav {border-radius:var(--skirting); overflow: hidden}
+#sideNav .ls {margin:0} /*default settings for buttons not active*/
+#sideNav .button-focus{margin:10px 0} /*settings for when button is active*/
+#sideNav .ls:first-of-type.button-focus {
+    margin:0 0 calc((var(--gutter) / 2)) 0!important}
+#sideNav .ls:last-of-type.button-focus {
+    margin:calc((var(--gutter) / 2)) 0 0 0!important}
+/*prevents dragging the buttons down further than what containers already do*/
+
+/* Sidebar social media buttons container formatting */
+#sideMedia {margin:10px 0}
+#sideMedia {height:calc((var(--sidebarl) - (10px * 5)) / 6)}
+#sideMedia:hover > * {opacity:0.4}
+#sideMedia:hover > *:hover {opacity:1}
+
+/* button formatting */
+#sideMedia > a{ /* button CSS */
+    display:inline-block;
+    border-radius:var(--skirting); overflow: hidden;
+    background-color:var(--accent1);
+    width:calc((var(--sidebarl) - (var(--halfGutter) * 5 + 1px)) / 6); /* sidebar width / 6 buttons */
+    height:calc((var(--sidebarl) - (var(--halfGutter) * 5 + 1px)) / 6); /* the '+ 1px' is there because I need it*/
+    margin: 0 var(--halfGutter) 0 0}
+#sideMedia > a:last-of-type{
+    margin: 0!important} /*prevents overflow and to save fucking with the container properties.*/
+#sideMedia > *{
+    transition:
+            opacity .2s cubic-bezier(0,0,0,1)}
+
+#sideMedia a > div { /* social media button image formatting */
+    width:100%; height:100%;
+    background-position:center; background-size:cover}
+
+sideNav .wedge:last-of-type {background-color:var(--invaccent)}
+/* CSS for mobile */
+
+sideNav.active {display:none!important} /*This hides the default CSS side nav from desktop*/
+
+nav {
+    font-size:0;
+    width:var(--innerPageCalc);
+    border-radius:var(--skirting); overflow: hidden;
+    display:none;  position: relative;
+    margin:0 0 var(--gutter)}
+nav .ls {
+    width:calc((var(--innerPageWoConCalc) - (var(--gutter) * 2))/3);
+    display: inline-block}
+nav.active { /* displays the topnav bar when mobile (active) is on */
+    display: block!important;
+    width:calc(var(--innerPageWoConCalc) - 40px)!important}
+nav {width: calc(100% /3)}
+
+/* CSS for both Desktop and Mobile */
+
+.ls {background-color:var(--postback); cursor:pointer}
+.ls t{
+    z-index:99; position:absolute;
+    color:white!important;
+    padding: 8px 15px}
+
+.ls .i{opacity: var(--defopacity)}
+.ls:hover .i{opacity: var(--fadeto)}
+.ls.button-focus .i {opacity:var(--fadeto)}
+
+.ls .i, .ls{transition:
+        background .2s cubic-bezier(0,0,0,1),
+        opacity .2s cubic-bezier(0,0,0,1),
+        margin .3s cubic-bezier(0,0,0,1)}

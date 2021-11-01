@@ -1,0 +1,119 @@
+
+w3x3 {width:calc(var(--innerPageCalc) - (var(--skirting)))!important}
+incont{overflow:hidden}
+
+incont, incont > * {display:inline-block; float: left; margin-right:var(--halfGutter)}
+incont > *:last-of-type{margin-bottom:0; margin-right:0}
+
+incont > * div:first-of-type p, incont > * p:last-of-type, incont > *:hover drp p{padding:8px 10px 10px}
+
+incont > * tcb p {z-index:9; position:relative}
+incont > * drp p {margin-top:-20px!important; font-size:0!important}
+incont > *:hover drp p {margin-top: 0!important; font-size:var(--tiny-fonts)!important}
+
+incont > * drp t,incont > * div:first-of-type t {line-height:0.9em!important}
+incont > * drp p,incont > * div:first-of-type p {letter-spacing:.15px}
+
+incont > * t {padding:0!important}
+
+/* ===================================== */
+/* PAGE 2 */
+
+.pg2 > pagecontainer {
+    width:calc(var(--innerPageCalc) - var(--skirting));
+    padding:var(--halfSkirting)}
+.pg2 incont > * {margin-bottom:10px; overflow:hidden}
+.pg2 incont > *:last-of-type {margin-bottom:0}
+.pg2 incont, .pg2 incont > *{
+    border-radius: var(--halfSkirting)!important;
+    width:calc((var(--innerPageWoConCalc) - var(--skirting))/ 3)}
+.pg2 incont > div > p {width: calc(100% - var(--gutter))}
+
+.pg2 incont:last-of-type{margin-right:0}
+
+.pg2 .load-more {margin:var(--gutter) 0 0;
+    left: calc(50% + (var(--sidebarl)/2)); transform:translateX(-50%)}
+
+/* Page 3
+/* ===================================== */
+
+.pg3 incont {
+    border-radius: var(--skirting);
+    width:calc(var(--innerPageCalc) - var(--skirting));
+    padding:var(--halfSkirting); margin-bottom:10px}
+.pg3 incont:last-of-type {margin-bottom:0}
+.pg3 incont > div > p {width: calc(100% - var(--gutter))}
+
+.pg3 incont > *:first-child {
+    border-top-left-radius: var(--halfSkirting);
+    border-top-right-radius: var(--halfSkirting)}
+.pg3 incont > *:last-child {
+    margin-right:0!important;
+    border-bottom-left-radius: var(--halfSkirting);
+    border-bottom-right-radius: var(--halfSkirting)}
+.pg3 incont > *:not(.zoom){
+    border-radius: var(--halfSkirting);}
+.pg3 incont > *{
+    width: calc((var(--innerPageWoConCalc) - (var(--skirting) + 1px)) / 3);
+    margin-right:10px; overflow:hidden;}
+
+.pg3 fullwc {display:inline-block}
+
+.pg3 .load-more {
+    margin:var(--gutter) 0 0;
+    left: calc(50% + (var(--sidebarl)/2));
+    transform:translateX(-50%)}
+
+/* Page 5
+/* ===================================== */
+
+.sbitems t {letter-spacing:0.5px}
+
+/* ===================================== */
+/* PAGE 2 */
+incont > * p{color:var(--text)}
+incont > * a{color:var(--accent3)}
+incont > * a:hover {color:var(--accent4)}
+
+incont > * div, incont > * drp t,
+incont > * tcb p, incont > * tcb t {color:white!important;}
+incont > * drp p {color:var(--posts)}
+
+/* ===================================== */
+/* BACKGROUND COLOURS */
+/* ===================================== */
+
+.pg3 incont, .pg2 pagecontainer{background-color: var(--postback)}
+
+/* ===================================== */
+/* PAGE 2/3 */
+incont > * p {background-color:var(--posts)}
+incont > * li{background-color:var(--artposts)}
+incont > * .img{background-color:var(--artposts)}
+
+incont > * tcb p {background-color:var(--accent1)}
+incont > * drp p {background-color:var(--accent2)}
+
+incont > w3x3 {width:calc(var(--innerPageCalc) - var(--skirting))!important}
+incont > w2x1 {width:calc((var(--innerPageWoConCalc) + var(--halfGutter)) / 2 - (var(--halfSkirting)))!important}
+
+/* ===================================== */
+/* EDGES DATA */
+/* ===================================== */
+
+#hoverelm{
+    border-radius:var(--skirting);
+    overflow: hidden}
+
+/* ===================================== */
+/* TRANSITION DATA */
+/* ===================================== */
+
+incont > * drp p {transition:
+        opacity .2s cubic-bezier(0,0,0,1),
+        margin .3s cubic-bezier(0,0,0,1)}
+
+incont > * > div.zoom {transition:
+        opacity .5s cubic-bezier(0,0,0,1)}
+
+.w32 img {transition: all .2s}

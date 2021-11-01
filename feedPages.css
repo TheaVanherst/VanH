@@ -1,0 +1,169 @@
+
+/* post header / footer */
+
+.new-post{
+    padding: 7px var(--gutter);
+    float: Right; margin: 2px;
+    font-size: var(--mid-fonts); font-family: var(--boldstyle);
+    letter-spacing: 1px; color:white;
+    border-radius:var(--skirting);
+    transition: background-color .3s cubic-bezier(0,0,0,1);
+    animation: newbuttonfade 10s cubic-bezier(0,0,0,1) infinite;}
+.new-post:hover{
+    animation: shake 0.5s cubic-bezier(0,0,0,1) infinite}
+.new-post:after {content: 'NEW'}
+
+/* post data */
+article li p:first-of-type {margin: 15px 0 10px}
+article li p:last-of-type {margin: 10px 0 10px}
+article li:before, .chat li:before, ol.notes li:before {display:none}
+/*article ul {list-style:none; padding:.25em 0 .25em 15px}*/
+article ol {padding:0 15px 0 35px}
+
+/* ===================================== */
+/* PAGE 0 */
+
+/* page containers */
+.pg0 incont {
+    width: calc(var(--innerPageCalc) - var(--skirting));
+    height: calc(var(--pageheight) - (var(--gutter)*2)); overflow: hidden;
+    padding:var(--halfSkirting);
+    background-color: var(--postback)}
+w3x2 {
+    width:calc((var(--innerPageCalc) - var(--halfGutter) - var(--skirting) - 0.5px) / 2)!important;
+    position:relative;
+    transition:
+            top .4s cubic-bezier(0,0,0,1)}
+.pg0 article {margin-bottom: var(--halfGutter)}
+
+.pg0 article li{font-size:0} /*this fixes white space bugs */
+.pg0 article li > *:not(:first-child){border-top: 1px solid var(--borders) !important}
+.pg0 article iframe {border:0;
+    width: calc((var(--innerPageWoConCalc) + 5px) / 2);
+    height: calc((var(--innerPageWoConCalc) / 2)/16 * 9)} /*this corrects the default square size*/
+
+/* image containers */
+.row, .triple { margin:0!important;
+    display: flex; overflow: hidden}
+.row > * {width:50%} /* this fixes the gap between images to be 1 pixel wide, apposed to 2. */
+.row > *:first-child {border-right:1px solid var(--borders)}
+.triple > * {width:33.3%}
+.triple > *:not(:last-child) {border-right:1px solid var(--borders)}
+
+.row > * figure img { position:absolute;
+    width: 100%;height: 100%; object-fit: cover}
+.row > * figure {position: relative;
+    padding-bottom: 100%; text-align: left}
+
+/* Post footer, DMDY */
+.pg0 article .when {
+    background-color:var(--accent1);
+    padding:3px 12px 5px}
+.pg0 article .when a {font-size: var(--tiny-fonts)}
+.pg0 article .when a:first-of-type:not(:only-child){
+    padding: 4px 12px 6px; margin: 0 12px 0 -12px; color:white}
+.pg0 article .when a:first-of-type:not(:only-child){background-color:var(--accent2)}
+.pg0 article .when a:first-of-type:not(:only-child):hover{background-color:var(--accent3)}
+
+/* ===================================== */
+/* PAGE 1 */
+
+/* containers */
+.pg1 largeContainer {
+    height: calc(var(--pageheight) - (var(--gutter)*2)); overflow:hidden!important;
+    background-color:var(--postback);
+    margin:0 var(--halfGutter) 0 calc(var(--sidebarl) + (var(--gutter)))}
+.postcont { /* I need this to hold the "no more posts" ballocks */
+    position: relative;
+    transition: top .4s cubic-bezier(0,0,0,1)}
+.pg1 article {
+    background-color:var(--posts);
+    margin-bottom: var(--gutter)}
+
+/* post header data */
+.pg1 article .footer {
+    padding:14px 17px 10px} /* container that holds .time, and .d */
+.timestamp {
+    font-size:var(--small-fonts);
+    color:var(--accent3)}
+.dateposted {
+    font-family:var(--boldstyle);
+    text-transform:uppercase;
+    color:var(--accent4)}
+.when:not(.footer){background-color:var(--accent1)}
+
+article .when .new-post {
+    border-radius: 0!important;
+    background: linear-gradient(-45deg, var(--accent2), var(--accent3), var(--accent4));
+    background-size: 300% 300%; color: white}
+
+/* post video iframes */
+.pg1 article iframe {margin-bottom: -5px;
+    width: calc(var(--postwidth) + 5px);
+    height: calc(((var(--postwidth) + 5px)/16) * 9)}
+
+/* post images */
+article figure {font-size: 0}
+article .npf_row, .npf_row + p {
+    margin: 10px 0!important}
+
+/* Steam Workshop */
+article .poster {
+    height: calc(var(--postwidth) / 1.2);
+    background-size: cover; position:relative}
+
+article .poster .title{ /*workshop title*/
+    background-color: var(--invaccent); opacity: 0.9;
+    font-weight: 900; text-transform: uppercase;
+    font-family: var(--boldstyle); color: white;
+    position: absolute;
+    bottom: 0; padding: 10px}
+article .poster:hover .title{
+    background-color: var(--accent1); opacity: 0.9}
+#article9 .poster:hover .title {
+    background-color: var(--accent4)}
+article .bottom{ margin: 0; /*workshop footer*/
+    color:white;
+    background-color: var(--accent1);
+    font-size: 10px; padding: 5px 10px;
+    width: calc(var(--postwidth)- 1px)}
+
+/* Post footer */
+.footer {
+    border-top:1px solid var(--borders);
+    font-size:var(--tiny-fonts);
+    text-transform:uppercase;
+    letter-spacing:0.7px} /*posted by*/
+.vimage {
+    background-size: cover;
+    background-image:var(--profilepicture);
+    float:left; overflow:hidden;
+    width:24px; height:24px;
+    margin:-2px 13px 0 -2px}
+.imcon {margin-top: -4px;}
+
+section .load-more{
+    left:50%; transform:translateX(-50%);
+    margin: var(--gutter) 0 var(--gutter) 0}
+
+/* left container */
+
+#twitter{
+    height: calc(var(--pageheight) - (var(--gutter)*2)); overflow: hidden;
+    background-color: var(--postback)!important; margin:0!important;
+    padding: var(--halfSkirting); border-radius:var(--skirting);}
+
+.spinner {
+    width: 40px;height: 40px;
+    position: relative;
+    margin: 100px auto}
+.double-bounce1, .double-bounce2 {
+    width:100%; height:100%;
+    top: 0;left: 0;
+    border-radius: 50%; opacity: 0.6;
+    position: absolute;
+    background-color: var(--accent1);
+    -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+    animation: sk-bounce 2.0s infinite ease-in-out;}
+.double-bounce2 {
+    -webkit-animation-delay: -1.0s; animation-delay: -1.0s;}

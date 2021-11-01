@@ -1,18 +1,25 @@
 <!DOCTYPE html>
     <head>
+        <!-- Local libraries -->
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
         <meta content="utf-8" http-equiv="encoding">
+
         <script type="text/javascript" src="/libaries/twitterwidget.js"></script>
         <script type="text/javascript" src="/libaries/localisedtwitter.js"></script>
-        <!-- jquery scripts -->
         <script type="text/javascript" src="/libaries/jquerymin.js"></script>
         <script type="text/javascript" src="/libaries/jqueryui.js"></script>
-        <!-- colour css -->
-        <link rel="stylesheet" href="cosmetic.css"> <!-- colour css -->
-        <script type="text/javascript" src="nightmode.js"></script> <!-- page turning scripts -->
-        <!-- main page formatting -->
-        <link rel="stylesheet" href="style.css"> <!-- general page formatting -->
-        <link rel="stylesheet" href="pages.css"> <!-- page formatting -->
+        <script type="text/javascript" src="/libaries/imagesloaded.js"></script> <!-- needed for the art element loading -->
+
+        <!-- page formatting -->
+        <link rel="stylesheet" href="general.css"> <!-- general css -->
+        <link rel="stylesheet" href="pageContainers.css"> <!-- general css -->
+        <link rel="stylesheet" href="navigation.css"> <!-- general page formatting -->
+        <!-- this set of CSS does feed-based pages because they require a lot more formatting -->
+        <link rel="stylesheet" href="feedPages.css"> <!-- page formatting -->
+        <link rel="stylesheet" href="defaultPages.css"> <!-- page formatting -->
+
+        <script type="text/javascript" src="nightMode.js"></script> <!-- page turning scripts -->
+
         <!-- font styling -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,256 +27,260 @@
         <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap" rel="stylesheet"> <!-- SLIM FONT -->
         <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@800&display=swap" rel="stylesheet"> <!-- BOLD FONT -->
         <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet"> <!-- GERMANIC FONT -->
-        <!-- page scaling -->
+
+        <!-- page generation / edit scripts -->
         <script type="text/javascript" src="scaler.js"></script> <!-- page scaling scripts -->
-        <script type="text/javascript" src="postelems.js"></script> <!-- page scaling scripts -->
+        <script type="text/javascript" src="postElements.js"></script> <!-- page scaling scripts -->
 
         <link rel="shortcut" href="https://cdn.discordapp.com/attachments/630047188520665121/854534149658771456/Untitled-3.png">
         <title>VanH.art</title>
 
-        <script>var docelem = document.documentElement;</script>
+        <script> /* global var decloration */
+            var docelem = document.documentElement
+        </script>
     </head>
 
     <body>
-        <asidel id="side"> <!-- sidebar navigation -->
-            <img id="pfp"/></div>
-            <div id="side-nav"></div>
-            <div id="side-media"></div>
-            <div class="wedge nbc" style="margin:0"><p>Vanh.art, established on Aug 1st, 2021</p></div>
-            <!-- Updated Aug 16th 2021, 03:31 GMT --> <!-- I'm currently editing the page, so please stay tuned! -->
-            <div class="wedge ntc"><p>The site is currently in development. Updated Sept 11th 2021, 04:12 GMT</p></div>
-        </asidel>
+        <sideNav>
+            <div id="pfp"></div>
+            <div id="sideNav"></div>
+            <div id="sideMedia"></div>
+            <div class="wedge nbc" style="margin:0">
+                <p>Vanh.art, established on Aug 1st, 2021</p></div>
+            <div class="wedge ntc">
+                <p>The site is currently in development. Updated Oct 27th 2021, 05:53 GMT</p></div>
+        </sideNav>
 
-        <w3x3 class="cont">
-            <div class="hdr" id="hdr"></div>
+        <pageData>
+            <div id="header"></div>
 
-            <div class="hdrlogo pg1">
-                <div class="logo-f lo0"><div class="logo lo0 dm"></div></div>
-                <div class="logo-f lo1"><div class="logo lo1 nm"></div></div>
+            <div class="headerLogo">
+                <div class="lo0"><div class="lo0 dm"></div></div>
+                <div class="lo1"><div class="lo1 nm"></div></div>
             </div>
 
-            <fullwc id="top-nav"></fullwc>
+            <nav id="topNav"></nav>
             <div class="wedge nmb" onclick="nightmode()">
                 <svg xmlns="http://www.w3.org/2000/svg" id="nm0" viewBox="0 0 16 16">
                     <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/></svg>
                 <svg xmlns="http://www.w3.org/2000/svg" id="nm1" viewBox="0 0 16 16">
                     <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8.5 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm5-5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm-11 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9.743-4.036a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm-7.779 7.779a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm7.072 0a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707zM3.757 4.464a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707z"/></svg></div>
-            <w3x3>
-            <div class="pg pg0">
-                <fullwc>
-                    <incont>
-                        <w2x1 id="arts0"></w2x1>
-                        <w2x1 id="arts1"></w2x1>
-                    </incont>
-                </fullwc>
-            </div>
 
-            <div class="pg pg1">
-                <section>
-                    <div class="postcont">
-                        <div id="posts"></div>
-                        <div class="load-more" id="postend"><p></p></div>
-                    </div>
-                </section>
+            <div id="pageFunctionality">
+                <pg class="pg0">
+                    <pageContainer>
+                        <incont>
+                            <w3x2 id="arts0"></w3x2>
+                            <w3x2 id="arts1"></w3x2>
+                        </incont>
+                    </pageContainer>
+                </pg>
 
-                <siders id="asider">
-                    <div class="wedge" id="twitter">
-                        <div class="load-more bc"><a href="https://twitter.com/TheaVanherst?ref_src=twsrc%5Etfw"><p></p></a></div>
-                        <a class="twitter-timeline" href="https://twitter.com/TheaVanherst?ref_src=twsrc%5Etfw" data-tweet-limit="20" data-chrome="nohdr nofooter noborders"></a>
-                        <a data-theme="dark" class="twitter-timeline" href="https://twitter.com/TheaVanherst?ref_src=twsrc%5Etfw" data-tweet-limit="20" data-chrome="nohdr nofooter noborders"></a>
-                        <div class="spinner"><div class="double-bounce1"></div><div class="double-bounce2"></div></div>
-                    </div>
-                </siders>
-            </div>
+                <pg class="pg1">
+                    <largeContainer>
+                        <div class="postcont">
+                            <div id="posts"></div>
+                            <div class="load-more" id="postend"><p></p></div>
+                        </div>
+                    </largeContainer>
 
-            <div class="pg pg2">
-                <fullwc>
-                    <incont>
-                        <div><tcb><p>14/05/2021 - 19/05/2021<br><t>landsknecht Marie</t></p></tcb>
-                            <drp><p>19/05/2021<br><t>Shading</t></p></drp><div id="ls8"></div></div>
-                        <div><drp><p>16/05/2021<br><t>Final Linework</t></p></drp><div id="ls7"></div></div>
-                        <div><drp><p>14/05/2021<br><t>Original Sketch</t></p></drp><div id="ls6"></div></div>
+                    <smallContainer id="asider">
+                        <div class="wedge" id="twitter">
+                            <a class="twitter-timeline" href="https://twitter.com/TheaVanherst?ref_src=twsrc%5Etfw" data-tweet-limit="20" data-chrome="nohdr nofooter noborders"></a>
+                            <a data-theme="dark" class="twitter-timeline" href="https://twitter.com/TheaVanherst?ref_src=twsrc%5Etfw" data-tweet-limit="20" data-chrome="nohdr nofooter noborders"></a>
+                            <div class="spinner"><div class="double-bounce1"></div><div class="double-bounce2"></div></div>
+                        </div>
+                    </smallContainer>
+                </pg>
 
-                        <div><tcb><p>22/04/2021 - 23/04/2021<br><t>Guide Petra</t></p></tcb>
-                            <drp><p>23/04/2021<br><t>Walk Sequence</t></p></drp><div id="ls5"></div> </div>
+                <pg class="pg2">
+                    <pageContainer>
+                        <incont>
+                            <div><tcb><p>14/05/2021 - 19/05/2021<br><t>landsknecht Marie</t></p></tcb>
+                                <drp><p>19/05/2021<br><t>Shading</t></p></drp><div id="ls8"></div></div>
+                            <div><drp><p>16/05/2021<br><t>Final Linework</t></p></drp><div id="ls7"></div></div>
+                            <div><drp><p>14/05/2021<br><t>Original Sketch</t></p></drp><div id="ls6"></div></div>
 
-                        <div><tcb><p>20/10/2020<br><t>Chastity</t></p></tcb>
-                            <drp><p><t>Line Progression</t></p></drp><div id="ls3"></div></div>
+                            <div><tcb><p>22/04/2021 - 23/04/2021<br><t>Guide Petra</t></p></tcb>
+                                <drp><p>23/04/2021<br><t>Walk Sequence</t></p></drp><div id="ls5"></div> </div>
 
-                        <div><tcb><p>05/10/2019<br><t>Caddy Redesign Concept</t></p></tcb>
-                            <drp><p><t>Shading & Colour</t></p></drp><div id="ls2"></div>
-                            <p>A long and ongoing process of drawing my characters as chibi, emoticon-esc drawings.</p></div>
+                            <div><tcb><p>20/10/2020<br><t>Chastity</t></p></tcb>
+                                <drp><p><t>Line Progression</t></p></drp><div id="ls3"></div></div>
 
-                        <div><tcb><p>08/05/2020<br><t>Rosalina</t></p></tcb>
-                            <drp><p><t>Final Lineart</t></p></drp><div id="ms1"></div>
-                            <p>A line clean-up of an old drawing; <h>20/11/2019</h></p></div>
-                    </incont><incont>
-                        <div><tcb><p>03/05/2021<br><t>Lilith as Moonlord v0.7</t></p></tcb>
-                            <drp><p><t>Ingame Recreation</t></p></drp><div id="ms8"></div>
-                            <p>"Newly redesigned and refurbished graphics for my Terraria Moonlord Replacment, along with some comparrisions."</p></div>
+                            <div><tcb><p>05/10/2019<br><t>Caddy Redesign Concept</t></p></tcb>
+                                <drp><p><t>Shading & Colour</t></p></drp><div id="ls2"></div>
+                                <p>A long and ongoing process of drawing my characters as chibi, emoticon-esc drawings.</p></div>
 
-                        <div><tcb><p>05/11/2020 - 03/05/2021<br><t>Petra Concept Development</t></p></tcb>
-                            <drp><p>10/03/2021<br><t>Upper Body Sketch</t></p></drp><div id="ms7"></div></div>
-                        <div><drp><p>03/02/2021<br><t>Persoanlity Sketch</t></p></drp><div id="ms6"></div></div>
+                            <div><tcb><p>08/05/2020<br><t>Rosalina</t></p></tcb>
+                                <drp><p><t>Final Lineart</t></p></drp><div id="ms1"></div>
+                                <p>A line clean-up of an old drawing; <h>20/11/2019</h></p></div>
+                        </incont><incont>
+                            <div><tcb><p>03/05/2021<br><t>Lilith as Moonlord v0.7</t></p></tcb>
+                                <drp><p><t>Ingame Recreation</t></p></drp><div id="ms8"></div>
+                                <p>"Newly redesigned and refurbished graphics for my Terraria Moonlord Replacment, along with some comparrisions."</p></div>
 
-                        <div><tcb><p>19/09/2020 - 23/09/2020<br><t>Elizabeth Concept Art</t></p></tcb>
-                            <drp><p>23/09/2020<br><t>Lower body shading</t></p></drp><div id="ms5"></div></div>
-                        <div><drp><p>19/09/2020<br><t>Lineart</t></p></drp><div id="ms4"></div>
-                            <p>Concept art of a 1960's steampunk showgirl, inspired by Moxxi from Borderlands and Black Ops 3's Shadows Of Evil.</p></div>
+                            <div><tcb><p>05/11/2020 - 03/05/2021<br><t>Petra Concept Development</t></p></tcb>
+                                <drp><p>10/03/2021<br><t>Upper Body Sketch</t></p></drp><div id="ms7"></div></div>
+                            <div><drp><p>03/02/2021<br><t>Persoanlity Sketch</t></p></drp><div id="ms6"></div></div>
 
-                        <div><tcb><p>31/01/2020<br><t>Freyja Concept art</t></p></tcb>
+                            <div><tcb><p>19/09/2020 - 23/09/2020<br><t>Elizabeth Concept Art</t></p></tcb>
+                                <drp><p>23/09/2020<br><t>Lower body shading</t></p></drp><div id="ms5"></div></div>
+                            <div><drp><p>19/09/2020<br><t>Lineart</t></p></drp><div id="ms4"></div>
+                                <p>Concept art of a 1960's steampunk showgirl, inspired by Moxxi from Borderlands and Black Ops 3's Shadows Of Evil.</p></div>
+
+                            <div><tcb><p>31/01/2020<br><t>Freyja Concept art</t></p></tcb>
                             <drp><p><t>Full colour & shading</t></p></drp><div id="ms3"></div></div>
 
-                        <div><tcb><p>12/08/2020<br><t>Lilith Concept Art</t></p></tcb>
-                            <drp><p><t>Full colour & shading</t></p></drp><div id="ms2"></div>
-                            <p class="bc">Concept art for a Chineese anthropomorphic Mantis, who moved to the ottoman empire from the silk trade.</p>
-                        </div>
-                    </incont><incont>
-                        <div class="tan imco"><p>This page contains a small selection of cherry-picked drawings and their development process.</p></div>
+                            <div><tcb><p>12/08/2020<br><t>Lilith Concept Art</t></p></tcb>
+                                <drp><p><t>Full colour & shading</t></p></drp><div id="ms2"></div>
+                                <p class="bc">Concept art for a Chineese anthropomorphic Mantis, who moved to the ottoman empire from the silk trade.</p>
+                            </div>
+                        </incont><incont>
+                            <div class="tan imco"><p>This page contains a small selection of cherry-picked drawings and their development process.</p></div>
 
-                        <div><tcb><p>01/05/2021 - 04/05/2021<br><t>Arms Dealer Coffee</t></p></tcb>
-                            <drp><p>02/05/2021<br><t>Walk Sequence</t></p></drp><div id="rs8"></div></div>
-                        <div><drp><p>04/05/2021<br><t>Frame Development</t></p></drp><div id="rs7"></div>
-                            <p>"I'm not entirely happy with this due to being so far from the original terraria template, but with some practice I'll revisit this at a later date."</p></div>
+                            <div><tcb><p>01/05/2021 - 04/05/2021<br><t>Arms Dealer Coffee</t></p></tcb>
+                                <drp><p>02/05/2021<br><t>Walk Sequence</t></p></drp><div id="rs8"></div></div>
+                            <div><drp><p>04/05/2021<br><t>Frame Development</t></p></drp><div id="rs7"></div>
+                                <p>"I'm not entirely happy with this due to being so far from the original terraria template, but with some practice I'll revisit this artSideLatch a later date."</p></div>
 
-                        <div><tcb><p>10/10/2020<br><t>SAS Caddy</t></p></tcb>
-                            <drp><p><t>Final Lineart</t></p></drp><div id="rs6"></div>
-                            <p>A losely drawn headshot of Caddy in a gasmask.</p></div>
+                            <div><tcb><p>10/10/2020<br><t>SAS Caddy</t></p></tcb>
+                                <drp><p><t>Final Lineart</t></p></drp><div id="rs6"></div>
+                                <p>A losely drawn headshot of Caddy in a gasmask.</p></div>
 
-                        <div><tcb><p>29/05/2020<br><t>FBI Caddy</t></p></tcb>
-                            <drp><p><t>Colour & simple shading</t></p></drp><div id="rs5"></div>
-                            <p>A re-purposed redraw of a drawing from 28/05/2020</p></div>
+                            <div><tcb><p>29/05/2020<br><t>FBI Caddy</t></p></tcb>
+                                <drp><p><t>Colour & simple shading</t></p></drp><div id="rs5"></div>
+                                <p>A re-purposed redraw of a drawing from 28/05/2020</p></div>
 
-                        <div><tcb><p>07/03/2020<br><t>Emotes.psd</t></p></tcb>
-                            <drp><p><t>A partition of a larger page</t></p></drp><div id="rs4"></div>
-                            <p>A long and ongoing process of drawing my characters as chibi, emoticon-esc drawings.</p></div>
+                            <div><tcb><p>07/03/2020<br><t>Emotes.psd</t></p></tcb>
+                                <drp><p><t>A partition of a larger page</t></p></drp><div id="rs4"></div>
+                                <p>A long and ongoing process of drawing my characters as chibi, emoticon-esc drawings.</p></div>
 
-                        <div><tcb><p>07/03/2020<br><t>Marie Concept art</t></p></tcb>
-                            <drp><p><t>Shading & Colour</t></p></drp><div id="rs3"></div>
-                            <p>A long and ongoing process of drawing my characters as chibi, emoticon-esc drawings.</p></div>
+                            <div><tcb><p>07/03/2020<br><t>Marie Concept art</t></p></tcb>
+                                <drp><p><t>Shading & Colour</t></p></drp><div id="rs3"></div>
+                                <p>A long and ongoing process of drawing my characters as chibi, emoticon-esc drawings.</p></div>
 
-                        <div><tcb><p>25/05/2019<br><t>Coffee</t></p></tcb>
-                            <drp><p><t>Final Lineart</t></p></drp><div id="rs2"></div>
-                            <p>A unfinished drawing, featuring the finalised design of Coffee's character as a concept.
-                                A piece focused on experimenting with point perspective as a personal study.</p></div>
-                    </incont>
-                </fullwc>
-                <div class="load-more"><p></p></div>
+                            <div><tcb><p>25/05/2019<br><t>Coffee</t></p></tcb>
+                                <drp><p><t>Final Lineart</t></p></drp><div id="rs2"></div>
+                                <p>A unfinished drawing, featuring the finalised design of Coffee's character as a concept.
+                                   A piece focused on experimenting with point perspective as a personal study.</p></div>
+                        </incont>
+                    </pageContainer>
+                    <div class="load-more"><p></p></div>
+                </pg>
+
+                <pg class="pg3">
+                    <pageContainer>
+                        <incont>
+                            <w3x3><tcb><p>06/06/2021 - 02/08/2021<br><t>VanH Social Media Banner</t></p></tcb><div id="dp23"></div></w3x3>
+                            <w3x3><div id="dp22"></div></w3x3>
+                        </incont><incont>
+                            <div><tcb><p>15/12/2018<br><t>Vial Of Me.js</t></p></tcb>
+                                <drp class="dac"><p><t>Three.js Render</t></p></drp><div id="dp21"></div>
+                                <p> hello, this is a text box test for this specific container, it doesn't really do much right now other than to prove a quantative value for how much text I can display and applicable. </p></div>
+                            <div><tcb><p>02/12/2018<br><t>Blender Redesign</t></p></tcb>
+                                <drp><p><t>In-software preview</t></p></drp><div id="dp20"></div>
+                                <p> hello, this is a text box test for this specific container, it doesn't really do much right now other than to prove a quantative value for how much text I can display and applicable. </p></div>
+                            <div><tcb><p>20/11/2014<br><t>Nothing But Noise</t></p></tcb>
+                                <drp><p><t>Album Artwork Design</t></p></drp><div id="dp19"></div>
+                                    <p> hello, this is a text box test for this specific container, it doesn't really do much right now other than to prove a quantative value for how much text I can display and applicable. </p></div>
+                        </incont><incont>
+                            <w3x3><tcb><p>22/10/18<br><t>Polygram Social Media Banner</t></p></tcb><div id="dp18"></div></w3x3>
+                        </incont><incont>
+                            <w3x3><tcb><p>19/05/18<br><t>Bachoo Branding</t></p></tcb><div id="dp17"></div></w3x3>
+                        </incont><incont>
+                            <div><tcb><p>17/11/18<br><t>Nikotin</t></p></tcb>
+                                <drp><p><t>Concept Album Artwork</t></p></drp><div id="dp16"></div></div>
+                            <div><tcb><p>14/01/2017<br><t>Girl</t></p></tcb>
+                                <drp class="dac"><p><t>Official Single Artwork</t></p></drp><div id="dp24"></div></div>
+                            <div><tcb><p>25/10/2016<br><t>System Overload</t></p></tcb>
+                                <drp><p><t>Official Single Artwork</t></p></drp><div id="dp15"></div></div>
+                        </incont><incont>
+                            <w2x1><tcb><p>22/10/2017<br><t>Flippo Sounds</t></p></tcb>
+                                <drp><p><t>Soundpack Artwork Art</t></p></drp><div id="dp14"></div></w2x1>
+                            <w2x1><tcb><p>15/09/2017<br><t>Ink Trace</t></p></tcb>
+                                <drp class="dac"><p><t>Single Artwork</t></p></drp><div id="dp13"></div></w2x1>
+                        </incont><incont>
+                            <w3x3><tcb><p>28/09/17<br><t>Flippo Social Media Branding</t></p></tcb><div id="dp12"></div></w3x3>
+                        </incont><incont>
+                            <div><tcb><p>15/10/16<br><t>Polygon Dust</t></p></tcb><div id="dp11"></div></div>
+                            <div><tcb><p>16/09/2016<br><t>Hymn Of The Haunted Hunter</t></p></tcb><div id="dp10"></div></div>
+                            <div><tcb><p>15/08/2016<br><t>Gratitude</t></p></tcb><div id="dp9"></div></div>
+                        </incont><incont>
+                            <div><tcb><p>15/10/16<br><t>Polygon Dust</t></p></tcb><div id="dp8"></div></div>
+                            <div><tcb><p>16/09/2016<br><t>Hymn Of The Haunted Hunter</t></p></tcb><div id="dp7"></div></div>
+                            <div><tcb><p>15/08/2016<br><t>Gratitude</t></p></tcb><div id="dp6"></div></div>
+                        </incont><incont>
+                            <w3x3><tcb><p>05/12/15<br><t>CentricArts Branding</t></p></tcb><div id="dp5"></div></w3x3>
+                        </incont><incont>
+                            <w2x1><tcb><p>04/08/2019<br><t>Mothership</t></p></tcb>
+                                <drp><p><t>Concept Album Artwork</t></p></drp><div id="dp4"></div></w2x1>
+                            <w2x1><tcb><p>12/05/2015<br><t>Syndicate</t></p></tcb>
+                                <drp class="dac"><p><t>Official Album Artwork</t></p></drp><div id="dp3"></div></w2x1>
+                        </incont><incont>
+                            <div><tcb><p>21/12/2014<br><t>Ponies</t></p></tcb>
+                                <drp><p><t>Single Artwork</t></p></drp><div id="dp2"></div>
+                                <p> hello, this is a text box test for this specific container.</p></div>
+                            <div><tcb><p>15/11/2014<br><t>Nothing But Noise</t></p></tcb>
+                                <drp><p><t>Official Album Artwork</t></p></drp><div id="dp1"></div>
+                                <p> hello, this is a text box test for this specific container.</p></div>
+                            <div><tcb><p>29/05/2014<br><t>Mothership</t></p></tcb>
+                                <drp><p><t>Official Album Artwork</t></p></drp><div id="dp0"></div>
+                                <p> hello, this is a text box test for this specific container.</p></div>
+                        </incont>
+                    </pageContainer>
+                    <div class="load-more"><p></p></div>
+                </pg>
+
+                <pg class="pg4">
+                    <pageContainer>
+                        <largeContainer>
+                            <div class="block">
+                                <p>test</p>
+                            </div>
+                        </largeContainer>
+
+                        <smallContainer>
+                            <div class="block">
+                                <p>This page is currently a test page for the future replacement of tumblr-based posts. Anything on this page will be changed in a future update and eventually a replacement for the feed page.</p>
+                            </div>
+                        </smallContainer>
+                    </pageContainer>
+                </pg>
+
+                <pg class="pg5">
+                    <pageContainer>
+                        <largeContainer>
+                            <div class="block">
+                                <p>[pg5 side l large]</p>
+                            </div>
+                        </largeContainer>
+
+                        <smallContainer>
+                            <div class="block">
+                                <p>[pg5 side r small]</p>
+                            </div>
+                        </smallContainer>
+                    </pageContainer>
+                </pg>
+
+                <pg class="pg6">
+                    <pageContainer>
+                        <midContainer>
+                            <div class="block">
+                                <p>[pg6 side l medium]</p>
+                            </div>
+                        </midContainer>
+
+                        <midContainer>
+                            <div class="block">
+                                <p>[pg6 side r medium]</p>
+                            </div>
+                        </midContainer>
+                    </pageContainer>
+                </pg>
             </div>
-
-            <div class="pg pg3">
-                <fullwc>
-                    <incont>
-                        <w3x3><tcb><p>06/06/2021 - 02/08/2021<br><t>VanH Social Media Banner</t></p></tcb><div id="dp23"></div></w3x3>
-                        <w3x3><div id="dp22"></div></w3x3>
-                    </incont><incont>
-                        <div><tcb><p>15/12/2018<br><t>Vial Of Me.js</t></p></tcb>
-                            <drp class="dac"><p><t>Three.js Render</t></p></drp><div id="dp21"></div>
-                            <p> hello, this is a text box test for this specific container, it doesn't really do much right now other than to prove a quantative value for how much text I can display and applicable. </p></div>
-                        <div><tcb><p>02/12/2018<br><t>Blender Redesign</t></p></tcb>
-                            <drp><p><t>In-software preview</t></p></drp><div id="dp20"></div>
-                            <p> hello, this is a text box test for this specific container, it doesn't really do much right now other than to prove a quantative value for how much text I can display and applicable. </p></div>
-                        <div><tcb><p>20/11/2014<br><t>Nothing But Noise</t></p></tcb>
-                            <drp><p><t>Album Artwork Design</t></p></drp><div id="dp19"></div>
-                            <p> hello, this is a text box test for this specific container, it doesn't really do much right now other than to prove a quantative value for how much text I can display and applicable. </p></div>
-                    </incont><incont>
-                        <w3x3><tcb><p>22/10/18<br><t>Polygram Social Media Banner</t></p></tcb><div id="dp18"></div></w3x3>
-                    </incont><incont>
-                        <w3x3><tcb><p>19/05/18<br><t>Bachoo Branding</t></p></tcb><div id="dp17"></div></w3x3>
-                    </incont><incont>
-                        <div><tcb><p>17/11/18<br><t>Nikotin</t></p></tcb>
-                            <drp><p><t>Concept Album Artwork</t></p></drp><div id="dp16"></div></div>
-                        <div><tcb><p>14/01/2017<br><t>Girl</t></p></tcb>
-                            <drp class="dac"><p><t>Official Single Artwork</t></p></drp><div id="dp24"></div></div>
-                        <div><tcb><p>25/10/2016<br><t>System Overload</t></p></tcb>
-                            <drp><p><t>Official Single Artwork</t></p></drp><div id="dp15"></div></div>
-                    </incont><incont>
-                        <w2x1><tcb><p>22/10/2017<br><t>Flippo Sounds</t></p></tcb>
-                            <drp><p><t>Soundpack Artwork Art</t></p></drp><div id="dp14"></div></w2x1>
-                        <w2x1><tcb><p>15/09/2017<br><t>Ink Trace</t></p></tcb>
-                            <drp class="dac"><p><t>Single Artwork</t></p></drp><div id="dp13"></div></w2x1>
-                    </incont><incont>
-                        <w3x3><tcb><p>28/09/17<br><t>Flippo Social Media Branding</t></p></tcb><div id="dp12"></div></w3x3>
-                    </incont><incont>
-                        <div><tcb><p>15/10/16<br><t>Polygon Dust</t></p></tcb><div id="dp11"></div></div>
-                        <div><tcb><p>16/09/2016<br><t>Hymn Of The Haunted Hunter</t></p></tcb><div id="dp10"></div></div>
-                        <div><tcb><p>15/08/2016<br><t>Gratitude</t></p></tcb><div id="dp9"></div></div>
-                    </incont><incont>
-                        <div><tcb><p>15/10/16<br><t>Polygon Dust</t></p></tcb><div id="dp8"></div></div>
-                        <div><tcb><p>16/09/2016<br><t>Hymn Of The Haunted Hunter</t></p></tcb><div id="dp7"></div></div>
-                        <div><tcb><p>15/08/2016<br><t>Gratitude</t></p></tcb><div id="dp6"></div></div>
-                    </incont><incont>
-                        <w3x3><tcb><p>05/12/15<br><t>CentricArts Branding</t></p></tcb><div id="dp5"></div></w3x3>
-                    </incont><incont>
-                        <w2x1><tcb><p>04/08/2019<br><t>Mothership</t></p></tcb>
-                            <drp><p><t>Concept Album Artwork</t></p></drp><div id="dp4"></div></w2x1>
-                        <w2x1><tcb><p>12/05/2015<br><t>Syndicate</t></p></tcb>
-                            <drp class="dac"><p><t>Official Album Artwork</t></p></drp><div id="dp3"></div></w2x1>
-                </incont><incont>
-                        <div><tcb><p>21/12/2014<br><t>Ponies</t></p></tcb>
-                            <drp><p><t>Single Artwork</t></p></drp><div id="dp2"></div>
-                            <p> hello, this is a text box test for this specific container.</p></div>
-                        <div><tcb><p>15/11/2014<br><t>Nothing But Noise</t></p></tcb>
-                            <drp><p><t>Official Album Artwork</t></p></drp><div id="dp1"></div>
-                            <p> hello, this is a text box test for this specific container.</p></div>
-                        <div><tcb><p>29/05/2014<br><t>Mothership</t></p></tcb>
-                            <drp><p><t>Official Album Artwork</t></p></drp><div id="dp0"></div>
-                            <p> hello, this is a text box test for this specific container.</p></div>
-                    </incont>
-                </fullwc>
-                <div class="load-more"><p></p></div>
-            </div>
-
-            <div class="pg pg4">
-                <fullwc>
-                    <sidell>
-                        <div class="block">
-                           <p>test</p>
-                        </div>
-                    </sidell>
-
-                    <siders>
-                        <div class="block">
-                            <p>This page is currently a test page for the future replacement of tumblr-based posts. Anything on this page will be changed in a future update and eventually a replacement for the feed page.</p>
-                        </div>
-                    </siders>
-                </fullwc>
-            </div>
-
-            <div class="pg pg5">
-                <fullwc>
-                    <sidell>
-                        <div class="block">
-                            <p>[pg5 side l medium]</p>
-                        </div>
-                    </sidell>
-
-                    <siders>
-                        <div class="block">
-                            <p>[pg5 side r medium]</p>
-                        </div>
-                    </siders>
-                </fullwc>
-            </div>
-
-            <div class="pg pg6">
-                <fullwc>
-                    <sidelm>
-                        <div class="block">
-                            <p>[pg6 side l medium]</p>
-                        </div>
-                    </sidelm>
-
-                    <siderm>
-                        <div class="block">
-                            <p>[pg6 side r medium]</p>
-                        </div>
-                    </siderm>
-                </fullwc>
-            </div>
-        </w3x3>
+        </pageData>
     </body>
 
-    <script type="text/javascript" src="/libaries/imagesloaded.js"></script> <!-- needed for the art element loading -->
-    <script type="text/javascript" src="pagescripts.js"></script> <!-- page turning scripts -->
-    <script type="text/javascript" src="pageflip.js"></script> <!-- page scripts -->
+    <script type="text/javascript" src="pageScripts.js"></script> <!-- page turning scripts -->
+    <script type="text/javascript" src="pageFunctionality.js"></script> <!-- page scripts -->
