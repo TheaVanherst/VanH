@@ -3,13 +3,19 @@ let brightModeCS=["#8364fd","#e662ff","#fd963b","#3aecb4","#ff4fc7","#737475","#
     rootLoop=["accent1","accent2","accent3","accent4","accent5","invaccent","links","titles","text","background","posts","artposts","borders","postback","defopacity","fadeto","logoinv"], //root var arr
     blockMode=["block","none"], colourArr=[nightModeCS,brightModeCS];
 
-let nightBool, binaryLatch, mobileBool; // night mode bool, night mode bool but in binary, mobile bool
+let nightBool, binaryLatch; // night mode bool, night mode bool but in binary, mobile bool
 let colourSheet, booleanToggleArr; //currently active colour array [nightModeCS,brightModeCS], [(!nightBool ? 0:1),(nightBool ? 0:1)]
 
+var mobileBool, supportsTouch;
 $(document).ready(function() {
     if(/Mobi|Android/i.test(navigator.userAgent) === true){
-        mobileBool = true; //sets mobile bool to true if a mobile OS is detected
-        console.log("running mobile")} //debug console log
+        mobileBool = true} //sets mobile bool to true if a mobile OS is detected
+    else {mobileBool = false}
+
+    if('ontouchstart' in window || navigator.msMaxTouchPoints){
+        supportsTouch = true}
+    else { supportsTouch = false}
+    console.log("mobileBool: " + mobileBool + ", supportsTouch: " + supportsTouch)
 })
 
 function nightmode(){

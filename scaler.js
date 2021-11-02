@@ -16,7 +16,7 @@ $(window).ready(function(){
      if (mobileBool) {
          $('#pageFunctionality').css({ //this is to limit drag functionality on mobile.
              'width':'100%','height':'calc(var(--pageheight) - (var(--gutter) * 2))',
-             'position':'absolute', 'overflow':'hidden'})}
+             'overflow':'hidden'})}
 })
 
 var scale2Multiplier = false, scale3Multiplier = false; //width calc storage
@@ -24,11 +24,6 @@ let innerPage, newRootLeft, newRootRight, newRootMid; //page total, left, mid an
 
 let waitCallback, scaleResetReq;
 var resize = function() { // Page rescaling
-
-    if(/Mobi|Android/i.test(navigator.userAgent) === true){
-        mobileBool = true; //sets mobile bool to true if a mobile OS is detected
-        console.log("running mobile")} //debug console log
-
     /* there's a bug where the side borders surrounding the page are 20 pixels too small */
     if(!mobileBool){pageWidth = $('body').width(); /* this is just the default code */
     } else {pageWidth = $('body').width() - 20} /* this is the quick fix */

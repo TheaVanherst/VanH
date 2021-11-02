@@ -22,6 +22,16 @@ function pgposrelcheck(positionData,pageWidth) {
     else { return 0}//limits to the right hand side to the closest positive
 }
 
+function limitChecker(currentValue, maxValue, minValue, overflowValue, newValue){
+    currentValue = newValue
+    if(currentValue > maxValue - overflowValue){ //if the number is above bandwidth,
+        return maxValue - overflowValue} //return back to highest value
+    else if(currentValue < minValue){ //if the number is below min bandwidth,
+        return minValue} //return to min bandwidth
+    else {
+        return currentValue} //otherwise, act normal.
+}
+
 $(document).ready(function(){ //function to set up sidebar
     $("pg.pg" + currentPage).toggleClass("pageful")// this displays the default current page as active on page launch.
 
@@ -48,7 +58,8 @@ $(document).ready(function(){ //function to set up sidebar
                         "opacity " + transitionSpeed + " cubic-bezier(0,0,0,1)"}) //fade in
 
                 currentPage = i //updates i as the new active page
-                $('pageData').css({"margin-top":pageScrollY[i]}) //Sets vertical page placement
+                if(!mobileBool){
+                    $('pageData').css({"top":pageScrollY[i]})} //Sets vertical page placement
 
                 for(var e = 0; e < pageScrollY.length; e++){ //loops through all pages and updates positional data
                     pgPosMultiplier[e] = e - i //root data for page position multipliers
@@ -73,17 +84,24 @@ $(document).ready(function(){ //function to set up sidebar
 });
 
 /* page dragging */
-
+let posY1, posY2, verticalDifference //positions specific to mobile functionality. + debug values
 let posX1, posX2, horizontalDifference = 0
 var clicking = false;
 
-$(document).on('mousedown', function(e) {
-    if(!clicking){
-        posX1 = e.pageX;
-        clicking = !clicking //latch gate for the movement checker.
+$(document).on('mousedown touchstart', function(e) {
+    if(!clicking) { //this prevents spam holddown
+        clicking = true;
 
-        $("sidenav").css("z-index","9999")
-        $("pg.pg" + currentPage).css("pointer-events", "none")} //prevents rubber banding due to dragging on the "current" page
+        if (!supportsTouch) {
+            posX1 = e.pageX
+        } else {
+            posX1 = e.originalEvent.touches[0].pageX;
+            posY1 = e.originalEvent.touches[0].pageY}
+
+        if (!mobileBool) { //prevents rubber banding due to dragging on the "current" page
+            $("sidenav").css("z-index", "9999")
+            $("pg.pg" + currentPage).css("pointer-events", "none")}
+    }
 })
 
 $(document).on('mousemove', function(e) {
@@ -104,61 +122,108 @@ $(document).on('mousemove', function(e) {
     }
 })
 
-let toBeCurrent = currentPage, transitionSpeed
-$(document).on('mouseup', function(e) {
-    if(clicking){
-        posX2 = e.pageX; //leave this here because otherwise regular clicking keeps X2 from the previous drag
+var scrolldivisional = 14 //this generates the scroll speed based on division
 
-        toBeCurrent = limitChecker(toBeCurrent,pageScrollY.length,0,1, currentPage + pgposrelcheck(horizontalDifference, innerPage))
-        if(currentPage !== toBeCurrent){ //checks if button clicked is different than the active button
+$(window).bind('touchmove', function(e) {
+    if(clicking) {
+        // grabs the current finger position
+        posX2 = e.originalEvent.touches[0].pageX;
+        posY2 = e.originalEvent.touches[0].pageY;
+        //calculates the difference between both relation points, divided by multiplier
+        horizontalDifference = (posX1 - posX2) / 2;
+        verticalDifference = (posY1 - posY2) / scrolldivisional;
+
+        let checkOverflow = verticalDifference - horizontalDifference
+
+        if (checkOverflow < 100 && checkOverflow > -100) { //this is really jank, please fix
+            pageScrollY[currentPage] = limitChecker(pageScrollY[currentPage], 0, currentPgHeight, 0, pageScrollY[currentPage] - verticalDifference)
+
+            $('pageData').css({"top": pageScrollY[currentPage]})
+
+            if (currentPage === 0 && artsPostsHeight > sectionHeight) { //checks if currentPage is 0 OR post container is larger than page height
+                artsScroll = limitChecker(artsScroll, 0, -artsPostsHeight - sectionHeight - (rootgutter * 2), 0, artsScroll - verticalDifference)
+                //this calculates current scroll height through checking before pushing, it's not accurate but good enough
+                $('.pg0 #arts0, .pg0 #arts1').css({"top": artsScroll}) //pushes new Y value
+            } else if (currentPage === 1 && blogPostsHeight > sectionHeight) { //checks if currentPage is 1 OR post container is larger than page height
+                blogScroll = limitChecker(blogScroll, 0, -blogPostsHeight + sectionHeight - rootgutter, 0, blogScroll - verticalDifference)
+                //this calculates current scroll height through checking before pushing, it's not accurate but good enough
+                $('.pg1 .postcont').css({"top": blogScroll}) //pushes new Y value
+            }
+
+        } else if (posX2 > 50 || posX2 < -50) {
+            $("pg").css({"left": -horizontalDifference}) //page dragging calcs
+            const newPage = limitChecker(currentPage, pageScrollY.length, 0, 1, currentPage + pgposrelcheck(horizontalDifference, innerPage + rootLeft + rootgutter));
+
+            for (var cp = 0; cp < pageScrollY.length; cp++) {
+                $("pg.pg" + cp).css({
+                    "opacity": "0.25",
+                    "margin-left": pageSidebarPos(cp, newPage, pgPosMultiplier[cp]) //updates page position
+                })
+            }
+            if (newPage !== currentPage) { //compares current page to new page
+                $("pg.pg" + newPage).css({"opacity": "0.75"})
+            } //if new page is different, increase opacity.
+        }
+    }
+});
+
+let toBeCurrent = currentPage, transitionSpeed
+$(document).on('mouseup touchend', function(e) {
+    if(clicking) {
+        if (supportsTouch && mobileBool) {
+            posX2 = e.originalEvent.changedTouches[0].pageX;
+            toBeCurrent = limitChecker(toBeCurrent, pageScrollY.length, 0, 1, currentPage + pgposrelcheck(horizontalDifference, innerPage + rootLeft + rootgutter))}
+        else if (supportsTouch){
+            posX2 = e.originalEvent.changedTouches[0].pageX;
+            toBeCurrent = limitChecker(toBeCurrent, pageScrollY.length, 0, 1, currentPage + pgposrelcheck(horizontalDifference, innerPage))}
+        else {
+            posX2 = e.pageX; //leave this here because otherwise regular clicking keeps X2 from the previous drag
+            toBeCurrent = limitChecker(toBeCurrent, pageScrollY.length, 0, 1, currentPage + pgposrelcheck(horizontalDifference, innerPage))}
+
+        if (currentPage !== toBeCurrent) { //checks if button clicked is different than the active button
             $("pg.pg" + currentPage + ", pg.pg" + toBeCurrent).toggleClass("pageful") //removes class from concurrent page + adds it to newly active page
             $(".ls.pg" + currentPage + ", .ls.pg" + toBeCurrent).toggleClass("button-focus") //removes class from concurrent button + adds it to newly active button
 
             currentPage = toBeCurrent //updates i as the new active page
-            $('pagedata').css({"margin-top":pageScrollY[toBeCurrent]})
-            transitionSpeed = (Math.abs(toBeCurrent - currentPage)/ 20) + .3}
-        else {
-            transitionSpeed = 0.3} //Sets vertical page placement
+            transitionSpeed = (Math.abs(toBeCurrent - currentPage) / 20) + .3
+        } else {
+            transitionSpeed = 0.3
+        } //Sets vertical page placement
 
-        $("pg").css({"transition": //adds transitions for initial movement.
+        $("pg").css({
+            "transition": //adds transitions for initial movement.
                 "left " + transitionSpeed + "s cubic-bezier(0,0,0,1), " +
                 "margin " + transitionSpeed + "s cubic-bezier(0,0,0,1), " +
-                "opacity " + transitionSpeed + "s cubic-bezier(0,0,0,1)"}) // transitions to the default left position, gained from the mousemove function.
+                "opacity " + transitionSpeed + "s cubic-bezier(0,0,0,1)"
+        }) // transitions to the default left position, gained from the mousemove function.
         $("#pageFunctionality").css({"left": 0}) //resets page dragging calcs
-        setTimeout(function(){$("sidenav").css("z-index","99")},transitionSpeed)
 
-        for(var page = 0; page < pageScrollY.length; page++){ //loops through all pages and updates positional data
+        $('pagedata').css({"top": pageScrollY[toBeCurrent]})
+        $("pg").css({"left": "0"})
+
+        setTimeout(function () {
+            $("sidenav").css("z-index", "99")
+        }, transitionSpeed)
+
+        for (var page = 0; page < pageScrollY.length; page++) { //loops through all pages and updates positional data
             pgPosMultiplier[page] = page - toBeCurrent //root data for page position multipliers
-            $("pg.pg" + page).css("margin-left", pageSidebarPos(page,toBeCurrent,pgPosMultiplier[page]))}//updates page position
+            $("pg.pg" + page).css("margin-left", pageSidebarPos(page, toBeCurrent, pgPosMultiplier[page]))
+        }//updates page position
 
         $("pg.pg" + currentPage).css("pointer-events", "auto") //alows clickability after page drag
         clicking = false //latch gate for the movement checker.
-
     }
 })
 
-/* page scroll scripts */
-
-function limitChecker(currentValue, maxValue, minValue, overflowValue, newValue){
-    currentValue = newValue
-    if(currentValue > maxValue - overflowValue){ //if the number is above bandwidth,
-        return maxValue - overflowValue} //return back to highest value
-    else if(currentValue < minValue){ //if the number is below min bandwidth,
-        return minValue} //return to min bandwidth
-    else {
-        return currentValue} //otherwise, act normal.
-}
 
 $(window).on('wheel', function(e){
-    if(!mobileBool) { //prevents mobile debugger from having scroll functionality on desktop.
-        //this calculates current scroll height through checking before pushing
+    if(!mobileBool){
         pageScrollY[currentPage] = limitChecker(pageScrollY[currentPage], 0, currentPgHeight, 0, pageScrollY[currentPage] - e.originalEvent.deltaY)
-        $('pageData').css({"margin-top": pageScrollY[currentPage]}) //sets scroll height of container based on current page scroll arr
+        $('pageData').css({"top": pageScrollY[currentPage]}) //sets scroll height of container based on current page scroll arr
 
         if (currentPage === 0 && artsPostsHeight > sectionHeight) { //checks if currentPage is 0 OR post container is larger than page height
             artsScroll = limitChecker(artsScroll, 0, -artsPostsHeight + sectionHeight - (rootgutter * 2), 0, artsScroll - e.originalEvent.deltaY)
             //this calculates current scroll height through checking before pushing, it's not accurate but good enough
-            console.log(artsScroll, -artsPostsHeight + sectionHeight, artsScroll - e.originalEvent.deltaY)
             $('.pg0 #arts0, .pg0 #arts1').css({"top": artsScroll}) //pushes new Y value
         } else if (currentPage === 1 && blogPostsHeight > sectionHeight) { //checks if currentPage is 1 OR post container is larger than page height
             blogScroll = limitChecker(blogScroll, 0, -blogPostsHeight + sectionHeight - (rootgutter * 3), 0, blogScroll - e.originalEvent.deltaY)
@@ -168,77 +233,3 @@ $(window).on('wheel', function(e){
     }
 });
 
-/* Mobile page scripts */
-
-let posY1, posY2, verticalDifference //positions specific to mobile functionality. + debug values
-var scrolldivisional = 14 //this generates the scroll speed based on division
-
-$(window).bind('touchstart', function(e) {
-    // grabs positional relation data on first touch
-    posY1 = e.originalEvent.touches[0].pageY;
-    posX1 = e.originalEvent.touches[0].pageX;})
-
-$(window).bind('touchmove', function(e) {
-    // grabs the current finger position
-    posY2 = e.originalEvent.touches[0].pageY;
-    posX2 = e.originalEvent.touches[0].pageX;
-    //calculates the difference between both relation points, divided by multiplier
-    verticalDifference = (posY1 - posY2) / scrolldivisional;
-    horizontalDifference = (posX1 - posX2) / 2;
-    let checkOverflow = verticalDifference - horizontalDifference
-
-    if(checkOverflow < 100 && checkOverflow > -100){ //this is really jank, please fix
-        pageScrollY[currentPage] = limitChecker(pageScrollY[currentPage],0,currentPgHeight,0, pageScrollY[currentPage] - verticalDifference)
-        $('.pg'+currentPage).css({"margin-top":pageScrollY[currentPage]}) //sets scroll height of container based on current page scroll arr
-
-        if(currentPage === 0 && artsPostsHeight > sectionHeight) { //checks if currentPage is 0 OR post container is larger than page height
-            artsScroll = limitChecker(artsScroll,0,-artsPostsHeight - sectionHeight - (rootgutter * 2),0, artsScroll - verticalDifference)
-            //this calculates current scroll height through checking before pushing, it's not accurate but good enough
-            $('.pg0 #arts0, .pg0 #arts1').css({"margin-top":artsScroll}) //pushes new Y value
-        }
-        else if(currentPage === 1 && blogPostsHeight > sectionHeight){ //checks if currentPage is 1 OR post container is larger than page height
-            blogScroll = limitChecker(blogScroll,0,-blogPostsHeight + sectionHeight - (rootgutter * 2) - rootgutter,0, blogScroll - verticalDifference)
-            //this calculates current scroll height through checking before pushing, it's not accurate but good enough
-            $('.pg1 .postcont').css({"margin-top":blogScroll}) //pushes new Y value
-        }
-    } else if(posX2 > 50 || posX2 < -50) {
-        $("pg").css({"left": -horizontalDifference}) //page dragging calcs
-        const newPage = limitChecker(currentPage, pageScrollY.length, 0, 1, currentPage + pgposrelcheck(horizontalDifference, innerPage + rootLeft + rootgutter));
-
-        for (var cp = 0; cp < pageScrollY.length; cp++) {
-            $("pg.pg" + cp).css({
-                "opacity":"0.25",
-                "margin-left": pageSidebarPos(cp,newPage,pgPosMultiplier[cp])}
-            )} //updates page position
-        if(newPage !== currentPage){ //compares current page to new page
-            $("pg.pg" + newPage).css({"opacity":"0.75"})} //if new page is different, increase opacity.
-    }
-});
-
-$(window).bind('touchend', function(e) {
-    posX2 = e.originalEvent.changedTouches[0].pageX;
-    toBeCurrent = limitChecker(toBeCurrent,pageScrollY.length,0,1, currentPage + pgposrelcheck(horizontalDifference, innerPage + rootLeft + rootgutter))
-
-    if(currentPage !== toBeCurrent){ //checks if button clicked is different than the active button
-        $("pg.pg" + currentPage + ", pg.pg" + toBeCurrent).toggleClass("pageful") //removes class from concurrent page + adds it to newly active page
-        $(".ls.pg" + currentPage + ", .ls.pg" + toBeCurrent).toggleClass("button-focus") //removes class from concurrent button + adds it to newly active button
-
-        currentPage = toBeCurrent //updates i as the new active page
-        transitionSpeed = (Math.abs(toBeCurrent - currentPage)/ 20) + .3}
-    else {
-        transitionSpeed = 0.3} //Sets vertical page placement
-
-    $("pg").css({"transition": //adds transitions for initial movement.
-            "left " + transitionSpeed + "s cubic-bezier(0,0,0,1), " +
-            "margin " + transitionSpeed + "s cubic-bezier(0,0,0,1), " +
-            "opacity " + transitionSpeed + "s cubic-bezier(0,0,0,1)",
-        "left":"0"}) // transitions to the default left position, gained from the mousemove function.
-    setTimeout(function(){$("sidenav").css("z-index","99")},transitionSpeed)
-
-
-    for(let page = 0; page < pageScrollY.length; page++){ //loops through all pages and updates positional data
-        pgPosMultiplier[page] = page - toBeCurrent //root data for page position multipliers
-        $("pg.pg" + page).css("margin-left", pageSidebarPos(page,toBeCurrent,pgPosMultiplier[page]))}//updates page position
-
-    $("pg.pg" + currentPage).css("pointer-events", "auto") //alows clickability after page drag
-})

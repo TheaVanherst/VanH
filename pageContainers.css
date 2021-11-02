@@ -15,8 +15,9 @@
 
 pageData {
     left:50%; transform:translateX(-50%);
-    position: absolute;
+    position: absolute; top: 0px;
     transition:
+            top .6s cubic-bezier(0,0,0,1),
             margin-top .6s cubic-bezier(0,0,0,1)}
 
 pg{  /*default page setting*/

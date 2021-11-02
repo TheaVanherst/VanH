@@ -43,7 +43,7 @@ body, body *{
             background .3s cubic-bezier(0,0,0,1)}
 
 #pageFunctionality {
-    position:relative;
+    position: absolute;
     transition:
             left .3s cubic-bezier(0,0,0,1)}
 
