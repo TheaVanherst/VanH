@@ -11,12 +11,20 @@ var columnX3 = (rootRight + rootMid + rootLeft),
     columnX2 = rootRight + rootMid;
 var sectionHeight = getComputedStyle(document.documentElement).getPropertyValue('--pageheight'); //checks default page height
     sectionHeight = parseInt(sectionHeight.replace("px", ""))
+var mobilePageHeight;
 
 $(window).ready(function(){
-     if (mobileBool) {
-         $('#pageFunctionality').css({ //this is to limit drag functionality on mobile.
-             'width':'100%','height':'calc(var(--pageheight) - (var(--gutter) * 2))',
-             'overflow':'hidden'})}
+    if (mobileBool) {
+        $('.postcont').css("transition"," top .0s cubic-bezier(0,0,0,1)");
+        $('#arts0, #arts1').css("transition"," top .0s cubic-bezier(0,0,0,1)");
+        $('#pageFunctionality').css({ //this is to limit drag functionality on mobile.
+             'width':'100%','height':$(document).height() + 'px','overflow':'hidden'})
+
+        $('#twitter').css('pointer-events','none')
+        mobilePageHeight = document.body.clientHeight - $('#pageFunctionality').parent().height() - (rootgutter * 6)
+        $('.pg1 largecontainer, .pg1 smallcontainer, .pg0 incont').css({
+            'height': mobilePageHeight + 'px'})
+    }
 })
 
 var scale2Multiplier = false, scale3Multiplier = false; //width calc storage
@@ -85,6 +93,6 @@ function pageRelocation () {
         $("pg.pg"+i).css(
             "margin-left", pageSidebarPos(i,currentPage,pgPosMultiplier[i]))
     }
-    !scaleResetReq
+    scaleResetReq = !scaleResetReq
     console.log("Callback: " + scaleResetReq)
 }

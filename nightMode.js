@@ -10,11 +10,8 @@ var mobileBool, supportsTouch;
 $(document).ready(function() {
     if(/Mobi|Android/i.test(navigator.userAgent) === true){
         mobileBool = true} //sets mobile bool to true if a mobile OS is detected
-    else {mobileBool = false}
-
-    if('ontouchstart' in window || navigator.msMaxTouchPoints){
-        supportsTouch = true}
-    else { supportsTouch = false}
+    else {
+        mobileBool = false}
     console.log("mobileBool: " + mobileBool + ", supportsTouch: " + supportsTouch)
 })
 
@@ -58,8 +55,7 @@ document.addEventListener("DOMContentLoaded", function(){
         nightBool = (colourMode !== 'true')
         console.log("Using Cookie data")
     } else {
-        //nightBool = window.matchMedia('(prefers-color-scheme: dark)').matches
-    }
+        nightBool = false}
 
     nightmode()
 })

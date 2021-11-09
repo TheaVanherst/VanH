@@ -91,8 +91,11 @@ $("pg.pg1").ready(function(){
     loadpostelement()})
 
 function loadpostelement(){
+    //$.get(("https://raw.githubusercontent.com/TheaVanherst/VanH/og-backup/blog/posts/p"+(article)+".txt"), function(data){
     $.get(("/blog/posts/p" + currentBlogPost + ".txt"), function (data) {
+        //data = replaceAll(data, '/blog/img/', 'https://raw.githubusercontent.com/TheaVanherst/VanH/og-backup/blog/img/')
         var postMeta = data.split("<meta>"); //splits data
+
         $('<article id=post' + currentBlogPost + '>' +
             '<div class="when">' +
             when(postMeta[1]) + //displays "NEW" if the post is under 2 weeks old.
@@ -118,7 +121,10 @@ function loadpostelement(){
 
 var artSideLatch, postArtData, currentArtPost;
 $("pg.pg0").ready(function(){ //this needs rewriting
+    //$.get(("https://raw.githubusercontent.com/TheaVanherst/VanH/og-backup/artelements.html"), function(data){
     $.get(("/artelements.html"),function(data) {
+        //data = replaceAll(data, '/arts/', 'https://raw.githubusercontent.com/TheaVanherst/VanH/og-backup/arts/')
+
         postArtData = data.split("///");
         currentArtPost = postArtData.length;
         artgeneration()
@@ -131,7 +137,7 @@ function artgeneration(){
         currentArtPost--
         if($('#arts0').outerHeight() > $('#arts1').outerHeight()){
             artSideLatch = "1"}
-        else{
+        else {
             artSideLatch = "0"}
 
         var data = postArtData[currentArtPost].split("<>"), artPostedWhen;

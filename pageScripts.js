@@ -2,9 +2,7 @@
 $(document).ready(resize); $(window).on("load resize", resize)
 
 var arthover = function (e) {//this function is a bit jank, but it's optimal enough not to fix
-
     $('#hover-element').remove(); //this removes the previous hover element to prevent multiple occurrences
-    $('#side').css({"z-index":"99"}) //sets the side nav to be below the #hover element
 
     var target = $('.pageful #' + e.target.id); //grabs the hover target, based on where mouse is located.
     $('div.zoom').css({"opacity":"1"}) //sets the focused element to full opacity
@@ -21,7 +19,6 @@ var arthover = function (e) {//this function is a bit jank, but it's optimal eno
         image = new Image();
         image.src = image_url;
 
-        $('sidenav').css("z-index","0")
         $('#hover-element').css({
             "width": target.height() * (image.width / image.height),
             "height": target.height(), "min-width":target.parent().width()}).css(
@@ -31,7 +28,6 @@ var arthover = function (e) {//this function is a bit jank, but it's optimal eno
 }
 
 $('incont > * > div').click(arthover).hover(arthover)
-$('hover-element').mouseout(function() {$('sidenav').css("z-index","99")})
 
 $(function (){
     $('.headerLogo').hover(

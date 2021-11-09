@@ -1,5 +1,5 @@
 :root{
-    --sidebarl:250px; --sidebarr:350px; --postwidth:500px; /*main page divisional factors*/
+    --sidebarl:230px; --sidebarr:300px; --postwidth:500px; /*main page divisional factors*/
     --gutter:20px; --skirting: 8px;
 
     /* Some precalcs that save time later CONTENT */
@@ -12,21 +12,34 @@
     --halfGutter: calc(var(--gutter)/2)}
 
 /* main page logic */
+.tmblr-iframe--gdpr-banner{
+    display:none}
 
 pageData {
     left:50%; transform:translateX(-50%);
     position: absolute; top: 0px;
     transition:
-            top .6s cubic-bezier(0,0,0,1),
-            margin-top .6s cubic-bezier(0,0,0,1)}
+            top .6s cubic-bezier(0,0,0,1)}
+
+mobileController {
+    left: 0; margin-left: 0;
+    transition:
+            margin-left .3s cubic-bezier(0,0,0,1),
+            left .3s cubic-bezier(0,0,0,1);
+    position:relative}
+
+#pageFunctionality {
+    transition:
+            left .5s cubic-bezier(0,0,0,1),
+            margin-left .5s cubic-bezier(0,0,0,1);}
 
 pg{  /*default page setting*/
     width:var(--fullBodyCalc);
     position:absolute; display:inline-block;
     opacity: 0.25; font-size: 0;
     transition:
-            margin .5s cubic-bezier(0,0,0,1),
-            opacity .5s cubic-bezier(0,0,0,1)}
+        margin-left .5s cubic-bezier(0,0,0,1),
+        opacity .5s cubic-bezier(0,0,0,1)}
 pg > * > *{font-size:16px}
 /*Page placement and layering fixes*/
 pg.pageful {
@@ -61,7 +74,7 @@ largeContainer, section{ /* 66% */
 midContainer{ /* 50% */
     padding:calc(var(--skirting)/2); background-color: var(--postback);
     width:calc(((var(--innerPageWoConCalc) + var(--halfGutter)) / 2) - var(--skirting))}
-smallContainer:not(#asider){ /* 33% */
+smallContainer{ /* 33% */
     padding:var(--halfSkirting); background-color: var(--postback);
     width:calc(var(--sidebarr) - var(--skirting))}
 #asider{width:calc(var(--sidebarr))}

@@ -25,9 +25,11 @@
     --postback: #e3e3e3;
 }
 
+html, body {height: 100%; width:100%}
+
 html {scroll-behavior: smooth}
 body {
-    font-size:1em; clear: none;
+    font-size:1em; clear: none; position:fixed;
     font-family:var(--fontstyle); word-wrap:break-word;
 
     margin: 0; overflow: hidden;

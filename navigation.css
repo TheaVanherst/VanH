@@ -93,7 +93,7 @@
     --profilepicture: url('/Website Assets/pfp.gif')}
 
 sideNav { /* sidebar container */
-    position:fixed;
+    position:fixed; z-index:99;
     left: calc(50% - ( var(--innerPageWoConCalc) / 2) - var(--gutter));
     transform: translateX(-50%);
     top:var(--gutter);
@@ -169,7 +169,7 @@ nav {width: calc(100% /3)}
     padding: 8px 15px}
 
 .ls .i{opacity: var(--defopacity)}
-.ls:hover .i{opacity: var(--fadeto)}
+#topNav:not(.active) > .ls:hover .i{opacity: var(--fadeto)}
 .ls.button-focus .i {opacity:var(--fadeto)}
 
 .ls .i, .ls{transition:
