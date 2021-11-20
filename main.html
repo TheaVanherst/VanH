@@ -41,6 +41,13 @@
     </head>
 
     <body>
+
+        <loadIn>
+            <img src="/Website%20assets/defaultbase.png">
+            <img src="/Website%20assets/defaultcover.png">
+            <div class="spinner"><div class="double-bounce1"></div><div class="double-bounce2"></div></div>
+        </loadIn>
+
         <sideNav>
             <div id="pfp"></div>
             <div id="sideNav"></div>
@@ -142,7 +149,7 @@
                                 <div><tcb><p>01/05/2021 - 04/05/2021<br><t>Arms Dealer Coffee</t></p></tcb>
                                     <drp><p>02/05/2021<br><t>Walk Sequence</t></p></drp><div id="rs8"></div></div>
                                 <div><drp><p>04/05/2021<br><t>Frame Development</t></p></drp><div id="rs7"></div>
-                                    <p>"I'm not entirely happy with this due to being so far from the original terraria template, but with some practice I'll revisit this artSideLatch a later date."</p></div>
+                                    <p>"I'm not entirely happy with this due to being so far from the original terraria template, but with some practice I'll revisit this artLatch a later date."</p></div>
 
                                 <div><tcb><p>10/10/2020<br><t>SAS Caddy</t></p></tcb>
                                     <drp><p><t>Final Lineart</t></p></drp><div id="rs6"></div>
@@ -234,17 +241,12 @@
 
                     <pg class="pg4">
                         <pageContainer>
-                            <largeContainer>
-                                <div class="block">
-                                    <p>test</p>
-                                </div>
-                            </largeContainer>
+                            <div style="margin-bottom: calc(var(--halfGutter) + 1px)">
+                                <div id="ytPlayer"></div>
+                                <tcb><p id="uploadDate" class="ntc"></p></tcb> <!-- changes based on player input -->
+                            </div>
+                            <div id="videoSelection"></div>
 
-                            <smallContainer>
-                                <div class="block">
-                                    <p>This page is currently a test page for the future replacement of tumblr-based posts. Anything on this page will be changed in a future update and eventually a replacement for the feed page.</p>
-                                </div>
-                            </smallContainer>
                         </pageContainer>
                     </pg>
 
@@ -284,5 +286,11 @@
         </pageData>
     </body>
 
+    <script>
+        $(document).ready(resize); $(window).on("load resize", resize)
+    </script>
+
     <script type="text/javascript" src="pageScripts.js"></script> <!-- page turning scripts -->
     <script type="text/javascript" src="pageFunctionality.js"></script> <!-- page scripts -->
+
+    <script type="text/javascript" src="mediaPlayer.js"></script> <!-- Media Player scripts -->

@@ -1,38 +1,50 @@
 
-function timeget(data) {
-    let date = new Date(data);
-    var ord = ["st","nd","rd"], expt = [11,12,13];
+// 888888 88 8b    d8 888888      dP""b8    db    88      dP""b8 .dP"Y8
+//   88   88 88b  d88 88__       dP   `"   dPYb   88     dP   `" `Ybo."
+//   88   88 88YbdP88 88""       Yb       dP__Yb  88  .o Yb      o.`Y8b
+//   88   88 88 YY 88 888888      YboodP dP""""Yb 88ood8  YboodP 8bodP'
 
+function timeget(data) {
+    let date = new Date(data); //uses data to get date and store to a var
+    var ord = ["st","nd","rd"], expt = [11,12,13]; //preset vars for numbered date
+
+    // preset calculations for the dates based on data input
+    // everything is floored to round it down to the closest full date
+    // all this is just numerical multipliers so I can pull them JUST IN-CASE I need them
     var days = Math.floor((new Date().getTime() - new Date(date).getTime())/(1000 * 60 * 60 * 24)),
         weeks = Math.floor(days/7),
         yrs = Math.floor(new Date().getFullYear() - date.getFullYear()),
         mnths = Math.floor(new Date().getMonth() - date.getMonth()),
         diff = Math.floor(new Date().getTime() - date.getTime());
 
+    //turns data var into a date string
     var year = date.toLocaleString('en-us', {year: 'numeric'}),
         monthlong = date.toLocaleString('en-us',{month:'long'}),
         monthshort = date.toLocaleString('en-us',{month:'short'}),
         dayshort = date.toLocaleString('en-us', {day: 'numeric'}),
-        daylong = date.toLocaleString('en-us', {weekday: 'long'}),
-        nth = ord[(dayshort % 10) - 1] == undefined || expt.includes(dayshort % 100) ? "th" : ord[(dayshort % 10) - 1],
-        temp = date.toString().split(/[t: ]+/),
-        hours = temp[4], mins = temp[5];
+        daylong = date.toLocaleString('en-us', {weekday: 'long'});
 
-    if (mnths < 0) {
-        yrs--;
-        mnths = mnths + 12}
+    // figures out if First, Third of Third should be added to the date.
+    var nth = ord[(dayshort % 10) - 1] == undefined || expt.includes(dayshort % 100) ? "th" : ord[(dayshort % 10) - 1],
+        temp = date.toString().split(/[t: ]+/), //grabs hour / minutes from date string
+        hours = temp[4], mins = temp[5]; //stores it as easy to access output vars.
+
+    if (mnths < 0 && yrs === 1) { //if the post is exactly one year old
+        yrs--; //removes a year and replaces it with 12 months
+        mnths = mnths + 12} //this just makes it seem like less time because lol cohesion
 
     return { yrs, mnths, weeks, days, diff, //relative data
         year, monthlong, monthshort, daylong, dayshort, nth, hours, mins}} //absolute data
 
 function postedwhen(data) {
-    let wn=timeget(data);
-    var pm=" ",t="Posted ";
+    let wn=timeget(data); //easy to access grab var
+    var pm=" ",t="Posted "; //reset presets
 
-    if(wn.hours>12){
-        wn.hours=wn.hours- 12; pm="pm"}
+    //turns hours into a 12 hour based clock, instead of 24.
+    if(wn.hours>12){ //checks if time is past 12pm
+        wn.hours=wn.hours- 12; pm="pm"} //removes 12, changes current to pm
     else{
-        pm="am"}
+        pm="am"} //else, use am.
 
     if(wn.days<14){
         if(wn.days===0){
@@ -44,7 +56,7 @@ function postedwhen(data) {
         if(wn.days>7){
             t+="last week"}
         if(wn.weeks!==1){
-            t+=" artSideLatch "+wn.hours+":"+wn.mins+pm}
+            t+=" artLatch "+wn.hours+":"+wn.mins+pm}
         else if(wn.days<7){
             t+=" the "+wn.dayshort+wn.nth}}
     else if(wn.mnths<3&&wn.days>13 && wn.yrs<1){
@@ -67,7 +79,7 @@ function dateposted(data) {
     else {
         dc = when.daylong+", "+when.monthshort} //otherwise keeps it to 4 letters.
 
-    return '<a class="dateposted">'+dc+" "+when.dayshort+when.nth+" "+when.year+'</a>'}
+    return '<a class="dateposted">'+dc+" "+when.dayshort+when.nth+" "+when.year+'</a>'} //return string
 
 function when(data) {
     if(Math.floor(Math.floor(new Date().getTime() - new Date(data).getTime())/(1000 * 60 * 60 * 24)) <= 7){
@@ -75,18 +87,36 @@ function when(data) {
         return '<div class="new-post"></div>'} //shows "NEW POST"
     else{return ""}} //filler to prevent NaN
 
+// 888888 88   88 8b    d8 88""Yb 88     88""Yb      dP""b8  dP"Yb  8888b.  888888
+//   88   88   88 88b  d88 88__dP 88     88__dP     dP   `" dP   Yb  8I  Yb 88__
+//   88   Y8   8P 88YbdP88 88""Yb 88  .o 88"Yb      Yb      Yb   dP  8I  dY 88""
+//   88   `YbodP' 88 YY 88 88oodP 88ood8 88  Yb      YboodP  YbodP  8888Y"  888888
+
+//some quick preset functions to replace urls on tumblr's backend
 function escapeRegExp(string){
     return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");}
 function replaceAll(str, term, replacement) {
     return str.replace(new RegExp(escapeRegExp(term), 'g'), replacement)}
-//put this in the loadpost elements
-//$.get(("https://raw.githubusercontent.com/TheaVanherst/VanH/og-backup/blog/posts/p"+(article)+".txt"), function(data){
-//    data = replaceAll(data, '/blog/img/', 'https://raw.githubusercontent.com/TheaVanherst/VanH/og-backup/blog/img/')
+
+//    db    .dP"Y8 .dP"Y8 888888 888888      dP""b8 888888 88b 88
+//   dPYb   `Ybo." `Ybo." 88__     88       dP   `" 88__   88Yb88
+//  dP__Yb  o.`Y8b o.`Y8b 88""     88       Yb  "88 88""   88 Y88
+// dP""""Yb 8bodP' 8bodP' 888888   88        YboodP 888888 88  Y8
+
+//vars that determine loading loops
+var runLoop = 0, //this gets added to every time new elements need to be added, then compared to.
+    blogLoadin = 3; //the amount of elements that will load in at a time
+
+// 88""Yb 88      dP"Yb   dP""b8     88""Yb  dP"Yb  .dP"Y8 888888 .dP"Y8      dP""b8 888888 88b 88
+// 88__dP 88     dP   Yb dP   `"     88__dP dP   Yb `Ybo."   88   `Ybo."     dP   `" 88__   88Yb88
+// 88""Yb 88  .o Yb   dP Yb  "88     88"""  Yb   dP o.`Y8b   88   o.`Y8b     Yb  "88 88""   88 Y88
+// 88oodP 88ood8  YbodP   YboodP     88      YbodP  8bodP'   88   8bodP'      YboodP 888888 88  Y8
 
 //the amount of docs to check through
 //this shouldn't be here, but i can't be bothered to come up with a better system
 //that doesn't include shoving all of my thoughts into one singular document.
-var currentBlogPost=15 //this is temporary I promise.
+let currentBlogPost = 15; //this is temporary I promise.
+
 $("pg.pg1").ready(function(){
     loadpostelement()})
 
@@ -95,6 +125,7 @@ function loadpostelement(){
     $.get(("/blog/posts/p" + currentBlogPost + ".txt"), function (data) {
         //data = replaceAll(data, '/blog/img/', 'https://raw.githubusercontent.com/TheaVanherst/VanH/og-backup/blog/img/')
         var postMeta = data.split("<meta>"); //splits data
+        currentBlogPost--;
 
         $('<article id=post' + currentBlogPost + '>' +
             '<div class="when">' +
@@ -105,59 +136,75 @@ function loadpostelement(){
             '<div class="when footer">' + //footer of posts
                 '<a class="vimage"></a>' +
                 '<div class="imcon">posted by<br>' + //posted by + pfp icon
-                    '<a class="postedby">vanherst</a>' + //this is just filler (just incase)
+                    '<a class="postedby">vanherst</a>' + //this is just filler (just in case)
                 '</div>' +
             '</div>' +
-        '</article>').appendTo("#posts") //attatches to section child container to prevent overflow
+        '</article>').appendTo("#posts") //attaches to section child container to prevent overflow
+
+        .imagesLoaded( function() { //checks to see if images are loaded in newly generated post
+            blogPostsHeight = $('.postcont').height()
+            if (blogPostsHeight < sectionHeight) { //checks to see if anymore posts need to be loaded
+                loadpostelement()} //loads next post
+            else if (runLoop > 0) { //check run loop to if more should be generated from wheel scroll
+                runLoop-- //remove one from run loop value
+                loadpostelement()} //repeat blog gen process.
+        }) //updates scroll height possible inside 'section
     })
-    .done(function () { // runs when previous post is loaded
-        if (currentBlogPost > 0) { //checks to see if anymore posts need to be loaded
-            currentBlogPost--; //removes 1 to the numerical list of posts left
-            loadpostelement()} //loads next post
-    })
-    $('#posts').imagesLoaded( function() { //checks to see if images are loaded
-        blogPostsHeight = $('.postcont').height()}) //updates scroll height possible inside 'section
 }
 
-var artSideLatch, postArtData, currentArtPost;
+//    db    88""Yb 888888     88""Yb  dP"Yb  .dP"Y8 888888 .dP"Y8      dP""b8 888888 88b 88
+//   dPYb   88__dP   88       88__dP dP   Yb `Ybo."   88   `Ybo."     dP   `" 88__   88Yb88
+//  dP__Yb  88"Yb    88       88"""  Yb   dP o.`Y8b   88   o.`Y8b     Yb  "88 88""   88 Y88
+// dP""""Yb 88  Yb   88       88      YbodP  8bodP'   88   8bodP'      YboodP 888888 88  Y8
+
+let artLatch, postArtData, currentArtPost;
+
 $("pg.pg0").ready(function(){ //this needs rewriting
     //$.get(("https://raw.githubusercontent.com/TheaVanherst/VanH/og-backup/artelements.html"), function(data){
     $.get(("/artelements.html"),function(data) {
         //data = replaceAll(data, '/arts/', 'https://raw.githubusercontent.com/TheaVanherst/VanH/og-backup/arts/')
+        postArtData = data.split("///"); //splits the art post data
+        currentArtPost = postArtData.length; //sets the amount of posts that are able to load based on split length
 
-        postArtData = data.split("///");
-        currentArtPost = postArtData.length;
-        artgeneration()
+        artGeneration() //runs a self contained art element loader
     })
 })
 
-var afd
-function artgeneration(){
-    if(currentArtPost > 0){
-        currentArtPost--
-        if($('#arts0').outerHeight() > $('#arts1').outerHeight()){
-            artSideLatch = "1"}
+var artLoadin = 3; //the amount of elements that will load in at a time
+
+function artGeneration(){
+    if(currentArtPost > 0) {
+        currentArtPost-- //removes 1 from the amount of posts that have yet to be loaded.
+
+        if ($('#arts0').outerHeight() > $('#arts1').outerHeight()) { //flip flop switch between both sides of the art page.
+            artLatch = "1"} //right hand side
         else {
-            artSideLatch = "0"}
+            artLatch = "0"} //left hand side
 
-        var data = postArtData[currentArtPost].split("<>"), artPostedWhen;
+        var data = postArtData[currentArtPost].split("<>"), //grabs the post data
+            artPostedWhen; //stores data for when the art was posted from data var
 
-        if (data[3]!==""){
-            artPostedWhen='<a>'+data[3]+'</a>'}
-        else{
-            artPostedWhen=" "}
+        if (data[3] !== undefined) { //if contains post meta (eg. Uni proj / warnings) add data
+            artPostedWhen = '<a>' + data[3] + '</a>'} //add new container to show meta
+        else {
+            artPostedWhen = ""} //else don't add it
 
-        afd =
-            $('<article id=art'+currentArtPost+'>'+
-                data[2]+
-                '<div class="when">'+
-                    artPostedWhen+dateposted(data[1])+
-                '</div></article>')
-            $("#arts" + artSideLatch).append(afd)
+        $("#arts" + artLatch).append(
+            $('<article id=art' + currentArtPost + '>' + //creates post container /w ID
+                data[2] + //image data
+                '<div class="when">' + //post date container
+                    artPostedWhen + dateposted(data[1]) + //date data
+                '</div>' +
+            '</article>') //container closers
+        ).imagesLoaded(function () { //when images loaded in assigned append container
+            artsPostsHeight = Math.max($('#arts0').height(), $('#arts1').height()) //check the max height of art containers
 
-        $('#art'+currentArtPost).imagesLoaded( function() {
-            artsPostsHeight = Math.max($('#arts1').height(), $('#arts2').height())
-            artgeneration()})
+            if (artsPostsHeight < sectionHeight) {
+                artGeneration()}
+            else if (runLoop > 0) { //check run loop to if more should be generated from wheel scroll
+                runLoop-- //remove one from run loop value
+                artGeneration()} //repeat art gen process.
+        })
     }
 }
 

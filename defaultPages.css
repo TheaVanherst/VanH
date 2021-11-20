@@ -64,6 +64,99 @@ incont > * t {padding:0!important}
     left: calc(50% + (var(--sidebarl)/2));
     transform:translateX(-50%)}
 
+/* Page 4
+/* ===================================== */
+
+.pg4 .postcont {
+    background-color: var(--postback);
+    padding:var(--halfSkirting);
+    border-radius: var(--skirting); overflow:hidden}
+.pg4 > * > *:not(:first-child) {
+    margin-top:var(--halfGutter)}
+
+.pg4 > * > *:not(:first-child) > * {
+    border-radius: var(--halfSkirting); overflow:hidden}
+
+.pg4 > * > * {margin-right: 0!important}
+
+#ytPlayer{
+    overflow:hidden; margin-bottom: -5px; position: relative; display: inline-block;
+    border-top-left-radius: var(--halfSkirting); border-top-right-radius: var(--halfSkirting);
+    width: calc(var(--innerPageCalc)); overflow:hidden;
+    height: calc(var(--innerPageCalc) / 16 * 9)}
+#uploadDate {
+    border-bottom-left-radius: var(--halfSkirting); border-bottom-right-radius: var(--halfSkirting)}
+
+#videoSelection tcb {
+    background-color: var(--accent1)!important;
+    width:calc((var(--innerPageCalc) - (var(--halfGutter) * 1.5)) / 3); display:inline-block}
+
+#videoSelection > div:not(:first-of-type) tcb p{
+    background-size: 20%!important;}
+#videoSelection > div:not(:first-of-type) > :not(:first-of-type) tcb p{
+    background-size: 25%!important;}
+
+#videoSelection > div:not(:first-of-type) > :first-of-type tcb p {
+    background: url('/Website%20assets/Untitled-3.png') center right no-repeat;}
+
+#videoSelection > div { /* parent container of videos */
+    width: calc(var(--innerPageCalc) - var(--skirting));
+    border-radius: var(--skirting); margin-bottom: calc(var(--halfSkirting) + 2px);
+    background-color: var(--postback);
+    position:relative;
+    padding: var(--halfSkirting)}
+
+#videoSelection > * > row { /* row division */
+    width: calc(var(--innerPageCalc) - var(--skirting));
+    display: block ruby; white-space: nowrap}
+#videoSelection > * > row:not(:last-child){
+    margin-bottom:var(--halfSkirting)}
+
+#videoSelection > * > row > div { /* video thumbnail containers */
+    overflow: hidden; border-radius: var(--halfSkirting);
+    display:inline-block; vertical-align: text-top; cursor: pointer;
+    float: none; position:relative}
+
+#videoSelection > * > row > div:not(:last-child) {
+    margin: 0 var(--halfSkirting) 0 0;}
+
+#videoSelection .thumbnails {
+    width:calc((var(--innerPageCalc) - (var(--halfSkirting) * 4)) / 3);
+    height:calc(((var(--innerPageCalc) - (var(--halfSkirting) * 4)) / 3) / 16 * 9);
+    display: flex; align-items: center; justify-content: center;}
+
+e {
+    color: white;padding: 4px 8px; font-size:var(--mid-fonts);
+    border-top-left-radius: var(--halfSkirting);
+    border-bottom-left-radius: var(--halfSkirting);
+    display:inline-block; width:calc(100% - 16px);
+    font-family: var(--boldstyle); margin-bottom:var(--halfSkirting);
+    text-transform: uppercase; background-color: var(--accent2)}
+e.rs {
+    border-top-right-radius: var(--halfSkirting);
+    border-bottom-right-radius: var(--halfSkirting)}
+
+f {
+    color: white; float:right; padding: 4px 8px;
+    border-top-right-radius: var(--halfSkirting); cursor:pointer;
+    border-bottom-right-radius: var(--halfSkirting); font-size:var(--mid-fonts);
+    display:inline-block; width:calc(20% - var(--gutter) + var(--halfSkirting));
+    font-family: var(--boldstyle); margin-bottom:var(--halfSkirting);
+    text-transform: uppercase; background-color: var(--accent4);
+}
+
+#videoSelection > * > *:first-of-type tcb, #videoSelection > * > *:first-of-type .thumbnails {
+    width: calc(var(--innerPageCalc) / 2 - (var(--halfSkirting) * 1.5))}
+#videoSelection > * > *:first-of-type .thumbnails {
+    height:calc((var(--innerPageCalc) / 2 - (var(--halfSkirting) * 1.5)) / 16 * 9 )}
+
+.pg4 img {width:100%; height:auto}
+
+.pg4 tcb p {
+    letter-spacing: 0.15px; white-space: nowrap; cursor: pointer;
+    padding: 7px 10px!important; background-color: var(--accent1)}
+.pg4 tcb * {color:white}
+
 /* Page 5
 /* ===================================== */
 

@@ -5,7 +5,10 @@ let blogPostsHeight = 500, artsPostsHeight = 500, //this is just needed as an in
 let pageScrollY = [0,0,0,0,0,0,0], sectionPad; //page scroll height, page height
 let pgPosMultiplier = [0,0,0,0,0,0,0]; //Page relativity position setting
 
-let currentPage = 1; // CHANGE THIS NUMBER TO CHANGE THE DEFAULT PAGE ON LAUNCH.
+// 88""Yb    db     dP""b8 888888     88""Yb  dP"Yb  .dP"Y8      dP""b8    db    88      dP""b8 .dP"Y8
+// 88__dP   dPYb   dP   `" 88__       88__dP dP   Yb `Ybo."     dP   `"   dPYb   88     dP   `" `Ybo."
+// 88"""   dP__Yb  Yb  "88 88""       88"""  Yb   dP o.`Y8b     Yb       dP__Yb  88  .o Yb      o.`Y8b
+// 88     dP""""Yb  YboodP 888888     88      YbodP  8bodP'      YboodP dP""""Yb 88ood8  YboodP 8bodP'
 
 function pageSidebarPos(newPage,currentPage,pageMultiplier) { //limits vars to set data ranges
     if (newPage < currentPage && !scale2Multiplier) { //checks if page is to the left of the current active page
@@ -32,7 +35,14 @@ function limitChecker(currentValue, maxValue, minValue, overflowValue, newValue)
         return currentValue} //otherwise, act normal.
 }
 
-$(document).ready(function(){ //function to set up sidebar
+// 88""Yb    db     dP""b8 888888     88""Yb 88 88b 88 8888b.  88 88b 88  dP""b8
+// 88__dP   dPYb   dP   `" 88__       88__dP 88 88Yb88  8I  Yb 88 88Yb88 dP   `"
+// 88"""   dP__Yb  Yb  "88 88""       88""Yb 88 88 Y88  8I  dY 88 88 Y88 Yb  "88
+// 88     dP""""Yb  YboodP 888888     88oodP 88 88  Y8 8888Y"  88 88  Y8  YboodP
+
+let currentPage = 1; // CHANGE THIS NUMBER TO CHANGE THE DEFAULT PAGE ON LAUNCH.
+
+$(function(){ //function to set up sidebar
     $("pg.pg" + currentPage).toggleClass("pageful")// this displays the default current page as active on page launch.
 
     for(let b = 0; b <= 6; b++){ //loops through the amount of pages, KEEP AS VAR.
@@ -83,84 +93,130 @@ $(document).ready(function(){ //function to set up sidebar
     console.log("Page binding complete.") //prints in console when sidebar is loaded.
 });
 
+// 88""Yb    db     dP""b8 888888     8888b.  88""Yb    db     dP""b8  dP""b8 88 88b 88  dP""b8
+// 88__dP   dPYb   dP   `" 88__        8I  Yb 88__dP   dPYb   dP   `" dP   `" 88 88Yb88 dP   `"
+// 88"""   dP__Yb  Yb  "88 88""        8I  dY 88"Yb   dP__Yb  Yb  "88 Yb  "88 88 88 Y88 Yb  "88
+// 88     dP""""Yb  YboodP 888888     8888Y"  88  Yb dP""""Yb  YboodP  YboodP 88 88  Y8  YboodP
+
 /* page dragging */
 let posY1, posY2, verticalDifference //positions specific to mobile functionality. + debug values
 let posX1, posX2, horizontalDifference = 0
-var clicking = false;
+var clicking = false, clickStart = 0, clickInt = 0, clickDur = 85;
 
-$(document).ready (function () {
+$(function(){
+
     if(mobileBool){
         $('#pageFunctionality').on('touchstart', document, function (e) {
+            clickStart = Date.now();
+
             if (!clicking) { //this prevents spam holddown
-                clicking = true;
+                clicking = true
                 posX1 = e.originalEvent.touches[0].pageX;
                 posY1 = e.originalEvent.touches[0].pageY;}})}
     else {
-        $(window).on('mousedown', document, function(e) {
-            if(!clicking) { //this prevents spam holddown
-                clicking = true;
-                posX1 = e.pageX;
-                $("pg.pg" + currentPage).css("pointer-events", "none")}})}
+        $(window).on('mousedown', document, function (e) {
+            clickStart = Date.now();
+
+            if (!clicking) { //this prevents spam holddown
+                clicking = true
+                posX1 = e.pageX}
+        })
+    }
 })
 
 $(window).on('mousemove', function(e) {
-    if(clicking){ //checks if mouse is currently being held down,
-        //then checks to see if in mobile mode. Finally, then it checks if posX2 is different.
-        posX2 = e.pageX;
-        horizontalDifference = posX1 - posX2 //sets pos 2 while holding down the mouse
 
-        $("#pageFunctionality").css({"left": -horizontalDifference}) //page dragging calcs
+    if(clicking) {
+        if (clickInt > -clickDur) {
+            clickInt = clickStart - Date.now()}
 
-        var newPage = limitChecker(currentPage,pageScrollY.length,0,1, currentPage + pgposrelcheck(horizontalDifference, innerPage))
-        for (var cp = 0; cp < pageScrollY.length; cp++) {
-            $("pg.pg" + cp).css({
-                "opacity":"0.25",
-                "margin-left": pageSidebarPos(cp,newPage,pgPosMultiplier[cp])})} //updates page position
-        if(newPage !== currentPage){ //compares current page to new page
-            $("pg.pg" + newPage).css({"opacity":"0.75"})} //if new page is different, increase opacity.
+        else { //checks if mouse is currently being held down,
+            $("pg.pg" + currentPage).css("pointer-events", "none")
+            //then checks to see if in mobile mode. Finally, then it checks if posX2 is different.
+            posX2 = e.pageX;
+            horizontalDifference = posX1 - posX2 //sets pos 2 while holding down the mouse
+
+            $("#pageFunctionality").css({"left": -horizontalDifference}) //page dragging calcs
+
+            var newPage = limitChecker(currentPage, pageScrollY.length, 0, 1, currentPage + pgposrelcheck(horizontalDifference, innerPage))
+            for (var cp = 0; cp < pageScrollY.length; cp++) {
+                $("pg.pg" + cp).css({
+                    "opacity": "0.25",
+                    "margin-left": pageSidebarPos(cp, newPage, pgPosMultiplier[cp])
+                })
+            } //updates page position
+            if (newPage !== currentPage) { //compares current page to new page
+                $("pg.pg" + newPage).css({"opacity": "0.75"})
+            } //if new page is different, increase opacity.
+        }
     }
 })
 
 
 $(window).bind('touchmove', function(e) {
     if(clicking) {
-        // grabs the current finger position
-        posX2 = e.originalEvent.touches[0].pageX;
-        posY2 = e.originalEvent.touches[0].pageY;
-        //calculates the difference between both relation points, divided by multiplier
-        horizontalDifference = posX1 - posX2
-        verticalDifference = (posY1 - posY2) / 1.25
+        if (clickInt > -clickDur) {
+            clickInt = clickStart - Date.now()}
 
-        if (horizontalDifference > -(newRootMid / 2.5) && horizontalDifference < (newRootMid / 2.5)) {
-            $("mobileController").css({"margin-left": "0"}) //page dragging calcs
-            pageScrollY[currentPage] = limitChecker(pageScrollY[currentPage], 0, currentPgHeight, 0, pageScrollY[currentPage] - verticalDifference)
+        else {
+            $("pg.pg" + currentPage).css("pointer-events", "none")
+            // grabs the current finger position
+            posX2 = e.originalEvent.touches[0].pageX;
+            posY2 = e.originalEvent.touches[0].pageY;
+            //calculates the difference between both relation points, divided by multiplier
+            horizontalDifference = posX1 - posX2
+            verticalDifference = (posY1 - posY2) / 1.25
 
-            if (currentPage === 0) { //checks if currentPage is 0 OR post container is larger than page height
-                artsScroll = limitChecker(artsScroll, 0, -artsPostsHeight + mobilePageHeight, 0, artsScroll - verticalDifference)
-                //this calculates current scroll height through checking before pushing, it's not accurate but good enough
-                $('.pg0 #arts0, .pg0 #arts1').css({"top": artsScroll})} //pushes new Y value
-            else if (currentPage === 1) { //checks if currentPage is 1 OR post container is larger than page height
-                blogScroll = limitChecker(blogScroll, 0, -blogPostsHeight - rootgutter + mobilePageHeight, 0, blogScroll - verticalDifference)
-                //this calculates current scroll height through checking before pushing, it's not accurate but good enough
-                $('.pg1 .postcont').css({"top": blogScroll})} //pushes new Y value
-            else if (!mobileBool) {
-                $('pagedata').css({"top": pageScrollY[currentPage]})}
-            else {
-                $('.pg'+currentPage).css({"top": pageScrollY[currentPage]})}
+            if (horizontalDifference > -(newRootMid / 2.5) && horizontalDifference < (newRootMid / 2.5)) {
+                $("mobileController").css({"margin-left": "0"}) //page dragging calcs
+                pageScrollY[currentPage] = limitChecker(pageScrollY[currentPage], 0, currentPgHeight, 0, pageScrollY[currentPage] - verticalDifference)
 
-            posY1 = e.originalEvent.touches[0].pageY}
-        else { //scroll calc
-            $("mobileController").css({"margin-left": -horizontalDifference}) //page dragging calcs
-            const newPage = limitChecker(currentPage, pageScrollY.length, 0, 1, currentPage + pgposrelcheck(horizontalDifference, innerPage + rootLeft + rootgutter));
+                if (currentPage === 0) { //checks if currentPage is 0 OR post container is larger than page height
+                    artsScroll = limitChecker(artsScroll, 0, -artsPostsHeight + currentPgHeight, 0, artsScroll - verticalDifference)
+                    //this calculates current scroll height through checking before pushing, it's not accurate but good enough
+                    $('.pg0 #arts0, .pg0 #arts1').css({"top": artsScroll})//pushes new Y value
 
-            for (var cp = 0; cp < pageScrollY.length; cp++) {
-                $("pg.pg" + cp).css({
-                    "opacity": "0.25",
-                    "margin-left": pageSidebarPos(cp, newPage, pgPosMultiplier[cp])})} //updates page position
+                    //This double checks run loop being empty and all previous posts are loaded before spawning more.
+                    if (-artsScroll + sectionHeight > artsPostsHeight && runLoop === 0) { //checks height scroll value being greater than internal container height
+                        runLoop = artLoadin; //var to determine how many new art posts load
+                        artGeneration()
+                    }
+                } //loads art elements
 
-            if (newPage !== currentPage) { //compares current page to new page
-                $("pg.pg" + newPage).css({"opacity": "0.75"})
-            } //if new page is different, increase opacity.
+                else if (currentPage === 1) { //checks if currentPage is 1 OR post container is larger than page height
+                    blogScroll = limitChecker(blogScroll, 0, -blogPostsHeight - rootgutter + currentPgHeight, 0, blogScroll - verticalDifference)
+                    //this calculates current scroll height through checking before pushing, it's not accurate but good enough
+                    $('.pg1 .postcont').css({"top": blogScroll})
+                } //pushes new Y value
+
+                //This double checks run loop being empty and all previous posts are loaded before spawning more.
+                if (-blogScroll + sectionHeight > blogPostsHeight && runLoop === 0) { //checks height scroll value being greater than internal container height
+                    runLoop = blogLoadin;//var to determine how many new art posts load
+                    loadpostelement()
+                } //loads art elements
+
+                else if (!mobileBool) {
+                    $('pagedata').css({"top": pageScrollY[currentPage]})
+                } else {
+                    $('.pg' + currentPage).css({"top": pageScrollY[currentPage]})
+                }
+
+                posY1 = e.originalEvent.touches[0].pageY
+            } else { //scroll calc
+                $("mobileController").css({"margin-left": -horizontalDifference}) //page dragging calcs
+                const newPage = limitChecker(currentPage, pageScrollY.length, 0, 1, currentPage + pgposrelcheck(horizontalDifference, innerPage + rootLeft + rootgutter));
+
+                for (var cp = 0; cp < pageScrollY.length; cp++) {
+                    $("pg.pg" + cp).css({
+                        "opacity": "0.25",
+                        "margin-left": pageSidebarPos(cp, newPage, pgPosMultiplier[cp])
+                    })
+                } //updates page position
+
+                if (newPage !== currentPage) { //compares current page to new page
+                    $("pg.pg" + newPage).css({"opacity": "0.75"})
+                } //if new page is different, increase opacity.
+            }
         }
     }
 });
@@ -181,8 +237,7 @@ $(window).on('mouseup touchend', function(e) {
             currentPage = toBeCurrent;
 
             if (!mobileBool) {
-                $('pagedata').css({"top": pageScrollY[toBeCurrent]})
-            }}
+                $('pagedata').css({"top": pageScrollY[toBeCurrent]})}}
 
         $("#pageFunctionality, mobileController").css({"left": "0"}) //resets page dragging calcs
 
@@ -195,7 +250,10 @@ $(window).on('mouseup touchend', function(e) {
                 'left': (toBeCurrent * -pageWidth) + pageWidth, "margin-left":"0"})}
 
         $("pg.pg" + currentPage).css("pointer-events", "auto") //alows clickability after page drag
-        clicking = false //latch gate for the movement checker.
+
+        clicking = false; //latch gate for the movement checker.
+        clickInt = 0;
+        clickStart = 0;
     }
 })
 
@@ -208,11 +266,21 @@ $(window).on('wheel', function(e){
             artsScroll = limitChecker(artsScroll, 0, -artsPostsHeight + sectionHeight - (rootgutter * 2), 0, artsScroll - (e.originalEvent.deltaY / 3))
             //this calculates current scroll height through checking before pushing, it's not accurate but good enough
             $('.pg0 #arts0, .pg0 #arts1').css({"top": artsScroll}) //pushes new Y value
+
+            //This double checks run loop being empty and all previous posts are loaded before spawning more.
+            if(-artsScroll + sectionHeight > artsPostsHeight && runLoop === 0){ //checks height scroll value being greater than internal container height
+                runLoop = artLoadin;//var to determine how many new art posts load
+                artGeneration()} //loads art elements
+
         } else if (currentPage === 1 && blogPostsHeight > sectionHeight) { //checks if currentPage is 1 OR post container is larger than page height
             blogScroll = limitChecker(blogScroll, 0, -blogPostsHeight + sectionHeight - (rootgutter * 3), 0, blogScroll - (e.originalEvent.deltaY / 3))
             //this calculates current scroll height through checking before pushing, it's not accurate but good enough
             $('.pg1 .postcont').css({"top": blogScroll}) //pushes new Y value
+
+            //This double checks run loop being empty and all previous posts are loaded before spawning more.
+            if(-blogScroll + sectionHeight > blogPostsHeight && runLoop === 0){ //checks height scroll value being greater than internal container height
+                runLoop = blogLoadin;//var to determine how many new art posts load
+                loadpostelement()} //loads art elements
         }
     }
 });
-

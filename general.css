@@ -1,29 +1,17 @@
 :root {
     --pageheight: 5070px;
+    --widthRestraint : 800px;
 
     /*font settings*/
     --fontstyle: 'Manrope', sans-serif;
     --boldstyle: 'Rubik', sans-serif;
     --gerstyle: 'UnifrakturCook', cursive;
 
-    --defopacity: 1; --fadeto: 0.6;
-    --tiny-fonts: 0.69em; --small-fonts: 0.80em;
-    --mid-fonts: 1.00em; --large-fonts: 1.30em;
-    --logoinv: 1;
-
-    --pagetransition: "0.3s";
-    /*colours*/
-    --accent1:#7565ff; --accent2:#ff62ea;
-    --accent3:#ffb533; --accent4:#3aecb4;
-    --accent5:#ff4fc7;
-
-    --invaccent: #505050; --links: #ff8ef4;
-    --titles: #7285fe; --text: #787878;
-
-    --background: #f4f4f4; --posts: #ffffff;
-    --artposts: #8781bd; --borders: #d8d5d5;
-    --postback: #e3e3e3;
+    --tiny-fonts: 11px; --small-fonts: 13px;
+    --mid-fonts: 15px; --large-fonts: 20px;
 }
+
+/* basic page functionality */
 
 html, body {height: 100%; width:100%}
 
@@ -48,6 +36,30 @@ body, body *{
     position: absolute;
     transition:
             left .3s cubic-bezier(0,0,0,1)}
+
+/* page load-in elements */
+
+loadIn {
+    width: 28%; max-width:var(--postwidth) ;height: 100%;
+    position:relative; display:inline-block;
+    left: 50%; transform:translateX(-50%)}
+
+loadIn > img {
+    height: auto!important;
+    top: 50%;
+    position: absolute;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%)}
+
+loadIn > div {
+    top:calc(35% + var(--sidebarr));
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%)}
+loadIn > *:nth-child(2) {
+    filter:invert(var(--logoinv))}
+
+
+/* default page formatting */
 
 a { color:var(--accent3);
     text-decoration:none;
@@ -79,7 +91,14 @@ li{list-style:none}
 li:last-of-type{margin:0}
 
 img { width:100%; height: 100%; border:0;
-    background-position:center; pointer-events:none}
+    background-position:center;}
+img.sr {
+    width:calc((var(--innerPageCalc) - var(--halfGutter) - var(--skirting)) / 2);
+    height: calc(((var(--innerPageCalc) - var(--halfGutter) - var(--skirting)) / 2) / 16 * 9);
+    overflow:hidden; object-fit: cover; cursor:pointer}
+
+
+/* page colour element presets */
 
 .dac p {background-color:var(--accent3)!important}
 .tan p {background-color:var(--invaccent)}
@@ -90,22 +109,19 @@ img { width:100%; height: 100%; border:0;
 
 .ls t{font-size: 21px;} /*I can't remember what this does*/
 
+/* counter-edge smoothing presets */
+
 .ntc{border-top-right-radius:0!important; border-top-left-radius:0!important}
 .nbc{border-bottom-right-radius:0!important; border-bottom-left-radius:0!important}
 
-.divider {
-    margin-bottom:15px; border-top:1px solid var(--borders)}
+/* preset elements */
+
+divider {
+    margin-bottom:15px; border-top:1px solid var(--text); width: 100%;
+    position: relative; display: inline-block;}
 .zoom {
     background-repeat: no-repeat; background-position: center center;
     -webkit-background-size: cover}
-
-#hover-element {
-    -webkit-filter: drop-shadow(7px 7px 7px rgba(0, 0, 0, 0.3));
-    opacity:1!important; background-color: transparent;
-    position:absolute; white-space: nowrap;
-    border-radius:var(--skirting);
-    overflow: hidden; background-size: contain;
-    z-index:99; filter: blur(0)!important;}
 
 /* default animations */
 

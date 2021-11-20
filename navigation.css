@@ -97,7 +97,8 @@ sideNav { /* sidebar container */
     left: calc(50% - ( var(--innerPageWoConCalc) / 2) - var(--gutter));
     transform: translateX(-50%);
     top:var(--gutter);
-    width:var(--sidebarl)}
+    width:var(--sidebarl);
+    opacity: 0}
 sideNav .wedge:last-of-type {color:white;}
 sideNav .wedge p {padding: 8px 10px}
 
@@ -105,7 +106,7 @@ sideNav .wedge p {padding: 8px 10px}
 #pfp {
     width: var(--sidebarl); height: var(--sidebarl);
     margin-bottom: var(--gutter); border-radius:var(--skirting);
-    background-size: cover; background-image:var(--profilepicture)}
+    background:var(--profilepicture) center center no-repeat; background-size: cover;}
 
 /* Sidebar Navigation buttons */
 #sideNav {border-radius:var(--skirting); overflow: hidden}
@@ -176,3 +177,11 @@ nav {width: calc(100% /3)}
         background .2s cubic-bezier(0,0,0,1),
         opacity .2s cubic-bezier(0,0,0,1),
         margin .3s cubic-bezier(0,0,0,1)}
+
+#hover-element {
+    -webkit-filter: drop-shadow(7px 7px 7px rgba(0, 0, 0, 0.3));
+    opacity:1!important; background-color: transparent;
+    position:absolute; white-space: nowrap;
+    border-radius:var(--skirting);
+    overflow: hidden; background-size: contain;
+    z-index:99; filter: blur(0)!important;}

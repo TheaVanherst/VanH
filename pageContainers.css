@@ -1,5 +1,5 @@
 :root{
-    --sidebarl:230px; --sidebarr:300px; --postwidth:500px; /*main page divisional factors*/
+    --sidebarl:225px; --sidebarr:290px; --postwidth:460px; /*main page divisional factors*/
     --gutter:20px; --skirting: 8px;
 
     /* Some precalcs that save time later CONTENT */
@@ -17,7 +17,7 @@
 
 pageData {
     left:50%; transform:translateX(-50%);
-    position: absolute; top: 0px;
+    position: absolute; top: 0; opacity:0;
     transition:
             top .6s cubic-bezier(0,0,0,1)}
 
@@ -36,7 +36,7 @@ mobileController {
 pg{  /*default page setting*/
     width:var(--fullBodyCalc);
     position:absolute; display:inline-block;
-    opacity: 0.25; font-size: 0;
+    opacity: 0.25; font-size: 0; top:var(--gutter);
     transition:
         margin-left .5s cubic-bezier(0,0,0,1),
         opacity .5s cubic-bezier(0,0,0,1)}
@@ -55,7 +55,7 @@ pageContainer{ /*this just prevents container overflow and offset*/
 pageContainer > * {
     font-size: 15px}
 
-pageContainer > *:not(incont):first-child {
+pageContainer > *:not(incont):first-child:not(:last-child) {
     margin-right: var(--halfGutter)}
 
 /* page inner containers */

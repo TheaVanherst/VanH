@@ -7,12 +7,12 @@ let nightBool, binaryLatch; // night mode bool, night mode bool but in binary, m
 let colourSheet, booleanToggleArr; //currently active colour array [nightModeCS,brightModeCS], [(!nightBool ? 0:1),(nightBool ? 0:1)]
 
 var mobileBool, supportsTouch;
-$(document).ready(function() {
+$(function(){
     if(/Mobi|Android/i.test(navigator.userAgent) === true){
         mobileBool = true} //sets mobile bool to true if a mobile OS is detected
     else {
         mobileBool = false}
-    console.log("mobileBool: " + mobileBool + ", supportsTouch: " + supportsTouch)
+    console.log("mobileBool: " + mobileBool)
 })
 
 function nightmode(){
@@ -41,7 +41,7 @@ function nightmode(){
             'filter':'invert(' + binaryLatch + ')'})
     }
 
-    for(var i = 0; i <= colourSheet.length; i++){
+    for(var i = 0; i <= brightModeCS.length - 1; i++){
         docelem.style.setProperty("--"+rootLoop[i], colourSheet[i])}
 }
 

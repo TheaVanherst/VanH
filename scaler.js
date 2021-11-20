@@ -10,10 +10,12 @@ var currentPgHeight, pageWidth = $('body').width() //just some precalcs
 var columnX3 = (rootRight + rootMid + rootLeft),
     columnX2 = rootRight + rootMid;
 var sectionHeight = getComputedStyle(document.documentElement).getPropertyValue('--pageheight'); //checks default page height
-    sectionHeight = parseInt(sectionHeight.replace("px", ""))
-var mobilePageHeight;
+    sectionHeight = parseInt(sectionHeight.replace("px", ""));
+var widthRestraint = getComputedStyle(document.documentElement).getPropertyValue('--widthRestraint');
+    widthRestraint = parseInt(widthRestraint.replace("px", ""));
 
-$(window).ready(function(){
+
+$(function(){
     if (mobileBool) {
         $('.postcont').css("transition"," top .0s cubic-bezier(0,0,0,1)");
         $('#arts0, #arts1').css("transition"," top .0s cubic-bezier(0,0,0,1)");
@@ -21,9 +23,8 @@ $(window).ready(function(){
              'width':'100%','height':$(document).height() + 'px','overflow':'hidden'})
 
         $('#twitter').css('pointer-events','none')
-        mobilePageHeight = document.body.clientHeight - $('#pageFunctionality').parent().height() - (rootgutter * 6)
         $('.pg1 largecontainer, .pg1 smallcontainer, .pg0 incont').css({
-            'height': mobilePageHeight + 'px'})
+            'height': document.body.clientHeight - $('#pageFunctionality').parent().height() - (rootgutter * 6) + 'px'})
     }
 })
 
@@ -34,9 +35,9 @@ let waitCallback, scaleResetReq;
 var resize = function() { // Page rescaling
     /* there's a bug where the side borders surrounding the page are 20 pixels too small */
     if(!mobileBool){pageWidth = $('body').width(); /* this is just the default code */
-    } else {pageWidth = $('body').width() - 20} /* this is the quick fix */
+    } else {pageWidth = $('body').width() - rootgutter } /* this is the quick fix */
 
-    if (mobileBool || pageWidth < 900) {
+    if (mobileBool || pageWidth < widthRestraint) {
         scale3Multiplier = false //this allows to check which scale type is active
         scaleResetReq = true //this allows page position correction on scale out.
         console.log("Callback: " + scaleResetReq + " !Scale3")
@@ -54,7 +55,7 @@ var resize = function() { // Page rescaling
 
         $(".nmb, nav, sidenav").removeClass("active");
 
-        if (pageWidth > 900) { //200 / 80
+        if (pageWidth > widthRestraint) { //200 / 80
             if (pageWidth <= (columnX3 + (rootgutter * 4))) {
                 scale3Multiplier = (columnX3 / (pageWidth - (rootgutter * 4))); //200 / 80
 

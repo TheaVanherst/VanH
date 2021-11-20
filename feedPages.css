@@ -43,6 +43,12 @@ w3x2 {
     width: calc((var(--innerPageWoConCalc) + 5px) / 2);
     height: calc((var(--innerPageWoConCalc) / 2)/16 * 9)} /*this corrects the default square size*/
 
+.pg0 .player {
+    background-image: url('/Website assets/icons/sm3.png'); position: absolute;
+    width: calc(var(--sidebarr) / 4); height: calc(var(--sidebarr) / 4); pointer-events: none;
+    background-size: cover; left: 50%; transform: translate(-50%, 100%);
+}
+
 /* image containers */
 .row, .triple { margin:0!important;
     display: flex; overflow: hidden}
