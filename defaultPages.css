@@ -26,13 +26,13 @@ incont > * t {padding:0!important}
 .pg2 incont > *:last-of-type {margin-bottom:0}
 .pg2 incont, .pg2 incont > *{
     border-radius: var(--halfSkirting)!important;
-    width:calc((var(--innerPageWoConCalc) - var(--skirting))/ 3)}
+    width:calc((var(--innerPageWoConCalc) - var(--skirting))/ 3 - 0.1px)}
 .pg2 incont > div > p {width: calc(100% - var(--gutter))}
 
 .pg2 incont:last-of-type{margin-right:0}
 
 .pg2 .load-more {margin:var(--gutter) 0 0;
-    left: calc(50% + (var(--sidebarl)/2)); transform:translateX(-50%)}
+    left: calc(50% + ((var(--sidebarl) + var(--gutter))/2)); transform:translateX(-50%)}
 
 /* Page 3
 /* ===================================== */
@@ -59,10 +59,8 @@ incont > * t {padding:0!important}
 
 .pg3 fullwc {display:inline-block}
 
-.pg3 .load-more {
-    margin:var(--gutter) 0 0;
-    left: calc(50% + (var(--sidebarl)/2));
-    transform:translateX(-50%)}
+.pg3 .load-more {margin:var(--gutter) 0 0;
+    left: calc(50% + ((var(--sidebarl) + var(--gutter))/2)); transform:translateX(-50%)}
 
 /* Page 4
 /* ===================================== */
@@ -89,7 +87,11 @@ incont > * t {padding:0!important}
 
 #videoSelection tcb {
     background-color: var(--accent1)!important;
-    width:calc((var(--innerPageCalc) - (var(--halfGutter) * 1.5)) / 3); display:inline-block}
+    width:calc((var(--innerPageCalc) - (var(--halfGutter) * 1.5) - 1px) / 3); display:inline-block}
+#videoSelection tcb.def {
+    width:calc((var(--innerPageCalc) - (var(--halfGutter) * 1.5) - 1px) / 3)!important;}
+#videoSelection tcb.lar{
+    width:calc((var(--innerPageCalc) - var(--halfSkirting)))!important;}
 
 #videoSelection > div:not(:first-of-type) tcb p{
     background-size: 20%!important;}
@@ -102,9 +104,7 @@ incont > * t {padding:0!important}
 #videoSelection > div { /* parent container of videos */
     width: calc(var(--innerPageCalc) - var(--skirting));
     border-radius: var(--skirting); margin-bottom: calc(var(--halfSkirting) + 2px);
-    background-color: var(--postback);
-    position:relative;
-    padding: var(--halfSkirting)}
+    background-color: var(--postback); position:relative; padding: var(--halfSkirting)}
 
 #videoSelection > * > row { /* row division */
     width: calc(var(--innerPageCalc) - var(--skirting));
@@ -121,41 +121,37 @@ incont > * t {padding:0!important}
     margin: 0 var(--halfSkirting) 0 0;}
 
 #videoSelection .thumbnails {
-    width:calc((var(--innerPageCalc) - (var(--halfSkirting) * 4)) / 3);
-    height:calc(((var(--innerPageCalc) - (var(--halfSkirting) * 4)) / 3) / 16 * 9);
+    width:calc((var(--innerPageCalc) - (var(--halfSkirting) * 4)) / 3); height:141px;
     display: flex; align-items: center; justify-content: center;}
+#videoSelection .thumbnails.def {
+    width:calc((var(--innerPageCalc) - (var(--halfSkirting) * 4)) / 3)!important; height:141px!important}
+#videoSelection .thumbnails.lar {
+    width:calc(var(--innerPageCalc) - var(--skirting))!important;
+    height:calc((var(--innerPageCalc) - var(--skirting)) / 16 * 9)!important}
 
-e {
-    color: white;padding: 4px 8px; font-size:var(--mid-fonts);
-    border-top-left-radius: var(--halfSkirting);
-    border-bottom-left-radius: var(--halfSkirting);
-    display:inline-block; width:calc(100% - 16px);
-    font-family: var(--boldstyle); margin-bottom:var(--halfSkirting);
-    text-transform: uppercase; background-color: var(--accent2)}
-e.rs {
-    border-top-right-radius: var(--halfSkirting);
-    border-bottom-right-radius: var(--halfSkirting)}
-
-f {
-    color: white; float:right; padding: 4px 8px;
-    border-top-right-radius: var(--halfSkirting); cursor:pointer;
-    border-bottom-right-radius: var(--halfSkirting); font-size:var(--mid-fonts);
-    display:inline-block; width:calc(20% - var(--gutter) + var(--halfSkirting));
-    font-family: var(--boldstyle); margin-bottom:var(--halfSkirting);
-    text-transform: uppercase; background-color: var(--accent4);
-}
+e, f {
+    font-size:var(--mid-fonts); font-family: var(--boldstyle); text-transform: uppercase;
+    padding: 4px 8px; margin-bottom:var(--halfSkirting); display:inline-block;
+    white-space: nowrap; overflow:hidden; color: white}
+e { border-top-left-radius: var(--halfSkirting); border-bottom-left-radius: var(--halfSkirting);
+    width:calc(100% - 16px); background-color: var(--accent2)}
+f { width:calc(120px - var(--gutter) + var(--halfSkirting)); background-color: var(--accent4);
+    float:right; cursor:pointer;}
+f, e.rs {
+    border-top-right-radius: var(--halfSkirting); border-bottom-right-radius: var(--halfSkirting)}
 
 #videoSelection > * > *:first-of-type tcb, #videoSelection > * > *:first-of-type .thumbnails {
     width: calc(var(--innerPageCalc) / 2 - (var(--halfSkirting) * 1.5))}
-#videoSelection > * > *:first-of-type .thumbnails {
-    height:calc((var(--innerPageCalc) / 2 - (var(--halfSkirting) * 1.5)) / 16 * 9 )}
+#videoSelection > * > *:first-of-type .thumbnails {height:210px}
 
-.pg4 img {width:100%; height:auto}
-
+.pg4 img {width: 100%; height: auto;}
 .pg4 tcb p {
     letter-spacing: 0.15px; white-space: nowrap; cursor: pointer;
     padding: 7px 10px!important; background-color: var(--accent1)}
 .pg4 tcb * {color:white}
+
+.pg4 .load-more {margin:var(--halfGutter) 0 0;
+    left: calc(50% + ((var(--sidebarl) + var(--gutter))/2)); transform:translateX(-50%)}
 
 /* Page 5
 /* ===================================== */
@@ -188,7 +184,8 @@ incont > * tcb p {background-color:var(--accent1)}
 incont > * drp p {background-color:var(--accent2)}
 
 incont > w3x3 {width:calc(var(--innerPageCalc) - var(--skirting))!important}
-incont > w2x1 {width:calc((var(--innerPageWoConCalc) + var(--halfGutter)) / 2 - (var(--halfSkirting)))!important}
+incont > w2x1 {width:calc((var(--innerPageWoConCalc) + var(--halfGutter)) / 2 - (var(--halfSkirting)) - 0.1px)!important;
+    position:relative; transition: top .4s cubic-bezier(0,0,0,1)}
 
 /* ===================================== */
 /* EDGES DATA */

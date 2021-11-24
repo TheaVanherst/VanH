@@ -3,7 +3,7 @@ var rootRight = parseInt(getComputedStyle(document.documentElement).getPropertyV
     rootMid = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--postwidth'));
 
 var rootBorder = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--skirting')),
-    rootgutter = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--gutter'));
+    rootGutter = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--gutter'));
 
 //these are root vars numbers from navigation.css
 var currentPgHeight, pageWidth = $('body').width() //just some precalcs
@@ -24,7 +24,7 @@ $(function(){
 
         $('#twitter').css('pointer-events','none')
         $('.pg1 largecontainer, .pg1 smallcontainer, .pg0 incont').css({
-            'height': document.body.clientHeight - $('#pageFunctionality').parent().height() - (rootgutter * 6) + 'px'})
+            'height': document.body.clientHeight - $('#pageFunctionality').parent().height() - (rootGutter * 6) + 'px'})
     }
 })
 
@@ -35,7 +35,7 @@ let waitCallback, scaleResetReq;
 var resize = function() { // Page rescaling
     /* there's a bug where the side borders surrounding the page are 20 pixels too small */
     if(!mobileBool){pageWidth = $('body').width(); /* this is just the default code */
-    } else {pageWidth = $('body').width() - rootgutter } /* this is the quick fix */
+    } else {pageWidth = $('body').width() - rootGutter } /* this is the quick fix */
 
     if (mobileBool || pageWidth < widthRestraint) {
         scale3Multiplier = false //this allows to check which scale type is active
@@ -44,11 +44,11 @@ var resize = function() { // Page rescaling
 
         $(".nmb, nav, sidenav").addClass("active");
 
-        scale2Multiplier = (columnX2 / (pageWidth - (rootgutter * 3))) //180 / 60
+        scale2Multiplier = (columnX2 / (pageWidth - (rootGutter * 3))) //180 / 60
 
-        newRootLeft = -rootgutter
-        newRootRight = +((rootRight / scale2Multiplier) + (rootgutter / 2)).toFixed(2);
-        newRootMid = +((rootMid / scale2Multiplier) + (rootgutter / 2)).toFixed(2);
+        newRootLeft = -rootGutter
+        newRootRight = +((rootRight / scale2Multiplier) + (rootGutter / 2)).toFixed(2);
+        newRootMid = +((rootMid / scale2Multiplier) + (rootGutter / 2)).toFixed(2);
     } else {
         scale2Multiplier = false
         console.log("!Scale2")
@@ -56,8 +56,8 @@ var resize = function() { // Page rescaling
         $(".nmb, nav, sidenav").removeClass("active");
 
         if (pageWidth > widthRestraint) { //200 / 80
-            if (pageWidth <= (columnX3 + (rootgutter * 4))) {
-                scale3Multiplier = (columnX3 / (pageWidth - (rootgutter * 4))); //200 / 80
+            if (pageWidth <= (columnX3 + (rootGutter * 4))) {
+                scale3Multiplier = (columnX3 / (pageWidth - (rootGutter * 4))); //200 / 80
 
                 newRootLeft = +(rootLeft / scale3Multiplier).toFixed(2);
                 newRootRight = +(rootRight / scale3Multiplier).toFixed(2);
@@ -73,12 +73,12 @@ var resize = function() { // Page rescaling
     docelem.style.setProperty('--sidebarr', newRootRight + "px")
     docelem.style.setProperty('--postwidth', newRootMid + "px")
 
-    innerPage = newRootMid + newRootRight + (rootgutter * 2)
+    innerPage = newRootMid + newRootRight + (rootGutter * 2)
 
     if(!mobileBool){
-        currentPgHeight = -sectionHeight - $('#header').height() - rootgutter - rootBorder + document.documentElement.clientHeight
+        currentPgHeight = -sectionHeight - $('#header').height() - rootGutter - rootBorder + document.documentElement.clientHeight
     } else {
-        currentPgHeight = -sectionHeight - $('#header').height() - (rootgutter * 2) - rootBorder - $('nav').height() + document.documentElement.clientHeight}
+        currentPgHeight = -sectionHeight - $('#header').height() - (rootGutter * 2) - rootBorder - $('nav').height() + document.documentElement.clientHeight}
 
     //This calculates the CORRECT page height to be used as a limiter for the scroll function
     blogPostsHeight = $('.postcont').height() //updates the blog post container to be the correct height
@@ -86,7 +86,7 @@ var resize = function() { // Page rescaling
 
     clearTimeout(waitCallback);
     if(scaleResetReq && !scale2Multiplier){
-        waitCallback = setTimeout(pageRelocation, 500)}
+        waitCallback = setTimeout(pageRelocation, 250)}
 }
 
 function pageRelocation () {

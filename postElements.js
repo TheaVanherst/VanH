@@ -56,7 +56,7 @@ function postedwhen(data) {
         if(wn.days>7){
             t+="last week"}
         if(wn.weeks!==1){
-            t+=" artLatch "+wn.hours+":"+wn.mins+pm}
+            t+=wn.hours+":"+wn.mins+pm}
         else if(wn.days<7){
             t+=" the "+wn.dayshort+wn.nth}}
     else if(wn.mnths<3&&wn.days>13 && wn.yrs<1){
@@ -170,7 +170,7 @@ $("pg.pg0").ready(function(){ //this needs rewriting
     })
 })
 
-var artLoadin = 3; //the amount of elements that will load in at a time
+let artLoadin = 3; artDone = false; //the amount of elements that will load in at a time
 
 function artGeneration(){
     if(currentArtPost > 0) {
@@ -205,6 +205,12 @@ function artGeneration(){
                 runLoop-- //remove one from run loop value
                 artGeneration()} //repeat art gen process.
         })
+    } else {
+        if(artDone === false){
+            $("#arts" + artLatch).append(
+                $('<div class="load-more"><p></p></div>'))
+            artsPostsHeight = Math.max($('#arts0').height(), $('#arts1').height())
+            artDone = true;
+        }
     }
 }
-

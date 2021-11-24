@@ -94,12 +94,10 @@
 
 sideNav { /* sidebar container */
     position:fixed; z-index:99;
-    left: calc(50% - ( var(--innerPageWoConCalc) / 2) - var(--gutter));
-    transform: translateX(-50%);
-    top:var(--gutter);
-    width:var(--sidebarl);
-    opacity: 0}
-sideNav .wedge:last-of-type {color:white;}
+    left: calc(50% - ( var(--innerPageWoConCalc) / 2) - var(--gutter)); transform: translateX(-50%);
+    width:var(--sidebarl); top:var(--gutter); opacity: 0}
+
+sidenav .wedge {margin-bottom:var(--halfGutter)}
 sideNav .wedge p {padding: 8px 10px}
 
 /*sidebar image container*/
@@ -129,9 +127,9 @@ sideNav .wedge p {padding: 8px 10px}
     display:inline-block;
     border-radius:var(--skirting); overflow: hidden;
     background-color:var(--accent1);
-    width:calc((var(--sidebarl) - (var(--halfGutter) * 5 + 1px)) / 6); /* sidebar width / 6 buttons */
-    height:calc((var(--sidebarl) - (var(--halfGutter) * 5 + 1px)) / 6); /* the '+ 1px' is there because I need it*/
-    margin: 0 var(--halfGutter) 0 0}
+    width:calc((var(--sidebarl) - (var(--skirting) * 5 + 1px)) / 6); /* sidebar width / 6 buttons */
+    height:calc((var(--sidebarl) - (var(--skirting) * 5 + 1px)) / 6); /* the '+ 1px' is there because I need it*/
+    margin: 0 var(--skirting) 0 0}
 #sideMedia > a:last-of-type{
     margin: 0!important} /*prevents overflow and to save fucking with the container properties.*/
 #sideMedia > *{
@@ -142,7 +140,6 @@ sideNav .wedge p {padding: 8px 10px}
     width:100%; height:100%;
     background-position:center; background-size:cover}
 
-sideNav .wedge:last-of-type {background-color:var(--invaccent)}
 /* CSS for mobile */
 
 sideNav.active {display:none!important} /*This hides the default CSS side nav from desktop*/
@@ -163,10 +160,11 @@ nav {width: calc(100% /3)}
 
 /* CSS for both Desktop and Mobile */
 
-.ls {background-color:var(--postback); cursor:pointer}
+.ls {background-color:var(--postback); cursor:pointer;
+    position: relative; overflow: hidden;}
 .ls t{
     z-index:99; position:absolute;
-    color:white!important;
+    color:white!important; white-space: nowrap;
     padding: 8px 15px}
 
 .ls .i{opacity: var(--defopacity)}

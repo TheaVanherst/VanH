@@ -12,7 +12,7 @@ let pgPosMultiplier = [0,0,0,0,0,0,0]; //Page relativity position setting
 
 function pageSidebarPos(newPage,currentPage,pageMultiplier) { //limits vars to set data ranges
     if (newPage < currentPage && !scale2Multiplier) { //checks if page is to the left of the current active page
-        return innerPage * pageMultiplier - (rootLeft + rootgutter)
+        return innerPage * pageMultiplier - (rootLeft + rootGutter)
     } else { //checks if page location is to the right of the current active page
         return innerPage * pageMultiplier }
 }
@@ -55,6 +55,9 @@ $(function(){ //function to set up sidebar
 
         $('.pg' + i).children().on('click',function(){ //if sidebar nav button is pressed
             if(currentPage !== i){ //checks if button clicked is different than the active button
+
+                if(i !== 4 && document.readyState === 'complete'){ //checks if the current page is the media player page.
+                    player.pauseVideo()} //if page is not media player, stop video on page change.
 
                 $("pg.pg" + currentPage + ", pg.pg"+i).toggleClass("pageful") //removes class from concurrent page + adds it to newly active page
                 $(".ls.pg" + currentPage + ", .ls.pg"+i).toggleClass("button-focus") //removes class from concurrent button + adds it to newly active button
@@ -101,10 +104,11 @@ $(function(){ //function to set up sidebar
 /* page dragging */
 let posY1, posY2, verticalDifference //positions specific to mobile functionality. + debug values
 let posX1, posX2, horizontalDifference = 0
-var clicking = false, clickStart = 0, clickInt = 0, clickDur = 85;
+
+//click register variables
+var clicking = false, clickStart = 0, clickInt = 0, clickDur = 65;
 
 $(function(){
-
     if(mobileBool){
         $('#pageFunctionality').on('touchstart', document, function (e) {
             clickStart = Date.now();
@@ -125,7 +129,6 @@ $(function(){
 })
 
 $(window).on('mousemove', function(e) {
-
     if(clicking) {
         if (clickInt > -clickDur) {
             clickInt = clickStart - Date.now()}
@@ -174,7 +177,7 @@ $(window).bind('touchmove', function(e) {
                 if (currentPage === 0) { //checks if currentPage is 0 OR post container is larger than page height
                     artsScroll = limitChecker(artsScroll, 0, -artsPostsHeight + currentPgHeight, 0, artsScroll - verticalDifference)
                     //this calculates current scroll height through checking before pushing, it's not accurate but good enough
-                    $('.pg0 #arts0, .pg0 #arts1').css({"top": artsScroll})//pushes new Y value
+                    $('pg.pg0 #arts0, pg.pg0 #arts1').css({"top": artsScroll})//pushes new Y value
 
                     //This double checks run loop being empty and all previous posts are loaded before spawning more.
                     if (-artsScroll + sectionHeight > artsPostsHeight && runLoop === 0) { //checks height scroll value being greater than internal container height
@@ -184,9 +187,9 @@ $(window).bind('touchmove', function(e) {
                 } //loads art elements
 
                 else if (currentPage === 1) { //checks if currentPage is 1 OR post container is larger than page height
-                    blogScroll = limitChecker(blogScroll, 0, -blogPostsHeight - rootgutter + currentPgHeight, 0, blogScroll - verticalDifference)
+                    blogScroll = limitChecker(blogScroll, 0, -blogPostsHeight - rootGutter + currentPgHeight, 0, blogScroll - verticalDifference)
                     //this calculates current scroll height through checking before pushing, it's not accurate but good enough
-                    $('.pg1 .postcont').css({"top": blogScroll})
+                    $('pg.pg1 .postcont').css({"top": blogScroll})
                 } //pushes new Y value
 
                 //This double checks run loop being empty and all previous posts are loaded before spawning more.
@@ -198,13 +201,13 @@ $(window).bind('touchmove', function(e) {
                 else if (!mobileBool) {
                     $('pagedata').css({"top": pageScrollY[currentPage]})
                 } else {
-                    $('.pg' + currentPage).css({"top": pageScrollY[currentPage]})
+                    $('pg.pg' + currentPage).css({"top": pageScrollY[currentPage]})
                 }
 
                 posY1 = e.originalEvent.touches[0].pageY
             } else { //scroll calc
                 $("mobileController").css({"margin-left": -horizontalDifference}) //page dragging calcs
-                const newPage = limitChecker(currentPage, pageScrollY.length, 0, 1, currentPage + pgposrelcheck(horizontalDifference, innerPage + rootLeft + rootgutter));
+                const newPage = limitChecker(currentPage, pageScrollY.length, 0, 1, currentPage + pgposrelcheck(horizontalDifference, innerPage + rootLeft + rootGutter));
 
                 for (var cp = 0; cp < pageScrollY.length; cp++) {
                     $("pg.pg" + cp).css({
@@ -227,7 +230,7 @@ $(window).on('mouseup touchend', function(e) {
         if ('ontouchstart' in window || navigator.msMaxTouchPoints) {posX2 = e.originalEvent.changedTouches[0].pageX}
         else {posX2 = e.pageX}
 
-        if (mobileBool) {toBeCurrent = limitChecker(toBeCurrent, pageScrollY.length, 0, 1, currentPage + pgposrelcheck(horizontalDifference, innerPage + rootLeft + rootgutter))}
+        if (mobileBool) {toBeCurrent = limitChecker(toBeCurrent, pageScrollY.length, 0, 1, currentPage + pgposrelcheck(horizontalDifference, innerPage + rootLeft + rootGutter))}
         else {toBeCurrent = limitChecker(toBeCurrent, pageScrollY.length, 0, 1, currentPage + pgposrelcheck(horizontalDifference, innerPage))}
         transitionSpeed = (Math.abs(toBeCurrent - currentPage) / 20) + .3
 
@@ -263,9 +266,9 @@ $(window).on('wheel', function(e){
         $('pageData').css({"top": pageScrollY[currentPage]}) //sets scroll height of container based on current page scroll arr
 
         if (currentPage === 0 && artsPostsHeight > sectionHeight) { //checks if currentPage is 0 OR post container is larger than page height
-            artsScroll = limitChecker(artsScroll, 0, -artsPostsHeight + sectionHeight - (rootgutter * 2), 0, artsScroll - (e.originalEvent.deltaY / 3))
+            artsScroll = limitChecker(artsScroll, 0, -artsPostsHeight + sectionHeight - (rootGutter * 2), 0, artsScroll - (e.originalEvent.deltaY / 3))
             //this calculates current scroll height through checking before pushing, it's not accurate but good enough
-            $('.pg0 #arts0, .pg0 #arts1').css({"top": artsScroll}) //pushes new Y value
+            $('pg.pg0 #arts0, .pg0 #arts1').css({"top": artsScroll}) //pushes new Y value
 
             //This double checks run loop being empty and all previous posts are loaded before spawning more.
             if(-artsScroll + sectionHeight > artsPostsHeight && runLoop === 0){ //checks height scroll value being greater than internal container height
@@ -273,9 +276,9 @@ $(window).on('wheel', function(e){
                 artGeneration()} //loads art elements
 
         } else if (currentPage === 1 && blogPostsHeight > sectionHeight) { //checks if currentPage is 1 OR post container is larger than page height
-            blogScroll = limitChecker(blogScroll, 0, -blogPostsHeight + sectionHeight - (rootgutter * 3), 0, blogScroll - (e.originalEvent.deltaY / 3))
+            blogScroll = limitChecker(blogScroll, 0, -blogPostsHeight + sectionHeight - (rootGutter * 3), 0, blogScroll - (e.originalEvent.deltaY / 3))
             //this calculates current scroll height through checking before pushing, it's not accurate but good enough
-            $('.pg1 .postcont').css({"top": blogScroll}) //pushes new Y value
+            $('pg.pg1 .postcont').css({"top": blogScroll}) //pushes new Y value
 
             //This double checks run loop being empty and all previous posts are loaded before spawning more.
             if(-blogScroll + sectionHeight > blogPostsHeight && runLoop === 0){ //checks height scroll value being greater than internal container height

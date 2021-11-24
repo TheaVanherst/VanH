@@ -24,14 +24,17 @@ article ol {padding:0 15px 0 35px}
 /* PAGE 0 */
 
 /* page containers */
-.pg0 incont {
-    width: calc(var(--innerPageCalc) - var(--skirting)); display:inline-block;
-    height: calc(var(--pageheight) - (var(--gutter)*2)); overflow: hidden;
+.pg0 > * > div {
+    padding:var(--halfSkirting); display:inline-block;
     background-color: var(--postback)}
-.pg0 incont:first-of-type {padding:var(--halfSkirting);}
+.pg0 incont{ margin-right:0; }
+.pg0 > * > div, .pg0 incont {
+    width: calc(var(--innerPageCalc) - var(--skirting));
+    height: calc(var(--pageheight) - (var(--gutter)*2)  - 1px);
+    overflow: hidden; border-radius: var(--halfSkirting)!important;}
 
 w3x2 {
-    width:calc((var(--innerPageCalc) - var(--halfGutter) - var(--skirting) - 0.5px) / 2)!important;
+    width:calc((var(--innerPageCalc) - var(--halfGutter) - var(--skirting)) / 2 - 0.1px)!important;
     position:relative;
     transition:
             top .4s cubic-bezier(0,0,0,1)}
@@ -39,15 +42,23 @@ w3x2 {
 
 .pg0 article li{font-size:0} /*this fixes white space bugs */
 .pg0 article li > *:not(:first-child){border-top: 1px solid var(--borders) !important}
-.pg0 article iframe {border:0;
-    width: calc((var(--innerPageWoConCalc) + 5px) / 2);
-    height: calc((var(--innerPageWoConCalc) / 2)/16 * 9)} /*this corrects the default square size*/
 
-.pg0 .player {
-    background-image: url('/Website assets/icons/sm3.png'); position: absolute;
-    width: calc(var(--sidebarr) / 4); height: calc(var(--sidebarr) / 4); pointer-events: none;
-    background-size: cover; left: 50%; transform: translate(-50%, 100%);
-}
+.player {
+    background-image: url('/Website assets/icons/YT.png');
+    background-repeat: no-repeat; background-size:contain;
+    position: absolute; cursor: pointer; opacity:0.9; pointer-events: none;
+    width: calc(var(--sidebarr) / 4); height: calc(var(--sidebarr) / 5.75);
+    left: 50%; transform: translate(-50%, 160%)}
+
+vid:hover > .player{
+    opacity:1; background-image: url('/Website assets/icons/YTHov.png')!important}
+
+vid > img {
+    pointer-events: auto!important;
+    width:calc((var(--innerPageCalc) - var(--halfGutter) - var(--skirting)) / 2);
+    height: calc(((var(--innerPageCalc) - var(--halfGutter) - var(--skirting)) / 2) / 16 * 9);
+    overflow:hidden; object-fit: cover; cursor:pointer}
+
 
 /* image containers */
 .row, .triple { margin:0!important;
