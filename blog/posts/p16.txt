@@ -1,0 +1,203 @@
+<meta>2021-11-28T10:25:00<meta>
+<li>
+    <p><b>Vanh.art Progression [Again]</b></p>
+    <p>
+        It's been another two months, and here I am
+        again complaining about how long it's been
+        since the previous update. That's right, sit
+        tight; it's website development update time,
+        and it's going to be a long one.
+    </p><p>
+        I've always wondered why the "One Page Design!"
+        thing caught on as hard as it did, and it's
+        because website design takes a lot of man hours
+        otherwise JUST to compensate for mobile. And mobile
+        being such a major slice of the market, I can
+        now see why it's such a hassle to develop for.
+        The one big thing that I've learned through
+        the process of developing this site for the past
+        couple of months is that It was such a mistake
+        on my part to design the site with the premise
+        of page containers in mind.
+    </p><p>
+        Mobile has been a thorn in my side until
+        recently, and even then it's still problematic
+        due to not having any proper means of scaling
+        fonts or upscaling the site.
+        And though I can see the reasoning for the way
+        mobile deals with website; oh boy do I absolutely
+        hate dealing with slight issues like document
+        sizing and the search bar in chrome!
+        I couldn't have ever imagined the search bar even
+        being a thought in my mind, never-mind a problem
+        <i>at all</i> when I started this mess. And though I
+        have come up with solutions, I feel like they're
+        really half-baked but for the time being, I'm just
+        going to have to live with what I've been given.
+    </p><p>
+        My conclusion to this rambling is;
+        developing the website the way it is, was and
+        is, a mistake. I find it astounding how much
+        I've learned this year in terms of web
+        development and feel like I look at websites
+        with a completely different lens to how I did
+        12 months ago. It's bizzare to even think
+        I wrote Vher98 the way I did, and I'm much
+        better off for it.
+    </p><p>
+        That being said, let's list the great new
+        features I've added!
+    </p><p>
+        <b>0.75</b> : As of yesterday, I rolled out an update
+        that adds to the animation page, now known as
+        'Video & Media'. This page includes a large
+        selection of my streams and major content
+        pieces and include as much variation I could
+        have possibly added. This is, after all, a
+        site designed and developed on the process of
+        myself learning and trying to show off the
+        capability I have as an artist.
+    </p>
+    <div class="row">
+        <div><figure><img src="/blog/img/p16a.png"></figure></div>
+        <div><figure><img src="/blog/img/p16b.png"></figure></div></div>
+    <p>
+        <i>Back-end code & Front-end preview of the new 'Media' page.</i>
+    </p><p>
+        This update also includes a replacement of all
+        tacked on Iframe players on the site, and now
+        redirects to the video and Media page. This
+        solution is what I hope is the most optimal
+        way to deal with being able to show my media
+        based content without spamming media players
+        everywhere. And the way I've designed the
+        back-end not only makes it easier for
+        managing the site & content, but should also
+        decrease page loading and increase page
+        performance as a result.
+    </p><p>
+        Like everything else on the site, it's way
+        over-engineered and is really easy to swap
+        out and add content. It's pretty much in
+        it's finished state, but I wish to at least
+        polish it up and make it look less amateur
+        at a later date.
+    </p><p>
+        And final notes on this update, I've
+        re-designed how content is loaded on page-load
+        and how extra content is added after the fact.
+        Aka. how content is managed and handled and
+        when or how it should load in, rather than
+        doing it all at once. The page now just
+        loads everything you have the possibility
+        of seeing, which is mainly just the content
+        on the front pages. But that is something
+        I'll also need to optimise at a later date.
+    </p><p>
+        I also added some code that allows me to
+        detect between clicking and holding the mouse down!
+        It might seem like a trivial affair, but
+        it's a bit of a hassle to nail down the combination
+        of events required to make the page feel seamless
+        alongside it not causing too many errors.
+        Anyway, this fixes a few errors when page
+        dragging due to  requiring cursor events to
+        switch between none and active otherwise
+        page dragging doesn't work properly, while
+        sustaining a maintainable ability to click
+        on things like videos and links without it
+        not responding.
+    </p>
+    <figure><img src="/blog/img/p16c.png"></figure>
+    <p>
+        <b>0.70</b> : Released last month, this update
+        was entirely focused on the archive page, which now includes
+        a clearer and easier way to understand and
+        view the content that I've managed to create
+        over the past 7 years. The page is sorted from
+        newest to oldest and is designed for those
+        who don't follow my content who want to see a
+        timeline of my art and how my art has become
+        the way it has without needing to read the
+        entire development process. (that's what the
+        blogs are for!).
+    </p><p>
+        After a lot of contemplation, I've realised
+        the necessity of effectively highlighting
+        my art in such a way where I can fit as much
+        content in as little room as possible, without
+        belittling the content itself. This page is
+        not longer just a tumblr page where I post my
+        art. I have the urge to at least document the
+        process of what I'm doing to explain and
+        prove that I do infact, know what I'm talking
+        about and I am learning from what I'm doing.
+        (It's good for employment, I promise) That
+        being said, I still need somewhere to output my
+        art in mass doves, for whenever I do decide
+        to focus back on mass content creation. That's
+        why I welcome; the archive page.
+    </p>
+    <div class="row">
+            <div><figure><img src="/blog/img/p16d.png"></figure></div>
+            <div><figure><img src="/blog/img/p16e.png"></figure></div></div>
+    <p>
+        <b>0.65</b> : I realised quite a while ago
+        that the state the backend was with how I
+        categorised what CSS did what and where it should
+        be was a disaster. The entire site has basically had
+        a rewrite in a few elements such as completely
+        redoing the CSS. It was long overdue, but it's
+        done. Here's my piece of advice that anyone
+        who's dealt with css would probably sigh at;
+        Don't categorise your types of CSS for elements.
+        (Eg; Colour, animation, pos, etc.) It's a bad
+        idea, don't do it.
+    </p><p>
+        And as mentioned prior, mobile <i>was</i> a thorn
+        in my side, and that was because I didn't really
+        understand how to deal with touch. I didn't really
+        take into consideration that there's a massive
+        difference between touchscreen devices and mobile.
+        And after a bunch of testing, I did realise a
+        few solutions to my problems, the page is now
+        designed with 3 different states in mind,
+        depending on touch capabilities, and desktop
+        capabilities and adding or removing features
+        depending on which. It seems to be working, and
+        a lot of it is focused on math so I'll move
+        onto my next point.
+    </p>
+    <p><b>Dev Thoughts</b></p>
+    <p>
+        Developing this site has basically been my full time job.
+        This entire process of developing myself a
+        cleaner and easy to add to website has been
+        such a hassle. I REALLY didn't expect it to
+        take even nearly as long. However, I have
+        once again learned tons! Here's a piece of
+        advice from myself; <i><b>Do not make this site.</b></i>
+    </p><p>
+        And I mean that. As much as I love this site in
+        a way that it shows my technical know-how of
+        mathematics and ability to solve problems to
+        issues I have during development, this entire
+        projected was flawed from the start if I ever
+        wanted to design a system compatible with
+        mobile.
+    </p><p>
+        I wish I could talk more about all the different
+        problems I've come across these past two months,
+        but this post would be 5 times longer to even
+        scratch the surface. I've loved the past two months
+        of work on this site, but I really hope
+        that I can finish this thing off for new years.
+        (It won't! But I can dream.)
+    </p><p>
+        I've managed to get myself a job recently, so
+        a lot of my spare time will soon be dedicated to that...
+        so I should get a few other projects out of the way
+        in the meantime. If you want follow those kinds
+        of projects, you can find it on my
+        <a href="https://twitter.com/TheaVanherst"> Twitter </a>
+</li>
