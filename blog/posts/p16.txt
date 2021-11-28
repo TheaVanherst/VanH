@@ -108,7 +108,7 @@
         on things like videos and links without it
         not responding.
     </p>
-    <figure><img src="/blog/img/p16c.png"></figure>
+    <figure><img src="/blog/img/p16c.PNG"></figure>
     <p>
         <b>0.70</b> : Released last month, this update
         was entirely focused on the archive page, which now includes
@@ -140,7 +140,7 @@
     </p>
     <div class="row">
             <div><figure><img src="/blog/img/p16d.png"></figure></div>
-            <div><figure><img src="/blog/img/p16e.png"></figure></div></div>
+            <div><figure><img src="/blog/img/p16e.PNG"></figure></div></div>
     <p>
         <b>0.65</b> : I realised quite a while ago
         that the state the backend was with how I
