@@ -6,7 +6,7 @@
     float: Right; margin: 2px;
     font-size: var(--mid-fonts); font-family: var(--boldstyle);
     letter-spacing: 1px; color:white;
-    border-radius:var(--skirting);
+    border-radius:var(--halfSkirting); overflow:hidden;
     transition: background-color .3s cubic-bezier(0,0,0,1);
     animation: newbuttonfade 10s cubic-bezier(0,0,0,1) infinite;}
 .new-post:hover{
@@ -111,7 +111,6 @@ vid > img {
 .when:not(.footer){background-color:var(--accent1)}
 
 article .when .new-post {
-    border-radius: 0!important;
     background: linear-gradient(-45deg, var(--accent2), var(--accent3), var(--accent4));
     background-size: 300% 300%; color: white}
 

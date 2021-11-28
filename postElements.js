@@ -52,11 +52,11 @@ function postedwhen(data) {
         else if(wn.days<14&&wn.days!==7){
             t+="on"}
         if(wn.days>0&&wn.days!==7){
-            t+=" "+wn.daylong+" "}
-        if(wn.days>7){
+            t+=" "+wn.daylong}
+        if(wn.days>6){
             t+="last week"}
-        if(wn.weeks!==1){
-            t+=wn.hours+":"+wn.mins+pm}
+        if(wn.weeks<8){
+            t+=" at "+wn.hours+":"+wn.mins+pm}
         else if(wn.days<7){
             t+=" the "+wn.dayshort+wn.nth}}
     else if(wn.mnths<3&&wn.days>13 && wn.yrs<1){
@@ -115,7 +115,7 @@ var runLoop = 0, //this gets added to every time new elements need to be added, 
 //the amount of docs to check through
 //this shouldn't be here, but i can't be bothered to come up with a better system
 //that doesn't include shoving all of my thoughts into one singular document.
-let currentBlogPost = 15; //this is temporary I promise.
+let currentBlogPost = 16; //this is temporary I promise.
 
 $("pg.pg1").ready(function(){
     loadpostelement()})

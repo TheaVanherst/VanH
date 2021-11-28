@@ -66,7 +66,7 @@ var pg2l=[1,1,1,1,2,1,1,1],pg2m=[1,1,1,1,1,1,1,1],pg2r=[1,1,1,1,1,1,1,2],sid2a=[
     sides = ["l","m","r"]; //for different file types, then loops through which column is currently being looped
 
 var pgdh=[400,400,400,465,465,224,600,600,600,600,600,600,224,465,465,440,440,224,224,505,505,505,143,196,440], //compensates for different image sizes in group containers
-    pg3h=[355,355,355,425,425,184,560,560,560,560,772,560,184,425,425,400,400,184,184,460,460,460,153,156,400], //image heights
+    pg3h=[0,0,5,0,0,0,0,0,0,0,-56,0,0,0,0,0,0,0,0,0,0,0,-40,0,0], //image heights
     ap3=[0,0,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1] //file types
 
 $(document).ready(function(){
@@ -80,7 +80,7 @@ $(document).ready(function(){
     }
     for(var i=0;i<=pg3h.length;i++){
         $('#dp'+i).addClass('zoom img')
-            .css({'height':pg3h[i]+"px",
+            .css({'height':pgdh[i]-pg3h[i]-40+"px",
                 'background-image':"url('/Website assets/imgs/d"+i+"."+frt[ap3[i]]+"')"})
             .parent().css({'height':pgdh[i]+"px"})
     }

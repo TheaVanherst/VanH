@@ -172,7 +172,12 @@ $(window).bind('touchmove', function(e) {
 
             if (horizontalDifference > -(newRootMid / 2.5) && horizontalDifference < (newRootMid / 2.5)) {
                 $("mobileController").css({"margin-left": "0"}) //page dragging calcs
-                pageScrollY[currentPage] = limitChecker(pageScrollY[currentPage], 0, currentPgHeight, 0, pageScrollY[currentPage] - verticalDifference)
+
+                if(mobileBool){
+                    if(currentPage !== 0 && currentPage !== 1){
+                        pageScrollY[currentPage] = limitChecker(pageScrollY[currentPage], 0, currentPgHeight, 0, pageScrollY[currentPage] - verticalDifference)}
+                } else {
+                    pageScrollY[currentPage] = limitChecker(pageScrollY[currentPage], 0, currentPgHeight, 0, pageScrollY[currentPage] - verticalDifference)}
 
                 if (currentPage === 0) { //checks if currentPage is 0 OR post container is larger than page height
                     artsScroll = limitChecker(artsScroll, 0, -artsPostsHeight + currentPgHeight, 0, artsScroll - verticalDifference)
