@@ -1,0 +1,220 @@
+<meta>2021-12-28T10:25:00<meta>
+<li>
+    <p><b>Blender & Character Development.</b></p>
+    <p>
+        I've been SUPER busy this month; since my last post I basically
+        have stopped the majority of the development on
+        Vanh.art. And with good reason! I've been working,
+        learning and developing in blender for the past
+        20-ish days, and I've managed to conjure myself around
+        200 hours in blender.
+    </p><p>
+        So, what have I been making? At first I just generally
+        wanted to try and physically design petra in a way
+        that I can actually envision her, as it's been almost
+        2 years since I designed her. I still really don't
+        have a great picture in my head on how I want her to...
+        well, look. So this was mainly to try and give myself
+        a bit of wiggle room to develop her with a few tools
+        I usually don't have at my disposal.
+    </p>
+    <p><b>Developing Petra</b></p>
+    <p>
+        My general conclusion from all this is; <b>don't develop
+        characters through modeling</b>. It's too time-consuming, by
+        such an insane extent, just <i>really</i> don't try it.
+        The main problem I've had twice now, is that you get far
+        too far down the chain of the development process, and
+        you've probably spent more than a few hours UV wrapping
+        and completely finished the model itself. Only to want to
+        change the design because the UV map and textures you've
+        already started developing, and it needs completely restructuring for
+        the changes you want to be taken place.
+    </p>
+    <div class="row">
+            <div><figure><img src="/blog/img/p17a.png"></figure></div>
+            <div><figure><img src="/blog/img/p17b.png"></figure></div></div>
+        <p>
+            <i>Preview renders of Petra's dress with 1800's Austrian inspired clothing.</i>
+    </p><p>
+        So yeah, the development process on trying to design petra
+        really didn't go to far on both occasions. But the main
+        conclusion to all this is that I know how to UV map, and
+        develop models now. Which is far more than what I could say
+        about my experience in college. It could be just, having
+        Blender as my main tool of choice rather than Maya? I'm not
+        entirely sure, but this time around felt way more intuitive
+        as much as a cumbersome project it ended up being overall.
+    </p><p>
+        I ended up using a few low poly models that were pre-rigged
+        and working around them to try and break down the methodologies
+        for putting everything together and how the rigging in particular
+        may affect the model if I ever get around to doing anything
+        at a later date. It was mainly with the intent of future proofing.
+    </p><p>
+        Also, the benefit of using other people's models is that I
+        can spend a lot of time learning how someone got to that result,
+        rather than being thrown off struggling to make anything at all.
+        I just personally find it easier to work with already existing
+        content and purposefully having to work around it rather than
+        struggling on the basic tooling like shapes. However, by the
+        late part of development, I ended up tearing apart and scrapping
+        a lot of the original model design from the knowledge I ended
+        up getting.
+    </p><p>
+        I learned a lot and at this point was pretty confident with
+        the experience that I'd had to be able to move on to doing
+        some proper modeling with what I now know. The main of which
+        being rendering, texturing, UV mapping and other necessities.
+    </p><p>
+        Now onto the nitty-gritty, The
+        process I just described was mainly the first week or so
+        of trying to get a grip of Blender in general. So of course
+        knowing the development cycle and not really foreseeing a lot
+        of the issues I didn't really go into detail on, that was
+        the end goal regardless of my result with an end product.
+        The means of this wasn't to get a result out of it, but rather
+        having an ideal of petra in mind is a spire of motivation to
+        learn on behalf of the results I wanted to get.
+    </p>
+    <p><b>Developing Coffee.</b></p>
+    <p>
+        With knowing that my vision on Petra was still a blurry mess,
+        I ended up continuing to develop the model I already had in my
+        hands, with a means to try and get it more detailed and
+        proportional. The main shape is something I already had with
+        petra's model and thought it would be a good start for a first
+        time user of Blender.
+    </p>
+    <div class="row">
+            <div><figure><img src="/blog/img/p17c.jpg"></figure></div>
+            <div><figure><img src="/blog/img/p17d.png"></figure></div></div>
+    <p>
+        I don't know what to say about these two other than
+        to nervously laugh. The model on the
+        left is the model I ended up giving up on to develop
+        petra with. The model on the right, being the same
+        model as the one on the left, just about 50 hours later.
+    </p><p>
+        I'm really thrilled with how she turned out and the fact that
+        this is my <b>third 3d model <i>ever</i></b> is a statement
+        I couldn't be more proud to say and be 100% true. I probably
+        went a bit too far in terms of the model resolution, but
+        at that point I'm nitpicking; this is exactly how I wanted coffee to look.
+    </p><p>
+        The main difficulty with developing this model is trying
+        to develop and design ways to make sharp corners and
+        define body shapes such as the tonal difference between
+        the stomach and hip; making the curves seem somewhat
+        natural, but defined enough to be clearly differentiated
+        between the two body parts. And of course, the thighs
+        being one of the focal points when it comes to trying
+        to refine edges properly because of the massive hassle
+        of designing the eyes to be the way they are. I ended up
+        having to do a lot of faffing about just to prevent
+        issues with shading.
+    </p>
+        <div class="row">
+            <div><figure><img src="/blog/img/p17f.png"></figure></div>
+            <div><figure><img src="/blog/img/p17e.png"></figure></div></div>
+    <p>
+            <i>Left: showcase of body curve definition.<br>
+               Right: close-up of defined sharp corners, specifically the eyes.</i>
+    </p><p>
+        These pictures specifically are pretty early in the
+        development process, and ended up getting smoothed out
+        and cleaned up a lot more when I ended up getting onto
+        designing and developing shaders for her.
+    </p><p>
+        I think the process I found most fun, now that we're onto it,
+        is shading. It's such a delightful way to send a few hours
+        tweaking and mixing different combinations of colour processing.
+        I can't exaggerate how much this pleases me and my photoshop needs.
+    </p><p>
+        I'm not sure if I'll end up keeping with this methodology of
+        shading, as the way I'm currently getting the holographic-esc
+        colour range is by using the shader to RGB plugin, which turns out,
+        you can't use to do ray tracing with. Ray tracing is super inefficient. Go figure.
+    </p><p>
+        Quick rundown; Having ray traced lighting, translated
+        into rgb values, just to translate it
+        back to get the colour you want not only SOUNDS inefficient
+        but is INSANELY inefficient in practical use cases. At some
+        point I will end up having to find alternading shaders which
+        toggle between the two depending on the usecase I want.
+        But for all intents and purposes, I probably won't be using
+        ray tracing anyway.
+    </p>
+        <div class="row">
+                <div><figure><img src="/blog/img/p17g.jpg"></figure></div>
+                <div><figure><img src="/blog/img/p17h.png"></figure></div></div>
+    <p>
+        <i>Shading methodology, and an edge shader showcase.</i>
+    </p><p>
+        As discussed previously, I <i>did</i> end up coming back
+        to the matter of edges for shading purposes and cleaning
+        up the wireframe. The original solution to my issues of
+        lighting edge-bugs was to just duplicate the edge, and keep
+        the edges as close as possible, so the shading would
+        have to transition between nanometer sized faces, making
+        the edge lighting close to invisible and / or unnoticeable.
+    </p><p>
+        The additional asterisk I ended adding to that, was another
+        set of edges to ensure no edge-bugs; an additional face
+        before the 90 degree curve, and another on the opposing side.
+        It ended up giving a pretty good result and as good as I'm
+        probably going to get. <i>The more you know</i>.
+    </p>
+        <div><figure><img src="/blog/img/p17j.png"></figure></div>
+    <p>
+            <i>Shader and upper body showcase.</i>
+    </p><p>
+        Finally time to talk about the bit I've been avoiding talking
+        about: I haven't finished the model yet. But I will.
+        Progress on this has generally just haulted because
+        I've realised that the long, unavoidable process of
+        developing the head, or to be more specific, the hair.
+    </p><p>
+        It's a nightmare. Not because it's generally difficult to
+        design, but just because my mind literally screams for me
+        to do anything else and I keep avoiding it, developing
+        other things, and coming back to it to realise the same issue.
+        It's not that it's hard, it's just my ADHD hates the repetative
+        process of designing hair-esc strands. I <i>did</i> have quite
+        a bit of fun developing the 'pony-tail', and the layered
+        look at the back of the hair to get the effect as such.
+    </p><p>
+        However, because of the head being way more detailed, especially front
+        facing, it just ended up taking a bit too long and I've
+        managed to distract myself onto other projects for long enough
+        that I'm no longer motivated to work on this. ...for now. I will
+        come back to it at some point in the near future. Pretty much everything
+        is developed and ready to puppet rig and design clothes for her,
+        so it's just the matter of forcing myself to sit down for long
+        enough to design the fringe and optimising.
+    </p>
+        <div class="row">
+            <div><figure><img src="/blog/img/p17k.png"></figure></div>
+            <div><figure><img src="/blog/img/p17l.png"></figure></div></div>
+    <p>
+        <i>Front & back facing head wireframes.</i>
+    </p><p>
+        <b>Conclusion</b>
+    </p><p>
+        I loved this project, and it's probably the most proud I've been
+        about my experience with something. Maybe this all this is
+        actually terrible, and the fact I only have 200 hours and
+        super inexperienced has just resulted my perspective being
+        screwed by the lack of experience? I don't know. But as I
+        iterated earlier, for this being my 3rd 3D model ever, I'm
+        incredibly proud of her, and she looks great.
+    </p><p>
+        I will come back to this, and considering I'm writing this
+        in february to make up for my absence, it has <i>kinda</i>
+        reinvigorated me to want to come back to this. We'll see.
+    </p><p>
+        Anyway, I've talked wayyy too much, and would love
+        feedback on this experience. This was a great way to end my
+        year and have the finish push for a new learning experience.
+    </p>
+</li>
