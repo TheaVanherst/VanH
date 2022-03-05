@@ -8,7 +8,8 @@
 /* header CSS */
 #header {
     height:var(--bannerPreCalc); width: var(--innerPageCalc);
-    margin: var(--gutter) auto var(--gutter) calc(var(--sidebarl) + var(--gutter));
+    margin: 0 auto 0 calc(var(--sidebarl) + var(--gutter));
+    top: var(--gutter);
     border-radius:var(--skirting); overflow: hidden;
 
     z-index: 3; position: relative;
@@ -25,6 +26,7 @@
 /* banner logo */
 
 :root{
+    --logoscale: 10px; /* Logo zoom in amount */
     --logobm: url('/Website%20assets/logobmh.png');
     --logobmhov: url('/Website%20assets/logobm.png');
     --logonm: url('/Website%20assets/logonmh.png');
@@ -34,9 +36,9 @@
     position:absolute; background-size: 100% 100%;
     left: 50%; transform:translateX(-50%);
 
-    margin: calc((var(--bannerPreCalc) * -1) - 25px) 0 0 calc(var(--sidebarl) / 2);
-    height:calc(var(--bannerPreCalc) + 10px);
-    width:calc(var(--bannerPreCalc) * 2 + 10px);
+    margin: calc((var(--bannerPreCalc) * -1) + var(--gutter) - (var(--logoscale) / 2)) 0 0 calc(var(--sidebarl) / 2);
+    height:calc(var(--bannerPreCalc) + var(--logoscale));
+    width:calc(var(--bannerPreCalc) * 2 + var(--logoscale));
 
     transition:
             width .2s cubic-bezier(0,0,0,1),
@@ -44,14 +46,13 @@
             opacity .5s cubic-bezier(0,0,0,1),
             margin .2s cubic-bezier(0,0,0,1)}
 .headerLogo > *:hover{
-    margin-top:calc((var(--bannerPreCalc) * -1) - 15px);
-    height:calc(var(--bannerPreCalc) - 10px);
-    width:calc(var(--bannerPreCalc) * 1.9 - 10px)}
+    margin-top:calc((var(--bannerPreCalc) * -1) + var(--gutter) + (var(--logoscale) / 2));
+    height:calc(var(--bannerPreCalc) - var(--logoscale));
+    width:calc(var(--bannerPreCalc) * 1.9 - var(--logoscale))}
 
 .headerLogo > * > * {
     background-size: 100% 100%;
-    width: inherit;
-    height:inherit;
+    width:inherit; height:inherit;
     transition:
             opacity .5s cubic-bezier(0,0,0,1),
             background-size 1s cubic-bezier(0,0,0,1)}
@@ -97,7 +98,7 @@ sideNav { /* sidebar container */
     left: calc(50% - ( var(--innerPageWoConCalc) / 2) - var(--gutter)); transform: translateX(-50%);
     width:var(--sidebarl); top:var(--gutter); opacity: 0}
 
-sidenav .wedge {margin-bottom:var(--halfGutter)}
+sidenav .wedge {margin-bottom:var(--halfGutter); overflow:hidden}
 sideNav .wedge p {padding: 8px 10px}
 
 /*sidebar image container*/
@@ -141,7 +142,6 @@ sideNav .wedge p {padding: 8px 10px}
     background-position:center; background-size:cover}
 
 /* CSS for mobile */
-
 sideNav.active {display:none!important} /*This hides the default CSS side nav from desktop*/
 
 nav {
@@ -152,24 +152,32 @@ nav {
     margin:0 0 var(--gutter)}
 nav .ls {
     width:calc((var(--innerPageWoConCalc) - (var(--gutter) * 2))/3);
-    display: inline-block}
+    display: inline-block!important;}
 nav.active { /* displays the topnav bar when mobile (active) is on */
     display: block!important;
     width:calc(var(--innerPageWoConCalc) - 40px)!important}
 nav {width: calc(100% /3)}
 
-/* CSS for both Desktop and Mobile */
+/* Css for sidebar tool tips */
+.tooltip {overflow: hidden}
+.tooltip p {padding: 5px 15px}
+.tooltip.ess p {background-color: var(--accent1); color:white}
 
+.tooltip, .tooltip > div p {color: var(--text)}
+.tooltip > div p {height: 0; padding: 0 15px;
+    background-color: var(--posts)!important}
+.tooltip:hover > div p {height: 100%; padding: 8px 15px}
+
+/* CSS for both Desktop and Mobile */
 .ls {background-color:var(--postback); cursor:pointer;
     position: relative; overflow: hidden;}
-.ls t{
-    z-index:99; position:absolute;
+.ls t{z-index:99; position:absolute;
     color:white!important; white-space: nowrap;
     padding: 8px 15px}
 
 .ls .i{opacity: var(--defopacity)}
 #topNav:not(.active) > .ls:hover .i{opacity: var(--fadeto)}
-.ls.button-focus .i {opacity:var(--fadeto)}
+.ls .i.btnull {height:42px;} /* Filler for topnav buttons that don't exist. */
 
 .ls .i, .ls{transition:
         background .2s cubic-bezier(0,0,0,1),

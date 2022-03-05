@@ -30,9 +30,9 @@ var artMakingV = ['Cl0D2qGdyHk','qmq5UGhA6gE'],
     artMakingD = ['16/08/03','17/09/05',],
     artMakingT = ["'Room For Two' LIVE","'Hymn Of The Haunted Hunter' LIVE"]
 //CSGO Edits / Complications Data
-var CSGOFunnyV = [ 'HJrzOIXB2lQ','TeDbScQhQjU',undefined, 'd7eRx6T0mdc','D7c_-FftVx0','VR-fCwZxZmk'],
-    CSGOFunnyD = [  '20/09/18',   '20/06/15',  undefined,  '19/07/21',   '18/10/26',   '28/05/19'];
-    CSGOFunnyT = ['Neon Genesis Evanjollion: Pt1', 'The Battle of Britons', undefined, 'Vore, where?', 'Headshot Only', '48:9']
+var CSGOFunnyV = ['41nkgBQfMWE','HJrzOIXB2lQ',undefined, 'd7eRx6T0mdc','D7c_-FftVx0','VR-fCwZxZmk'],
+    CSGOFunnyD = ['22/02/15',    '20/09/18',  undefined,  '19/07/21',   '18/10/26',   '28/05/19'];
+    CSGOFunnyT = ['2 Albanians, A Packet of Walkers.','Neon GenesisEvanjollion: Pt1', undefined, 'Vore, where?', 'Headshot Only', '48:9']
 //Vial Of Me Development data
 var vialOfMeV = ['OwzW0S1F3qM','LiOqOQnlZo4','t5XUJjOmg2w'],
     vialOfMeD = ['18/12/31','19/01/02','19/01/03'],
@@ -55,12 +55,12 @@ var coffeeOGV = ['a27XjoPcQHg','MWwmEH2P2WU','L_ruyRpwzqw'],
     coffeeOGT = ["'Coffee' Concept LIVE"]
 
 //video playlist collections + accompanying data
-var titleCards = ["Featured Videos","'Weekly' Timelapses","'Weekly' Timelapses LIVE","CSGO: Funny moments",vanhDevT[0]+"elopment",
-                  vher98T[0]+"elopment",vialOfMeT[0]+"elopment",caddyT[0],coffeeT[0],coffeeOGT[0]]
+var titleCards = ["Featured Videos","'Weekly' Timelapses","CSGO: Funny moments",vanhDevT[0]+"elopment",
+                  vher98T[0]+"elopment",vialOfMeT[0]+"elopment",caddyT[0],coffeeT[0],coffeeOGT[0],"'Weekly' Timelapses LIVE",]
 //Video Array Storage for future references
-var reqVideos = [featuredV, weeklyArtV, artMakingV, CSGOFunnyV, vanhDevV, vher98V, vialOfMeV, caddyV, coffeeV, coffeeOGV],
-    reqDates =  [featuredD, weeklyArtD, artMakingD, CSGOFunnyD, vanhDevD, vher98D, vialOfMeD, caddyD, coffeeD, coffeeOGD],
-    reqTitles = [featuredT, weeklyArtT, artMakingT, CSGOFunnyT, vanhDevT, vher98T, vialOfMeT, caddyT, coffeeT, coffeeOGT];
+var reqVideos = [featuredV, weeklyArtV, CSGOFunnyV, vanhDevV, vher98V, vialOfMeV, caddyV, coffeeV, coffeeOGV, artMakingV],
+    reqDates =  [featuredD, weeklyArtD, CSGOFunnyD, vanhDevD, vher98D, vialOfMeD, caddyD, coffeeD, coffeeOGD, artMakingD],
+    reqTitles = [featuredT, weeklyArtT,  CSGOFunnyT, vanhDevT, vher98T, vialOfMeT, caddyT, coffeeT, coffeeOGT, artMakingT];
 
 // 88 888888 88""Yb    db    8b    d8 888888     888888 88   88 88b 88  dP""b8 888888 88  dP"Yb  88b 88    db    88     88 888888 Yb  dP
 // 88 88__   88__dP   dPYb   88b  d88 88__       88__   88   88 88Yb88 dP   `"   88   88 dP   Yb 88Yb88   dPYb   88     88   88    YbdP
@@ -132,7 +132,7 @@ function loadplaylist() { //gets called through the f div element
         player.cuePlaylist({'playlist': playlist,'startSeconds': 0});}
 
     pageScrollY[currentPage] = 0;
-    $('pagedata').animate({"top": pageScrollY[toBeCurrent]})}
+    $('pagedata').animate({"top": 0})}
 
 function loadVideo() { //load singular video
     let data = videoGrab(pReq,vReq)
@@ -177,6 +177,7 @@ function extLoad() {
     setTimeout(function(){ //timeout delay to give iframe some time to load properly.
         $('.ls.pg4 t').click(); //this is just a jank way to change pages, but saves tons of time.
         pageScrollY[currentPage] = 0; // resets the vertical page placement on page change.
+        $('pagedata').animate({"top": 0})
     },250)
 }
 

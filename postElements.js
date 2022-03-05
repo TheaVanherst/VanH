@@ -115,7 +115,7 @@ var runLoop = 0, //this gets added to every time new elements need to be added, 
 //the amount of docs to check through
 //this shouldn't be here, but i can't be bothered to come up with a better system
 //that doesn't include shoving all of my thoughts into one singular document.
-let currentBlogPost = 16; //this is temporary I promise.
+let currentBlogPost = 17; //this is temporary I promise.
 
 $("pg.pg1").ready(function(){
     loadpostelement()})

@@ -33,9 +33,13 @@ body, body *{
             background .3s cubic-bezier(0,0,0,1)}
 
 #pageFunctionality {
-    position: absolute;
+    position: absolute; top:0px; bottom: 0px;
+    margin-top: calc((var(--gutter) * 2) + var(--bannerPreCalc));
     transition:
-            left .3s cubic-bezier(0,0,0,1)}
+            left .5s cubic-bezier(0,0,0,1),
+            margin-left .5s cubic-bezier(0,0,0,1);}
+.grabbing {
+    cursor: -webkit-grab; cursor: grab!important;}
 
 /* page load-in elements */
 
@@ -58,9 +62,34 @@ loadIn > div {
 loadIn > *:nth-child(2) {
     filter:invert(var(--logoinv))}
 
+/* image preview system CSS */
+imageViewer {pointer-events: none; overflow: auto;
+    z-index: 100000000; display: block; position: absolute;
+    top: 50%; left: 50%; width: 100%; height:100%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%)}
+#imagePreviewer {
+    display: flex; justify-content:space-around;
+    max-width: var(--containerWidthCalc); padding: 20px 0;
+    left: 50%; top: 50%; position:relative;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%)}
+imageViewer .row{
+    display: contents!important}
+
+/* image containers format adjustments */
+imageViewer > div { position: relative;
+    top: -50%; transform: translateY(-50%)}
+imageViewer > * > li > img {margin: -2px 0}
+imageViewer > div > li {height: fit-content}
+imageViewer > div > li img {
+    width: 100%!important; height: auto!important;}
+imageViewer > div img {
+    position:relative; display: inline; height: 100%;
+    background-repeat: no-repeat; background-size: contain}
+
 
 /* default page formatting */
-
 a { color:var(--accent3);
     text-decoration:none;
     border-color:var(--accent3);
@@ -91,7 +120,8 @@ li{list-style:none}
 li:last-of-type{margin:0}
 
 img { width:100%; height: 100%; border:0;
-    background-position:center; pointer-events: none}
+    pointer-events: none;
+    background-position:center;}
 
 /* page colour element presets */
 

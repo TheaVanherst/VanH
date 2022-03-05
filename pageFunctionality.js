@@ -2,8 +2,15 @@
 let blogPostsHeight = 500, artsPostsHeight = 500, //this is just needed as an inital backup until posts load
     blogScroll = 0, artsScroll = 0; //scroll heights in relation to blogPostsHeight && artsPostsHeight
 
-let pageScrollY = [0,0,0,0,0,0,0], sectionPad; //page scroll height, page height
-let pgPosMultiplier = [0,0,0,0,0,0,0]; //Page relativity position setting
+let pageScrollY = [], pgPosMultiplier = []; //page scroll height, page height
+$(function() {
+    pageScrollY.length = buttontext.length; //Current page scroll height based on page count.
+    pgPosMultiplier.length = buttontext.length; //Page relativity position setting
+    for (var i = 0; i < pageScrollY.length; i++) {
+        $('.pg' + i).css('display','block')
+        pageScrollY[i] = 0; pgPosMultiplier[i] = 0;
+    }
+})
 
 // 88""Yb    db     dP""b8 888888     88""Yb  dP"Yb  .dP"Y8      dP""b8    db    88      dP""b8 .dP"Y8
 // 88__dP   dPYb   dP   `" 88__       88__dP dP   Yb `Ybo."     dP   `"   dPYb   88     dP   `" `Ybo."
@@ -11,7 +18,8 @@ let pgPosMultiplier = [0,0,0,0,0,0,0]; //Page relativity position setting
 // 88     dP""""Yb  YboodP 888888     88      YbodP  8bodP'      YboodP dP""""Yb 88ood8  YboodP 8bodP'
 
 function pageSidebarPos(newPage,currentPage,pageMultiplier) { //limits vars to set data ranges
-    if (newPage < currentPage && !scale2Multiplier) { //checks if page is to the left of the current active page
+    console.log(newPage,currentPage,pageMultiplier)
+    if (newPage < currentPage && !width2Multi) { //checks if page is to the left of the current active page
         return innerPage * pageMultiplier - (rootLeft + rootGutter)
     } else { //checks if page location is to the right of the current active page
         return innerPage * pageMultiplier }
@@ -27,6 +35,7 @@ function pgposrelcheck(positionData,pageWidth) {
 
 function limitChecker(currentValue, maxValue, minValue, overflowValue, newValue){
     currentValue = newValue
+
     if(currentValue > maxValue - overflowValue){ //if the number is above bandwidth,
         return maxValue - overflowValue} //return back to highest value
     else if(currentValue < minValue){ //if the number is below min bandwidth,
@@ -45,7 +54,7 @@ let currentPage = 1; // CHANGE THIS NUMBER TO CHANGE THE DEFAULT PAGE ON LAUNCH.
 $(function(){ //function to set up sidebar
     $("pg.pg" + currentPage).toggleClass("pageful")// this displays the default current page as active on page launch.
 
-    for(let b = 0; b <= 6; b++){ //loops through the amount of pages, KEEP AS VAR.
+    for(let b = 0; b <= buttontext.length; b++){ //loops through the amount of pages, KEEP AS VAR.
         $('.i' + b).css( //sets background images for social media icons
             'background-image',"url('/Website assets/icons/sm" + b + ".png')")}
 
@@ -53,7 +62,7 @@ $(function(){ //function to set up sidebar
         pgPosMultiplier[i] = i - currentPage //calculcates current active page as multiplierr
         $("pg.pg"+i).css("margin-left", pageSidebarPos(i,currentPage,pgPosMultiplier[i]))//sets page position on load
 
-        $('.pg' + i).children().on('click',function(){ //if sidebar nav button is pressed
+        $('.ls.pg' + i).children().on('click',function(){ //if sidebar nav button is pressed
             if(currentPage !== i){ //checks if button clicked is different than the active button
 
                 if(i !== 4 && document.readyState === 'complete'){ //checks if the current page is the media player page.
@@ -73,7 +82,7 @@ $(function(){ //function to set up sidebar
                 currentPage = i //updates i as the new active page
                 if(!mobileBool){
                     $('pageData').css({"top":pageScrollY[i]})
-                    for(var e = 0; e < pageScrollY.length; e++){ //loops through all pages and updates positional data
+                    for(var e = 0; e < buttontext.length; e++){ //loops through all pages and updates positional data
                         pgPosMultiplier[e] = e - i //root data for page position multipliers
                         $("pg.pg"+e).css("margin-left", pageSidebarPos(e,i,pgPosMultiplier[e]))} //updates page position
                 } else {
@@ -121,7 +130,7 @@ $(function(){
         $(window).on('mousedown', document, function (e) {
             clickStart = Date.now();
 
-            if (!clicking) { //this prevents spam holddown
+            if (!clicking && imagePreviewer.innerHTML === '') { //this prevents spam holddown
                 clicking = true
                 posX1 = e.pageX}
         })
@@ -137,12 +146,13 @@ $(window).on('mousemove', function(e) {
             $("pg.pg" + currentPage).css("pointer-events", "none")
             //then checks to see if in mobile mode. Finally, then it checks if posX2 is different.
             posX2 = e.pageX;
+
             horizontalDifference = posX1 - posX2 //sets pos 2 while holding down the mouse
 
             $("#pageFunctionality").css({"left": -horizontalDifference}) //page dragging calcs
 
-            var newPage = limitChecker(currentPage, pageScrollY.length, 0, 1, currentPage + pgposrelcheck(horizontalDifference, innerPage))
-            for (var cp = 0; cp < pageScrollY.length; cp++) {
+            var newPage = limitChecker(currentPage, buttontext.length, 0, 1, currentPage + pgposrelcheck(horizontalDifference, innerPage))
+            for (var cp = 0; cp < buttontext.length; cp++) {
                 $("pg.pg" + cp).css({
                     "opacity": "0.25",
                     "margin-left": pageSidebarPos(cp, newPage, pgPosMultiplier[cp])
@@ -170,7 +180,7 @@ $(window).bind('touchmove', function(e) {
             horizontalDifference = posX1 - posX2
             verticalDifference = (posY1 - posY2) / 1.25
 
-            if (horizontalDifference > -(newRootMid / 2.5) && horizontalDifference < (newRootMid / 2.5)) {
+            if (horizontalDifference > -(newRootM / 2.5) && horizontalDifference < (newRootM / 2.5)) {
                 $("mobileController").css({"margin-left": "0"}) //page dragging calcs
 
                 if(mobileBool){
@@ -212,9 +222,9 @@ $(window).bind('touchmove', function(e) {
                 posY1 = e.originalEvent.touches[0].pageY
             } else { //scroll calc
                 $("mobileController").css({"margin-left": -horizontalDifference}) //page dragging calcs
-                const newPage = limitChecker(currentPage, pageScrollY.length, 0, 1, currentPage + pgposrelcheck(horizontalDifference, innerPage + rootLeft + rootGutter));
+                const newPage = limitChecker(currentPage, buttontext.length, 0, 1, currentPage + pgposrelcheck(horizontalDifference, innerPage + rootLeft + rootGutter));
 
-                for (var cp = 0; cp < pageScrollY.length; cp++) {
+                for (var cp = 0; cp < buttontext.length; cp++) {
                     $("pg.pg" + cp).css({
                         "opacity": "0.25",
                         "margin-left": pageSidebarPos(cp, newPage, pgPosMultiplier[cp])
@@ -235,8 +245,8 @@ $(window).on('mouseup touchend', function(e) {
         if ('ontouchstart' in window || navigator.msMaxTouchPoints) {posX2 = e.originalEvent.changedTouches[0].pageX}
         else {posX2 = e.pageX}
 
-        if (mobileBool) {toBeCurrent = limitChecker(toBeCurrent, pageScrollY.length, 0, 1, currentPage + pgposrelcheck(horizontalDifference, innerPage + rootLeft + rootGutter))}
-        else {toBeCurrent = limitChecker(toBeCurrent, pageScrollY.length, 0, 1, currentPage + pgposrelcheck(horizontalDifference, innerPage))}
+        if (mobileBool) {toBeCurrent = limitChecker(toBeCurrent, buttontext.length, 0, 1, currentPage + pgposrelcheck(horizontalDifference, innerPage + rootLeft + rootGutter))}
+        else {toBeCurrent = limitChecker(toBeCurrent, buttontext.length, 0, 1, currentPage + pgposrelcheck(horizontalDifference, innerPage))}
         transitionSpeed = (Math.abs(toBeCurrent - currentPage) / 20) + .3
 
         if (currentPage !== toBeCurrent) { //checks if button clicked is different than the active button
@@ -250,12 +260,12 @@ $(window).on('mouseup touchend', function(e) {
         $("#pageFunctionality, mobileController").css({"left": "0"}) //resets page dragging calcs
 
         if (!mobileBool) {
-            for (var page = 0; page < pageScrollY.length; page++) { //loops through all pages and updates positional data
+            for (var page = 0; page < buttontext.length; page++) { //loops through all pages and updates positional data
                 pgPosMultiplier[page] = page - toBeCurrent //root data for page position multipliers
                 $("pg.pg" + page).css("margin-left", pageSidebarPos(page, toBeCurrent, pgPosMultiplier[page]))}} //updates page position
         else {
             $('mobileController').css({
-                'left': (toBeCurrent * -pageWidth) + pageWidth, "margin-left":"0"})}
+                'left': (toBeCurrent * -pgWidth) + pgWidth, "margin-left":"0"})}
 
         $("pg.pg" + currentPage).css("pointer-events", "auto") //alows clickability after page drag
 
