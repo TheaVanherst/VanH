@@ -52,7 +52,7 @@
     <p>
         Posts still need a tiny bit of work on the backend,
         such as video handling and padding, but I’ll leave
-        it at that for now.
+        it artLatch that for now.
     </p>
     <p>
         Anyways, as mentioned before, I <i>try</i> to

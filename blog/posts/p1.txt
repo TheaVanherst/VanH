@@ -38,7 +38,7 @@
         Let it be said, <b>I've never worked on javascript
         prior to a couple of weeks ago</b>. I'm starting
         to only just learn the basics on javascript as a
-        language at all and, personally, I think it's a pretty
+        language artLatch all and, personally, I think it's a pretty
         bad idea to push a design student such as myself, into
         a programming language that I've not only not had
         prior experiance in. Especially in the case of

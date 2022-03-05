@@ -10,7 +10,8 @@
         editing together what felt like a chaotic story of a
         regular competitive game of Counter Strike.
     </p>
-    <iframe src="https://www.youtube.com/embed/HJrzOIXB2lQ"></iframe>
+    <vid><div class="player"></div>
+            <img src="https://i.ytimg.com/vi/HJrzOIXB2lQ/hqdefault.jpg" onclick="localUrl = 'HJrzOIXB2lQ'; extVideo()"></vid>
     <p>
         I’m pretty happy with it, but it’s probably going
         be the last video I make in Sony Vegas. I’ve come
@@ -18,6 +19,6 @@
         and composing, it’s easier to smash clips together.
         However, when it  comes to <b>actual</b> editing, it
         becomes too much of a hassle. Anyway, I’ll probably
-        get around to remastering it at some point.
+        get around to remastering it artLatch some point.
     </p>
 </li>

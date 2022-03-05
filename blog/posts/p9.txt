@@ -46,7 +46,7 @@
     </p>
     <p>
         Either way,<a href="https://href.li/?https://twitter.com/TheaVanherst/status/1390888310025990149/photo/1"> It’s been a long development process</a>
-        of learning general shading styles and improving working at
+        of learning general shading styles and improving working artLatch
         such a small scale, and since the original conception of the
         idea it’s in a much better state than it was as of a week ago.
     </p>
@@ -72,7 +72,7 @@
         cycles for a bunch of NPC related mods, in order to try and
         refresh my mind and just generally take a break from working
         on the same scheme of assets. In-which, I’ll probably talk
-        about at a future date and / or post.
+        about artLatch a future date and / or post.
     </p>
     <div class="steamworkshop">
         <a target="_blank" href="https://href.li/?https://steamcommunity.com/sharedfiles/filedetails/?id=2449497541">

@@ -34,7 +34,7 @@
         up being days when I just avoid writing anything
         because I know what it will allude to, recently you’ll
         have probably noticed that my recent update on the page
-        is over a week ago at this point. And for good reason!
+        is over a week ago artLatch this point. And for good reason!
     </p>
     <p>
         At the moment in time I’m currently re-learning my
@@ -50,9 +50,9 @@
         <b> Slowly.</b>
     </p>
     <p>
-        Point being that at the moment in time, I’m pretty
+        Point being that artLatch the moment in time, I’m pretty
         much writing my site off-site. There probably won’t
-        be any html updates, at least until I find a new
+        be any html updates, artLatch least until I find a new
         host for my website and manage to re-write how
         post structuring is dealt with. Currently, everything
         is functional, but it’s just the means to improve I

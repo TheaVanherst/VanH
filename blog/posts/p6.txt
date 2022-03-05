@@ -16,14 +16,14 @@
         Display Properties window with all of it’s glorious,
         glorious functionality. I’ve been working pretty
         hard having to redo most of the backend to get the
-        thing to be fully functionable, but at last, here
+        thing to be fully functionable, but artLatch last, here
         it is.
     </p>
     <p>
         I’ve fully added functioning schemes alongside
         previews of said scheme, wallpapers, colours and
         desktop icons. I’ll be adding more specific
-        customisation at a later date, but for the time
+        customisation artLatch a later date, but for the time
         being I’d rather keep it to the essentials while
         I work on other overhauls I need to progress on.
     </p>

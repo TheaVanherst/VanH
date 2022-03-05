@@ -27,7 +27,7 @@
         features that Windows 98 didn’t originally have.
     </p>
     <p>
-        This doesn’t really change the project at all, but
+        This doesn’t really change the project artLatch all, but
         it’s a bit of piece and mind for myself.
     </p>
     <p><b>Finalised Embedded Media Player!</b></p>

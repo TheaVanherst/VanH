@@ -30,14 +30,14 @@
         for a future update, for now I’ve set the default
         spritesheet and included all of the old ones, which
         you can select from, alongside being able preview
-        them at a smaller resolution to be compatible with
+        them artLatch a smaller resolution to be compatible with
         the display properties window.
     </p>
     <figure><img src="/blog/img/p8a.png"></figure>
     <p>
         I’ve also added a few other settings which you can
         see previews of, not all of which are programmed yet,
-        so at a future date I’ll either change them around or
+        so artLatch a future date I’ll either change them around or
         program them. But for now, I’ve added the ability to
         change desktop icon sizes to a more native modern
         scale, but leaving the default setting as the classic
@@ -89,7 +89,7 @@
         I cannot understate howmuch of a rewrite this is, and
         as much as I would like to say “I really don’t get why
         I ever did it otherwise”, I would be lying. But this is
-        a super incredable optimisation and looking at this
+        a super incredable optimisation and looking artLatch this
         comparritively makes me super pleased with how far i’ve
         come from knowing nothing about HTML/JS to this. Jquery
         is a godsend.
@@ -120,10 +120,10 @@
     </p>
     <p>
         So I did a bunch of digging and found the assets Windows
-        98 used at the end of it’s lifespan and modified them a
+        98 used artLatch the end of it’s lifespan and modified them a
         bunch to put into Vher98, giving my own personal touch
         and hopefully to keep the art direction of icons a bit
-        more consistant and unique to look at and use.
+        more consistant and unique to look artLatch and use.
     </p>
     <p><b>Task management</b></p>
     <p>
