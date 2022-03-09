@@ -1,0 +1,106 @@
+<meta>2022-03-09T08:34:25<meta>
+<li>
+    <p>
+        <t>Status & Vanh.art Updates</t>
+    </p>
+    <p>
+        I've been really busy with work recently, even though
+        I've been working a lot on my Terraria workshop as of late,
+        it's hard to find motivation. I have a few reasons, but one
+        of which being the current low numbers in players and
+        active engagements on the workshop. I won't get into
+        my own personal quarrels with the workshop popularity system,
+        it's mainly just something that's amounting to me feeling a
+        tad bit of burn out.
+    </p><p>
+        My main quarrel right now is that what
+        I really want to get done requires a lot of reparative tasks and
+        similar, if not that, then the result of having to develop
+        the same animation cycles as that's just what generally works best.
+        It's a lot to do with wanting to go in an alternate direction
+        with art direction, and Terraria hinders a lot of that in essence.
+    </p><p>
+        That being said, my main priority now is probably to work on
+        other projects. At some point I <i>do</i> want to work on
+        a game of sorts. But as of now, I'm just generally improving
+        and working on personal projects.
+    </p>
+        <div><figure><img src="/blog/img/p18b.png"></figure></div>
+        <div><figure><img src="/blog/img/p18c.png"></figure></div>
+    <p>
+        <i>Youtube & Twitter Banner / Vanh.art Social Media Banner</i>
+    </p><p>
+        I've had a couple of banners floating around that I've mainly
+        been using off and on depending on my mood, some of which
+        has ended up getting me to rethink how I've dealt with dark-mode
+        on my site. I've really been wanting to push them to the website
+        front end without sacraficing quality for a while now, so
+        now I'm just back onto working to my website after looking at
+        some of my CSS / Jquery back-end and wanting to fix a few irks I
+        have.
+    </p><p>
+        Progress overall has been well, I pushed out an update a couple
+        of days ago that completely rehauls the colour scheme and how
+        the banner is dealt with in the CSS, now the banner & profile
+        image isn't just a preset element in the root, but stored in the
+        colour scheme array now too.
+    </p><p>
+        It's not much of a change, but it just helps changing elements out
+        a bit quicker in the future. Also at least it's easier to understand
+        that everything gets loaded to the front all at the same time rather
+        than half being mounted in the CSS, half in Jq.
+    </p>
+        <div class="row">
+            <div><figure><img src="/blog/img/p18a.png"></figure></div>
+            <div><figure><img src="/blog/img/p18d.png"></figure></div></div>
+    <p>
+        <i>Left: New dark-mode colour scheme; Right: Old dark-mode colour scheme.</i>
+    </p><p>
+        The site is designed with light-mode in mind, dark-mode was
+        VERY much an after-thought just for additional accessibility. I
+        felt at the time it was fine as is, but after stewing on it for
+        a while, it was treated unfairly and just a colour-offset
+        to make the accents match with a dark gray doesn't do much justice
+        to what I want the website to be. Now that the dark-mode scheme has
+        intentionally picked colours and everything assists the over-engineered,
+        over-designed, over-thought feel of the site I want.
+    </p><p>
+        I've been doing a few other tweaks I'm still in the progress of
+        developing, such as the recently added side-nav tooltips and the
+        long, <b>LONG</b> awaited image viewer. I've been pushing this
+        feature back for such a long time as I know the result of adding
+        such a feature will force my hand to engineer a thumb-nail system.
+        One thing at a time, Thea. One thing at a time.
+    </p>
+        <div class="row">
+            <div><figure><img src="/blog/img/p18e.png"></figure></div>
+            <div><figure><img src="/blog/img/p18f.png"></figure></div></div>
+    <p>
+        <i>Left: Artchive Image Viewer; Right: Dev-blog Image Viewer.</i>
+    </p><p>
+        It was such a hassle to sort this out to be as adaptable as it is
+        and understand what format is suitable to different sets of images.
+        This feature works exactly as expected (thanks to hours upon hours
+        of tweaking and re-writing the same lumps of code), you click on an
+        image and will fade out everything else on the page. As with
+        everything else on the site, it's stupidly over-engineered and not
+        efficient at all because I have a very specific look in mind. The
+        solution I have at the moment in time 'works', but ideally speaking
+        I really want to clean this up a bit.
+    </p><p>
+        I've also been adding some of the back-log I've been meaning to
+        add to the 'Artchive'. Such as, Terraria sprite work, banner work,
+        videos, and I managed to get time to clean out the old iframe system
+        in blog posts to redirect to the 'Video & Media' page. There's tons
+        of small nicks and nacks besides the afore mentioned, but a lot of it
+        is tweaks to the back-end that is currently in the process of a
+        're-write'. And by that I mean, >optimising.
+    </p><p>
+        <b><i>God, I'm ecstatic about the new colours!!!!</i></b>
+    </p><p>
+        I really wanted to put my enthusiasm to be working on the
+        site again out there and the new vibes the site has going for it!
+        I feel like my branding is starting to feel more like a purposeful
+        aesthetic choice rather than whatever I have leftover from the end
+        of that week, I love it and I hope you do too!
+</li>
