@@ -58,10 +58,6 @@ vid > img {
     width:calc((var(--innerPageCalc) - var(--halfGutter) - var(--skirting)) / 2);
     height: calc(((var(--innerPageCalc) - var(--halfGutter) - var(--skirting)) / 2) / 16 * 9);
     overflow:hidden; object-fit: cover; cursor:pointer}
-.pg1 vid > img {
-    width: calc(var(--postwidth) + var(--halfGutter) - var(--skirting));
-    height: calc((var(--postwidth) + var(--halfGutter) - var(--skirting)) / 16 * 9)}
-.pg1 .player { transform: translate(-50%, 200%) }
 
 /* image containers */
 .row, .tri { margin:0!important;
@@ -94,14 +90,18 @@ nsfw:hover > * {filter:blur(0) grayscale(0)!important;
 .pg0 article, .pg1 article {
     pointer-events: auto!important;}
 
-/* ===================================== */
-/* PAGE 1 */
+/*  =================================================  */
+/*  ██████   █████   ██████  ███████      ██████   ██
+    ██   ██ ██   ██ ██       ██          ██  ████ ███
+    ██████  ███████ ██   ███ █████       ██ ██ ██  ██
+    ██      ██   ██ ██    ██ ██          ████  ██  ██
+    ██      ██   ██  ██████  ███████      ██████   ██  */
+/*  =================================================  */
 
-/* containers */
-.pg1 largeContainer {
-    height: calc(var(--pageheight) - (var(--gutter)*2)); overflow:hidden!important;
-    background-color:var(--postback);
-    margin:0 var(--halfGutter) 0 calc(var(--sidebarl) + (var(--gutter)))}
+/* BLOG POST CONTAINERS */
+
+.pg1 feed { /* this keeps the posts contained */
+    height: calc(var(--pageheight) - (var(--gutter)*2)); overflow:hidden!important}
 .postcont { /* I need this to hold the "no more posts" ballocks */
     position: relative;
     transition: top .4s cubic-bezier(0,0,0,1)}
@@ -109,54 +109,27 @@ nsfw:hover > * {filter:blur(0) grayscale(0)!important;
     background-color:var(--posts);
     margin-bottom: var(--gutter)}
 
-/* post header data */
+/* POST HEADER DATA ======================== */
+
 .pg1 article .footer {
     padding:14px 17px 10px} /* container that holds .time, and .d */
-.timestamp {
-    font-size:var(--small-fonts);
-    color:var(--accent3)}
-.dateposted {
-    font-family:var(--boldstyle);
-    text-transform:uppercase;
-    color:var(--accent4)}
+.timestamp { color:var(--accent3); font-size:var(--small-fonts)}  /* Posted X months, days or years ago */
+.dateposted { color:var(--accent4); font-family:var(--boldstyle); text-transform:uppercase;} /* post date */
 .when:not(.footer){background-color:var(--accent1)}
 
-article .when .new-post {
+article .when .new-post { /* appears when the post is recent at the top right */
     background: linear-gradient(-45deg, var(--accent2), var(--accent3), var(--accent4));
     background-size: 300% 300%; color: white}
 
-/* post video iframes */
-.pg1 article iframe {margin-bottom: -5px;
-    width: calc(var(--postwidth) + 5px);
-    height: calc(((var(--postwidth) + 5px)/16) * 9)}
+.when a:not(.postedby){cursor:default; color:white;}
+/* adjustments to inner, inner container info */
+article .when { /* footer of posts */
+    line-height:14px;
+    overflow:hidden; white-space: nowrap;
+    padding:13px 17px 13px}
 
-/* post images */
-article figure {font-size: 0; cursor: pointer}
-article .npf_row, .npf_row + p {
-    margin: 10px 0!important}
+/* POST FOOTER DATA ======================== */
 
-/* Steam Workshop */
-article .poster {
-    height: calc(var(--postwidth) / 1.2);
-    background-size: cover; position:relative}
-
-article .poster .title{ /*workshop title*/
-    background-color: var(--invaccent); opacity: 0.9;
-    font-weight: 900; text-transform: uppercase;
-    font-family: var(--boldstyle); color: white;
-    position: absolute;
-    bottom: 0; padding: 10px}
-article .poster:hover .title{
-    background-color: var(--accent1); opacity: 0.9}
-#article9 .poster:hover .title {
-    background-color: var(--accent4)}
-article .bottom{ margin: 0; /*workshop footer*/
-    color:white;
-    background-color: var(--accent1);
-    font-size: 10px; padding: 5px 10px;
-    width: calc(var(--postwidth)- 1px)}
-
-/* Post footer */
 .footer {
     border-top:1px solid var(--borders);
     font-size:var(--tiny-fonts);
@@ -170,19 +143,64 @@ article .bottom{ margin: 0; /*workshop footer*/
     margin:-2px 13px 0 -2px}
 .imcon {margin-top: -4px;}
 
-section .load-more{
-    left:50%; transform:translateX(-50%);
-    margin: var(--gutter) 0 var(--gutter) 0}
+/* POST FORMATTING DATA ======================== */
 
-/* left container */
+/* post images */
+article figure {
+    width:100%; margin:0; padding:3px 0;
+    font-size: 0; cursor: pointer}
 
-#twitter {background-color: var(--postback)!important; margin:0!important;}
+article .npf_row, .npf_row + p {
+    margin: 10px 0!important}
+.pg1 vid > img {
+    width: calc(var(--sidebarm) + var(--halfGutter) - var(--skirting));
+    height: calc((var(--sidebarm) + var(--halfGutter) - var(--skirting)) / 16 * 9)}
+.pg1 .player { transform: translate(-50%, 200%) }
+
+/* STEAM WORKSHOP DATA ======================== */
+
+article .poster {
+    height: calc(var(--sidebarm) / 1.2);
+    background-size: cover; position:relative}
+
+article .poster .title{ /*workshop title*/
+    background-color: var(--invaccent); opacity: 0.9;
+    font-weight: 900; text-transform: uppercase;
+    font-family: var(--boldstyle); color: white;
+    position: absolute;
+    bottom: 0; padding: 10px}
+article .poster:hover .title{
+    background-color: var(--accent1); opacity: 0.9}
+#article9 .poster:hover .title {
+    background-color: var(--accent4)}
+
+article .bottom{ /*workshop footer*/
+    font-size: 10px; color:white;
+    background-color: var(--accent1);
+    padding: 5px 10px; margin: 0;
+    width: calc(var(--sidebarm)- 1px)}
+
+/* post titles & subtitles */
+li > p > t {
+    text-transform: capitalize;
+    font-family:var(--fontstyle)}
+article li p:first-of-type t { color:var(--titles); /*this is the post title */
+    font-family: var(--fontstyle); font-weight: 800}
+
+article li li:not(:last-of-type) {padding-bottom:5px}
+
+
+
+#twitter {
+    background-color: var(--posts)!important;
+    width: 100%; height: 100%; top: 0; position: relative;
+    margin:0!important; pointer-events: none;}
 #twittercon {overflow:hidden; height: calc(var(--pageheight) - (var(--gutter)*2))}
 
 .spinner {
     width: 40px;height: 40px;
-    position: relative;
-    margin: 100px auto}
+    position: relative; top: 100px;
+    margin: 0 auto}
 .double-bounce1, .double-bounce2 {
     width:100%; height:100%;
     top: 0;left: 0;

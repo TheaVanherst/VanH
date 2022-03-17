@@ -37,48 +37,31 @@ function timeget(data) {
         year, monthlong, monthshort, daylong, dayshort, nth, hours, mins}} //absolute data
 
 function postedwhen(data) {
-    let wn=timeget(data); //easy to access grab var
-    var pm=" ",t="Posted "; //reset presets
-
+    let wn = timeget(data), t = "Posted "; //easy to access grab var + starting string var
     //turns hours into a 12 hour based clock, instead of 24.
-    if(wn.hours>12){ //checks if time is past 12pm
-        wn.hours=wn.hours- 12; pm="pm"} //removes 12, changes current to pm
-    else{
-        pm="am"} //else, use am.
+    let pm = wn.hours > 12 ? "pm" : "am" //checks if time is past 12pm
+    wn.hours = wn.hours > 12 ? wn.hours - 12 : wn.hours;
 
-    if(wn.days<14){
-        if(wn.days===0){
-            t+="earlier today"}
-        else if(wn.days<14&&wn.days!==7){
-            t+="on"}
-        if(wn.days>0&&wn.days!==7){
-            t+=" "+wn.daylong}
-        if(wn.days>6){
-            t+="last week"}
-        if(wn.weeks<8){
-            t+=" at "+wn.hours+":"+wn.mins+pm}
-        else if(wn.days<7){
-            t+=" the "+wn.dayshort+wn.nth}}
-    else if(wn.mnths<3&&wn.days>13 && wn.yrs<1){
-        t+=wn.weeks+" weeks"}
-    else if(wn.yrs<1){
-        t+=wn.mnths+" months"}
-    else{
-        t+=wn.yrs+" year";
-        if(wn.yrs>1){
-            t+="s"}
-        t+=", "+wn.mnths+" months"}
-    if(wn.days>13){
-        t+=" ago"}
-    return '<a class="timestamp">'+t+'</a>'}
+    if(wn.days < 14){
+        t += wn.days === 0 ? "earlier today" : wn.days < 14 && wn.days !== 7 ? "on" : "";
+        t += wn.days > 0 && wn.days !== 7 ? " " + wn.daylong : "";
+        t += wn.days > 6 ? " last week" : "";
+        t += wn.weeks < 8 ? " at " + wn.hours + ":" + wn.mins + pm : wn.days < 7 ? " the " + wn.dayshort + wn.nth : ""}
+    else if(wn.mnths < 3 && wn.days > 13 && wn.yrs < 1){
+        t += wn.weeks + " weeks"}
+    else if(wn.yrs < 1){ //under 1 year, but more than 3 months.
+        t += wn.mnths + " months"}
+    else{ //if more than 1 year
+        t += wn.yrs + " year";
+        t += wn.yrs > 1 ? "s" : "";
+        t += wn.mnths > 0 ? ", " + wn.mnths + " months" : ""}
+    t += wn.days > 13 ? " ago" : ""
+    return '<a class="timestamp">' + t + '</a>'}
 
 function dateposted(data) {
     let when = timeget(data), dc; //fall back var array
-    if(Math.floor(when.diff / when.days) < 14){ //checks if the post is under 2 weeks
-        dc = when.monthlong} //and returns the month as a ong month
-    else {
-        dc = when.daylong+", "+when.monthshort} //otherwise keeps it to 4 letters.
-
+    dc = Math.floor(when.diff / when.days) < 14 ? when.monthlong : when.daylong+", "+when.monthshort
+    //checks if the post is under 2 weeks and returns the month as a ong month, otherwise keeps it to 4 letters.
     return '<a class="dateposted">'+dc+" "+when.dayshort+when.nth+" "+when.year+'</a>'} //return string
 
 function when(data) {
@@ -104,8 +87,6 @@ function replaceAll(str, term, replacement) {
 // dP""""Yb 8bodP' 8bodP' 888888   88        YboodP 888888 88  Y8
 
 //vars that determine loading loops
-var runLoop = 0, //this gets added to every time new elements need to be added, then compared to.
-    blogLoadin = 3; //the amount of elements that will load in at a time
 
 // 88""Yb 88      dP"Yb   dP""b8     88""Yb  dP"Yb  .dP"Y8 888888 .dP"Y8      dP""b8 888888 88b 88
 // 88__dP 88     dP   Yb dP   `"     88__dP dP   Yb `Ybo."   88   `Ybo."     dP   `" 88__   88Yb88
@@ -115,7 +96,7 @@ var runLoop = 0, //this gets added to every time new elements need to be added, 
 //the amount of docs to check through
 //this shouldn't be here, but i can't be bothered to come up with a better system
 //that doesn't include shoving all of my thoughts into one singular document.
-let currentBlogPost = 17; //this is temporary I promise.
+let currentBlogPost = 18;//this is temporary I promise.
 
 $("pg.pg1").ready(function(){
     loadpostelement()})
@@ -142,12 +123,12 @@ function loadpostelement(){
         '</article>').appendTo("#posts") //attaches to section child container to prevent overflow
 
         .imagesLoaded( function() { //checks to see if images are loaded in newly generated post
-            blogPostsHeight = $('.postcont').height()
-            if (blogPostsHeight < sectionHeight) { //checks to see if anymore posts need to be loaded
-                loadpostelement()} //loads next post
-            else if (runLoop > 0) { //check run loop to if more should be generated from wheel scroll
-                runLoop-- //remove one from run loop value
+            if (pageHeights[1] < pageDataHeight) { //checks to see if anymore posts need to be loaded
+                loadpostelement()} //loads first few posts until feed is full.
+            else if (pageLoadin[1] > 0) { //check run loop to if more should be generated from wheel scroll
+                pageLoadin[1]-- //remove one from run loop value
                 loadpostelement()} //repeat blog gen process.
+            pageHeights[1] = $('.postcont').height()
         }) //updates scroll height possible inside 'section
     })
 }
@@ -170,26 +151,18 @@ $("pg.pg0").ready(function(){ //this needs rewriting
     })
 })
 
-let artLoadin = 3; artDone = false; //the amount of elements that will load in at a time
+let artDone = false; //the amount of elements that will load in at a time
 
 function artGeneration(){
     if(currentArtPost > 0) {
         currentArtPost-- //removes 1 from the amount of posts that have yet to be loaded.
 
-        if ($('#arts0').outerHeight() > $('#arts1').outerHeight()) { //flip flop switch between both sides of the art page.
-            artLatch = "1"} //right hand side
-        else {
-            artLatch = "0"} //left hand side
+        artLatch = ($('#arts0').outerHeight() > $('#arts1').outerHeight())
+        var data = postArtData[currentArtPost].split("<>"),artPostedWhen; //grabs the post data, stores data for when the art was posted from data var
+        artPostedWhen = (data[3] !== undefined ? '<a>' + data[3] + '</a>' : "")  //if contains post meta (eg. Uni proj / warnings) add data
 
-        var data = postArtData[currentArtPost].split("<>"), //grabs the post data
-            artPostedWhen; //stores data for when the art was posted from data var
 
-        if (data[3] !== undefined) { //if contains post meta (eg. Uni proj / warnings) add data
-            artPostedWhen = '<a>' + data[3] + '</a>'} //add new container to show meta
-        else {
-            artPostedWhen = ""} //else don't add it
-
-        $("#arts" + artLatch).append(
+        $("#arts" + (artLatch ? 1 : 0)).append(
             $('<article id=art' + currentArtPost + '>' + //creates post container /w ID
                 data[2] + //image data
                 '<div class="when">' + //post date container
@@ -197,20 +170,19 @@ function artGeneration(){
                 '</div>' +
             '</article>') //container closers
         ).imagesLoaded(function () { //when images loaded in assigned append container
-            artsPostsHeight = Math.max($('#arts0').height(), $('#arts1').height()) //check the max height of art containers
+            pageHeights[0] = Math.max($('#arts0').height(), $('#arts1').height()) //check the max height of art containers
 
-            if (artsPostsHeight < sectionHeight) {
-                artGeneration()}
-            else if (runLoop > 0) { //check run loop to if more should be generated from wheel scroll
-                runLoop-- //remove one from run loop value
+            if (pageLoadin[0] > 0) { //check run loop to if more should be generated from wheel scroll
+                pageLoadin[0]-- //remove one from run loop value
                 artGeneration()} //repeat art gen process.
+            else if (pageHeights[0] < pageDataHeight) { //only gets checked on page start-up
+                artGeneration()}
         })
     } else {
         if(artDone === false){
-            $("#arts" + artLatch).append(
+            $("#arts" + (artLatch ? 1 : 0)).append(
                 $('<div class="load-more"><p></p></div>'))
-            artsPostsHeight = Math.max($('#arts0').height(), $('#arts1').height())
-            artDone = true;
-        }
+            pageHeights[0] = Math.max($('#arts0').height(), $('#arts1').height())
+            artDone = true}
     }
 }

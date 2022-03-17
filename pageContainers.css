@@ -1,12 +1,12 @@
 :root{
-    --sidebarl:225px; --sidebarr:290px; --postwidth:460px; /*main page divisional factors*/
+    --sidebarl:225px; --sidebarr:290px; --sidebarm:460px; /*main page divisional factors*/
     --gutter:20px; --skirting: 8px;
 
     /* Some precalcs that save time later CONTENT */
-    --innerPageCalc: calc(var(--postwidth) + var(--sidebarr) + var(--gutter));
-    --innerPageWoConCalc: calc(var(--postwidth) + var(--sidebarr));
-    --containerWidthCalc: calc(var(--postwidth) + var(--sidebarr) + var(--sidebarl));
-    --fullBodyCalc: calc(var(--postwidth) + var(--sidebarr) + var(--sidebarl) + (var(--gutter) * 2));
+    --innerPageCalc: calc(var(--sidebarm) + var(--sidebarr) + var(--gutter));
+    --innerPageWoConCalc: calc(var(--sidebarm) + var(--sidebarr));
+    --containerWidthCalc: calc(var(--sidebarm) + var(--sidebarr) + var(--sidebarl));
+    --fullBodyCalc: calc(var(--sidebarm) + var(--sidebarr) + var(--sidebarl) + (var(--gutter) * 2));
 
     --halfSkirting: calc(var(--skirting)/2);
     --halfGutter: calc(var(--gutter)/2)}
@@ -17,19 +17,12 @@
 
 pageData {
     left:50%; transform:translateX(-50%);
-    position: fixed; top: 0px; opacity:0;
+    position: fixed; top: 0; opacity:0;
     transition:
             top .6s cubic-bezier(0,0,0,1)}
 
-mobileController {
-    left: 0; margin-left: 0;
-    transition:
-            margin-left .3s cubic-bezier(0,0,0,1),
-            left .3s cubic-bezier(0,0,0,1);
-    position:relative}
-
 pg{  /*default page setting*/
-    width:var(--fullBodyCalc); top:var(--gutter);
+    width:var(--fullBodyCalc); top:0;
     position:absolute; display:none;
     opacity: 0.25; font-size: 0;
     transition:
@@ -45,7 +38,7 @@ pg.pageful {
 pageContainer{ /*this just prevents container overflow and offset*/
     font-size: 0; border-radius: var(--skirting);
     display:inline-block; overflow-x:hidden;
-    width:var(--innerPageCalc);
+    width: calc(var(--innerPageCalc) + 0.5px);
     margin-left: calc(var(--sidebarl) + var(--gutter))}
 pageContainer > * {
     font-size: 15px}
@@ -54,25 +47,24 @@ pageContainer > *:not(incont):first-child:not(:last-child) {
     margin-right: var(--halfGutter)}
 
 /* page inner containers */
-smallContainer,midContainer,largeContainer{
+twiFeed, split50, feed{
     display:inline-block;
     border-radius: var(--skirting);
     overflow-x:hidden; vertical-align:top}
 
-smallContainer > *,midContainer > *,largeContainer > *{
+twiFeed > *, split50 > *, Feed > *{
     border-radius: var(--halfSkirting)!important;}
 
 /*inner containers that determine width*/
-largeContainer, section{ /* 66% */
+feed, section{ /* 66% */
     padding:calc(var(--skirting)/2); background-color: var(--postback);
-    width:calc(var(--postwidth) + var(--halfGutter) - var(--skirting))}
-midContainer{ /* 50% */
+    width:calc(var(--sidebarm) + var(--halfGutter) - var(--skirting))}
+split50 { /* 50% */
     padding:calc(var(--skirting)/2); background-color: var(--postback);
     width:calc(((var(--innerPageWoConCalc) + var(--halfGutter)) / 2) - var(--skirting))}
-smallContainer{ /* 33% */
+twiFeed{ /* 33% */
     padding:var(--halfSkirting); background-color: var(--postback);
     width:calc(var(--sidebarr) - var(--skirting))}
-#asider{width:calc(var(--sidebarr))}
 
 .block, .wedge {
     border-radius:var(--skirting);
@@ -84,23 +76,9 @@ smallContainer{ /* 33% */
 article{overflow: hidden; border-radius:var(--halfSkirting);}
 article:last-of-type{margin-bottom:0!important;}
 
-/* text posts */
-article li p:first-of-type b {font-size: 15px; line-height:0} /*this is the post title */
-article li li:not(:last-of-type) {padding-bottom:5px}
-article li p b {color:var(--accent5)}
-article li p:first-of-type b {color:var(--accent3)}
-article li b {color:var(--titles)}
-
-.when a:not(.postedby){cursor:default; color:white;}
-/* adjustments to inner, inner container info */
-article .when { /* footer of posts */
-    line-height:14px;
-    overflow:hidden; white-space: nowrap;
-    padding:13px 17px 13px}
-
-article figure{
-    width:100%; margin:0; padding:3px 0}
-article iframe {border:0}
+section .load-more{
+    left:50%; transform:translateX(-50%);
+    margin: var(--gutter) 0 var(--gutter) 0}
 
 /* globally applicable additions */
 

@@ -35,9 +35,7 @@
         <link rel="shortcut" href="https://cdn.discordapp.com/attachments/630047188520665121/854534149658771456/Untitled-3.png">
         <title>VanH.art</title>
 
-        <script> /* global var decloration */
-            var docelem = document.documentElement
-        </script>
+        <script> var docelem = document.documentElement </script>
     </head>
 
     <body>
@@ -48,7 +46,6 @@
         <loadIn>
             <img src="/Website%20assets/defaultbase.png">
             <img src="/Website%20assets/defaultcover.png">
-            <div class="spinner"><div class="double-bounce1"></div><div class="double-bounce2"></div></div>
         </loadIn>
 
         <sideNav>
@@ -65,6 +62,12 @@
                         <p> Click and drag to switch between pages, the
                             page closest to the center of the page will
                             become the new current page. </p>
+                </div></div>
+                <div class="tooltip non">
+                    <p> Dark Mode Toggle </p><div>
+                        <p> At the far top right of the page features the
+                            'dark mode' button which toggles inbetween
+                            selected colour pallets for ease of viewing.</p>
                 </div></div>
                 <div class="tooltip ess">
                     <p> Cookies & Preferences </p>
@@ -105,20 +108,22 @@
                     </pg>
 
                     <pg class="pg1">
-                        <largeContainer>
-                            <div class="postcont">
-                                <div id="posts"></div>
-                                <div class="load-more" id="postend"><p></p></div>
-                            </div>
-                        </largeContainer>
+                        <pageContainer>
+                            <Feed>
+                                <div class="postcont">
+                                    <div id="posts"></div>
+                                    <div class="load-more" id="postend"><p></p></div>
+                                </div>
+                            </Feed>
 
-                        <smallContainer id="twittercon">
-                            <div id="twitter">
-                                <a class="twitter-timeline" href="https://twitter.com/TheaVanherst?ref_src=twsrc%5Etfw" data-tweet-limit="20" data-chrome="nohdr nofooter noborders"></a>
-                                <a data-theme="dark" class="twitter-timeline" href="https://twitter.com/TheaVanherst?ref_src=twsrc%5Etfw" data-tweet-limit="20" data-chrome="nohdr nofooter noborders"></a>
-                                <div class="spinner"><div class="double-bounce1"></div><div class="double-bounce2"></div></div>
-                            </div>
-                        </smallContainer>
+                            <twiFeed id="twittercon">
+                                <div id="twitter">
+                                    <a class="twitter-timeline" data-chrome="transparent" href="https://twitter.com/TheaVanherst?ref_src=twsrc%5Etfw" data-tweet-limit="20" data-chrome="nohdr nofooter noborders"></a>
+                                    <a data-theme="dark" class="twitter-timeline" data-chrome="transparent" href="https://twitter.com/TheaVanherst?ref_src=twsrc%5Etfw" data-tweet-limit="20" data-chrome="nohdr nofooter noborders"></a>
+                                    <div class="spinner" id="twitterLoader"><div class="double-bounce1"></div><div class="double-bounce2"></div></div>
+                                </div>
+                            </twiFeed>
+                        </pageContainer>
                     </pg>
 
                     <pg class="pg2">
@@ -254,7 +259,7 @@
 
                     <pg class="pg4">
                         <pageContainer>
-                            <div style="margin-bottom: calc(var(--halfGutter) + 1px)">
+                            <div>
                                 <div id="ytPlayer"></div>
                                 <tcb><p id="uploadDate" class="ntc"></p></tcb> <!-- changes based on player input -->
                             </div>
@@ -265,49 +270,17 @@
 
                     <pg class="pg5">
                         <pageContainer>
-                            <largeContainer>
-                                <div class="block">
-                                    <p>[pg5 side l large]</p>
-                                </div>
-                            </largeContainer>
-
-                            <smallContainer>
-                                <div class="block">
-                                    <p>[pg5 side r small]</p>
-                                </div>
-                            </smallContainer>
-                        </pageContainer>
-                    </pg>
-
-                    <pg class="pg6">
-                        <pageContainer>
-                            <midContainer>
+                            <split50>
                                 <div class="block">
                                     <p>[pg6 side l medium]</p>
                                 </div>
-                            </midContainer>
+                            </split50>
 
-                            <midContainer>
+                            <split50>
                                 <div class="block">
                                     <p>[pg6 side r medium]</p>
                                 </div>
-                            </midContainer>
-                        </pageContainer>
-                    </pg>
-
-                    <pg class="pg7">
-                        <pageContainer>
-                            <midContainer>
-                                <div class="block">
-                                    <p>[pg6 side l medium]</p>
-                                </div>
-                            </midContainer>
-
-                            <midContainer>
-                                <div class="block">
-                                    <p>[pg6 side r medium]</p>
-                                </div>
-                            </midContainer>
+                            </split50>
                         </pageContainer>
                     </pg>
 

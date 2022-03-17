@@ -144,22 +144,18 @@ f, e.rs {
     width: calc(var(--innerPageCalc) / 2 - (var(--halfSkirting) * 1.5))}
 #videoSelection > * > *:first-of-type .thumbnails {height:210px}
 
-.pg4 img {width: 100%; height: auto;}
+.pg4 img {height:auto; width:auto}
 .pg4 tcb p {
     letter-spacing: 0.15px; white-space: nowrap; cursor: pointer;
     padding: 7px 10px!important; background-color: var(--accent1)}
-.pg4 tcb * {color:white}
+.pg4 tcb * {color:white;}
 
 .pg4 .load-more {margin:var(--halfGutter) 0 0;
     left: calc(50% + ((var(--sidebarl) + var(--gutter))/2)); transform:translateX(-50%)}
 
-/* Page 5
-/* ===================================== */
-
-.sbitems t {letter-spacing:0.5px}
-
 /* ===================================== */
 /* PAGE 2 */
+
 incont > * p{color:var(--text)}
 incont > * a{color:var(--accent3)}
 incont > * a:hover {color:var(--accent4)}
