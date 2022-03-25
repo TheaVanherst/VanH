@@ -21,13 +21,16 @@ pageData {
     transition:
             top .6s cubic-bezier(0,0,0,1)}
 
+:root {
+    --pgTransition: .5s}
+
 pg{  /*default page setting*/
     width:var(--fullBodyCalc); top:0;
     position:absolute; display:none;
     opacity: 0.25; font-size: 0;
     transition:
-        margin-left .5s cubic-bezier(0,0,0,1),
-        opacity .5s cubic-bezier(0,0,0,1)}
+        margin-left var(--pgTransition) cubic-bezier(0,0,0,1),
+        opacity var(--pgTransition) cubic-bezier(0,0,0,1)}
 pg > * > *{font-size:16px}
 /*Page placement and layering fixes*/
 pg.pageful {

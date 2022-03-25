@@ -4,6 +4,11 @@
     --bannerheight:520; --bannerwidth:3480;
     --bannerPreCalc:calc((var(--fullBodyCalc) * var(--bannerheight)) / var(--bannerwidth))}
 
+/*  88  88 888888    db    8888b.  888888 88""Yb
+    88  88 88__     dPYb    8I  Yb 88__   88__dP
+    888888 88""    dP__Yb   8I  dY 88""   88"Yb
+    88  88 888888 dP""""Yb 8888Y"  888888 88  Yb */
+
 /* header CSS */
 #header {
     height:var(--bannerPreCalc); width: var(--innerPageCalc);
@@ -21,7 +26,7 @@
     background-size:150% auto;
     opacity:0.6}
 
-/* banner logo */
+/* BANNER LOGO */
 
 :root{
     --logoscale: 10px; /* Logo zoom in amount */
@@ -37,12 +42,10 @@
     margin: calc((var(--bannerPreCalc) * -1) + var(--gutter) - (var(--logoscale) / 2)) 0 0 calc(var(--sidebarl) / 2);
     height:calc(var(--bannerPreCalc) + var(--logoscale));
     width:calc(var(--bannerPreCalc) * 2 + var(--logoscale));
-
     transition:
-            width .2s cubic-bezier(0,0,0,1),
-            height .2s cubic-bezier(0,0,0,1),
-            opacity .5s cubic-bezier(0,0,0,1),
-            margin .2s cubic-bezier(0,0,0,1)}
+            width .2s cubic-bezier(0,0,0,1), height .2s cubic-bezier(0,0,0,1),
+            opacity .5s cubic-bezier(0,0,0,1),margin .2s cubic-bezier(0,0,0,1)}
+
 .headerLogo > *:hover{
     margin-top:calc((var(--bannerPreCalc) * -1) + var(--gutter) + (var(--logoscale) / 2));
     height:calc(var(--bannerPreCalc) - var(--logoscale));
@@ -85,63 +88,71 @@
 .nmb.active svg{top: 25%; position: relative}
 
 /* ===================================== */
-/* Sidebar Navbar CONTENT */
-/* Desktop sidebar */
+/*  .dP"Y8 88 8888b.  888888 88""Yb    db    88""Yb     88b 88    db    Yb    dP
+    `Ybo." 88  8I  Yb 88__   88__dP   dPYb   88__dP     88Yb88   dPYb    Yb  dP
+    o.`Y8b 88  8I  dY 88""   88""Yb  dP__Yb  88"Yb      88 Y88  dP__Yb    YbdP
+    8bodP' 88 8888Y"  888888 88oodP dP""""Yb 88  Yb     88  Y8 dP""""Yb    YP     */
 
 sideNav { /* sidebar container */
     position:fixed; z-index:99;
     left: calc(50% - ( var(--innerPageWoConCalc) / 2) - var(--gutter)); transform: translateX(-50%);
     width:var(--sidebarl); top:var(--gutter); opacity: 0}
+/* CSS for mobile */
+sideNav.active {display:none!important} /*This hides the default CSS side nav from desktop*/
 
 sidenav .wedge {margin-bottom:var(--halfGutter); overflow:hidden}
 sideNav .wedge p {padding: 8px 10px}
 
-:root {
-    --profilepicture: "";
-}
-
+:root {--profilepicture: ""}
 /*sidebar image container*/
-#pfp {
-    width: var(--sidebarl); height: var(--sidebarl);
+#pfp { width: var(--sidebarl); height: var(--sidebarl);
     margin-bottom: var(--gutter); border-radius:var(--skirting);
-    background-size: cover; background-image:var(--profilepicture);}
+    background-size: cover; background-image:var(--profilepicture) }
 
 /* Sidebar Navigation buttons */
-#sideNav {border-radius:var(--skirting); overflow: hidden}
-#sideNav .ls {margin:0} /*default settings for buttons not active*/
-#sideNav .button-focus{margin:10px 0} /*settings for when button is active*/
-#sideNav .ls:first-of-type.button-focus {
+#navButtons { border-radius:var(--skirting); overflow: hidden }
+#navButtons .ls {margin:0} /*default settings for buttons not active*/
+#navButtons .pageful{margin:10px 0} /*settings for when button is active*/
+#navButtons .ls:first-of-type.pageful {
     margin:0 0 calc((var(--gutter) / 2)) 0!important}
-#sideNav .ls:last-of-type.button-focus {
+#navButtons .ls:last-of-type.pageful {
     margin:calc((var(--gutter) / 2)) 0 0 0!important}
 /*prevents dragging the buttons down further than what containers already do*/
 
 /* Sidebar social media buttons container formatting */
-#sideMedia {margin:10px 0}
-#sideMedia {height:calc((var(--sidebarl) - (10px * 5)) / 6)}
-#sideMedia:hover > * {opacity:0.4}
-#sideMedia:hover > *:hover {opacity:1}
+#navSocial {margin:10px 0}
+#navSocial {height:calc((var(--sidebarl) - (10px * 5)) / 6)}
+#navSocial:hover > * {opacity:0.4}
+#navSocial:hover > *:hover {opacity:1}
 
 /* button formatting */
-#sideMedia > a{ /* button CSS */
+#navSocial > a{ /* button CSS */
     display:inline-block;
     border-radius:var(--skirting); overflow: hidden;
     background-color:var(--accent1);
     width:calc((var(--sidebarl) - (var(--skirting) * 5 + 1px)) / 6); /* sidebar width / 6 buttons */
     height:calc((var(--sidebarl) - (var(--skirting) * 5 + 1px)) / 6); /* the '+ 1px' is there because I need it*/
     margin: 0 var(--skirting) 0 0}
-#sideMedia > a:last-of-type{
+#navSocial > a:last-of-type{
     margin: 0!important} /*prevents overflow and to save fucking with the container properties.*/
-#sideMedia > *{
+#navSocial > *{
     transition:
             opacity .2s cubic-bezier(0,0,0,1)}
 
-#sideMedia a > div { /* social media button image formatting */
+#navSocial a > div { /* social media button image formatting */
     width:100%; height:100%;
     background-position:center; background-size:cover}
 
-/* CSS for mobile */
-sideNav.active {display:none!important} /*This hides the default CSS side nav from desktop*/
+/* Css for sidebar tool tips */
+.tooltip {overflow: hidden}
+.tooltip p {padding: 5px 15px}
+.tooltip:hover p {background-color:var(--postback)}
+.tooltip.ess > p {background-color: var(--accent1); color:white}
+
+.tooltip, .tooltip > div p {color: var(--text)}
+.tooltip > div p {height: 0; padding: 0 15px;
+    background-color: var(--posts)!important}
+.tooltip:hover > div p {height: 100%; padding: 8px 15px}
 
 nav {
     font-size:0;
@@ -156,17 +167,6 @@ nav.active { /* displays the topnav bar when mobile (active) is on */
     display: block!important; top:calc(var(--gutter)*2);
     width:calc(var(--innerPageWoConCalc) - 40px)!important}
 nav {width: calc(100% /3)}
-
-/* Css for sidebar tool tips */
-.tooltip {overflow: hidden}
-.tooltip p {padding: 5px 15px}
-.tooltip:hover p {background-color:var(--postback)}
-.tooltip.ess p {background-color: var(--accent1); color:white}
-
-.tooltip, .tooltip > div p {color: var(--text)}
-.tooltip > div p {height: 0; padding: 0 15px;
-    background-color: var(--posts)!important}
-.tooltip:hover > div p {height: 100%; padding: 8px 15px}
 
 /* CSS for both Desktop and Mobile */
 .ls { cursor:pointer; position: relative; overflow: hidden}
@@ -183,11 +183,3 @@ nav {width: calc(100% /3)}
         background .2s cubic-bezier(0,0,0,1),
         opacity .2s cubic-bezier(0,0,0,1),
         margin .3s cubic-bezier(0,0,0,1)}
-
-#hover-element {
-    -webkit-filter: drop-shadow(7px 7px 7px rgba(0, 0, 0, 0.3));
-    opacity:1!important; background-color: transparent;
-    position:absolute; white-space: nowrap;
-    border-radius:var(--skirting);
-    overflow: hidden; background-size: contain;
-    z-index:99; filter: blur(0)!important;}

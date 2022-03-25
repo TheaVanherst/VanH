@@ -19,8 +19,8 @@ function timeget(data) {
 
     //turns data var into a date string
     var year = date.toLocaleString('en-us', {year: 'numeric'}),
-        monthlong = date.toLocaleString('en-us',{month:'long'}),
-        monthshort = date.toLocaleString('en-us',{month:'short'}),
+        mnthlong = date.toLocaleString('en-us',{month:'long'}),
+        mnthshort = date.toLocaleString('en-us',{month:'short'}),
         dayshort = date.toLocaleString('en-us', {day: 'numeric'}),
         daylong = date.toLocaleString('en-us', {weekday: 'long'});
 
@@ -34,7 +34,7 @@ function timeget(data) {
         mnths = mnths + 12} //this just makes it seem like less time because lol cohesion
 
     return { yrs, mnths, weeks, days, diff, //relative data
-        year, monthlong, monthshort, daylong, dayshort, nth, hours, mins}} //absolute data
+        year, monthlong: mnthlong, monthshort: mnthshort, daylong, dayshort, nth, hours, mins}} //absolute data
 
 function postedwhen(data) {
     let wn = timeget(data), t = "Posted "; //easy to access grab var + starting string var
@@ -81,13 +81,6 @@ function escapeRegExp(string){
 function replaceAll(str, term, replacement) {
     return str.replace(new RegExp(escapeRegExp(term), 'g'), replacement)}
 
-//    db    .dP"Y8 .dP"Y8 888888 888888      dP""b8 888888 88b 88
-//   dPYb   `Ybo." `Ybo." 88__     88       dP   `" 88__   88Yb88
-//  dP__Yb  o.`Y8b o.`Y8b 88""     88       Yb  "88 88""   88 Y88
-// dP""""Yb 8bodP' 8bodP' 888888   88        YboodP 888888 88  Y8
-
-//vars that determine loading loops
-
 // 88""Yb 88      dP"Yb   dP""b8     88""Yb  dP"Yb  .dP"Y8 888888 .dP"Y8      dP""b8 888888 88b 88
 // 88__dP 88     dP   Yb dP   `"     88__dP dP   Yb `Ybo."   88   `Ybo."     dP   `" 88__   88Yb88
 // 88""Yb 88  .o Yb   dP Yb  "88     88"""  Yb   dP o.`Y8b   88   o.`Y8b     Yb  "88 88""   88 Y88
@@ -113,14 +106,15 @@ function loadpostelement(){
             when(postMeta[1]) + //displays "NEW" if the post is under 2 weeks old.
             dateposted(postMeta[1]) + '<br>' + //states day / month / date / year
             postedwhen(postMeta[1]) + '</div>' + //posted (time ago)
-            postMeta[2] + //post data
+            postMeta[2].replace('<img', '<img ondragstart="return false"') + //post data
             '<div class="when footer">' + //footer of posts
                 '<a class="vimage"></a>' +
                 '<div class="imcon">posted by<br>' + //posted by + pfp icon
                     '<a class="postedby">vanherst</a>' + //this is just filler (just in case)
                 '</div>' +
             '</div>' +
-        '</article>').appendTo("#posts") //attaches to section child container to prevent overflow
+        '</article>').appendTo("#posts")
+            //attaches to section child container to prevent overflow
 
         .imagesLoaded( function() { //checks to see if images are loaded in newly generated post
             if (pageHeights[1] < pageDataHeight) { //checks to see if anymore posts need to be loaded
@@ -147,8 +141,7 @@ $("pg.pg0").ready(function(){ //this needs rewriting
         postArtData = data.split("///"); //splits the art post data
         currentArtPost = postArtData.length; //sets the amount of posts that are able to load based on split length
 
-        artGeneration() //runs a self contained art element loader
-    })
+        artGeneration()}) //runs a self contained art element loader
 })
 
 let artDone = false; //the amount of elements that will load in at a time
@@ -161,10 +154,9 @@ function artGeneration(){
         var data = postArtData[currentArtPost].split("<>"),artPostedWhen; //grabs the post data, stores data for when the art was posted from data var
         artPostedWhen = (data[3] !== undefined ? '<a>' + data[3] + '</a>' : "")  //if contains post meta (eg. Uni proj / warnings) add data
 
-
         $("#arts" + (artLatch ? 1 : 0)).append(
             $('<article id=art' + currentArtPost + '>' + //creates post container /w ID
-                data[2] + //image data
+                data[2].replace('<img', '<img ondragstart="return false"') + //image data
                 '<div class="when">' + //post date container
                     artPostedWhen + dateposted(data[1]) + //date data
                 '</div>' +

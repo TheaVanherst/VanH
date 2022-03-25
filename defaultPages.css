@@ -5,7 +5,8 @@ incont{overflow:hidden}
 incont, incont > * {display:inline-block; float: left; margin-right:var(--halfGutter)}
 incont > *:last-of-type{margin-bottom:0; margin-right:0}
 
-incont > * div:first-of-type p, incont > * p:last-of-type, incont > *:hover drp p{padding:8px 10px 10px}
+incont > * div:first-of-type p, incont > * p:last-of-type,
+incont > *:hover drp p{padding:8px 10px 10px}
 
 incont > * tcb p {z-index:9; position:relative}
 incont > * drp p {margin-top:-20px!important; font-size:0!important}
@@ -19,17 +20,20 @@ incont > * t {padding:0!important}
 /* ===================================== */
 /* PAGE 2 */
 
-.pg2 > pagecontainer {
-    width:calc(var(--innerPageCalc) - var(--skirting));
-    padding:var(--halfSkirting)}
+.pg2 > pagecontainer { padding:var(--halfSkirting);
+    width:calc(var(--innerPageCalc) - var(--skirting))}
 .pg2 incont > * {margin-bottom:10px; overflow:hidden}
 .pg2 incont > *:last-of-type {margin-bottom:0}
-.pg2 incont, .pg2 incont > *{
-    border-radius: var(--halfSkirting)!important;
+.pg2 incont, .pg2 incont > * { border-radius: var(--halfSkirting)!important;
     width:calc((var(--innerPageWoConCalc) - var(--skirting))/ 3 - 0.1px)}
-.pg2 incont > div > p {width: calc(100% - var(--gutter))}
 
 .pg2 incont:last-of-type{margin-right:0}
+
+#hover-element { /* hover effect on art posts */
+    -webkit-filter: drop-shadow(7px 7px 7px rgba(0, 0, 0, 0.3));
+    opacity:1!important; overflow: hidden; white-space: nowrap;
+    background-color: transparent; background-size: contain; position:absolute;
+    border-radius:var(--skirting); z-index:99; filter: blur(0)!important;}
 
 .pg2 .load-more {margin:var(--gutter) 0 0;
     left: calc(50% + ((var(--sidebarl) + var(--gutter))/2)); transform:translateX(-50%)}
@@ -37,8 +41,7 @@ incont > * t {padding:0!important}
 /* Page 3
 /* ===================================== */
 
-.pg3 incont {
-    border-radius: var(--skirting);
+.pg3 incont { border-radius: var(--skirting);
     width:calc(var(--innerPageCalc) - var(--skirting));
     padding:var(--halfSkirting); margin-bottom:10px}
 .pg3 incont:last-of-type {margin-bottom:0}
@@ -141,10 +144,10 @@ f, e.rs {
     border-top-right-radius: var(--halfSkirting); border-bottom-right-radius: var(--halfSkirting)}
 
 #videoSelection > * > *:first-of-type tcb, #videoSelection > * > *:first-of-type .thumbnails {
-    width: calc(var(--innerPageCalc) / 2 - (var(--halfSkirting) * 1.5))}
+    width: calc((var(--innerPageCalc) / 2) - (var(--halfSkirting) * 1.5))} /* video titles */
 #videoSelection > * > *:first-of-type .thumbnails {height:210px}
 
-.pg4 img {height:auto; width:auto}
+.pg4 img {height: 135%; width: auto;}
 .pg4 tcb p {
     letter-spacing: 0.15px; white-space: nowrap; cursor: pointer;
     padding: 7px 10px!important; background-color: var(--accent1)}

@@ -11,46 +11,28 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 // 88ood8  YbodP   YboodP dP""""Yb 88ood8     8bodP'   88    YbodP  88  Yb dP""""Yb  YboodP 888888
 
 //Video request, playlist request.
-const featured = [ //University Visual Demonstrations (Recommended Videos)
-        ['g-r2hkJq3t4', 'DgVuIjRZXsc'],
-        ['19/28/08', '19/28/31'],
-        ['HURT', 'RAGGA BOMB']],
+const featured = [['g-r2hkJq3t4', 'DgVuIjRZXsc'],['19/28/08', '19/28/31'],['HURT', 'RAGGA BOMB']], //University Visual Demonstrations (Recommended Videos)
     vanhDev = [ //Vanh Development livestream Data
         ['Bi6Oft2iBek', '1FIeHqepct8', undefined, 'HIio_8tnRwc', 'Jae4D8H8WMg', 'GfylpGPl0UI', 'TP24PCLYreI', 'zjH06PvGXGc', 'kCNhXqcmmMA'],
-        ['21/08/04', '21/08/04', undefined, '21/10/26', '21/10/27', '21/10/28', '21/10/29', '21/10/30', '21/10/31'],
-        ['VanH.art LIVE Dev']],
+        ['21/08/04', '21/08/04', undefined, '21/10/26', '21/10/27', '21/10/28', '21/10/29', '21/10/30', '21/10/31'], ['VanH.art LIVE Dev']],
     weeklyArt = [ //'Weekly' Art Data
         ['BRgwoi7vXg8', 'wBl3ObDfXkY', undefined, 'hgAzZzXbb1I', 'ENPItGEQxkY', 'EREAdQ0kcSo', 'EEJkiSn6RIc', 'wqzwcLlfkHA', '1fk6gUpcgd8'],
         ['17/09/11', '16/05/10', undefined, '16/08/03', '17/06/28', '16/05/31', '16/06/07', '17/11/01', '16/12/19'],
         ['Hymn Of The Haunted Hunter', 'Gratitude', undefined, 'Room For Two', 'HER', 'ゴミの女の子', 'Drive', 'Rainy Witch Season', 'BEINGS']],
-    artMaking = [ //'Weekly' Art Livestream Data
-        ['Cl0D2qGdyHk','qmq5UGhA6gE'],
-        ['16/08/03','17/09/05',],
-        ["'Room For Two' LIVE","'Hymn Of The Haunted Hunter' LIVE"]],
+    artMaking = [['Cl0D2qGdyHk','qmq5UGhA6gE'], ['16/08/03','17/09/05',], ["'Room For Two' LIVE","'Hymn Of The Haunted Hunter' LIVE"]], //'Weekly' Art Livestream Data
     CSGOFunny = [ //CSGO Edits / Complications Data
         ['41nkgBQfMWE','HJrzOIXB2lQ',undefined, 'd7eRx6T0mdc','D7c_-FftVx0','VR-fCwZxZmk'],
         ['22/02/15',   '20/09/18',   undefined, '19/07/21',   '18/10/26',   '28/05/19'],
         ['2 Albanians, A Packet of Walkers.','Neon GenesisEvanjollion: Pt1', undefined, 'Vore, where?', 'Headshot Only', '48:9']],
-    vialOfMe = [ //Vial Of Me Development data
-        ['OwzW0S1F3qM','LiOqOQnlZo4','t5XUJjOmg2w'],
-        ['18/12/31','19/01/02','19/01/03'],
-        ["'Vial Of Me.js' LIVE Dev"]],
+    vialOfMe = [['OwzW0S1F3qM','LiOqOQnlZo4','t5XUJjOmg2w'], ['18/12/31','19/01/02','19/01/03'], ["'Vial Of Me.js' LIVE Dev"]],//Vial Of Me Development data
     vher98 = [ //Win98 Development Data
         ['bEi4JDBhR00','0zCDsGoG1ic',undefined,'iZDxjJ8kgDk','D1GE6f-R48s','m8DMSVHuA-I','XJHTFOAQscs','gMGQ7YbarKw','ZyQCHDCcdWQ'],
-        ['21/02/25',   '21/02/25',   undefined,'21/02/25',   '21/02/25',   '21/02/25',   '21/02/17',   '21/02/17',   '21/02/17'],
-        ["'Vher98' LIVE Dev"]],
+        ['21/02/25',   '21/02/25',   undefined,'21/02/25',   '21/02/25',   '21/02/25',   '21/02/17',   '21/02/17',   '21/02/17'], ["'Vher98' LIVE Dev"]],
     coffee = [ //Coffee At The Beach Data
         ['Z8xZHxbaf-s','HsgFExnC2MI',undefined,'R6scL1l2Xso','yuQAo2TLY6g','QshmGX41ZeU'],
-        ['19/02/11',   '19/02/05',   undefined,'19/01/30',   '19/01/29',   '19/01/28'],
-        ["'Beach Time Coffee' LIVE"]],
-    caddy = [//Caddy Art Livestream Data
-        ['Scmtgrx-LCE','Y3-7B1ZBf4Q','VloKVodY8ak'],
-        ['19/05/12','19/05/09','19/05/07'],
-        ["'Zero Suit Caddy' LIVE"]],
-    coffeeOG = [ //Coffee Concept Art Data
-        ['a27XjoPcQHg','MWwmEH2P2WU','L_ruyRpwzqw'],
-        ['18/04/23','18/04/21','18/04/21'],
-        ["'Coffee' Concept LIVE"]];
+        ['19/02/11',   '19/02/05',   undefined,'19/01/30',   '19/01/29',   '19/01/28'],["'Beach Time Coffee' LIVE"]],
+    caddy = [['Scmtgrx-LCE','Y3-7B1ZBf4Q','VloKVodY8ak'], ['19/05/12','19/05/09','19/05/07'], ["'Zero Suit Caddy' LIVE"]],//Caddy Art Livestream Data
+    coffeeOG = [['a27XjoPcQHg','MWwmEH2P2WU','L_ruyRpwzqw'], ['18/04/23','18/04/21','18/04/21'], ["'Coffee' Concept LIVE"]]; //Coffee Concept Art Data
 
 //video playlist collections + accompanying data
 var titleCards = ["Featured Videos","'Weekly' Timelapses","CSGO: Funny moments",vanhDev[2][0]+"elopment",
@@ -103,26 +85,27 @@ function loadVideo() { //load singular video
     $('#uploadDate').html(reqVideos[pReq][1][vReq] + "<br><t>" + reqVideos[pReq][2][vReq] + "</t>") //This prints out the current active video
 
     pageScrollY[cPage] = 0;
-    $('pagedata').animate({"top": 0})}
+    $(!mobileBool ? 'pagedata' : '.pg' + cPage).animate({"top": 0})}
 
 let localUrl, idGrab = undefined
 function extVideo(){ //this function gets called from art element posts.
-    for(let e = 0; e < reqVideos[e][0].length; e++) { //loops through URL arrays
-        console.log("Searching...")
-        for(let i = 0; i < reqVideos[e][0].length; i++) {
-            if(reqVideos[e][0][i] === localUrl){
-                idGrab = [e,i];
-                console.log("Id found: " + idGrab)
-                $('#uploadDate').html(reqVideos[e][1][i]+'<br><t>'+reqVideos[e][2][i]+'</t>')//print placement title + date.
+    if(clickInt > -clickDur){
+        for(let e = 0; e < reqVideos[e][0].length; e++) { //loops through URL arrays
+            console.log("Searching...")
+            for(let i = 0; i < reqVideos[e][0].length; i++) {
+                if(reqVideos[e][0][i] === localUrl){
+                    idGrab = [e,i];
+                    console.log("Id found: " + idGrab)
 
-                extLoad(); return false }
-            else {
-                idGrab = undefined }}}
+                    $('#uploadDate').html(reqVideos[e][1][i]+'<br><t>'+reqVideos[e][2][i]+'</t>')//print placement title + date.
+                    extLoad(); return false }
+                else {
+                    idGrab = undefined }}}
 
-    if(idGrab === undefined) { // if a url isn't found,
-        console.log("loading on fetched url")
-        $('#uploadDate').html( //print placement title + date.
-            "Vanh.art<br><t>Playing Undefined Local Content</t>")}
+        if(idGrab === undefined) { // if a url isn't found,
+            console.log("loading on fetched url")
+            $('#uploadDate').html( //print placement title + date.
+                "Vanh.art<br><t>Playing Undefined Local Content</t>")}}
 }
 
 function extLoad() {
